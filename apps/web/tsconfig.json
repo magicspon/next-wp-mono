@@ -1,0 +1,34 @@
+{
+	"extends": "@spon/typescript-config/next.json",
+	"compilerOptions": {
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["app/*"]
+		},
+		"allowJs": true,
+		"noEmit": true
+	},
+	"include": [
+		"next-env.d.ts",
+		".next/types/**/*.ts",
+		"playwright.config.ts",
+		"**/style.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"**/*.cts",
+		"**/*.ctsx",
+		"**/*.mts",
+		"**/*.mtsx",
+		"**/*.js",
+		"**/*.jsx",
+		"**/*.cjs",
+		"**/*.cjsx",
+		"**/*.mjs",
+		"**/*.mjsx"
+	]
+}

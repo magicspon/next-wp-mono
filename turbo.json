@@ -1,0 +1,49 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"tasks": {
+		"build": {
+			"dependsOn": ["^build"],
+			"inputs": ["$TURBO_DEFAULT$", ".env*"],
+			"outputs": [".next/**", "!.next/cache/**"]
+		},
+		"lint": {
+			"dependsOn": ["^lint"]
+		},
+		"typecheck": {
+			"dependsOn": ["^typecheck"]
+		},
+		"dev": {
+			"cache": false,
+			"persistent": true
+		},
+		"clean": {},
+		"start": {},
+		"e2e:ui": {},
+		"e2e:run": {},
+		"e2e:ci": {
+			"dependsOn": ["^build"]
+		},
+
+		"test:ui": {
+			"cache": false,
+			"persistent": true
+		},
+		"test:run": {},
+		"test": {},
+		"panda": {}
+	},
+	"globalEnv": [
+		"ANALYZE",
+		"CI",
+		"VERCEL_ENV",
+		"NODE_ENV",
+		"NEXT_PUBLIC_SANITY_PROJECT_ID",
+		"SANITY_STUDIO_PROJECT_ID",
+		"SANITY_STUDIO_READ_TOKEN",
+		"SANITY_STUDIO_WRITE_TOKEN",
+		"SANITY_DEPLOY_TOKEN",
+		"SANITY_STUDIO_WEBHOOK_REVALIDATE",
+		"SITE_URL"
+	],
+	"ui": "tui"
+}

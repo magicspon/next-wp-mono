@@ -1,0 +1,69 @@
+{
+	"version": "0.0.0",
+	"name": "spon",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "turbo build --filter=@spon/web",
+		"analyze": "ANALYZE=true turbo build --filter=@spon/web",
+		"start": "turbo start --filter=@spon/web",
+		"dev": "turbo dev",
+		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
+		"lint": "turbo lint",
+		"link": "cd apps/cms; npx yalc add @spon/sanity-plugin-theme && npx yalc link @spon/sanity-plugin-theme && npm install",
+		"typecheck": "turbo typecheck",
+		"clean": "turbo clean; rm -rf node_modules",
+		"new:component": "turbo gen component",
+		"new:fn": "turbo gen fn",
+		"new:hook": "turbo gen hook",
+		"new:page": "turbo gen page",
+		"new:context": "turbo gen context",
+		"prepare": "husky; turbo panda",
+		"lc": "npx cloc . --exclude-dir=.turbo,.sanity,dist,.next,node_modules --not-match-f=loc",
+		"test": "vitest",
+		"test:ui": "vitest --ui",
+		"test:run": "vitest run --passWithNoTests",
+		"e2e:ci": "CI='true' npm run e2e:run",
+		"e2e:ui": "turbo e2e:ui",
+		"e2e:run": "turbo e2e:run",
+		"changeset": "npx changeset-conventional-commits",
+		"panda": "turbo panda"
+	},
+	"devDependencies": {
+		"@changesets/cli": "^2.27.8",
+		"@commitlint/cli": "^19.5.0",
+		"@commitlint/config-conventional": "^19.5.0",
+		"@spon/eslint-config": "*",
+		"@spon/typescript-config": "*",
+		"@testing-library/dom": "^10.4.0",
+		"@testing-library/jest-dom": "^6.5.0",
+		"@trivago/prettier-plugin-sort-imports": "^4.3.0",
+		"@turbo/gen": "^2.1.2",
+		"@types/lint-staged": "^13.3.0",
+		"@vitest/ui": "^2.1.1",
+		"commitlint": "^19.5.0",
+		"eslint": "^9.11.0",
+		"husky": "^9.1.6",
+		"jsdom": "^25.0.0",
+		"lint-staged": "^15.2.10",
+		"prettier": "^3.3.3",
+		"prettier-plugin-tailwindcss": "^0.6.6",
+		"turbo": "^2.1.2",
+		"typescript": "^5.6.2",
+		"vitest": "^2.1.1"
+	},
+	"engines": {
+		"node": ">=20"
+	},
+	"packageManager": "npm@10.8.3",
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"optionalDependencies": {
+		"@rollup/rollup-linux-x64-gnu": "*"
+	},
+	"dependencies": {
+		"tsup": "^8.3.0"
+	}
+}

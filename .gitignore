@@ -1,0 +1,72 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+.open-next
+# dependencies
+dockervolume
+node_modules
+.pnp
+.pnp.js
+# testing
+coverage
+playwright-report
+test-results
+# assets
+design
+
+# next.js
+.next/
+.react-email
+out/
+.yalc
+
+# expo
+.expo/
+dist/
+
+# production
+build
+dist
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+
+# turbo
+.turbo
+
+# Editor preferences
+.vscode/settings.json
+.vim/
+
+certificates
+
+*storybook.log
+
+# sst
+.sst
+
+# tests
+
+# ## Panda
+# styled-system
+# styled-system-studio
+
+## Panda
+src/styled-system
+src/styled-system-studio

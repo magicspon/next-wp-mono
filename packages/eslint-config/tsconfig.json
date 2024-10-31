@@ -1,0 +1,3 @@
+{
+	"extends": ["@spon/typescript-config/base.json"]
+}

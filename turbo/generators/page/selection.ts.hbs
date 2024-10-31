@@ -1,0 +1,8 @@
+import { type Selection, TypeFromSelection, q } from 'groqd'
+
+export const {{ camelCase func }}Selection = {
+	_id: q.string(),
+	title: q.string(),
+} satisfies Selection
+
+export type T{{ pascalCase func }}Document = TypeFromSelection<typeof {{ camelCase func }}Selection>

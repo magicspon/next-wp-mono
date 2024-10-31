@@ -1,0 +1,14 @@
+{{#if sanity}}
+import type { T{{ pascalCase func }}Document } from '@spon/cms/queries/selection/{{ kebabCase func }}.selection'
+{{/if}}
+
+type T{{ pascalCase func }}PageProps = {
+	//
+}{{#if sanity}} & T{{ pascalCase func }}Document {{/if}}
+
+export function {{ pascalCase func }}Page(props: T{{ pascalCase func }}PageProps) {
+	console.log(`<{{ pascalCase func }}Page />`, { props })
+	return (
+		<div>Hello</div>
+	)
+}

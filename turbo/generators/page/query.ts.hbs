@@ -1,0 +1,8 @@
+import { q } from 'groqd'
+import { {{ camelCase func }}Selection } from '../selection/{{ camelCase func }}.selection'
+
+export const {{ camelCase func }}Query = q('').grab({
+	page: q('*')
+		.filter("_type == 'REPLACE_ME' && !(_id in path('drafts.**'))")
+		.grab$({{ camelCase func }}Selection),
+})

@@ -1,0 +1,53 @@
+import { notFound } from 'next/navigation'
+import * as React from 'react'
+import { createPage } from '~/utils/createPage'
+import { {{ pascalCase func }}Page } from '~/templates/{{ pascalCase func }}Page'
+{{#if sanity}}
+import { {{ camelCase func }}Query } from '@spon/cms/queries/pages/{{ kebabCase func }}.query'
+import { getFirstOrNull } from '@spon/utils/getFirstOrNull'
+import { createSanityFetcher } from '~/utils/createSanityFetcher'
+{{/if}}
+
+const { Page, generateMetadata } = createPage({
+	loader: async () => {
+		{{#if sanity}}
+		const runner = createSanityFetcher()
+		// sometimes vscode will complain about the type being to deep
+		// the type is still created so i think we can safely ignore it
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore Type instantiation is excessively deep and possibly infinite
+		const data = await runner({{ camelCase func }}Query, {}, { next: { tags: ['{{ kebabCase func }}'] } })
+		const page = getFirstOrNull(data.page)
+		if (!page) {
+			notFound()
+		}
+
+		return {
+			page: page,
+		}
+		{{ else }}
+		return {
+			page: {
+				title: 'Hello'
+			},
+		}
+		{{/if}}
+	},
+	metadata: async ({ data }, parent) => {
+		const root = await parent
+		const title = [root.title?.absolute, data.page.title]
+			.filter(Boolean)
+			.join(' | ')
+
+		return {
+			title,
+		}
+	},
+	component: ({ data }) => {
+		const props = data.page
+		return <{{ pascalCase func }}Page {...props} />
+	},
+})
+
+export default Page
+export { generateMetadata }
