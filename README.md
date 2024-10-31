@@ -26,10 +26,6 @@ npm run dev
 
 `https://localhost:3000` Next
 
-`https://localhost:3000/studio` Sanity CMS (hosted with the app)
-
-`https://localhost:3333` Sanity CMS
-
 `https://localhost:6006` Storybook
 
 ### Features
