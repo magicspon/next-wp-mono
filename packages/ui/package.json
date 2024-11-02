@@ -60,7 +60,7 @@
 	"dependencies": {
 		"@capsizecss/core": "^4.1.2",
 		"@pandacss/dev": "^0.46.1",
-		"@radix-ui/react-accordion": "^1.2.0",
+		"@radix-ui/react-accordion": "^1.2.1",
 		"@radix-ui/react-alert-dialog": "^1.1.1",
 		"@radix-ui/react-collapsible": "^1.1.0",
 		"@radix-ui/react-dialog": "^1.1.1",
