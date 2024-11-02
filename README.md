@@ -6,7 +6,6 @@
 
 ⚠️ In progress... nothing works yet
 
-
 ## Quick start
 
 Go to [Bedrock with DDEV](https://roots.io/bedrock/docs/bedrock-with-ddev/) and create a new project.
@@ -33,7 +32,8 @@ npm run dev
 
 ### Features
 
-- Wordpress (bedrock infrac)
+- Wordpress via wpgraphql (bedrock infrac)
+- Graphql Typescript code gen
 - Typescript
 - Tailwind
 - Radix UI
