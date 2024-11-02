@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import * as React from 'react'
 import { Item, Overflow } from '@spon/ui/primitives/Overflow'
-import type { MenuItemFragment } from '~/schema/graphql'
+import type { MenuItemFragment } from '~/schema/generated.graphql'
 
 type TElementProps = React.ComponentProps<'header'>
 

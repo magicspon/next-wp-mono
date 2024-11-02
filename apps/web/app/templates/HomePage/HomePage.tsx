@@ -1,5 +1,5 @@
 import * as React from 'react'
-import type { HomePageFragment } from '~/schema/graphql'
+import type { HomePageFragment } from '~/schema/generated.graphql'
 
 export function HomePage({ content, title }: HomePageFragment) {
 	return (

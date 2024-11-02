@@ -29,18 +29,18 @@ const nextConfig = {
 	webpack: (config) => {
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		config.module.rules.push(
-      {
-        test: /\.svg$/i,
-        issuer: /\.[jt]sx?$/,
-        use: '@svgr/webpack',
-      },
-      {
-        test: /\.(graphql|gql)$/,
-        exclude: /node_modules/,
-        loader: 'webpack-graphql-loader',
-      }
-    );
-    return config;
+			{
+				test: /\.svg$/i,
+				issuer: /\.[jt]sx?$/,
+				use: '@svgr/webpack',
+			},
+			{
+				test: /\.(graphql|gql)$/,
+				exclude: /node_modules/,
+				loader: 'webpack-graphql-loader',
+			},
+		)
+		return config
 	},
 
 	eslint: {
@@ -51,7 +51,7 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: 'https',
-				hostname: 'cdn.sanity.io',
+				hostname: process.env.WP_DOMAIN,
 			},
 		],
 		minimumCacheTTL: 31536000,

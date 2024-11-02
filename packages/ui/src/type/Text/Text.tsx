@@ -62,7 +62,6 @@ export type TElementRef = React.ElementRef<
 export type TCombinedProps = TElementProps &
 	TStyleProps & {
 		asChild?: boolean
-		sanityMode?: boolean
 	}
 
 const StyledSlot = styled(Slot)

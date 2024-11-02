@@ -100,6 +100,6 @@ export const base = defineConfig(
 		},
 	},
 	{
-		ignores: ['.sanity/*', 'dist/'],
+		ignores: ['dist/'],
 	},
 )

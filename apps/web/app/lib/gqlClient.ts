@@ -1,10 +1,10 @@
 import { GraphQLClient } from 'graphql-request'
 import { env } from '~/env/server'
-import type { Sdk } from '~/schema/graphql'
-import { getSdk } from '~/schema/graphql'
+import type { Sdk } from '~/schema/generated.graphql'
+import { getSdk } from '~/schema/generated.graphql'
 
 export function graphQLClient(
-	authorization = `Bearer ${env.GRAPHQL_TOKEN}`,
+	authorization = env.GRAPHQL_TOKEN,
 ): GraphQLClient {
 	const src = env.GRAPHQL_ENDPOINT
 

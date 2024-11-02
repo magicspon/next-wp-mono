@@ -18,12 +18,6 @@ export const page = (plop: PlopTypes.NodePlopAPI) => {
 				message: 'What is the pathname',
 				validate: validator,
 			},
-			{
-				type: 'confirm',
-				name: 'sanity',
-				message: 'Do you want to scaffold sanity queries',
-				default: 'no',
-			},
 			withTest,
 		],
 		actions: (answers) => {

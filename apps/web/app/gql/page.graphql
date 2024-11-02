@@ -3,8 +3,8 @@ fragment Page on Page {
 	title
 }
 
-query PageQuery($uri: String!) {
-	pageBy(uri: $uri) {
+query PageQuery($id: ID!) {
+	page(id: $id, idType: URI) {
 		...Page
 	}
 }

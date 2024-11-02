@@ -50,10 +50,6 @@ const body = localFont({
 	variable: '--font-body',
 })
 
-export const metadata: Metadata = {
-	title: 'Sponanity',
-}
-
 async function loader() {
 	const resp = await sdk.GlobalSettings()
 

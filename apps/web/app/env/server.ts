@@ -5,6 +5,7 @@ export const env = createEnv({
 	server: {
 		GRAPHQL_ENDPOINT: z.string().min(1),
 		GRAPHQL_TOKEN: z.string().min(1),
+		WP_DOMAIN: z.string().min(1),
 
 		SITE_URL: z.string(),
 	},

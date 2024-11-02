@@ -3,8 +3,33 @@ fragment Post on Post {
 	title
 }
 
-query PostQuery($slug: ID!) {
-	post(id: $slug, idType: SLUG) {
+query PostQuery($id: ID!) {
+	post(id: $id, idType: SLUG) {
 		...Post
+	}
+}
+
+fragment Teaser on Post {
+	title
+	slug
+	id
+}
+
+fragment BlogPage on Page {
+	content
+	title
+}
+
+query PostsQuery($first: Int = 10) {
+	posts(first: $first) {
+		edges {
+			node {
+				...Teaser
+			}
+		}
+	}
+
+	page(id: "blog", idType: URI) {
+		...BlogPage
 	}
 }
