@@ -4,8 +4,6 @@
 
 # W[Pon]press
 
-Go to [Bedrock with DDEV](https://roots.io/bedrock/docs/bedrock-with-ddev/) and create a new project.
-
 ```bash
 cp apps/cms/env.example apps/cms/.env
 cp apps/web/env.example apps/web/.env.local
@@ -13,11 +11,15 @@ cp apps/web/env.example apps/web/.env.local
 
 ## Installation
 
-Wordpress (via docker/ddev)
+#### Wordpress (via docker/ddev)
+
+Go to [Bedrock with DDEV](https://roots.io/bedrock/docs/bedrock-with-ddev/) and create a new project.
 
 1. Install Docker Desktop
-2. Install DDEV
+2. Install [DDEV](https://ddev.readthedocs.io/en/stable/)
 3. run `cd apps/cms; ddev start`
+
+#### Frontend
 
 Use `node` version 20 or more.
 
@@ -25,6 +27,8 @@ Use `node` version 20 or more.
 mpm install
 npm run dev
 ```
+
+#### urls
 
 `https://localhost:3000` Next
 
