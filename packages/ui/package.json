@@ -46,6 +46,7 @@
 		"@storybook/nextjs": "^8.3.2",
 		"@storybook/react": "^8.3.2",
 		"@storybook/react-webpack5": "^8.3.2",
+		"@svgr/webpack": "^8.1.0",
 		"@testing-library/react": "^16.0.1",
 		"@types/node": "^22.5.5",
 		"@types/react": "^18.3.0",
@@ -57,6 +58,7 @@
 		"typescript": "^5.6.2"
 	},
 	"dependencies": {
+		"@capsizecss/core": "^4.1.2",
 		"@pandacss/dev": "^0.46.1",
 		"@radix-ui/react-accordion": "^1.2.0",
 		"@radix-ui/react-alert-dialog": "^1.1.1",

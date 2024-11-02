@@ -1,24 +1,19 @@
 import { notFound } from 'next/navigation'
 import * as React from 'react'
-import { homeQuery } from '@spon/cms/queries/pages/home.query'
-import { getFirstOrNull } from '@spon/utils/getFirstOrNull'
+import { sdk } from '~/lib/gqlClient'
 import { HomePage } from '~/templates/HomePage'
 import { createPage } from '~/utils/createPage'
-import { createSanityFetcher } from '~/utils/createSanityFetcher'
 
 const { Page, generateMetadata } = createPage({
 	loader: async () => {
-		const runner = createSanityFetcher()
+		const data = await sdk.HomePageQuery()
 
-		const data = await runner(homeQuery, {}, { next: { tags: ['index'] } })
-		const page = getFirstOrNull(data.page)
-
-		if (!page) {
+		if (!data.page) {
 			notFound()
 		}
 
 		return {
-			page: page,
+			page: data.page,
 		}
 	},
 	metadata: async ({ data }) => {

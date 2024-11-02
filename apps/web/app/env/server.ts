@@ -3,11 +3,8 @@ import { z } from 'zod'
 
 export const env = createEnv({
 	server: {
-		SANITY_STUDIO_PROJECT_ID: z.string().min(1),
-		SANITY_STUDIO_READ_TOKEN: z.string().min(1),
-		SANITY_STUDIO_WRITE_TOKEN: z.string().min(1),
-		SANITY_DEPLOY_TOKEN: z.string().min(1),
-		SANITY_STUDIO_WEBHOOK_REVALIDATE: z.string().min(1),
+		GRAPHQL_ENDPOINT: z.string().min(1),
+		GRAPHQL_TOKEN: z.string().min(1),
 
 		SITE_URL: z.string(),
 	},

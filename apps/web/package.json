@@ -5,7 +5,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "next dev -p 3000",
+		"generate": "graphql-codegen --require dotenv/config dotenv_config_path=.env.local",
+		"dev": "concurrently \"next dev\" \"npm run generate -- --watch\"",
 		"build": "next build",
 		"start": "next start",
 		"lint": "eslint . --max-warnings 0 --fix",
@@ -13,14 +14,19 @@
 		"clean": "rm -rf .next *.tsbuildinfo playwright-report test-results node_modules",
 		"e2e:run": "playwright test",
 		"e2e:ui": "playwright test --ui",
-		"panda": "panda codegen"
+		"panda": "panda codegen",
+		"codegen": "graphql-codegen --config codegen.ts"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"type": "module",
 	"devDependencies": {
+		"@graphql-codegen/cli": "5.0.3",
+		"@graphql-codegen/client-preset": "4.5.0",
+		"@graphql-codegen/typescript-operations": "^4.3.1",
 		"@next/bundle-analyzer": "^14.2.13",
+		"@parcel/watcher": "^2.4.1",
 		"@spon/eslint-config": "*",
 		"@spon/tailwind-config": "*",
 		"@spon/typescript-config": "*",
@@ -32,10 +38,12 @@
 		"@vitejs/plugin-react": "^4.3.1",
 		"autoprefixer": "^10.4.20",
 		"eslint-config-next": "14.2.5",
+		"graphql": "^16.9.0",
 		"jiti": "^1.21.6",
 		"postcss": "^8.4.47",
 		"tailwindcss": "^3.4.12",
-		"typescript": "^5.6.2"
+		"typescript": "^5.6.2",
+		"webpack-graphql-loader": "^1.0.2"
 	},
 	"dependencies": {
 		"@mobily/ts-belt": "^3.13.1",
@@ -53,11 +61,14 @@
 		"@tanstack/react-query-next-experimental": "^5.56.2",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
+		"concurrently": "^9.0.1",
 		"framer-motion": "^11.5.6",
+		"graphql-request": "^7.1.2",
 		"next": "^14.2.13",
 		"next-sanity": "^9.5.0",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
+		"typescript-graphql-request": "^4.4.6",
 		"usehooks-ts": "^3.1.0",
 		"zod": "^3.23.8",
 		"zustand": "^4.5.5"

@@ -1,0 +1,23 @@
+fragment MenuItem on MenuItem {
+	label
+	uri
+	id
+}
+
+fragment Menu on Menu {
+	id
+	menuItems {
+		nodes {
+			...MenuItem
+		}
+	}
+}
+
+query GlobalSettings {
+	allSettings {
+		title: generalSettingsTitle
+	}
+	menu(id: "Main Menu", idType: NAME) {
+		...Menu
+	}
+}

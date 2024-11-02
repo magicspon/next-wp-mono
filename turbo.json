@@ -30,19 +30,15 @@
 		},
 		"test:run": {},
 		"test": {},
-		"panda": {}
+		"panda": {},
+		"codegen": {}
 	},
 	"globalEnv": [
 		"ANALYZE",
 		"CI",
 		"VERCEL_ENV",
 		"NODE_ENV",
-		"NEXT_PUBLIC_SANITY_PROJECT_ID",
-		"SANITY_STUDIO_PROJECT_ID",
-		"SANITY_STUDIO_READ_TOKEN",
-		"SANITY_STUDIO_WRITE_TOKEN",
-		"SANITY_DEPLOY_TOKEN",
-		"SANITY_STUDIO_WEBHOOK_REVALIDATE",
+		"GRAPHQL_ENDPOINT",
 		"SITE_URL"
 	],
 	"ui": "tui"

@@ -18,7 +18,7 @@
 		"new:hook": "turbo gen hook",
 		"new:page": "turbo gen page",
 		"new:context": "turbo gen context",
-		"prepare": "husky; turbo panda",
+		"prepare": "husky; turbo panda; turbo codegen",
 		"lc": "npx cloc . --exclude-dir=.turbo,.sanity,dist,.next,node_modules --not-match-f=loc",
 		"test": "vitest",
 		"test:ui": "vitest --ui",
@@ -27,7 +27,8 @@
 		"e2e:ui": "turbo e2e:ui",
 		"e2e:run": "turbo e2e:run",
 		"changeset": "npx changeset-conventional-commits",
-		"panda": "turbo panda"
+		"panda": "turbo panda",
+		"codegen": "turbo codegen"
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.27.8",

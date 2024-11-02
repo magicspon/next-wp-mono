@@ -1,0 +1,10 @@
+fragment HomePage on Page {
+	content
+	title
+}
+
+query HomePageQuery {
+	page: pageBy(uri: "__home__") {
+		...HomePage
+	}
+}

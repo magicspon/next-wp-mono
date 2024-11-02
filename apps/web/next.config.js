@@ -20,12 +20,28 @@ const nextConfig = {
 	},
 
 	transpilePackages: [
-		'@spon/cms',
 		'@spon/hooks',
 		'@spon/tailwind-config',
 		'@spon/ui',
 		'@spon/utils',
 	],
+
+	webpack: (config) => {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+		config.module.rules.push(
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: '@svgr/webpack',
+      },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'webpack-graphql-loader',
+      }
+    );
+    return config;
+	},
 
 	eslint: {
 		ignoreDuringBuilds: !!process.env.CI,
@@ -42,12 +58,6 @@ const nextConfig = {
 		dangerouslyAllowSVG: true,
 		contentDispositionType: 'attachment',
 		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-	},
-
-	redirects: async () => {
-		const mod = await jiti.import('@spon/cms/utils/getRedirects')
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-		return mod.getRedirects()
 	},
 }
 

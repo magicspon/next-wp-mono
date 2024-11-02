@@ -1,28 +1,25 @@
+import clsx from 'clsx'
 import Link from 'next/link'
 import * as React from 'react'
-import type { TMainMenu } from '@spon/cms/queries/selection/settings.selection'
 import { Item, Overflow } from '@spon/ui/primitives/Overflow'
-import { createHref } from '~/utils/createHref'
+import type { MenuItemFragment } from '~/schema/graphql'
 
-type TElementProps = React.ComponentProps<'div'>
+type TElementProps = React.ComponentProps<'header'>
 
 export type THeaderProps = TElementProps & {
-	menu: TMainMenu
+	menu: MenuItemFragment[]
 }
 
-export function Header({ menu }: THeaderProps) {
+export function Header({ menu, className, ...props }: THeaderProps) {
 	return (
-		<header className="py-6">
+		<header className={clsx(className, 'py-6')} {...props}>
 			{menu && (
 				<Overflow asChild>
 					<nav className="flex gap-6 whitespace-nowrap">
-						{menu.item?.map((node) => (
-							<Item key={node._key} asChild>
-								<Link
-									className="data-closed:invisible"
-									{...createHref(node.link)}
-								>
-									{node.link.text}
+						{menu.map((node) => (
+							<Item key={node.id} asChild>
+								<Link className="data-closed:invisible" href={node.uri}>
+									{node.label}
 								</Link>
 							</Item>
 						))}

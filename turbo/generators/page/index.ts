@@ -45,19 +45,6 @@ export const page = (plop: PlopTypes.NodePlopAPI) => {
 				},
 			]
 
-			if (answers?.sanity) {
-				actions.push({
-					type: 'add',
-					path: `{{ turbo.paths.root }}/apps/cms/queries/pages/{{ kebabCase func }}.query.ts`,
-					templateFile: 'page/query.ts.hbs',
-				})
-				actions.push({
-					type: 'add',
-					path: `{{ turbo.paths.root }}/apps/cms/queries/selection/{{ kebabCase func }}.selection.ts`,
-					templateFile: 'page/selection.ts.hbs',
-				})
-			}
-
 			if (answers?.tests) {
 				actions.push({
 					type: 'add',

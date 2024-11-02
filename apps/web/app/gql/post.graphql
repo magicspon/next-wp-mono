@@ -1,0 +1,10 @@
+fragment Post on Post {
+	content
+	title
+}
+
+query PostQuery($slug: ID!) {
+	post(id: $slug, idType: SLUG) {
+		...Post
+	}
+}

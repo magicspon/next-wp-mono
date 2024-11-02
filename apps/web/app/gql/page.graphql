@@ -1,0 +1,10 @@
+fragment Page on Page {
+	content
+	title
+}
+
+query PageQuery($uri: String!) {
+	pageBy(uri: $uri) {
+		...Page
+	}
+}
