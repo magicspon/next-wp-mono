@@ -4,20 +4,20 @@
 
 # W[Pon]press
 
-⚠️ In progress... nothing works yet
-
-## Quick start
-
 Go to [Bedrock with DDEV](https://roots.io/bedrock/docs/bedrock-with-ddev/) and create a new project.
 
-Copy `env.example` into apps/web and apps/cms and rename to `.env.local`
-
 ```bash
-cp env.example apps/cms/.env
-cp env.example apps/web/.env.local
+cp apps/cms/env.example apps/cms/.env
+cp apps/web/env.example apps/web/.env.local
 ```
 
 ## Installation
+
+Wordpress (via docker/ddev)
+
+1. Install Docker Desktop
+2. Install DDEV
+3. run `cd apps/cms; ddev start`
 
 Use `node` version 20 or more.
 
@@ -29,6 +29,8 @@ npm run dev
 `https://localhost:3000` Next
 
 `https://localhost:6006` Storybook
+
+`https://cms.ddev.site/wp/wp-admin/` Wordpress admin
 
 ### Features
 
