@@ -1,0 +1,35 @@
+fragment Hero on FlexibleHeroFlexibleHeroHeroLayout {
+	content {
+		animated
+		bodyText
+		bodyTextSize
+		bodyTextWidth
+		htag
+		prefix
+		titleWidth
+		titleSize
+		title
+		textAlign
+		subtitleWidth
+		subtitleSize
+		subtitle
+		scrollPromptAlign
+		scrollPrompt
+		buttonRepeater {
+			buttonSize
+			entries {
+				button {
+					variant
+					iconAlignment
+					colour
+					buttonIcon
+					link {
+						url
+						title
+						target
+					}
+				}
+			}
+		}
+	}
+}

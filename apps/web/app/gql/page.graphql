@@ -6,5 +6,9 @@ fragment Page on Page {
 query PageQuery($id: ID!) {
 	page(id: $id, idType: URI) {
 		...Page
+
+		seo {
+			...Seo
+		}
 	}
 }

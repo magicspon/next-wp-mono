@@ -1,6 +1,10 @@
 fragment Post on Post {
 	content
 	title
+
+	seo {
+		...Seo
+	}
 }
 
 query PostQuery($id: ID!) {
@@ -18,6 +22,10 @@ fragment Teaser on Post {
 fragment BlogPage on Page {
 	content
 	title
+
+	seo {
+		...Seo
+	}
 }
 
 query PostsQuery($first: Int = 10) {

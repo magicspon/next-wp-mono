@@ -20,4 +20,27 @@ query GlobalSettings {
 	menu(id: "Main Menu", idType: NAME) {
 		...Menu
 	}
+
+	seo {
+		meta {
+			homepage {
+				description
+			}
+		}
+		schema {
+			siteName
+		}
+		openGraph {
+			frontPage {
+				title
+				description
+				image {
+					sourceUrl(size: LARGE)
+				}
+			}
+			defaultImage {
+				sourceUrl(size: LARGE)
+			}
+		}
+	}
 }

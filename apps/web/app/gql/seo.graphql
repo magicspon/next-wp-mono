@@ -1,0 +1,28 @@
+fragment Seo on PostTypeSEO {
+	metaDesc
+	metaKeywords
+	opengraphDescription
+	opengraphTitle
+	opengraphType
+	opengraphUrl
+	title
+	twitterDescription
+	twitterTitle
+	twitterImage {
+		sourceUrl(size: LARGE)
+	}
+	opengraphImage {
+		sourceUrl(size: LARGE)
+	}
+}
+
+query RedirectQuery {
+	seo {
+		redirects {
+			format
+			origin
+			target
+			type
+		}
+	}
+}

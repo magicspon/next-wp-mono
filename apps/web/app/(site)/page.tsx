@@ -17,8 +17,24 @@ const { Page, generateMetadata } = createPage({
 		}
 	},
 	metadata: async ({ data }) => {
+		const { seo } = data.page
+
 		return {
-			title: data.page.title,
+			title: seo.title,
+			description: seo.metaDesc ?? seo.opengraphDescription,
+			keywords: seo.metaKeywords,
+			openGraph: {
+				title: seo.opengraphTitle,
+				description: seo.opengraphDescription,
+				type: seo.opengraphType,
+				images: [seo.opengraphImage.sourceUrl],
+				url: seo.opengraphUrl,
+			},
+			twitter: {
+				title: seo.twitterTitle,
+				description: seo.twitterDescription,
+				images: [seo.twitterImage.sourceUrl],
+			},
 		}
 	},
 	component: async ({ data }) => {

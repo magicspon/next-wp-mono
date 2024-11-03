@@ -56,7 +56,7 @@ async function loader() {
 	if (!resp) notFound()
 
 	return {
-		page: resp.allSettings,
+		seo: resp.seo,
 		mainMenu: resp.menu.menuItems.nodes,
 	}
 }
@@ -87,13 +87,18 @@ export default async function RootLayout({
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-	const { page } = await loader()
+	const { seo } = await loader()
 
 	return {
 		title: {
-			template: `%s | ${page.title}`,
-			default: page.title,
+			template: `%s | ${seo.schema.siteName}`,
+			default: seo.schema.siteName,
 		},
-		description: 'hello',
+		description: seo.meta.homepage.description,
+		openGraph: {
+			title: seo.openGraph.frontPage.title,
+			description: seo.openGraph.frontPage.description,
+			images: [seo.openGraph.defaultImage?.sourceUrl],
+		},
 	}
 }
