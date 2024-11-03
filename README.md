@@ -6,6 +6,8 @@
 
 ## Installation
 
+⚠️ Live previews don't work with wpgraphql yet (5 year old ticket!). bye!
+
 #### Wordpress (via docker/ddev)
 
 Go to [Bedrock with DDEV](https://roots.io/bedrock/docs/bedrock-with-ddev/) and create a new project.

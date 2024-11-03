@@ -1,15 +1,10 @@
 fragment HomePage on Page {
 	content
 	title
-	flexibleHero {
-		flexibleHero {
-			...Hero
-		}
-	}
 }
 
 query HomePageQuery {
-	page: pageBy(uri: "__home__") {
+	page: page(id: "__home__", idType: URI) {
 		...HomePage
 
 		seo {
