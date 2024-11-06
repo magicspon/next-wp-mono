@@ -4,10 +4,6 @@
 
 # W[Pon]press
 
-## Installation
-
-⚠️ Live previews don't work with wpgraphql yet (5 year old ticket!). bye!
-
 #### Wordpress (via docker/ddev)
 
 Go to [Bedrock with DDEV](https://roots.io/bedrock/docs/bedrock-with-ddev/) and create a new project.
@@ -44,6 +40,7 @@ cp apps/web/env.example apps/web/.env.local
 
 - Wordpress via wpgraphql (bedrock infrac)
 - Graphql Typescript code gen
+- Live preview
 - Typescript
 - Tailwind
 - Radix UI
