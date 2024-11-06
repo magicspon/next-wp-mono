@@ -13,7 +13,8 @@ const config: CodegenConfig = {
 		{
 			[`${process.env.GRAPHQL_ENDPOINT}`]: {
 				headers: {
-					Authorization: process.env.GRAPHQL_TOKEN!,
+					Authorization: process.env.GRAPHQL_JWT_AUTH_SECRET_KEY!,
+					'API-KEY': process.env.GRAPHQL_API_AUTH_SECRET_KEY!,
 				},
 			},
 		},

@@ -3,7 +3,7 @@ import localFont from 'next/font/local'
 import { notFound } from 'next/navigation'
 import { cx } from '@spon/styled-system/css'
 import { flex } from '@spon/styled-system/patterns'
-import { Header } from '~/components/Header'
+// import { Header } from '~/components/Header'
 import { sdk } from '~/lib/gqlClient'
 import { Provider } from './provider'
 import './style.css'
@@ -57,7 +57,7 @@ async function loader() {
 
 	return {
 		seo: resp.seo,
-		mainMenu: resp.menu.menuItems.nodes,
+		// mainMenu: resp.menu.menuItems.nodes,
 	}
 }
 
@@ -66,7 +66,7 @@ export default async function RootLayout({
 }: {
 	children: React.ReactNode
 }) {
-	const { mainMenu } = await loader()
+	// const { mainMenu } = await loader()
 
 	return (
 		<html
@@ -75,7 +75,7 @@ export default async function RootLayout({
 		>
 			<body>
 				<Provider>
-					<Header menu={mainMenu} />
+					{/* <Header menu={mainMenu} /> */}
 					<main className={flex({ flexDirection: 'column', flex: 1 })}>
 						{children}
 					</main>
@@ -86,19 +86,19 @@ export default async function RootLayout({
 	)
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-	const { seo } = await loader()
+// export async function generateMetadata(): Promise<Metadata> {
+// 	const { seo } = await loader()
 
-	return {
-		title: {
-			template: `%s | ${seo.schema.siteName}`,
-			default: seo.schema.siteName,
-		},
-		description: seo.meta.homepage.description,
-		openGraph: {
-			title: seo.openGraph.frontPage.title,
-			description: seo.openGraph.frontPage.description,
-			images: [seo.openGraph.defaultImage?.sourceUrl],
-		},
-	}
-}
+// 	return {
+// 		title: {
+// 			template: `%s | ${seo.schema.siteName}`,
+// 			default: seo.schema.siteName,
+// 		},
+// 		description: seo.meta.homepage.description,
+// 		openGraph: {
+// 			title: seo.openGraph.frontPage.title,
+// 			description: seo.openGraph.frontPage.description,
+// 			images: [seo.openGraph.defaultImage?.sourceUrl],
+// 		},
+// 	}
+// }

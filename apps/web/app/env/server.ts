@@ -4,10 +4,12 @@ import { z } from 'zod'
 export const env = createEnv({
 	server: {
 		GRAPHQL_ENDPOINT: z.string().min(1),
-		GRAPHQL_TOKEN: z.string().min(1),
+		GRAPHQL_JWT_AUTH_SECRET_KEY: z.string().min(1),
+		GRAPHQL_API_AUTH_SECRET_KEY: z.string().min(1),
+		HEADLESS_SECRET: z.string().min(1),
 		WP_DOMAIN: z.string().min(1),
-
-		SITE_URL: z.string(),
+		WP_USER: z.string().min(1),
+		WP_APP_PASS: z.string().min(1),
 	},
 	// If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
 	// runtimeEnv: {

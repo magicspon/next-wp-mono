@@ -1,10 +1,13 @@
 fragment Page on Page {
 	content
 	title
+	status
+	databaseId
+	uri
 }
 
-query PageQuery($id: ID!) {
-	page(id: $id, idType: URI) {
+query PageQuery($id: ID!, $idType: PageIdType!, $asPreview: Boolean = false) {
+	page(id: $id, idType: $idType, asPreview: $asPreview) {
 		...Page
 
 		seo {

@@ -15,10 +15,14 @@ Config::define('SCRIPT_DEBUG', true);
 Config::define('DISALLOW_INDEXING', true);
 Config::define('WP_HOME', 'http://localhost:3000');
 
-ini_set('display_errors', '1');
+ini_set('display_errors', '0');
 
 // Enable plugin and theme updates and installation from the admin
 Config::define('DISALLOW_FILE_MODS', false);
-Config::define( 'GRAPHQL_JWT_AUTH_SECRET_KEY', env('GRAPHQL_JWT_TOKEN') );
+Config::define( 'GRAPHQL_JWT_AUTH_SECRET_KEY', env('GRAPHQL_JWT_AUTH_SECRET_KEY') );
+Config::define( 'HEADLESS_URL', env('HEADLESS_URL') );
+Config::define( 'HEADLESS_SECRET', env('HEADLESS_SECRET') );
+Config::define( 'GRAPHQL_JWT_AUTH_CORS_ENABLE', true);
+Config::define( 'GRAPHQL_API_AUTH_SECRET_KEY', true);
 
 
