@@ -1,0 +1,427 @@
+{
+    "key": "group_6726d6d66003a",
+    "title": "Styles",
+    "fields": [
+        {
+            "key": "field_6726d6d6ae0d7",
+            "label": "Text Sizes",
+            "name": "text_sizes",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_672a2b42f58a1",
+            "button_label": "Add style override",
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "textSizes",
+            "graphql_non_null": 0,
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_672a2b42f58a1",
+                    "label": "Attribute",
+                    "name": "attribute",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "heading": "heading",
+                        "subheading": "subheading",
+                        "text": "text"
+                    },
+                    "default_value": "heading",
+                    "return_format": "",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "show_in_graphql": 1,
+                    "graphql_description": "",
+                    "graphql_field_name": "style",
+                    "graphql_non_null": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_6726d6d6ae0d7"
+                },
+                {
+                    "key": "field_672a2b9ff58a2",
+                    "label": "Value",
+                    "name": "value",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "graphql_field_name": "value",
+                    "clone": [
+                        "field_672a5a7a55ea7"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0,
+                    "parent_repeater": "field_6726d6d6ae0d7"
+                }
+            ]
+        },
+        {
+            "key": "field_672a569e0eb88",
+            "label": "Theme",
+            "name": "theme",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_672a2b42f58a1",
+            "button_label": "Add style override",
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "theme",
+            "graphql_non_null": 0,
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_672a569e0eb89",
+                    "label": "Attribute",
+                    "name": "attribute",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "background": "background",
+                        "foreground": "foreground",
+                        "accent": "accent",
+                        "border": "border"
+                    },
+                    "default_value": "foreground",
+                    "return_format": "",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "show_in_graphql": 1,
+                    "graphql_description": "",
+                    "graphql_field_name": "attribute",
+                    "graphql_non_null": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_672a569e0eb88"
+                },
+                {
+                    "key": "field_672a569e0eb8a",
+                    "label": "Value",
+                    "name": "value",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "graphql_field_name": "value",
+                    "clone": [
+                        "field_672a5a2755ea6"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0,
+                    "parent_repeater": "field_672a569e0eb88"
+                }
+            ]
+        },
+        {
+            "key": "field_672a5bba55eaa",
+            "label": "Box",
+            "name": "box",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_672a5bd155eab",
+            "button_label": "Add style override",
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "box",
+            "graphql_non_null": 0,
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_672a5bd155eab",
+                    "label": "Attribute",
+                    "name": "attribute",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "px": "px",
+                        "py": "py",
+                        "mx": "mx",
+                        "my": "my",
+                        "gap": "gap"
+                    },
+                    "default_value": "gap",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "show_in_graphql": 1,
+                    "graphql_description": "",
+                    "graphql_field_name": "attribute",
+                    "graphql_non_null": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_672a5bba55eaa"
+                },
+                {
+                    "key": "field_672a5c0855eac",
+                    "label": "Value",
+                    "name": "value",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "graphql_field_name": "value",
+                    "clone": [
+                        "field_672a5b4455ea8"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0,
+                    "parent_repeater": "field_672a5bba55eaa"
+                }
+            ]
+        },
+        {
+            "key": "field_672a5a2755ea6",
+            "label": "Color",
+            "name": "color",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "brand": "brand",
+                "accent": "accent",
+                "primary": "primary",
+                "secondary": "secondary"
+            },
+            "default_value": "primary",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "color",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_672a5a7a55ea7",
+            "label": "Font size",
+            "name": "font_size",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5",
+                "6": "6"
+            },
+            "default_value": 1,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "headingTypescale",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_672a5b4455ea8",
+            "label": "Spacing",
+            "name": "spacing",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5",
+                "6": "6",
+                "7": "7",
+                "8": "8",
+                "9": "9"
+            },
+            "default_value": 4,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "spacing",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_672a5b6255ea9",
+            "label": "Radius",
+            "name": "radius",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5"
+            },
+            "default_value": 2,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "radius",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": ""
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "show_in_graphql": 1,
+    "graphql_field_name": "styles",
+    "map_graphql_types_from_location_rules": 0,
+    "graphql_types": "",
+    "modified": 1730829404
+}
