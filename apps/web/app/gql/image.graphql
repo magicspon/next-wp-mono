@@ -1,0 +1,9 @@
+fragment Image on MediaItem {
+	id
+}
+
+fragment MediaItem on MediaItemConnectionEdge {
+	node {
+		...Image
+	}
+}

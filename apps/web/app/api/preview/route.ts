@@ -1,7 +1,7 @@
 import { draftMode } from 'next/headers'
 import { NextResponse } from 'next/server'
 import { env } from '~/env/server'
-import { createSdk, sdk } from '~/lib/gqlClient'
+import { createClient, sdk } from '~/lib/gqlClient'
 
 export const dynamic = 'force-dynamic'
 
@@ -23,7 +23,7 @@ export async function GET(request: Request) {
 
 	draftMode().enable()
 
-	const authSdk = createSdk(authToken)
+	const authSdk = createClient(authToken)
 
 	const { contentNode } = await authSdk.GetContentNode({ id })
 

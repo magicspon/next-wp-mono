@@ -1,0 +1,38 @@
+fragment BlocksText on BaseHeroBlocksTextLayout {
+	text
+	fontSize
+	fontFamily
+	colours
+}
+
+fragment BlocksBody on BaseHeroBlocksBodyLayout {
+	body
+}
+
+fragment BlockButtons on BaseHeroBlocksButtonsLayout {
+	buttons {
+		...Buttons
+	}
+}
+
+fragment HeroBlocks on BaseHeroBlocks_Layout {
+	__typename
+	...BlocksText
+	...BlocksBody
+	...BlockButtons
+}
+
+fragment Hero on BaseHeroTextLayout {
+	blocks {
+		...HeroBlocks
+	}
+}
+
+fragment HeroImage on BaseHeroTextImageLayout {
+	blocks {
+		...HeroBlocks
+	}
+	image {
+		...MediaItem
+	}
+}

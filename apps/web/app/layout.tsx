@@ -3,8 +3,7 @@ import localFont from 'next/font/local'
 import { notFound } from 'next/navigation'
 import { cx } from '@spon/styled-system/css'
 import { flex } from '@spon/styled-system/patterns'
-// import { Header } from '~/components/Header'
-import { sdk } from '~/lib/gqlClient'
+import { createClient } from '~/lib/gqlClient'
 import { Provider } from './provider'
 import './style.css'
 
@@ -51,7 +50,7 @@ const body = localFont({
 })
 
 async function loader() {
-	const resp = await sdk.GlobalSettings()
+	const resp = await createClient().GlobalSettings()
 
 	if (!resp) notFound()
 
@@ -86,19 +85,19 @@ export default async function RootLayout({
 	)
 }
 
-// export async function generateMetadata(): Promise<Metadata> {
-// 	const { seo } = await loader()
+export async function generateMetadata(): Promise<Metadata> {
+	const { seo } = await loader()
 
-// 	return {
-// 		title: {
-// 			template: `%s | ${seo.schema.siteName}`,
-// 			default: seo.schema.siteName,
-// 		},
-// 		description: seo.meta.homepage.description,
-// 		openGraph: {
-// 			title: seo.openGraph.frontPage.title,
-// 			description: seo.openGraph.frontPage.description,
-// 			images: [seo.openGraph.defaultImage?.sourceUrl],
-// 		},
-// 	}
-// }
+	return {
+		title: {
+			template: `%s | ${seo.schema.siteName}`,
+			default: seo.schema.siteName,
+		},
+		description: seo.meta.homepage.description,
+		openGraph: {
+			title: seo.openGraph.frontPage.title,
+			description: seo.openGraph.frontPage.description,
+			images: [seo.openGraph.defaultImage?.sourceUrl],
+		},
+	}
+}

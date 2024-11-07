@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { sdk } from '~/lib/gqlClient'
+import { createClient } from '~/lib/gqlClient'
 import { BlogList } from '~/templates/BlogList'
 import { createPage } from '~/utils/createPage'
 
 const { Page, generateMetadata } = createPage({
 	loader: async () => {
-		const data = await sdk.PostsQuery({ first: 10 })
+		const data = await createClient().PostsQuery({ first: 10 })
 
 		return {
 			page: data.page,

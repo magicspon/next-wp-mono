@@ -1,6 +1,11 @@
 import * as React from 'react'
+import { Hero } from '~/components/hero'
 import type { PageFragment } from '~/schema/generated.graphql'
 
-export function LandingPage({ content, title }: PageFragment) {
-	return <pre>{JSON.stringify({ content, title }, null, 2)}</pre>
+export function LandingPage({ base }: PageFragment) {
+	return (
+		<>
+			<Hero content={base.hero} />
+		</>
+	)
 }

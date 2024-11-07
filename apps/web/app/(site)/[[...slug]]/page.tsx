@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import * as React from 'react'
 import { z } from 'zod'
-import { createSdk } from '~/lib/gqlClient'
+import { createClient } from '~/lib/gqlClient'
 import type { PageIdType } from '~/schema/generated.graphql'
 import { LandingPage } from '~/templates/LandingPage'
 import { createPage } from '~/utils/createPage'
@@ -18,7 +18,7 @@ const { Page, generateMetadata } = createPage({
 		const isPreview = slug.includes('preview')
 		const idType = (isPreview ? 'DATABASE_ID' : 'URI') as PageIdType
 		const id = isPreview ? slug.split('preview/')[1]! : slug
-		const sdk = createSdk(isPreview)
+		const sdk = createClient(isPreview)
 		const data = await sdk.PageQuery({
 			id,
 			idType,

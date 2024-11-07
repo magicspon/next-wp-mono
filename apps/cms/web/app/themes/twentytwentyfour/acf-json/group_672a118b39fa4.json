@@ -102,8 +102,9 @@
                             },
                             "graphql_field_name": "style",
                             "clone": [
-                                "field_6726d6d6ae0d7",
-                                "field_672a569e0eb88"
+                                "field_672b9c32b718b",
+                                "field_672bdf28ee2b4",
+                                "field_672bdee4ee2b1"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -233,8 +234,8 @@
                             "layout": "table",
                             "min": 0,
                             "max": 0,
-                            "collapsed": "",
-                            "button_label": "Add Row",
+                            "collapsed": "field_672a1969a89bc",
+                            "button_label": "Add button",
                             "show_in_graphql": 1,
                             "graphql_description": "",
                             "graphql_field_name": "buttons",
@@ -243,10 +244,10 @@
                             "sub_fields": [
                                 {
                                     "key": "field_672a1969a89bc",
-                                    "label": "Link",
-                                    "name": "link",
+                                    "label": "Button",
+                                    "name": "button",
                                     "aria-label": "",
-                                    "type": "link",
+                                    "type": "clone",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -255,44 +256,14 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "return_format": "url",
-                                    "allow_in_bindings": 0,
-                                    "show_in_graphql": 1,
-                                    "graphql_description": "",
-                                    "graphql_field_name": "link",
-                                    "graphql_non_null": 0,
-                                    "parent_repeater": "field_672a124da89bb"
-                                },
-                                {
-                                    "key": "field_672a1981a89bd",
-                                    "label": "Variant",
-                                    "name": "variant",
-                                    "aria-label": "",
-                                    "type": "radio",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "choices": {
-                                        "default": "default",
-                                        "outline": "outline",
-                                        "link": "link"
-                                    },
-                                    "default_value": "default",
-                                    "return_format": "value",
-                                    "allow_null": 0,
-                                    "other_choice": 0,
-                                    "allow_in_bindings": 0,
-                                    "layout": "vertical",
-                                    "show_in_graphql": 1,
-                                    "graphql_description": "",
-                                    "graphql_field_name": "variant",
-                                    "graphql_non_null": 0,
-                                    "save_other_choice": 0,
+                                    "graphql_field_name": "button",
+                                    "clone": [
+                                        "field_672be5fd0f1d5"
+                                    ],
+                                    "display": "seamless",
+                                    "layout": "block",
+                                    "prefix_label": 0,
+                                    "prefix_name": 0,
                                     "parent_repeater": "field_672a124da89bb"
                                 }
                             ]
@@ -304,11 +275,86 @@
             },
             "min": "",
             "max": "",
-            "button_label": "Add block",
+            "button_label": "Add content block",
             "show_in_graphql": 1,
             "graphql_description": "",
             "graphql_field_name": "blocks",
             "graphql_non_null": 0
+        },
+        {
+            "key": "field_672be5fd0f1d5",
+            "label": "Button",
+            "name": "button",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "button",
+            "graphql_non_null": 0,
+            "sub_fields": [
+                {
+                    "key": "field_672be61a0f1d7",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "show_in_graphql": 1,
+                    "graphql_description": "",
+                    "graphql_field_name": "link",
+                    "graphql_non_null": 0
+                },
+                {
+                    "key": "field_672be6290f1d8",
+                    "label": "Variant",
+                    "name": "variant",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "default": "default",
+                        "outline": "outline",
+                        "link": "link"
+                    },
+                    "default_value": "default",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "show_in_graphql": 1,
+                    "graphql_description": "",
+                    "graphql_field_name": "variant",
+                    "graphql_non_null": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -333,5 +379,5 @@
     "graphql_field_name": "content",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1730841767
+    "modified": 1730937978
 }

@@ -1,9 +1,24 @@
+fragment BaseHero on BaseHero_Layout {
+	__typename
+	...Hero
+	...HeroImage
+}
+
+fragment Base on Base {
+	hero {
+		...BaseHero
+	}
+}
+
 fragment Page on Page {
 	content
 	title
 	status
 	databaseId
 	uri
+	base {
+		...Base
+	}
 }
 
 query PageQuery($id: ID!, $idType: PageIdType!, $asPreview: Boolean = false) {

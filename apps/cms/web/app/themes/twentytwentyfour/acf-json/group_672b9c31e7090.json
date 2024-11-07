@@ -1,0 +1,238 @@
+{
+    "key": "group_672b9c31e7090",
+    "title": "Tokens",
+    "fields": [
+        {
+            "key": "field_672b9c32b718b",
+            "label": "Font size",
+            "name": "font_size",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5",
+                "6": "6",
+                "7": "7"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "fontSize",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_672bdf28ee2b4",
+            "label": "Font Family",
+            "name": "font_family",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "body": "body"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "fontFamily",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_672bdee4ee2b1",
+            "label": "Colours",
+            "name": "colours",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "brand": "brand",
+                "primary": "primary",
+                "secondary": "secondary",
+                "accent": "accent"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "colours",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_672bdf02ee2b2",
+            "label": "Spacing",
+            "name": "spacing",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5",
+                "6": "6",
+                "7": "7",
+                "8": "8",
+                "9": "9"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "spacing",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_672bdf15ee2b3",
+            "label": "Radius",
+            "name": "radius",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "radius",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_672be5800c2ce",
+            "label": "Scaling",
+            "name": "scaling",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "0.25": "0.25",
+                "0.5": "0.5",
+                "0.75": "0.75",
+                "1": "1",
+                "1.25": "1.25",
+                "1.5": "1.5",
+                "2": "2",
+                "2.5": "2.5",
+                "3": "3"
+            },
+            "default_value": 1,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "scaling",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "show_in_graphql": 1,
+    "graphql_field_name": "tokens",
+    "map_graphql_types_from_location_rules": 0,
+    "graphql_types": "",
+    "modified": 1730930474
+}

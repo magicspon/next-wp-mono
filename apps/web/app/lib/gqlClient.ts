@@ -22,11 +22,9 @@ export function graphQLClient(preview: boolean): GraphQLClient {
 	return new GraphQLClient(src, { headers })
 }
 
-export function createSdk(preview = false): Sdk {
+export function createClient(preview = false): Sdk {
 	const client = graphQLClient(preview)
 	const sdk = getSdk(client)
 
 	return sdk
 }
-
-export const sdk = createSdk()

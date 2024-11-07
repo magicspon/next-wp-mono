@@ -1,0 +1,18 @@
+fragment Link on AcfLink {
+	title
+	url
+	target
+}
+
+fragment Button on ContentBlocksButtonsButton {
+	variant
+	link {
+		...Link
+	}
+}
+
+fragment Buttons on ContentBlocksButtons {
+	button {
+		...Button
+	}
+}
