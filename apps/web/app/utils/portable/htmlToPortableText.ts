@@ -1,9 +1,13 @@
-/* htmlToPortableText */
+// this file should only be called on the server
+// it includes JSDOM which is a rather large library
+// the server-only package will throw an error if this
+// is imported into any client code
 import type { PortableTextBlock, TypedObject } from '@portabletext/types'
 import { htmlToBlocks } from '@sanity/block-tools'
 import type { ArraySchemaType } from '@sanity/types'
 import { isArray, isObject } from 'es-toolkit/compat'
 import { JSDOM } from 'jsdom'
+import 'server-only'
 import { ProjectError } from '@spon/utils/ProjectError'
 import { defaultSchema } from './schema'
 import type { PortableSchema } from './schema.type'
@@ -73,24 +77,24 @@ export const portable = (arg: PortableHelperInput) =>
 
 // the types are a bit crap here
 // lots of casting, it kinda does the job
-export function transformMatchingKey<T extends AnyObject>(
+export function transformMatchingKeys<T extends AnyObject>(
 	obj: T,
-	targetKey: string,
-	newValue: (d: any) => any,
+	keys: string[],
+	transform: (key: string, value: string) => any,
 ): T {
 	return Object.entries(obj).reduce((acc, [key, value]) => {
 		const typedKey = key as keyof T
 		// If the key matches the target, set it to the new value
-		if (typedKey === targetKey) {
-			acc[typedKey] = newValue(value)
+		if (keys.includes(key) && typeof value === 'string') {
+			acc[typedKey] = transform(key, value)
 		} else if (isArray(value)) {
 			acc[typedKey] = value.map((s) => {
 				if (typeof s === 'string') return s
 
-				return transformMatchingKey(s, targetKey, newValue)
+				return transformMatchingKeys(s, keys, transform)
 			}) as T[keyof T]
 		} else if (isObject(value)) {
-			acc[typedKey] = transformMatchingKey(obj[key], targetKey, newValue)
+			acc[typedKey] = transformMatchingKeys(obj[key], keys, transform)
 		} else {
 			// If it doesn't match and it's not an object, keep it as is
 			acc[typedKey] = value
@@ -101,7 +105,9 @@ export function transformMatchingKey<T extends AnyObject>(
 }
 
 export function parse<T extends AnyObject>(props: T) {
-	return transformMatchingKey<T>(props, 'body', (v) =>
-		htmlToPortableText({ raw: v }),
-	)
+	return transformMatchingKeys<T>(props, ['body'], (key, v) => {
+		if (key === 'body') {
+			return htmlToPortableText({ raw: v })
+		}
+	})
 }
