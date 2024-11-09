@@ -39,6 +39,7 @@ cp apps/web/env.example apps/web/.env.local
 ### Features
 
 - Wordpress via wpgraphql (bedrock infrac)
+- Wysiwyg editor output as portable text
 - Graphql Typescript code gen
 - Live preview
 - Typescript
