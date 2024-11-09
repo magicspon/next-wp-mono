@@ -90,7 +90,6 @@ export function transformMatchingKeys<T extends AnyObject>(
 		} else if (isArray(value)) {
 			acc[typedKey] = value.map((s) => {
 				if (typeof s === 'string') return s
-
 				return transformMatchingKeys(s, keys, transform)
 			}) as T[keyof T]
 		} else if (isObject(value)) {

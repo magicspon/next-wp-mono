@@ -4,6 +4,7 @@ import type { PortableTextBlockStyle } from '@portabletext/types'
 import Link from 'next/link'
 import * as React from 'react'
 import { css } from '@spon/styled-system/css'
+import { Stack } from '@spon/ui/layout/Stack'
 import { Text } from '@spon/ui/type/Text'
 import type { PortableValue } from '~/utils/portable/htmlToPortableText'
 
@@ -149,6 +150,34 @@ export function Portable({ body, components = {} }: PortableProps) {
 						)
 					},
 				},
+				list: {
+					bullet: ({ children }) => (
+						<Stack asChild alignItems="start">
+							<ul>{children}</ul>
+						</Stack>
+					),
+					number: ({ children }) => (
+						<Stack asChild alignItems="start">
+							<ol>{children}</ol>
+						</Stack>
+					),
+				},
+				listItem: ({ children }) => (
+					<Text
+						size={3}
+						family="body"
+						style={{
+							'--font-size': 'var(--font-size-normal)',
+						}}
+						className={css({
+							fontSize:
+								'calc(var(--font-size, token(fontSizes.4))*var(--scaling))',
+						})}
+						asChild
+					>
+						<li>{children}</li>
+					</Text>
+				),
 			}}
 		/>
 	)
