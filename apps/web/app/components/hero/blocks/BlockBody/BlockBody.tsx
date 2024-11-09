@@ -7,6 +7,7 @@ import type {
 	BlockBodyStyleFragment,
 	BlocksBodyFragment,
 } from '~/schema/generated.graphql'
+import type { WithPortableText } from '~/utils/portable/htmlToPortableText'
 
 function createBodyStyle({ textSizes, box }: BlockBodyStyleFragment) {
 	const fontSizes = textSizes?.reduce<Record<string, string>>((acc, s) => {
@@ -39,7 +40,10 @@ function createBodyStyle({ textSizes, box }: BlockBodyStyleFragment) {
 	}
 }
 
-export function BlockBody({ body, style }: BlocksBodyFragment) {
+export function BlockBody({
+	body,
+	style,
+}: WithPortableText<BlocksBodyFragment>) {
 	return (
 		<Stack
 			style={createBodyStyle(style)}

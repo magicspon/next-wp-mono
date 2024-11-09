@@ -5,7 +5,7 @@ import Link from 'next/link'
 import * as React from 'react'
 import { css } from '@spon/styled-system/css'
 import { Text } from '@spon/ui/type/Text'
-import { portable } from '~/utils/portable/htmlToPortableText'
+import type { PortableValue } from '~/utils/portable/htmlToPortableText'
 
 const defaultBlocks: Record<
 	PortableTextBlockStyle,
@@ -117,18 +117,18 @@ const defaultBlocks: Record<
 	),
 }
 
-export function Portable({
-	body,
-	components = {},
-}: { body: string } & {
+type PortableProps = {
+	body: PortableValue
 	components?: {
 		block?: Record<PortableTextBlockStyle, PortableTextBlockComponent>
 	}
-}) {
+}
+
+export function Portable({ body, components = {} }: PortableProps) {
 	const { block } = components
 	return (
 		<PortableText
-			value={portable(body)}
+			value={body}
 			components={{
 				block: {
 					...defaultBlocks,
