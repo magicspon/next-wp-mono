@@ -15,7 +15,9 @@ export function HeroImage({ blocks, image }: THeroImageProps) {
 			{blocks?.map((block, index) => {
 				switch (block.__typename) {
 					case 'BaseHeroBlocksBodyLayout':
-						return <BlockBody {...block} key={index} />
+						return (
+							<BlockBody body={block.body} style={block.style} key={index} />
+						)
 					case 'BaseHeroBlocksButtonsLayout':
 						return <BlockButtons {...block} key={index} />
 					case 'BaseHeroBlocksTextLayout':

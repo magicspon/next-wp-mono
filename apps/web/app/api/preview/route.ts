@@ -1,7 +1,7 @@
 import { draftMode } from 'next/headers'
 import { NextResponse } from 'next/server'
 import { env } from '~/env/server'
-import { createClient, sdk } from '~/lib/gqlClient'
+import { createAuthClient, createClient } from '~/lib/gqlClient'
 
 export const dynamic = 'force-dynamic'
 
@@ -14,16 +14,18 @@ export async function GET(request: Request) {
 		return new Response('Invalid token', { status: 401 })
 	}
 
-	const { login } = await sdk.LoginUser({
+	const { login } = await createClient().LoginUser({
 		username: env.WP_USER,
 		password: env.WP_APP_PASS,
 	})
 
 	const authToken = login.authToken
 
+	console.log({ authToken })
+
 	draftMode().enable()
 
-	const authSdk = createClient(authToken)
+	const authSdk = createAuthClient(`Bearer ${authToken}`)
 
 	const { contentNode } = await authSdk.GetContentNode({ id })
 

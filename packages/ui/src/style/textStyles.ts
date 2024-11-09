@@ -5,6 +5,7 @@ type TFontSizeKey = keyof typeof fontSizes
 
 type TTextStyle = {
 	value: {
+		'--font-size': string
 		fontSize: string
 		lineHeight: number
 		_before: {
@@ -88,10 +89,13 @@ export const textStyles: TextStyles = Object.entries(
 	fontSizes,
 ).reduce<TTextStyles>(
 	(acc, [key, value]) => {
+		const fs = parseFloat(value.fontSize)
+		const asRem = `${fs / 16}rem`
 		acc[key as TFontSizeKey] = {
 			value: {
-				fontSize: `calc(${parseFloat(value.fontSize) / 16}rem * var(--scaling))`,
-				lineHeight: parseFloat(value.lineHeight) / parseFloat(value.fontSize),
+				'--font-size': asRem,
+				fontSize: `calc(var(--font-size) * var(--scaling))`,
+				lineHeight: parseFloat(value.lineHeight) / fs,
 				_before: {
 					content: "''",
 					marginBottom: value['::before'].marginBottom,

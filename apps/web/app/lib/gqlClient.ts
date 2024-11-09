@@ -5,8 +5,6 @@ import type { Sdk } from '~/schema/generated.graphql'
 import { getSdk } from '~/schema/generated.graphql'
 
 export function graphQLClient(preview: boolean): GraphQLClient {
-	const src = env.GRAPHQL_ENDPOINT
-
 	const headers: HeadersInit = {
 		'API-KEY': env.GRAPHQL_API_AUTH_SECRET_KEY,
 	}
@@ -19,12 +17,20 @@ export function graphQLClient(preview: boolean): GraphQLClient {
 		}
 	}
 
-	return new GraphQLClient(src, { headers })
+	return new GraphQLClient(env.GRAPHQL_ENDPOINT, { headers })
 }
 
 export function createClient(preview = false): Sdk {
-	const client = graphQLClient(preview)
-	const sdk = getSdk(client)
+	return getSdk(graphQLClient(preview))
+}
 
-	return sdk
+export function createAuthClient(token: string): Sdk {
+	return getSdk(
+		new GraphQLClient(env.GRAPHQL_ENDPOINT, {
+			headers: {
+				'API-KEY': env.GRAPHQL_API_AUTH_SECRET_KEY,
+				Authorization: token,
+			},
+		}),
+	)
 }

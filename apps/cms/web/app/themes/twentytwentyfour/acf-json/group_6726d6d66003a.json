@@ -43,12 +43,16 @@
                         "id": ""
                     },
                     "choices": {
-                        "heading": "heading",
-                        "subheading": "subheading",
-                        "text": "text"
+                        "h1": "h1",
+                        "h2": "h2",
+                        "h3": "h3",
+                        "h4": "h4",
+                        "h5": "h5",
+                        "h6": "h6",
+                        "normal": "normal"
                     },
-                    "default_value": "heading",
-                    "return_format": "",
+                    "default_value": false,
+                    "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
                     "allow_in_bindings": 0,
@@ -214,11 +218,9 @@
                         "id": ""
                     },
                     "choices": {
-                        "px": "px",
-                        "py": "py",
-                        "mx": "mx",
-                        "my": "my",
-                        "gap": "gap"
+                        "gap": "gap",
+                        "padding-x": "padding-x",
+                        "padding-y": "padding-y"
                     },
                     "default_value": "gap",
                     "return_format": "value",
@@ -379,5 +381,5 @@
     "graphql_field_name": "styles",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1730930033
+    "modified": 1731105713
 }

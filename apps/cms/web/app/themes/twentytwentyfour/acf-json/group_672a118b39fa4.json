@@ -88,10 +88,10 @@
                         },
                         {
                             "key": "field_672a11b8a89b2",
-                            "label": "Style",
-                            "name": "style",
+                            "label": "Text Styles",
+                            "name": "text_styles",
                             "aria-label": "",
-                            "type": "clone",
+                            "type": "group",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -100,16 +100,40 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "graphql_field_name": "style",
-                            "clone": [
-                                "field_672b9c32b718b",
-                                "field_672bdf28ee2b4",
-                                "field_672bdee4ee2b1"
-                            ],
-                            "display": "seamless",
                             "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "textStyles",
+                            "graphql_non_null": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_672e7ecc29e07",
+                                    "label": "Props",
+                                    "name": "props",
+                                    "aria-label": "",
+                                    "type": "clone",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "graphql_field_name": "props",
+                                    "clone": [
+                                        "field_672b9c32b718b",
+                                        "field_672bdf28ee2b4",
+                                        "field_672bdee4ee2b1",
+                                        "field_672be5800c2ce",
+                                        "field_672e9ddebe93f"
+                                    ],
+                                    "display": "seamless",
+                                    "layout": "block",
+                                    "prefix_label": 0,
+                                    "prefix_name": 0
+                                }
+                            ]
                         }
                     ],
                     "min": "",
@@ -158,7 +182,7 @@
                             "allow_in_bindings": 0,
                             "tabs": "all",
                             "toolbar": "full",
-                            "media_upload": 1,
+                            "media_upload": 0,
                             "delay": 0,
                             "show_in_graphql": 1,
                             "graphql_description": "",
@@ -187,9 +211,9 @@
                         {
                             "key": "field_672a121da89b7",
                             "label": "Style",
-                            "name": "style",
+                            "name": "body_style",
                             "aria-label": "",
-                            "type": "clone",
+                            "type": "group",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -198,14 +222,37 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "graphql_field_name": "style",
-                            "clone": [
-                                "field_6726d6d6ae0d7"
-                            ],
-                            "display": "seamless",
+                            "graphql_field_name": "bodyStyle",
                             "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_non_null": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_672e864924aa0",
+                                    "label": "Props",
+                                    "name": "props",
+                                    "aria-label": "",
+                                    "type": "clone",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "graphql_field_name": "props",
+                                    "clone": [
+                                        "field_6726d6d6ae0d7",
+                                        "field_672a5bba55eaa"
+                                    ],
+                                    "display": "seamless",
+                                    "layout": "block",
+                                    "prefix_label": 0,
+                                    "prefix_name": 0
+                                }
+                            ]
                         }
                     ],
                     "min": "",
@@ -355,6 +402,388 @@
                     "placeholder": ""
                 }
             ]
+        },
+        {
+            "key": "field_672cbd7c3bb57",
+            "label": "Columns",
+            "name": "columns",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "columns",
+            "graphql_non_null": 0,
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_672cbd893bb58",
+                    "label": "Blocks",
+                    "name": "blocks",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "graphql_field_name": "blocks",
+                    "clone": [
+                        "field_672a118ba89b0"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0,
+                    "parent_repeater": "field_672cbd7c3bb57"
+                }
+            ]
+        },
+        {
+            "key": "field_672cc5da82292",
+            "label": "Mixed columns",
+            "name": "mixed_columns",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_672cc63c05862": {
+                    "key": "layout_672cc63c05862",
+                    "name": "image_column",
+                    "label": "Image Column",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_672cc6438229a",
+                            "label": "Image",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": 0,
+                            "preview_size": "medium",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_field_name": "image"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_672cc64b8229b": {
+                    "key": "layout_672cc64b8229b",
+                    "name": "text_column",
+                    "label": "Text column",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_672cc6508229d",
+                            "label": "Blocks",
+                            "name": "blocks",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "graphql_field_name": "blocks",
+                            "clone": [
+                                "field_672a118ba89b0"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Add Row",
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "mixedColumns",
+            "graphql_non_null": 0
+        },
+        {
+            "key": "field_672cc66ab387d",
+            "label": "Card",
+            "name": "card",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "card",
+            "graphql_non_null": 0,
+            "sub_fields": [
+                {
+                    "key": "field_672cc673b387e",
+                    "label": "Image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium",
+                    "show_in_graphql": 1,
+                    "graphql_description": "",
+                    "graphql_field_name": "image"
+                },
+                {
+                    "key": "field_672cc67ab387f",
+                    "label": "Blocks",
+                    "name": "blocks",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "graphql_field_name": "blocks",
+                    "clone": [
+                        "field_672a118ba89b0"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                }
+            ]
+        },
+        {
+            "key": "field_672cc695b3880",
+            "label": "Cards",
+            "name": "cards",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add card",
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "cards",
+            "graphql_non_null": 0,
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_672cc69eb3881",
+                    "label": "Card",
+                    "name": "card",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "graphql_field_name": "card",
+                    "clone": [
+                        "field_672cc66ab387d"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0,
+                    "parent_repeater": "field_672cc695b3880"
+                }
+            ]
+        },
+        {
+            "key": "field_672cc6c6e8163",
+            "label": "Related Card",
+            "name": "related_card",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "relatedCard",
+            "graphql_non_null": 0,
+            "sub_fields": [
+                {
+                    "key": "field_672cc6c6e8166",
+                    "label": "Item",
+                    "name": "item",
+                    "aria-label": "",
+                    "type": "relationship",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "graphql_field_name": "",
+                    "post_type": "",
+                    "post_status": "",
+                    "taxonomy": "",
+                    "filters": [
+                        "search",
+                        "post_type",
+                        "taxonomy"
+                    ],
+                    "return_format": "object",
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 0,
+                    "elements": "",
+                    "bidirectional": 0,
+                    "show_in_graphql": 1,
+                    "graphql_description": "",
+                    "graphql_connection_type": "one_to_many",
+                    "bidirectional_target": []
+                }
+            ]
+        },
+        {
+            "key": "field_672cc6f7e8167",
+            "label": "Related Cards",
+            "name": "related_cards",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add card",
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "relatedCards",
+            "graphql_non_null": 0,
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_672cc705e816a",
+                    "label": "Cards",
+                    "name": "cards",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "graphql_field_name": "cards",
+                    "clone": [
+                        "field_672cc6c6e8163"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0,
+                    "parent_repeater": "field_672cc6f7e8167"
+                }
+            ]
         }
     ],
     "location": [
@@ -379,5 +808,5 @@
     "graphql_field_name": "content",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1730937978
+    "modified": 1731108494
 }

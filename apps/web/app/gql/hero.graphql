@@ -1,12 +1,42 @@
-fragment BlocksText on BaseHeroBlocksTextLayout {
-	text
+fragment BlockTextSizes on ContentBlocksBodyStyleTextSizes {
+	style
+	fontSize
+}
+
+fragment BlockBoxStyle on ContentBlocksBodyStyleBox {
+	spacing
+	attribute
+}
+
+fragment BlockBodyStyle on ContentBlocksBodyStyle {
+	textSizes {
+		...BlockTextSizes
+	}
+	box {
+		...BlockBoxStyle
+	}
+}
+
+fragment BlockTextStyle on ContentBlocksTextStyles {
 	fontSize
 	fontFamily
 	colours
+	scaling
+	spaceBelow
+}
+
+fragment BlocksText on BaseHeroBlocksTextLayout {
+	text
+	style: textStyles {
+		...BlockTextStyle
+	}
 }
 
 fragment BlocksBody on BaseHeroBlocksBodyLayout {
 	body
+	style: bodyStyle {
+		...BlockBodyStyle
+	}
 }
 
 fragment BlockButtons on BaseHeroBlocksButtonsLayout {

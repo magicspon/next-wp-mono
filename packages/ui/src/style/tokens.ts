@@ -79,7 +79,7 @@ export const tokens = defineTokens({
 			},
 		},
 		accent: {
-			value: '#f1f1f1',
+			value: '#44aaee',
 			foreground: {
 				value: '#1a1a1a',
 			},
@@ -123,6 +123,18 @@ export const tokens = defineTokens({
 		card: {
 			value: px2(280),
 		},
+	},
+
+	fontSizes: {
+		'1': { value: px2(12) },
+		'2': { value: px2(14) },
+		'3': { value: px2(16) },
+		'4': { value: px2(18) },
+		'5': { value: px2(20) },
+		'6': { value: px2(24) },
+		'7': { value: px2(28) },
+		'8': { value: px2(36) },
+		'9': { value: px2(60) },
 	},
 
 	scaling: {

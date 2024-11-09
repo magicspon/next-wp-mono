@@ -23,7 +23,9 @@
                 "4": "4",
                 "5": "5",
                 "6": "6",
-                "7": "7"
+                "7": "7",
+                "8": "8",
+                "9": "9"
             },
             "default_value": false,
             "return_format": "value",
@@ -53,7 +55,8 @@
                 "id": ""
             },
             "choices": {
-                "body": "body"
+                "body": "body",
+                "heading": "heading"
             },
             "default_value": false,
             "return_format": "value",
@@ -116,15 +119,41 @@
                 "id": ""
             },
             "choices": {
+                "px": "px",
+                "0": "0",
+                "0.5": "0.5",
                 "1": "1",
+                "1.5": "1.5",
                 "2": "2",
+                "2.5": "2.5",
                 "3": "3",
+                "3.5": "3.5",
                 "4": "4",
                 "5": "5",
                 "6": "6",
                 "7": "7",
                 "8": "8",
-                "9": "9"
+                "9": "9",
+                "10": "10",
+                "11": "11",
+                "12": "12",
+                "14": "14",
+                "16": "16",
+                "20": "20",
+                "24": "24",
+                "28": "28",
+                "32": "32",
+                "36": "36",
+                "40": "40",
+                "44": "44",
+                "48": "48",
+                "52": "52",
+                "56": "56",
+                "60": "60",
+                "64": "64",
+                "72": "72",
+                "80": "80",
+                "96": "96"
             },
             "default_value": false,
             "return_format": "value",
@@ -210,14 +239,78 @@
             "graphql_non_null": 0,
             "ajax": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_672e9ddebe93f",
+            "label": "Space below",
+            "name": "space_below",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "graphql_field_name": "spaceBelow",
+            "choices": {
+                "px": "px",
+                "0": "0",
+                "0.5": "0.5",
+                "1": "1",
+                "1.5": "1.5",
+                "2": "2",
+                "2.5": "2.5",
+                "3": "3",
+                "3.5": "3.5",
+                "4": "4",
+                "5": "5",
+                "6": "6",
+                "7": "7",
+                "8": "8",
+                "9": "9",
+                "10": "10",
+                "11": "11",
+                "12": "12",
+                "14": "14",
+                "16": "16",
+                "20": "20",
+                "24": "24",
+                "28": "28",
+                "32": "32",
+                "36": "36",
+                "40": "40",
+                "44": "44",
+                "48": "48",
+                "52": "52",
+                "56": "56",
+                "60": "60",
+                "64": "64",
+                "72": "72",
+                "80": "80",
+                "96": "96"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
         }
     ],
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "options_page",
                 "operator": "==",
-                "value": "post"
+                "value": ""
             }
         ]
     ],
@@ -234,5 +327,5 @@
     "graphql_field_name": "tokens",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1730930474
+    "modified": 1731108472
 }

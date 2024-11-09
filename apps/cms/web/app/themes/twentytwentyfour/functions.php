@@ -284,3 +284,30 @@ add_action('rest_api_init', function () {
 
 // 	throw new \GraphQL\Error\UserError( __( 'Missing API key', 'kerve-graphql-api' ) );
 // }
+
+
+function remove_alignment_buttons_acf($toolbars) {
+    // Check if we have any toolbars
+    if (isset($toolbars['Full'])) {
+        // Remove the alignment buttons from the Full toolbar
+        foreach ($toolbars['Full'] as $key => $toolbar) {
+            if (is_array($toolbar)) {
+                $toolbars['Full'][$key] = array_diff($toolbar, ['alignleft', 'aligncenter', 'alignright', 'alignjustify', 'blockquote', 'wp_more']);
+            }
+        }
+    }
+
+    // Check if we have Basic toolbar
+    if (isset($toolbars['Basic'])) {
+        // Remove the alignment buttons from the Basic toolbar
+        foreach ($toolbars['Basic'] as $key => $toolbar) {
+            if (is_array($toolbar)) {
+                $toolbars['Basic'][$key] = array_diff($toolbar, ['alignleft', 'aligncenter', 'alignright', 'alignjustify', 'blockquote', 'wp_more']);
+            }
+        }
+    }
+
+    return $toolbars;
+}
+add_filter('acf/fields/wysiwyg/toolbars', 'remove_alignment_buttons_acf');
+
