@@ -33,7 +33,8 @@
 		"panda": {},
 		"codegen": {
 			"cache": false
-		}
+		},
+		"tokens": {}
 	},
 	"globalEnv": [
 		"ANALYZE",

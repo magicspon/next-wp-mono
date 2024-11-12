@@ -116,6 +116,23 @@ const defaultBlocks: Record<
 			{children}
 		</Text>
 	),
+
+	blockquote: ({ children }) => (
+		<Text
+			asChild
+			size={3}
+			family="body"
+			style={{
+				'--font-size': 'var(--font-size-normal)',
+			}}
+			className={css({
+				fontSize: 'calc(var(--font-size, token(fontSizes.4))*var(--scaling))',
+				fontStyle: 'italic',
+			})}
+		>
+			<blockquote>{children}</blockquote>
+		</Text>
+	),
 }
 
 type PortableProps = {

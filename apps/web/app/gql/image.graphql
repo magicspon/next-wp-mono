@@ -1,5 +1,11 @@
 fragment Image on MediaItem {
 	id
+	alt: altText
+	src: mediaItemUrl
+	size: mediaDetails {
+		width
+		height
+	}
 }
 
 fragment MediaItem on MediaItemConnectionEdge {

@@ -1,68 +1,112 @@
-fragment BlockTextSizes on ContentBlocksBodyStyleTextSizes {
+fragment TextPanelTheme on ComponentsTextPanelStyleTheme {
+	colours
+	attribute
+}
+
+fragment TextPanelTextSize on ComponentsTextPanelStyleTextSizes {
 	style
 	fontSize
 }
 
-fragment BlockBoxStyle on ContentBlocksBodyStyleBox {
+fragment TextPanelBox on ComponentsTextPanelStyleBox {
 	spacing
 	attribute
 }
 
-fragment BlockBodyStyle on ContentBlocksBodyStyle {
-	textSizes {
-		...BlockTextSizes
-	}
-	box {
-		...BlockBoxStyle
-	}
+fragment TextPanelBlockBodyTextSize on ContentBlocksBodyStyleTextSizes {
+	style
+	fontSize
 }
 
-fragment BlockTextStyle on ContentBlocksTextStyles {
+fragment TextPanelBlocksBodyStyleBox on ContentBlocksBodyStyleBox {
+	spacing
+	attribute
+}
+
+fragment BlocksTextStyles on ContentBlocksTextStyles {
+	spaceBelow
+	scaling
 	fontSize
 	fontFamily
 	colours
-	scaling
-	spaceBelow
 }
 
-fragment BlocksText on BaseHeroBlocksTextLayout {
-	text
-	style: textStyles {
-		...BlockTextStyle
+fragment TextPanelStyle on ComponentsTextPanelStyle {
+	theme {
+		...TextPanelTheme
+	}
+	textSizes {
+		...TextPanelTextSize
+	}
+	box {
+		...TextPanelBox
 	}
 }
 
-fragment BlocksBody on BaseHeroBlocksBodyLayout {
-	body
-	style: bodyStyle {
-		...BlockBodyStyle
-	}
-}
-
-fragment BlockButtons on BaseHeroBlocksButtonsLayout {
+fragment TextPanelBlocksButtons on ComponentsTextPanelBlocksButtonsLayout {
 	buttons {
 		...Buttons
 	}
 }
 
-fragment HeroBlocks on BaseHeroBlocks_Layout {
-	__typename
-	...BlocksText
-	...BlocksBody
-	...BlockButtons
-}
-
-fragment Hero on BaseHeroTextLayout {
-	blocks {
-		...HeroBlocks
+fragment TextPanelStyleBody on ContentBlocksBodyStyle {
+	textSizes {
+		...TextPanelBlockBodyTextSize
+	}
+	box {
+		...TextPanelBlocksBodyStyleBox
 	}
 }
 
-fragment HeroImage on BaseHeroTextImageLayout {
+fragment TextPanelBlocksBody on ComponentsTextPanelBlocksBodyLayout {
+	body
+	style: bodyStyle {
+		...TextPanelStyleBody
+	}
+}
+
+fragment TextPanelBlocksText on ComponentsTextPanelBlocksTextLayout {
+	text
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+
+fragment TextPanel on BaseHeroTextPanel {
+	style {
+		...TextPanelStyle
+	}
 	blocks {
-		...HeroBlocks
+		__typename
+		...TextPanelBlocksButtons
+		...TextPanelBlocksBody
+		...TextPanelBlocksText
+	}
+}
+
+fragment HeroImage on BaseHeroImage {
+	asset {
+		...MediaItem
+	}
+	style {
+		box {
+			spacing
+			attribute
+		}
+	}
+}
+
+fragment BaseHeroImageText on BaseHeroTextImageLayout {
+	textPanel {
+		...TextPanel
 	}
 	image {
-		...MediaItem
+		...HeroImage
+	}
+}
+
+fragment BaseHeroText on BaseHeroTextLayout {
+	textPanel {
+		...TextPanel
 	}
 }

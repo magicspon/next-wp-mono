@@ -1,4 +1,4 @@
 {
 	"extends": "@spon/typescript-config/base.json",
-	"exclude": ["apps", "packages", "node_modules"]
+	"exclude": ["apps", "packages", "node_modules", "scripts"]
 }

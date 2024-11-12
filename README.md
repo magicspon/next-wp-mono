@@ -34,7 +34,7 @@ cp apps/web/env.example apps/web/.env.local
 
 `https://localhost:6006` Storybook
 
-`https://cms.ddev.site/wp/wp-admin/` Wordpress admin
+`https://wspon.ddev.site/wp/wp-admin/` Wordpress admin
 
 ### Features
 

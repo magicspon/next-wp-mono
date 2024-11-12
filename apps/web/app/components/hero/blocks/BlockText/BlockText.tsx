@@ -5,37 +5,19 @@ import { type ScalingToken, token } from '@spon/styled-system/tokens'
 import type { TStyleProps } from '@spon/ui/type/Text'
 import { Text } from '@spon/ui/type/Text'
 import type {
-	BlockTextStyleFragment,
-	BlocksTextFragment,
+	BlocksTextStylesFragment,
+	TextPanelBlocksTextFragment,
 } from '~/schema/generated.graphql'
 
 type VariantMap = NonNullable<TStyleProps>
 
-function parseTextProps(input: Omit<BlockTextStyleFragment, '__typename'>) {
-	const styles = Object.fromEntries(
-		Object.entries(input).map(([k, v]) => [k, v?.[0]]),
-	) as {
-		size: VariantMap['size'] | undefined
-		family: VariantMap['family'] | undefined
-		scaling: ScalingToken | undefined
-		spaceBelow: SpacingToken | undefined
-	}
-
-	return styles
-}
-
-const safeToken = (value?: SpacingToken) =>
-	value ? token(`spacing.${value}`) : ''
-
-export function BlockText({ text, style }: BlocksTextFragment) {
+export function BlockText({ text, style }: TextPanelBlocksTextFragment) {
 	const {
 		size = 4,
 		family = 'body',
 		scaling,
 		spaceBelow,
 	} = parseTextProps(style)
-
-	console.log({ size, family, scaling, spaceBelow })
 
 	return (
 		<Text
@@ -53,3 +35,19 @@ export function BlockText({ text, style }: BlocksTextFragment) {
 		</Text>
 	)
 }
+
+function parseTextProps(input: Omit<BlocksTextStylesFragment, '__typename'>) {
+	const styles = Object.fromEntries(
+		Object.entries(input).map(([k, v]) => [k, v?.[0]]),
+	) as {
+		size: VariantMap['size'] | undefined
+		family: VariantMap['family'] | undefined
+		scaling: ScalingToken | undefined
+		spaceBelow: SpacingToken | undefined
+	}
+
+	return styles
+}
+
+const safeToken = (value?: SpacingToken) =>
+	value ? token(`spacing.${value}`) : ''

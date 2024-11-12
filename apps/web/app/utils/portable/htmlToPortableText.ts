@@ -81,7 +81,7 @@ export function transformMatchingKeys<T extends AnyObject>(
 	obj: T,
 	keys: string[],
 	transform: (key: string, value: string) => any,
-): T {
+) {
 	return Object.entries(obj).reduce((acc, [key, value]) => {
 		const typedKey = key as keyof T
 		// If the key matches the target, set it to the new value
@@ -100,7 +100,7 @@ export function transformMatchingKeys<T extends AnyObject>(
 		}
 		return acc
 		// eslint-disable-next-line @typescript-eslint/prefer-reduce-type-parameter
-	}, {} as T)
+	}, {} as T) as WithPortableText<T>
 }
 
 export function parse<T extends AnyObject>(props: T) {

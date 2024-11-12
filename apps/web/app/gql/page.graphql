@@ -1,7 +1,6 @@
 fragment BaseHero on BaseHero_Layout {
-	__typename
-	...Hero
-	...HeroImage
+	...BaseHeroText
+	...BaseHeroImageText
 }
 
 fragment Base on Base {

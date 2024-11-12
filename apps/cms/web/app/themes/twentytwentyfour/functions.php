@@ -311,3 +311,4 @@ function remove_alignment_buttons_acf($toolbars) {
 }
 add_filter('acf/fields/wysiwyg/toolbars', 'remove_alignment_buttons_acf');
 
+

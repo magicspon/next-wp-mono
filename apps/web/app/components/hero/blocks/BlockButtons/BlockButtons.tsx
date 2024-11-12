@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import type { BlockButtonsFragment } from '~/schema/generated.graphql'
+import type { TextPanelBlocksButtonsFragment } from '~/schema/generated.graphql'
 
-export function BlockButtons({ buttons }: BlockButtonsFragment) {
+export function BlockButtons({ buttons }: TextPanelBlocksButtonsFragment) {
 	return (
 		<div>
 			{buttons.map(({ button }, k) => (

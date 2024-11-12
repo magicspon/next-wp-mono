@@ -12,6 +12,9 @@ export function Hero({ content }: THeroProps) {
 
 	if (!hero) return null
 
+	// const { textPanel,  } = data
+	// const block = getFirstOrNull(data)
+
 	return (
 		<>
 			{(() => {

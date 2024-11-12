@@ -16,6 +16,7 @@
 		"new:fn": "turbo gen fn",
 		"new:hook": "turbo gen hook",
 		"new:page": "turbo gen page",
+		"sync:tokens": "turbo gen tokens",
 		"new:context": "turbo gen context",
 		"prepare": "husky; turbo panda; turbo codegen",
 		"test": "vitest",
@@ -57,12 +58,14 @@
 	"packageManager": "npm@10.8.3",
 	"workspaces": [
 		"apps/*",
-		"packages/*"
+		"packages/*",
+		"scripts/*"
 	],
 	"optionalDependencies": {
 		"@rollup/rollup-linux-x64-gnu": "*"
 	},
 	"dependencies": {
-		"tsup": "^8.3.0"
+		"tsup": "^8.3.0",
+		"tsx": "^4.19.2"
 	}
 }

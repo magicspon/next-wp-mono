@@ -445,7 +445,7 @@
                     },
                     "graphql_field_name": "blocks",
                     "clone": [
-                        "field_672a118ba89b0"
+                        "field_672f6ab7bceb6"
                     ],
                     "display": "seamless",
                     "layout": "block",
@@ -481,7 +481,7 @@
                             "label": "Image",
                             "name": "image",
                             "aria-label": "",
-                            "type": "image",
+                            "type": "clone",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -490,20 +490,14 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "return_format": "array",
-                            "library": "all",
-                            "min_width": "",
-                            "min_height": "",
-                            "min_size": "",
-                            "max_width": "",
-                            "max_height": "",
-                            "max_size": "",
-                            "mime_types": "",
-                            "allow_in_bindings": 0,
-                            "preview_size": "medium",
-                            "show_in_graphql": 1,
-                            "graphql_description": "",
-                            "graphql_field_name": "image"
+                            "graphql_field_name": "image",
+                            "clone": [
+                                "field_672f6bb27314c"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
@@ -531,7 +525,7 @@
                             },
                             "graphql_field_name": "blocks",
                             "clone": [
-                                "field_672a118ba89b0"
+                                "field_672f6ab7bceb6"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -616,7 +610,7 @@
                     },
                     "graphql_field_name": "blocks",
                     "clone": [
-                        "field_672a118ba89b0"
+                        "field_672f6ab7bceb6"
                     ],
                     "display": "seamless",
                     "layout": "block",
@@ -808,5 +802,5 @@
     "graphql_field_name": "content",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1731108494
+    "modified": 1731161442
 }

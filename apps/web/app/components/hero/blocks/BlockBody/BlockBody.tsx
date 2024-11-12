@@ -4,12 +4,31 @@ import { token } from '@spon/styled-system/tokens'
 import { Stack } from '@spon/ui/layout/Stack'
 import { Portable } from '~/components/Portable'
 import type {
-	BlockBodyStyleFragment,
-	BlocksBodyFragment,
+	TextPanelBlocksBodyFragment,
+	TextPanelStyleBodyFragment, // TextPanelStyleFragment,
 } from '~/schema/generated.graphql'
 import type { WithPortableText } from '~/utils/portable/htmlToPortableText'
 
-function createBodyStyle({ textSizes, box }: BlockBodyStyleFragment) {
+export function BlockBody({
+	body,
+	style,
+}: WithPortableText<TextPanelBlocksBodyFragment>) {
+	return (
+		<Stack
+			style={parseBodyProps(style)}
+			className={css({
+				alignItems: 'var(--align-items, start)',
+				gap: 'var(--gap, token(spacing.4))',
+				px: 'var(--padding-x, token(spacing.4))',
+				py: 'var(--padding-y, token(spacing.4))',
+			})}
+		>
+			<Portable body={body} />
+		</Stack>
+	)
+}
+
+function parseBodyProps({ textSizes, box }: TextPanelStyleBodyFragment) {
 	const fontSizes = textSizes?.reduce<Record<string, string>>((acc, s) => {
 		const {
 			style: [style],
@@ -38,23 +57,4 @@ function createBodyStyle({ textSizes, box }: BlockBodyStyleFragment) {
 		...fontSizes,
 		...spacing,
 	}
-}
-
-export function BlockBody({
-	body,
-	style,
-}: WithPortableText<BlocksBodyFragment>) {
-	return (
-		<Stack
-			style={createBodyStyle(style)}
-			className={css({
-				alignItems: 'var(--align-items, start)',
-				gap: 'var(--gap, token(spacing.4))',
-				px: 'var(--padding-x, token(spacing.4))',
-				py: 'var(--padding-y, token(spacing.4))',
-			})}
-		>
-			<Portable body={body} />
-		</Stack>
-	)
 }
