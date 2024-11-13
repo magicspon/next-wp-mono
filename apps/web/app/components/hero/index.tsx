@@ -10,25 +10,14 @@ type THeroProps = { content: WithPortableText<BaseHeroFragment[]> }
 export function Hero({ content }: THeroProps) {
 	const hero = getFirstOrNull(content)
 
-	console.log({ hero })
-
 	if (!hero) return null
 
-	// const { textPanel,  } = data
-	// const block = getFirstOrNull(data)
-
-	return (
-		<>
-			{(() => {
-				switch (hero?.__typename) {
-					case 'BaseHeroTextImageLayout':
-						return <HeroImage {...hero} />
-					case 'BaseHeroTextLayout':
-						return <HeroText {...hero} />
-					default:
-						return null
-				}
-			})()}
-		</>
-	)
+	switch (hero?.__typename) {
+		case 'BaseHeroTextImageLayout':
+			return <HeroImage {...hero} />
+		case 'BaseHeroTextLayout':
+			return <HeroText {...hero} />
+		default:
+			return null
+	}
 }

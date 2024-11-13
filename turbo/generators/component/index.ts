@@ -55,8 +55,6 @@ export const component = (plop: PlopTypes.NodePlopAPI) => {
 						? 'app/components'
 						: 'src/components'
 
-			console.log({ outputPath })
-
 			const actions = [
 				{
 					type: 'add',

@@ -8,9 +8,8 @@ import type { WithPortableText } from '~/utils/portable/htmlToPortableText'
 type THeroTextProps = WithPortableText<BaseHeroTextFragment>
 
 export function HeroText({ textPanel }: THeroTextProps) {
-	const { blocks, style } = textPanel
+	const { blocks } = textPanel
 
-	console.log({ hero: style })
 	return (
 		<div data-testid="HeroText">
 			{blocks?.map((block, index) => {

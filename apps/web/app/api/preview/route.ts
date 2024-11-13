@@ -21,8 +21,6 @@ export async function GET(request: Request) {
 
 	const authToken = login.authToken
 
-	console.log({ authToken })
-
 	draftMode().enable()
 
 	const authSdk = createAuthClient(`Bearer ${authToken}`)

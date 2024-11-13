@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Slice } from '~/components/Slice'
 import { Hero } from '~/components/hero'
 import { StructureMixedColumns } from '~/components/structure/StructureMixedColumns'
 import { StructureText } from '~/components/structure/StructureText'
@@ -21,7 +22,7 @@ export function LandingPage({ hero, structure }: BaseProps) {
 		<>
 			<Hero content={hero} />
 			{structure.map((group) => (
-				<div key={group.id}>
+				<Slice slice={group.slice} key={group.id}>
 					{group.rows.map((block, k) => (
 						<React.Fragment key={`${block.__typename}-${k}`}>
 							{(() => {
@@ -38,7 +39,7 @@ export function LandingPage({ hero, structure }: BaseProps) {
 							})()}
 						</React.Fragment>
 					))}
-				</div>
+				</Slice>
 			))}
 		</>
 	)

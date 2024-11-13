@@ -13,7 +13,7 @@ type RowType =
 	| SliceFragment
 
 export type StructureProps = {
-	split: SliceFragment | null
+	slice: SliceFragment | null
 	rows: RowType[]
 	id: string
 }[]
@@ -24,13 +24,13 @@ export function parseContent(content: RowType[]): StructureProps {
 		const id = `${curr.__typename}-${index}`
 
 		if (curr.__typename === 'BaseStructureSliceLayout') {
-			acc[counter] = { split: curr, rows: [], id }
+			acc[counter] = { slice: curr, rows: [], id }
 			return acc
 		}
 
 		if (index === 0) {
 			const rows = [curr]
-			acc[0] = { split: null, rows, id }
+			acc[0] = { slice: null, rows, id }
 			return acc
 		}
 
