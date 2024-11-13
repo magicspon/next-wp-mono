@@ -1,36 +1,3 @@
-fragment TextPanelTheme on ComponentsTextPanelStyleTheme {
-	colours
-	attribute
-}
-
-fragment TextPanelTextSize on ComponentsTextPanelStyleTextSizes {
-	style
-	fontSize
-}
-
-fragment TextPanelBox on ComponentsTextPanelStyleBox {
-	spacing
-	attribute
-}
-
-fragment TextPanelBlockBodyTextSize on ContentBlocksBodyStyleTextSizes {
-	style
-	fontSize
-}
-
-fragment TextPanelBlocksBodyStyleBox on ContentBlocksBodyStyleBox {
-	spacing
-	attribute
-}
-
-fragment BlocksTextStyles on ContentBlocksTextStyles {
-	spaceBelow
-	scaling
-	fontSize
-	fontFamily
-	colours
-}
-
 fragment TextPanelStyle on ComponentsTextPanelStyle {
 	theme {
 		...TextPanelTheme

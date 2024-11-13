@@ -1,17 +1,17 @@
 import Image from 'next/image'
 import * as React from 'react'
+import { BlockBody } from '~/components/blocks/BlockBody'
+import { BlockButtons } from '~/components/blocks/BlockButtons'
+import { BlockText } from '~/components/blocks/BlockText'
 import type { BaseHeroImageTextFragment } from '~/schema/generated.graphql'
 import { parseImageProps } from '~/utils/imageProps'
 import type { WithPortableText } from '~/utils/portable/htmlToPortableText'
-import { BlockBody } from '../blocks/BlockBody'
-import { BlockButtons } from '../blocks/BlockButtons'
-import { BlockText } from '../blocks/BlockText'
 
 type THeroImageProps = WithPortableText<BaseHeroImageTextFragment>
 
 export function HeroImage({ textPanel, image }: THeroImageProps) {
 	return (
-		<>
+		<div data-testid="HeroImage">
 			<Image {...parseImageProps(image.asset)} />
 			{textPanel.blocks?.map((block, index) => {
 				switch (block.__typename) {
@@ -29,6 +29,6 @@ export function HeroImage({ textPanel, image }: THeroImageProps) {
 						return null
 				}
 			})}
-		</>
+		</div>
 	)
 }

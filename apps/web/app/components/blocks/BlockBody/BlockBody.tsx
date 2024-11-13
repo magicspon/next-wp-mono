@@ -15,6 +15,7 @@ export function BlockBody({
 }: WithPortableText<TextPanelBlocksBodyFragment>) {
 	return (
 		<Stack
+			data-testid="BlockBody"
 			style={parseBodyProps(style)}
 			className={css({
 				alignItems: 'var(--align-items, start)',

@@ -10,6 +10,8 @@ type THeroProps = { content: WithPortableText<BaseHeroFragment[]> }
 export function Hero({ content }: THeroProps) {
 	const hero = getFirstOrNull(content)
 
+	console.log({ hero })
+
 	if (!hero) return null
 
 	// const { textPanel,  } = data

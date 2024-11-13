@@ -2,26 +2,25 @@ import * as React from 'react'
 import { BlockBody } from '~/components/blocks/BlockBody'
 import { BlockButtons } from '~/components/blocks/BlockButtons'
 import { BlockText } from '~/components/blocks/BlockText'
-import type { BaseHeroTextFragment } from '~/schema/generated.graphql'
+import type { TextStructureFragment } from '~/schema/generated.graphql'
 import type { WithPortableText } from '~/utils/portable/htmlToPortableText'
 
-type THeroTextProps = WithPortableText<BaseHeroTextFragment>
+export function StructureText({
+	textBlocks,
+}: WithPortableText<TextStructureFragment>) {
+	const { blocks } = textBlocks
 
-export function HeroText({ textPanel }: THeroTextProps) {
-	const { blocks, style } = textPanel
-
-	console.log({ hero: style })
 	return (
-		<div data-testid="HeroText">
+		<div data-testid="StructureText">
 			{blocks?.map((block, index) => {
 				switch (block.__typename) {
-					case 'ComponentsTextPanelBlocksBodyLayout':
+					case 'BaseStructureTextBlocksBlocksBodyLayout':
 						return (
 							<BlockBody body={block.body} style={block.style} key={index} />
 						)
-					case 'ComponentsTextPanelBlocksButtonsLayout':
+					case 'BaseStructureTextBlocksBlocksButtonsLayout':
 						return <BlockButtons {...block} key={index} />
-					case 'ComponentsTextPanelBlocksTextLayout':
+					case 'BaseStructureTextBlocksBlocksTextLayout':
 						return (
 							<BlockText text={block.text} style={block.style} key={index} />
 						)

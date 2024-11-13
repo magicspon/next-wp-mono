@@ -5,7 +5,15 @@ fragment BaseHero on BaseHero_Layout {
 
 fragment Base on Base {
 	hero {
+		__typename
 		...BaseHero
+	}
+	structure {
+		__typename
+
+		...TextStructure
+		...TextColumnsStructure
+		...MixedColumnsStructure
 	}
 }
 

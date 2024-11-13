@@ -1,0 +1,52 @@
+fragment BlocksTextStyles on ContentBlocksTextStyles {
+	spaceBelow
+	scaling
+	fontSize
+	fontFamily
+	colours
+}
+
+fragment TextPanelTheme on ComponentsTextPanelStyleTheme {
+	colours
+	attribute
+}
+
+fragment TextPanelTextSize on ComponentsTextPanelStyleTextSizes {
+	style
+	fontSize
+}
+
+fragment TextPanelBox on ComponentsTextPanelStyleBox {
+	spacing
+	attribute
+}
+
+fragment TextPanelBlockBodyTextSize on ContentBlocksBodyStyleTextSizes {
+	style
+	fontSize
+}
+
+fragment TextPanelBlocksBodyStyleBox on ContentBlocksBodyStyleBox {
+	spacing
+	attribute
+}
+
+fragment BoxStructureText on BaseStructureTextBlocksBox {
+	attribute
+	spacing
+}
+
+fragment FontSizeStructureText on BaseStructureTextBlocksTextSizes {
+	fontSize
+	style
+}
+
+fragment ThemeStructureText on BaseStructureTextBlocksTheme {
+	attribute
+	colours
+}
+
+fragment ImageBoxStyle on ComponentsImageStyleBox {
+	attribute
+	spacing
+}

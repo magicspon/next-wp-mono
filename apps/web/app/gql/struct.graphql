@@ -1,0 +1,121 @@
+fragment TextBaseStructureText on BaseStructureTextBlocksBlocksTextLayout {
+	text
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+
+fragment BodyBaseStructureBody on BaseStructureTextBlocksBlocksBodyLayout {
+	body
+	style: bodyStyle {
+		textSizes {
+			...TextPanelBlockBodyTextSize
+		}
+		box {
+			...TextPanelBlocksBodyStyleBox
+		}
+	}
+}
+
+fragment ButtonsBaseStructureBody on BaseStructureTextBlocksBlocksButtonsLayout {
+	buttons {
+		...Buttons
+	}
+}
+
+fragment TextStructure on BaseStructureTextLayout {
+	textBlocks {
+		blocks {
+			__typename
+			...TextBaseStructureText
+			...BodyBaseStructureBody
+			...ButtonsBaseStructureBody
+		}
+		box {
+			...BoxStructureText
+		}
+		textSizes {
+			...FontSizeStructureText
+		}
+		theme {
+			...ThemeStructureText
+		}
+	}
+}
+
+fragment StructBlockText on ComponentsTextPanelBlocksTextLayout {
+	text
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+
+fragment StructBlockBody on ComponentsTextPanelBlocksBodyLayout {
+	body
+	style: bodyStyle {
+		textSizes {
+			...TextPanelBlockBodyTextSize
+		}
+
+		box {
+			...TextPanelBlocksBodyStyleBox
+		}
+	}
+}
+
+fragment StructBlockButtons on ComponentsTextPanelBlocksButtonsLayout {
+	buttons {
+		...Buttons
+	}
+}
+
+fragment StructTextPanel on ContentColumnsTextPanel {
+	blocks {
+		__typename
+
+		...StructBlockText
+		...StructBlockBody
+		...StructBlockButtons
+	}
+}
+
+fragment TextColumnsStructure on BaseStructureTextColumnsLayout {
+	columns {
+		textPanel {
+			...StructTextPanel
+		}
+	}
+}
+
+fragment ImageMixedColumn on BaseStructureMixedColumnsImageColumnLayout {
+	image {
+		asset {
+			...MediaItem
+		}
+		style {
+			box {
+				...ImageBoxStyle
+			}
+		}
+	}
+}
+
+fragment TextMixedColumn on BaseStructureMixedColumnsTextColumnLayout {
+	textPanel {
+		blocks {
+			__typename
+			...StructBlockText
+			...StructBlockBody
+			...StructBlockButtons
+		}
+	}
+}
+
+fragment MixedColumnsStructure on BaseStructureMixedColumnsLayout {
+	columns: mixedColumns {
+		__typename
+
+		...ImageMixedColumn
+		...TextMixedColumn
+	}
+}

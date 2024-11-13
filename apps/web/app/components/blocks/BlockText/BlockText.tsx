@@ -21,6 +21,7 @@ export function BlockText({ text, style }: TextPanelBlocksTextFragment) {
 
 	return (
 		<Text
+			data-testid="BlockText"
 			style={{
 				'--mb': safeToken(spaceBelow),
 			}}
