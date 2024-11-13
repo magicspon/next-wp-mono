@@ -75,9 +75,11 @@ export default async function RootLayout({
 			<body>
 				<Provider>
 					{/* <Header menu={mainMenu} /> */}
+					<header />
 					<main className={flex({ flexDirection: 'column', flex: 1 })}>
 						{children}
 					</main>
+					<footer />
 					{/* <Footer menu={page.footerMenu} /> */}
 				</Provider>
 			</body>

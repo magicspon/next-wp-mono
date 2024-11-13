@@ -119,3 +119,13 @@ fragment MixedColumnsStructure on BaseStructureMixedColumnsLayout {
 		...TextMixedColumn
 	}
 }
+
+fragment Slice on BaseStructureSliceLayout {
+	box {
+		...SliceBox
+	}
+	scaling
+	theme {
+		...SliceColor
+	}
+}

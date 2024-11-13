@@ -4,31 +4,41 @@ import { StructureMixedColumns } from '~/components/structure/StructureMixedColu
 import { StructureText } from '~/components/structure/StructureText'
 import { StructureTextColumns } from '~/components/structure/StructureTextColumns'
 import type { PageFragment } from '~/schema/generated.graphql'
+import type { StructureProps } from '~/utils/parseContent'
 import type { WithPortableText } from '~/utils/portable/htmlToPortableText'
 
-type BaseProps = WithPortableText<Pick<PageFragment, 'base'>>
+type BaseInputProps = Pick<PageFragment, 'base'>
 
-export function LandingPage({ base }: BaseProps) {
-	const { hero, structure } = base
+type HeroContent = WithPortableText<BaseInputProps['base']['hero']>
 
+type BaseProps = {
+	hero: HeroContent
+	structure: StructureProps
+}
+
+export function LandingPage({ hero, structure }: BaseProps) {
 	return (
 		<>
 			<Hero content={hero} />
-			{structure.map((block, i) => (
-				<React.Fragment key={`${block.__typename}-${i}`}>
-					{(() => {
-						switch (block?.__typename) {
-							case 'BaseStructureTextLayout':
-								return <StructureText {...block} />
-							case 'BaseStructureTextColumnsLayout':
-								return <StructureTextColumns {...block} />
-							case 'BaseStructureMixedColumnsLayout':
-								return <StructureMixedColumns {...block} />
-							default:
-								return null
-						}
-					})()}
-				</React.Fragment>
+			{structure.map((group) => (
+				<div key={group.id}>
+					{group.rows.map((block, k) => (
+						<React.Fragment key={`${block.__typename}-${k}`}>
+							{(() => {
+								switch (block?.__typename) {
+									case 'BaseStructureTextLayout':
+										return <StructureText {...block} />
+									case 'BaseStructureTextColumnsLayout':
+										return <StructureTextColumns {...block} />
+									case 'BaseStructureMixedColumnsLayout':
+										return <StructureMixedColumns {...block} />
+									default:
+										return null
+								}
+							})()}
+						</React.Fragment>
+					))}
+				</div>
 			))}
 		</>
 	)

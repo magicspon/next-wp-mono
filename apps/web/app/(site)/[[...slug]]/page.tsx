@@ -5,6 +5,7 @@ import { createClient } from '~/lib/gqlClient'
 import type { PageFragment, PageIdType } from '~/schema/generated.graphql'
 import { LandingPage } from '~/templates/LandingPage'
 import { createPage } from '~/utils/createPage'
+import { parseContent } from '~/utils/parseContent'
 import { parse } from '~/utils/portable/htmlToPortableText'
 
 export const createUri = (nextSlug?: string | string[]) =>
@@ -59,9 +60,9 @@ const { Page, generateMetadata } = createPage({
 		}
 	},
 	component: async ({ data }) => {
-		const base = parse<PageFragment['base']>(data.page?.base)
+		const { hero, structure } = parse<PageFragment['base']>(data.page?.base)
 
-		return <LandingPage base={base} />
+		return <LandingPage hero={hero} structure={parseContent(structure)} />
 	},
 })
 

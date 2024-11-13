@@ -21,6 +21,16 @@ fragment TextPanelBox on ComponentsTextPanelStyleBox {
 	attribute
 }
 
+fragment SliceBox on BaseStructureBox {
+	spacing
+	attribute
+}
+
+fragment SliceColor on BaseStructureTheme {
+	attribute
+	colours
+}
+
 fragment TextPanelBlockBodyTextSize on ContentBlocksBodyStyleTextSizes {
 	style
 	fontSize
