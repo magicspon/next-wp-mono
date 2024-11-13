@@ -6,11 +6,11 @@ import { StructureText } from '~/components/structure/StructureText'
 import { StructureTextColumns } from '~/components/structure/StructureTextColumns'
 import type { PageFragment } from '~/schema/generated.graphql'
 import type { StructureProps } from '~/utils/parseContent'
-import type { WithPortableText } from '~/utils/portable/htmlToPortableText'
+import type { WithPT } from '~/utils/portable/htmlToPortableText'
 
 type BaseInputProps = Pick<PageFragment, 'base'>
 
-type HeroContent = WithPortableText<BaseInputProps['base']['hero']>
+type HeroContent = WithPT<BaseInputProps['base']['hero']>
 
 type BaseProps = {
 	hero: HeroContent
@@ -26,7 +26,7 @@ export function LandingPage({ hero, structure }: BaseProps) {
 					{group.rows.map((block, k) => (
 						<React.Fragment key={`${block.__typename}-${k}`}>
 							{(() => {
-								switch (block?.__typename) {
+								switch (block.__typename) {
 									case 'BaseStructureTextLayout':
 										return <StructureText {...block} />
 									case 'BaseStructureTextColumnsLayout':

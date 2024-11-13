@@ -4,12 +4,12 @@ import type {
 	TextColumnsStructureFragment,
 	TextStructureFragment,
 } from '~/schema/generated.graphql'
-import type { WithPortableText } from './portable/htmlToPortableText'
+import type { WithPT } from './portable/htmlToPortableText'
 
 type RowType =
-	| WithPortableText<TextStructureFragment>
-	| WithPortableText<TextColumnsStructureFragment>
-	| WithPortableText<MixedColumnsStructureFragment>
+	| WithPT<TextStructureFragment>
+	| WithPT<TextColumnsStructureFragment>
+	| WithPT<MixedColumnsStructureFragment>
 	| SliceFragment
 
 export type StructureProps = {

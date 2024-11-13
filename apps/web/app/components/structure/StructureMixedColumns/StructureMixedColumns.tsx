@@ -9,13 +9,13 @@ import type {
 	TextMixedColumnFragment,
 } from '~/schema/generated.graphql'
 import { parseImageProps } from '~/utils/imageProps'
-import type { WithPortableText } from '~/utils/portable/htmlToPortableText'
+import type { WithPT } from '~/utils/portable/htmlToPortableText'
 
 function ImageColumn({ image }: ImageMixedColumnFragment) {
 	return <Image {...parseImageProps(image.asset)} />
 }
 
-function TextColumn({ textPanel }: WithPortableText<TextMixedColumnFragment>) {
+function TextColumn({ textPanel }: WithPT<TextMixedColumnFragment>) {
 	const { blocks } = textPanel
 
 	return (
@@ -42,7 +42,7 @@ function TextColumn({ textPanel }: WithPortableText<TextMixedColumnFragment>) {
 
 export function StructureMixedColumns({
 	columns,
-}: WithPortableText<MixedColumnsStructureFragment>) {
+}: WithPT<MixedColumnsStructureFragment>) {
 	return (
 		<div data-testid="StructureMixedColumns">
 			{columns.map((column, i) => (

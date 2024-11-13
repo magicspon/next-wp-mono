@@ -3,9 +3,9 @@ import { BlockBody } from '~/components/blocks/BlockBody'
 import { BlockButtons } from '~/components/blocks/BlockButtons'
 import { BlockText } from '~/components/blocks/BlockText'
 import type { BaseHeroTextFragment } from '~/schema/generated.graphql'
-import type { WithPortableText } from '~/utils/portable/htmlToPortableText'
+import type { WithPT } from '~/utils/portable/htmlToPortableText'
 
-type THeroTextProps = WithPortableText<BaseHeroTextFragment>
+type THeroTextProps = WithPT<BaseHeroTextFragment>
 
 export function HeroText({ textPanel }: THeroTextProps) {
 	const { blocks } = textPanel

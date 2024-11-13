@@ -7,12 +7,12 @@ import type {
 	TextPanelBlocksBodyFragment,
 	TextPanelStyleBodyFragment, // TextPanelStyleFragment,
 } from '~/schema/generated.graphql'
-import type { WithPortableText } from '~/utils/portable/htmlToPortableText'
+import type { WithPT } from '~/utils/portable/htmlToPortableText'
 
 export function BlockBody({
 	body,
 	style,
-}: WithPortableText<TextPanelBlocksBodyFragment>) {
+}: WithPT<TextPanelBlocksBodyFragment>) {
 	return (
 		<Stack
 			data-testid="BlockBody"

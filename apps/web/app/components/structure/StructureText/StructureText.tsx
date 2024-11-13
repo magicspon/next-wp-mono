@@ -3,11 +3,9 @@ import { BlockBody } from '~/components/blocks/BlockBody'
 import { BlockButtons } from '~/components/blocks/BlockButtons'
 import { BlockText } from '~/components/blocks/BlockText'
 import type { TextStructureFragment } from '~/schema/generated.graphql'
-import type { WithPortableText } from '~/utils/portable/htmlToPortableText'
+import type { WithPT } from '~/utils/portable/htmlToPortableText'
 
-export function StructureText({
-	textBlocks,
-}: WithPortableText<TextStructureFragment>) {
+export function StructureText({ textBlocks }: WithPT<TextStructureFragment>) {
 	const { blocks } = textBlocks
 
 	return (

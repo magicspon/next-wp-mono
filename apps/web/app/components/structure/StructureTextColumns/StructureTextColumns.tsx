@@ -3,11 +3,11 @@ import { BlockBody } from '~/components/blocks/BlockBody'
 import { BlockButtons } from '~/components/blocks/BlockButtons'
 import { BlockText } from '~/components/blocks/BlockText'
 import type { TextColumnsStructureFragment } from '~/schema/generated.graphql'
-import type { WithPortableText } from '~/utils/portable/htmlToPortableText'
+import type { WithPT } from '~/utils/portable/htmlToPortableText'
 
 export function StructureTextColumns({
 	columns,
-}: WithPortableText<TextColumnsStructureFragment>) {
+}: WithPT<TextColumnsStructureFragment>) {
 	const textColumns = columns.map((c) => c.textPanel)
 
 	return (

@@ -5,9 +5,9 @@ import { BlockButtons } from '~/components/blocks/BlockButtons'
 import { BlockText } from '~/components/blocks/BlockText'
 import type { BaseHeroImageTextFragment } from '~/schema/generated.graphql'
 import { parseImageProps } from '~/utils/imageProps'
-import type { WithPortableText } from '~/utils/portable/htmlToPortableText'
+import type { WithPT } from '~/utils/portable/htmlToPortableText'
 
-type THeroImageProps = WithPortableText<BaseHeroImageTextFragment>
+type THeroImageProps = WithPT<BaseHeroImageTextFragment>
 
 export function HeroImage({ textPanel, image }: THeroImageProps) {
 	return (

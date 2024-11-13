@@ -42,7 +42,7 @@ type DeepReplaceKeyType<T, K extends string, R> = T extends (infer U)[]
 export type PortableValue = (TypedObject | PortableTextBlock)[]
 
 // Example usage:
-export type WithPortableText<A> = DeepReplaceKeyType<A, 'body', PortableValue>
+export type WithPT<T> = DeepReplaceKeyType<T, 'body', PortableValue>
 
 type PortableHelperInput = string | PortableValue
 
@@ -100,7 +100,7 @@ export function transformMatchingKeys<T extends AnyObject>(
 		}
 		return acc
 		// eslint-disable-next-line @typescript-eslint/prefer-reduce-type-parameter
-	}, {} as T) as WithPortableText<T>
+	}, {} as T) as WithPT<T>
 }
 
 export function parse<T extends AnyObject>(props: T) {
