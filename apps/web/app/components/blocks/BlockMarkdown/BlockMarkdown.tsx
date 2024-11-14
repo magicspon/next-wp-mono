@@ -5,13 +5,13 @@ import { type ScalingToken, token } from '@spon/styled-system/tokens'
 import type { TStyleProps } from '@spon/ui/type/Text'
 import { Text } from '@spon/ui/type/Text'
 import type {
-	BlockTextFragment,
+	BlockMarkdownFragment,
 	BlocksTextStylesFragment,
 } from '~/schema/generated.graphql'
 
 type VariantMap = NonNullable<TStyleProps>
 
-export function BlockText({ text, style }: BlockTextFragment) {
+export function BlockMarkdown({ markdown, style }: BlockMarkdownFragment) {
 	const {
 		size = 4,
 		family = 'body',
@@ -21,7 +21,7 @@ export function BlockText({ text, style }: BlockTextFragment) {
 
 	return (
 		<Text
-			data-testid="BlockText"
+			data-testid="BlockMarkdown"
 			style={{
 				'--mb': safeToken(spaceBelow),
 			}}
@@ -31,9 +31,8 @@ export function BlockText({ text, style }: BlockTextFragment) {
 			size={size}
 			family={family}
 			scaling={scaling}
-		>
-			{text}
-		</Text>
+			dangerouslySetInnerHTML={{ __html: markdown }}
+		/>
 	)
 }
 

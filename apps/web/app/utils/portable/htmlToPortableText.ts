@@ -7,6 +7,7 @@ import { htmlToBlocks } from '@sanity/block-tools'
 import type { ArraySchemaType } from '@sanity/types'
 import { isArray, isObject } from 'es-toolkit/compat'
 import { JSDOM } from 'jsdom'
+import { marked } from 'marked'
 import 'server-only'
 import { ProjectError } from '@spon/utils/ProjectError'
 import { defaultSchema } from './schema'
@@ -104,9 +105,12 @@ export function transformMatchingKeys<T extends AnyObject>(
 }
 
 export function parse<T extends AnyObject>(props: T) {
-	return transformMatchingKeys<T>(props, ['body'], (key, v) => {
+	return transformMatchingKeys<T>(props, ['body', 'markdown'], (key, v) => {
 		if (key === 'body') {
 			return htmlToPortableText({ raw: v })
+		}
+		if (key === 'markdown') {
+			return marked.parseInline(v)
 		}
 	})
 }

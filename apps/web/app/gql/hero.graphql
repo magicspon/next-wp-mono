@@ -1,21 +1,3 @@
-fragment TextPanelStyle on ComponentsTextPanelStyle {
-	theme {
-		...TextPanelTheme
-	}
-	textSizes {
-		...TextPanelTextSize
-	}
-	box {
-		...TextPanelBox
-	}
-}
-
-fragment TextPanelBlocksButtons on ComponentsTextPanelBlocksButtonsLayout {
-	buttons {
-		...Buttons
-	}
-}
-
 fragment TextPanelStyleBody on ContentBlocksBodyStyle {
 	textSizes {
 		...TextPanelBlockBodyTextSize
@@ -25,29 +7,17 @@ fragment TextPanelStyleBody on ContentBlocksBodyStyle {
 	}
 }
 
-fragment TextPanelBlocksBody on ComponentsTextPanelBlocksBodyLayout {
-	body
-	style: bodyStyle {
-		...TextPanelStyleBody
-	}
-}
-
-fragment TextPanelBlocksText on ComponentsTextPanelBlocksTextLayout {
-	text
-	style: textStyles {
-		...BlocksTextStyles
-	}
-}
-
 fragment TextPanel on BaseHeroTextPanel {
 	style {
 		...TextPanelStyle
 	}
 	blocks {
 		__typename
-		...TextPanelBlocksButtons
-		...TextPanelBlocksBody
-		...TextPanelBlocksText
+		...BlockButtons
+		...BlockBody
+		...BlockText
+		...BlockMarkdown
+		...BlockImage
 	}
 }
 

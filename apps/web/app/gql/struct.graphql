@@ -43,39 +43,14 @@ fragment TextStructure on BaseStructureTextLayout {
 	}
 }
 
-fragment StructBlockText on ComponentsTextPanelBlocksTextLayout {
-	text
-	style: textStyles {
-		...BlocksTextStyles
-	}
-}
-
-fragment StructBlockBody on ComponentsTextPanelBlocksBodyLayout {
-	body
-	style: bodyStyle {
-		textSizes {
-			...TextPanelBlockBodyTextSize
-		}
-
-		box {
-			...TextPanelBlocksBodyStyleBox
-		}
-	}
-}
-
-fragment StructBlockButtons on ComponentsTextPanelBlocksButtonsLayout {
-	buttons {
-		...Buttons
-	}
-}
-
 fragment StructTextPanel on ContentColumnsTextPanel {
 	blocks {
 		__typename
 
-		...StructBlockText
-		...StructBlockBody
-		...StructBlockButtons
+		...BlockText
+		...BlockBody
+		...BlockButtons
+		...BlockMarkdown
 	}
 }
 
@@ -104,9 +79,10 @@ fragment TextMixedColumn on BaseStructureMixedColumnsTextColumnLayout {
 	textPanel {
 		blocks {
 			__typename
-			...StructBlockText
-			...StructBlockBody
-			...StructBlockButtons
+			...BlockText
+			...BlockBody
+			...BlockButtons
+			...BlockMarkdown
 		}
 	}
 }

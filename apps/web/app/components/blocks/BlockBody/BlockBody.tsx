@@ -4,15 +4,12 @@ import { token } from '@spon/styled-system/tokens'
 import { Stack } from '@spon/ui/layout/Stack'
 import { Portable } from '~/components/Portable'
 import type {
-	TextPanelBlocksBodyFragment,
+	BlockBodyFragment,
 	TextPanelStyleBodyFragment, // TextPanelStyleFragment,
 } from '~/schema/generated.graphql'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
 
-export function BlockBody({
-	body,
-	style,
-}: WithPT<TextPanelBlocksBodyFragment>) {
+export function BlockBody({ body, style }: WithPT<BlockBodyFragment>) {
 	return (
 		<Stack
 			data-testid="BlockBody"
