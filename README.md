@@ -1,4 +1,4 @@
-[![Release](https://github.com/magicspon/sponanity/actions/workflows/release.yml/badge.svg)](https://github.com/magicspon/sponanity/actions/workflows/release.yml)
+[![buddy pipeline](https://app.buddy.works/magicspon/next-wp-mono/pipelines/pipeline/512349/badge.svg?token=5817276cb48b24df1e8bb55cd74738e2fe28ec72743171354a6709da7de4a58e 'buddy pipeline')](https://app.buddy.works/magicspon/next-wp-mono/pipelines/pipeline/512349)
 [![Units Tests](https://github.com/magicspon/sponanity/actions/workflows/test.yml/badge.svg)](https://github.com/magicspon/sponanity/actions/workflows/test.yml)
 [![Lint & Typecheck](https://github.com/magicspon/sponanity/actions/workflows/lint.yml/badge.svg)](https://github.com/magicspon/sponanity/actions/workflows/lint.yml)
 
