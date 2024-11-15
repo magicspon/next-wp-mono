@@ -77,7 +77,7 @@
         - mkdir -p uploads
         - 'echo "Symlinking: persistent files & directories"'
         - ln -nfs $PROJECT_ROOT/.env $PROJECT_ROOT/releases/$BUDDY_EXECUTION_REVISION
-        - 'ln -nfs $PROJECT_ROOT/uploads $PROJECT_ROOT/releases/$BUDDY_EXECUTION_REVISION/web/app'
+        - ln -nfs $PROJECT_ROOT/uploads $PROJECT_ROOT/releases/$BUDDY_EXECUTION_REVISION/web/app
         - 'echo "Linking current to revision: $BUDDY_EXECUTION_REVISION"'
         - rm -f current
         - ln -s releases/$BUDDY_EXECUTION_REVISION current
