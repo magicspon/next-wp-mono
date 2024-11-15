@@ -63,7 +63,7 @@ if (!env('WP_ENVIRONMENT_TYPE') && in_array(WP_ENV, ['production', 'staging', 'd
 /**
  * URLs
  */
-Config::define('WP_HOME', env('WP_HOME'));
+Config::define('WP_HOME', env('HEADLESS_URL'));
 Config::define('WP_SITEURL', env('WP_SITEURL'));
 
 /**
@@ -71,7 +71,7 @@ Config::define('WP_SITEURL', env('WP_SITEURL'));
  */
 Config::define('CONTENT_DIR', '/app');
 Config::define('WP_CONTENT_DIR', $webroot_dir . Config::get('CONTENT_DIR'));
-Config::define('WP_CONTENT_URL', Config::get('WP_HOME') . Config::get('CONTENT_DIR'));
+Config::define('WP_CONTENT_URL', env('WP_HOME') . Config::get('CONTENT_DIR'));
 
 
 Config::define('ACF_PRO_LICENSE', env('ACF_LICENCE_KEY'));
