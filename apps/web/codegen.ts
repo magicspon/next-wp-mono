@@ -6,6 +6,7 @@ dotenv.config({ path: '.env.local' })
 console.log({
 	Authorization: process.env.GRAPHQL_JWT_AUTH_SECRET_KEY!,
 	'API-KEY': process.env.GRAPHQL_API_AUTH_SECRET_KEY!,
+	urL: process.env.GRAPHQL_ENDPOINT,
 })
 
 const config: CodegenConfig = {
