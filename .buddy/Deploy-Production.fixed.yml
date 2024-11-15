@@ -124,8 +124,7 @@
       type: WP_CLI
       version: cli
       execute_commands:
-        - cd releases/$BUDDY_EXECUTION_REVISION
-        - wp plugin activate --all
-        - wp db migrate
-        - wp cache flush
+        - wp --path=apps/cms plugin activate --all
+        - wp --path=apps/cms db migrate
+        - wp --path=apps/cms cache flush
         - ''
