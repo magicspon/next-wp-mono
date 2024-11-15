@@ -7,6 +7,9 @@ const config: CodegenConfig = {
 	overwrite: true,
 	hooks: {
 		afterOneFileWrite: ['prettier --write'],
+		// afterOneFileWrite: [
+		// 	'gsed -i -e"s|graphql-request/dist/types.dom|graphql-request/src/types.dom|g"',
+		// ],
 	},
 
 	schema: [
@@ -27,6 +30,11 @@ const config: CodegenConfig = {
 				'typescript',
 				'typescript-operations',
 				'typescript-graphql-request',
+				{
+					add: {
+						content: '// @ts-nocheck',
+					},
+				},
 			],
 			config: {
 				withHooks: false,
