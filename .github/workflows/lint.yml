@@ -30,9 +30,7 @@ jobs:
         run: npm run build-panda
 
       - name: Create schema
-        run: |
-          echo "Using endpoint: $GRAPHQL_ENDPOINT"
-          npm run codegen
+        run: npm run codegen
 
       - name: Typecheck
         run: npm run typecheck
