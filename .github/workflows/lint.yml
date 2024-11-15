@@ -12,6 +12,7 @@ jobs:
     env:
       GRAPHQL_API_AUTH_SECRET_KEY: ${{ secrets.GRAPHQL_API_AUTH_SECRET_KEY }}
       GRAPHQL_ENDPOINT: ${{ secrets.GRAPHQL_ENDPOINT }}
+      NODE_ENV: 'production'
 
     steps:
       - name: Checkout
