@@ -56,6 +56,7 @@ cp apps/web/env.example apps/web/.env.local
 - Lintstaged
 - Playwright
 - Vitest
+- Buddy config
 
 ### Wordpress Deployment
 

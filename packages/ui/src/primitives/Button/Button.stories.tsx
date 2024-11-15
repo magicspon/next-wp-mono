@@ -26,7 +26,7 @@ export const Primary: Story = {
 				Hello world
 			</a>
 		),
-		variant: 'default',
+		// variant: 'default',
 		type: 'button',
 		asChild: true,
 	},

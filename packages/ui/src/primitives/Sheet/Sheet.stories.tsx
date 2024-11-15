@@ -28,7 +28,7 @@ export const Primary: Story = {
 	render: () => (
 		<Sheet.Root>
 			<Sheet.Trigger asChild>
-				<Button variant="outline">Open</Button>
+				<Button>Open</Button>
 			</Sheet.Trigger>
 			<Sheet.Content>
 				<Sheet.Header>
