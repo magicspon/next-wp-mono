@@ -1,10 +1,10 @@
 import * as React from 'react'
 import type { HomePageFragment } from '~/schema/generated.graphql'
 
-export function HomePage({ content, title, flexibleHero }: HomePageFragment) {
+export function HomePage({ content, title }: HomePageFragment) {
 	return (
 		<div>
-			<pre>{JSON.stringify({ content, title, flexibleHero }, null, 2)}</pre>
+			<pre>{JSON.stringify({ content, title }, null, 2)}</pre>
 		</div>
 	)
 }

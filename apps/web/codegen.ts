@@ -3,10 +3,19 @@ import dotenv from 'dotenv'
 
 dotenv.config({ path: '.env.local' })
 
+console.log({
+	Authorization: process.env.GRAPHQL_JWT_AUTH_SECRET_KEY!,
+	'API-KEY': process.env.GRAPHQL_API_AUTH_SECRET_KEY!,
+	urL: process.env.GRAPHQL_ENDPOINT,
+})
+
 const config: CodegenConfig = {
 	overwrite: true,
 	hooks: {
 		afterOneFileWrite: ['prettier --write'],
+		// afterOneFileWrite: [
+		// 	'gsed -i -e"s|graphql-request/dist/types.dom|graphql-request/src/types.dom|g"',
+		// ],
 	},
 
 	schema: [
@@ -27,6 +36,11 @@ const config: CodegenConfig = {
 				'typescript',
 				'typescript-operations',
 				'typescript-graphql-request',
+				{
+					add: {
+						content: '// @ts-nocheck',
+					},
+				},
 			],
 			config: {
 				withHooks: false,

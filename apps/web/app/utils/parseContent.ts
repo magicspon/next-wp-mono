@@ -19,6 +19,8 @@ export type StructureProps = {
 }[]
 
 export function parseContent(content: RowType[]): StructureProps {
+	if (!content?.length) return []
+
 	return content.reduce<StructureProps>((acc, curr, index) => {
 		const counter = acc.length
 		const id = `${curr.__typename}-${index}`

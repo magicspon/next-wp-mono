@@ -22,6 +22,15 @@ jobs:
       - name: Install
         run: npm install
 
+      - name: Build requirements
+        run: npm run build-panda
+
+      - name: Create schema
+        run: npm run codegen
+        env:
+          GRAPHQL_API_AUTH_SECRET_KEY: ${{ env.GRAPHQL_API_AUTH_SECRET_KEY }}
+          GRAPHQL_ENDPOINT: ${{ env.GRAPHQL_ENDPOINT }}
+
       - name: Typecheck
         run: npm run typecheck
 
