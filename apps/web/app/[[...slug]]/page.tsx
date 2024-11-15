@@ -49,7 +49,7 @@ const { Page, generateMetadata } = createPage({
 				title: seo.opengraphTitle,
 				description: seo.opengraphDescription,
 				type: seo.opengraphType,
-				images: [seo.opengraphImage.sourceUrl],
+				images: [seo.opengraphImage?.sourceUrl].filter(Boolean),
 				url: seo.opengraphUrl,
 			},
 			twitter: {
