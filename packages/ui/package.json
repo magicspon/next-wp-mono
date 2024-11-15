@@ -29,7 +29,6 @@
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
 		"build": "tsup",
-		"prepanda": "npm run build-fast",
 		"panda": "panda codegen",
 		"build-fast": "tsup --no-dts",
 		"dev": "npm run build-fast --watch; npm run storybook"
