@@ -19,7 +19,7 @@ const nextConfig = {
 		reactRemoveProperties: { properties: ['^data-test$'] },
 	},
 
-	transpilePackages: ['@spon/ui/preset', '@spon/styled-system'],
+	transpilePackages: ['@spon/ui/preset'],
 
 	webpack: (config) => {
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
@@ -52,7 +52,7 @@ const nextConfig = {
 		minimumCacheTTL: 31536000,
 		dangerouslyAllowSVG: true,
 		contentDispositionType: 'attachment',
-		// contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
 	},
 }
 
