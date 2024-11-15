@@ -2,7 +2,7 @@ import * as RadixAlert from '@radix-ui/react-alert-dialog'
 import type { VariantProps } from 'class-variance-authority'
 import clsx from 'clsx'
 import * as React from 'react'
-import { buttonVariants } from '../Button'
+import type { buttonVariants } from '../Button'
 
 export const Root = RadixAlert.Root
 
@@ -101,29 +101,19 @@ export const Action = React.forwardRef<
 	React.ElementRef<typeof RadixAlert.Action>,
 	React.ComponentPropsWithoutRef<typeof RadixAlert.Action> &
 		VariantProps<typeof buttonVariants>
->(function Action({ className, variant, ...props }, ref) {
-	return (
-		<RadixAlert.Action
-			ref={ref}
-			className={clsx(buttonVariants({ variant }), className)}
-			{...props}
-		/>
-	)
+>(function Action({ className, ...props }, ref) {
+	return <RadixAlert.Action ref={ref} className={className} {...props} />
 })
 
 export const Cancel = React.forwardRef<
 	React.ElementRef<typeof RadixAlert.Cancel>,
 	React.ComponentPropsWithoutRef<typeof RadixAlert.Cancel> &
 		VariantProps<typeof buttonVariants>
->(function Cancel({ className, variant, ...props }, ref) {
+>(function Cancel({ className, ...props }, ref) {
 	return (
 		<RadixAlert.Cancel
 			ref={ref}
-			className={clsx(
-				buttonVariants({ variant: variant }),
-				'mt-2 sm:mt-0',
-				className,
-			)}
+			className={clsx(className, 'mt-2 sm:mt-0', className)}
 			{...props}
 		/>
 	)

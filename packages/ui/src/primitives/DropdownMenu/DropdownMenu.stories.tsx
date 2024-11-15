@@ -26,7 +26,7 @@ export const Primary: Story = {
 	render: () => (
 		<DropdownMenu.Root>
 			<DropdownMenu.Trigger asChild>
-				<Button variant="outline">Open</Button>
+				<Button>Open</Button>
 			</DropdownMenu.Trigger>
 			<DropdownMenu.Content className="w-56">
 				<DropdownMenu.Label>My Account</DropdownMenu.Label>
