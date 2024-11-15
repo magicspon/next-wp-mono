@@ -3,6 +3,14 @@ import dotenv from 'dotenv'
 
 dotenv.config({ path: '.env.local' })
 
+console.log({
+	[`${process.env.GRAPHQL_ENDPOINT}`]: {
+		headers: {
+			'API-KEY': process.env.GRAPHQL_API_AUTH_SECRET_KEY!,
+		},
+	},
+})
+
 const config: CodegenConfig = {
 	overwrite: true,
 	hooks: {
@@ -16,7 +24,6 @@ const config: CodegenConfig = {
 		{
 			[`${process.env.GRAPHQL_ENDPOINT}`]: {
 				headers: {
-					Authorization: process.env.GRAPHQL_JWT_AUTH_SECRET_KEY!,
 					'API-KEY': process.env.GRAPHQL_API_AUTH_SECRET_KEY!,
 				},
 			},
@@ -48,6 +55,8 @@ const config: CodegenConfig = {
 			},
 		},
 	},
+
+	ignoreNoDocuments: true,
 }
 
 export default config
