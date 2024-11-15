@@ -2,7 +2,7 @@
   events:
     - type: PUSH
       refs:
-        - refs/heads/main
+        - refs/heads/releases/staging
   fail_on_prepare_env_warning: true
   actions:
     - action: composer install
