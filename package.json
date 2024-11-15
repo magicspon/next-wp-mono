@@ -5,6 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"build": "turbo build --filter=@spon/web",
+		"build-panda": "turbo build --filter=@spon/ui",
 		"analyze": "ANALYZE=true turbo build --filter=@spon/web",
 		"start": "turbo start --filter=@spon/web",
 		"dev": "turbo dev",
