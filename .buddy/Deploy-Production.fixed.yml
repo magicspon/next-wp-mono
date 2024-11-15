@@ -124,7 +124,7 @@
       type: WP_CLI
       version: cli
       execute_commands:
-        - wp --path=apps/cms plugin activate --all
-        - wp --path=apps/cms db migrate
-        - wp --path=apps/cms cache flush
+        - wp plugin activate --all
+        - wp db migrate
+        - wp cache flush
         - ''
