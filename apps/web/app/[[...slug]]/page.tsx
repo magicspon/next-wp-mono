@@ -38,27 +38,27 @@ const { Page, generateMetadata } = createPage({
 			isPreview,
 		}
 	},
-	metadata: async ({ data }) => {
-		const { seo } = data
+	// metadata: async ({ data }) => {
+	// 	const { seo } = data
 
-		return {
-			title: seo.title,
-			description: seo.metaDesc ?? seo.opengraphDescription,
-			keywords: seo.metaKeywords,
-			openGraph: {
-				title: seo.opengraphTitle,
-				description: seo.opengraphDescription,
-				type: seo.opengraphType,
-				images: [seo.opengraphImage.sourceUrl],
-				url: seo.opengraphUrl,
-			},
-			twitter: {
-				title: seo.twitterTitle,
-				description: seo.twitterDescription,
-				images: [seo.twitterImage?.sourceUrl].filter(Boolean),
-			},
-		}
-	},
+	// 	return {
+	// 		title: seo.title,
+	// 		description: seo.metaDesc ?? seo.opengraphDescription,
+	// 		keywords: seo.metaKeywords,
+	// 		openGraph: {
+	// 			title: seo.opengraphTitle,
+	// 			description: seo.opengraphDescription,
+	// 			type: seo.opengraphType,
+	// 			images: [seo.opengraphImage.sourceUrl],
+	// 			url: seo.opengraphUrl,
+	// 		},
+	// 		twitter: {
+	// 			title: seo.twitterTitle,
+	// 			description: seo.twitterDescription,
+	// 			images: [seo.twitterImage?.sourceUrl].filter(Boolean),
+	// 		},
+	// 	}
+	// },
 	component: async ({ data }) => {
 		const { hero, structure } = parse<PageFragment['base']>(data.page?.base)
 
