@@ -1,6 +1,6 @@
-[![Release](https://github.com/magicspon/sponanity/actions/workflows/release.yml/badge.svg)](https://github.com/magicspon/sponanity/actions/workflows/release.yml)
-[![Units Tests](https://github.com/magicspon/sponanity/actions/workflows/test.yml/badge.svg)](https://github.com/magicspon/sponanity/actions/workflows/test.yml)
-[![Lint & Typecheck](https://github.com/magicspon/sponanity/actions/workflows/lint.yml/badge.svg)](https://github.com/magicspon/sponanity/actions/workflows/lint.yml)
+[![Release](https://github.com/magicspon/next-wp-mono/actions/workflows/release.yml/badge.svg)](https://github.com/magicspon/next-wp-mono/actions/workflows/release.yml)
+[![Units Tests](https://github.com/magicspon/next-wp-mono/actions/workflows/test.yml/badge.svg)](https://github.com/magicspon/next-wp-mono/actions/workflows/test.yml)
+[![Lint & Typecheck](https://github.com/magicspon/next-wp-mono/actions/workflows/lint.yml/badge.svg)](https://github.com/magicspon/next-wp-mono/actions/workflows/lint.yml)
 
 # W[Pon]press
 
@@ -56,6 +56,7 @@ cp apps/web/env.example apps/web/.env.local
 - Lintstaged
 - Playwright
 - Vitest
+- Buddy config
 
 ### Wordpress Deployment
 
