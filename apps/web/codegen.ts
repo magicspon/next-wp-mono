@@ -3,13 +3,15 @@ import dotenv from 'dotenv'
 
 dotenv.config({ path: '.env.local' })
 
+console.log({ schema: process.env.GRAPHQL_ENDPOINT })
+
 const config: CodegenConfig = {
 	overwrite: true,
 	hooks: {
 		afterOneFileWrite: ['prettier --write'],
 	},
 
-	schema: 'https://wsponcms.spon.io/wp/graphql',
+	schema: process.env.GRAPHQL_ENDPOINT,
 
 	documents: './app/**/*.graphql',
 	generates: {
