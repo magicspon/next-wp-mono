@@ -25,21 +25,13 @@ jobs:
       - name: Build requirements
         run: npm run build-panda
 
-      - name: Debug Env Variables
-        run: |
-          echo "GRAPHQL_ENDPOINT value length: ${#GRAPHQL_ENDPOINT}"
-          echo "GRAPHQL_API_AUTH_SECRET_KEY value length: ${#GRAPHQL_API_AUTH_SECRET_KEY}"
-          node -e "console.log('Node process env:', JSON.stringify(process.env.GRAPHQL_ENDPOINT))"
+      - name: Create schema
+        run: npm run codegen
+
         env:
           GRAPHQL_API_AUTH_SECRET_KEY: ${{ secrets.GRAPHQL_API_AUTH_SECRET_KEY }}
           GRAPHQL_ENDPOINT: ${{ secrets.GRAPHQL_ENDPOINT }}
-
-      - name: Create schema
-        run: |
-          export GRAPHQL_API_AUTH_SECRET_KEY="${{ secrets.GRAPHQL_API_AUTH_SECRET_KEY }}"
-          export GRAPHQL_ENDPOINT="${{ secrets.GRAPHQL_ENDPOINT }}"
-          node -e "console.log('Codegen env check:', process.env.GRAPHQL_ENDPOINT)"
-          npm run codegen -- --require dotenv/config
+          NODE_ENV: 'production'
 
       - name: Typecheck
         run: npm run typecheck
