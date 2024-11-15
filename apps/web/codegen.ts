@@ -1,9 +1,10 @@
 import type { CodegenConfig } from '@graphql-codegen/cli'
-import dotenv from 'dotenv'
 
-if (process.env.NODE_ENV !== 'production') {
-	dotenv.config({ path: '.env.local' })
-}
+// import dotenv from 'dotenv'
+
+// if (process.env.NODE_ENV !== 'production') {
+// 	dotenv.config({ path: '.env.local' })
+// }
 
 console.log({ schema: process.env.GRAPHQL_ENDPOINT })
 
