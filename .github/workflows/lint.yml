@@ -29,6 +29,9 @@ jobs:
       - name: Build requirements
         run: npm run build-panda
 
+      - name: Create schema
+        run: npm run codegen
+
       - name: Typecheck
         run: npm run typecheck
 

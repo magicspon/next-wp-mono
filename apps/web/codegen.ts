@@ -3,32 +3,13 @@ import dotenv from 'dotenv'
 
 dotenv.config({ path: '.env.local' })
 
-console.log({
-	[`${process.env.GRAPHQL_ENDPOINT}`]: {
-		headers: {
-			'API-KEY': process.env.GRAPHQL_API_AUTH_SECRET_KEY!,
-		},
-	},
-})
-
 const config: CodegenConfig = {
 	overwrite: true,
 	hooks: {
 		afterOneFileWrite: ['prettier --write'],
-		// afterOneFileWrite: [
-		// 	'gsed -i -e"s|graphql-request/dist/types.dom|graphql-request/src/types.dom|g"',
-		// ],
 	},
 
-	schema: [
-		{
-			[`${process.env.GRAPHQL_ENDPOINT}`]: {
-				headers: {
-					'API-KEY': process.env.GRAPHQL_API_AUTH_SECRET_KEY!,
-				},
-			},
-		},
-	],
+	schema: 'https://wsponcms.spon.io/wp/graphql',
 
 	documents: './app/**/*.graphql',
 	generates: {
@@ -55,8 +36,6 @@ const config: CodegenConfig = {
 			},
 		},
 	},
-
-	ignoreNoDocuments: true,
 }
 
 export default config
