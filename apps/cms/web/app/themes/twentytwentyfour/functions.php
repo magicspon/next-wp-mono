@@ -258,32 +258,32 @@ add_action('rest_api_init', function () {
 });
 
 
-// add_action( 'do_graphql_request', 'force_graphql_api_authentication', 10, 1 );
-// function force_graphql_api_authentication( $query ) {
-// 	if ( ! defined( 'GRAPHQL_HTTP_REQUEST' ) || true !== GRAPHQL_HTTP_REQUEST ) {
-// 		return;
-// 	}
+add_action( 'do_graphql_request', 'force_graphql_api_authentication', 10, 1 );
+function force_graphql_api_authentication( $query ) {
+	if ( ! defined( 'GRAPHQL_HTTP_REQUEST' ) || true !== GRAPHQL_HTTP_REQUEST ) {
+		return;
+	}
 
-// 	$introspection_query = \GraphQL\Type\Introspection::getIntrospectionQuery();
-// 	$is_introspection_query = trim($query) === trim($introspection_query);
+	$introspection_query = \GraphQL\Type\Introspection::getIntrospectionQuery();
+	$is_introspection_query = trim($query) === trim($introspection_query);
 
-// 	if ( $is_introspection_query ) {
-// 		return;
-// 	}
+	if ( $is_introspection_query ) {
+		return;
+	}
 
-// 	$secret_key = defined( 'GRAPHQL_API_AUTH_SECRET_KEY' ) ? GRAPHQL_API_AUTH_SECRET_KEY : false;
-// 	$incoming_secret_key = $_SERVER['API_KEY'] ? $_SERVER['API_KEY'] : $_SERVER['HTTP_API_KEY'];
+	$secret_key = defined( 'GRAPHQL_API_AUTH_SECRET_KEY' ) ? GRAPHQL_API_AUTH_SECRET_KEY : false;
+	$incoming_secret_key = $_SERVER['API_KEY'] ? $_SERVER['API_KEY'] : $_SERVER['HTTP_API_KEY'];
 
-// 	if(!empty($secret_key) && !empty($incoming_secret_key)) {
-// 		if($secret_key != $incoming_secret_key) {
-// 			throw new \GraphQL\Error\UserError( __( 'Incorrect API key', 'kerve-graphql-api' ) );
-// 		}
+	if(!empty($secret_key) && !empty($incoming_secret_key)) {
+		if($secret_key != $incoming_secret_key) {
+			throw new \GraphQL\Error\UserError( __( 'Incorrect API key', 'kerve-graphql-api' ) );
+		}
 
-// 		return;
-// 	}
+		return;
+	}
 
-// 	throw new \GraphQL\Error\UserError( __( 'Missing API key', 'kerve-graphql-api' ) );
-// }
+	throw new \GraphQL\Error\UserError( __( 'Missing API key', 'kerve-graphql-api' ) );
+}
 
 
 function remove_alignment_buttons_acf($toolbars) {

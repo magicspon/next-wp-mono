@@ -73,6 +73,11 @@ Config::define('CONTENT_DIR', '/app');
 Config::define('WP_CONTENT_DIR', $webroot_dir . Config::get('CONTENT_DIR'));
 Config::define('WP_CONTENT_URL', Config::get('WP_HOME') . Config::get('CONTENT_DIR'));
 
+
+Config::define('ACF_PRO_LICENSE', env('ACF_LICENCE_KEY'));
+
+
+
 /**
  * DB settings
  */
@@ -123,6 +128,16 @@ Config::define('DISALLOW_FILE_MODS', true);
 
 // Limit the number of post revisions
 Config::define('WP_POST_REVISIONS', env('WP_POST_REVISIONS') ?? true);
+
+/**
+ * Graphql/Headless settings
+ */
+
+Config::define( 'GRAPHQL_JWT_AUTH_SECRET_KEY', env('GRAPHQL_JWT_AUTH_SECRET_KEY') );
+Config::define( 'HEADLESS_URL', env('HEADLESS_URL') );
+Config::define( 'HEADLESS_SECRET', env('HEADLESS_SECRET') );
+Config::define( 'GRAPHQL_JWT_AUTH_CORS_ENABLE', true);
+Config::define( 'GRAPHQL_API_AUTH_SECRET_KEY', true);
 
 /**
  * Debugging Settings

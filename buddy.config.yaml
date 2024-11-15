@@ -1,0 +1,122 @@
+- pipeline: Deploy Production
+  events:
+    - type: PUSH
+      refs:
+        - refs/heads/main
+  fail_on_prepare_env_warning: true
+  actions:
+    - action: composer install
+      type: BUILD
+      docker_image_name: library/php
+      docker_image_tag: 8.3
+      execute_commands:
+        - cd apps/cms
+        - cat << EOF > auth.json
+        - '{'
+        - "\t\"http-basic\": {"
+        - "\t\t\"connect.advancedcustomfields.com\": {"
+        - "\t\t\t\"username\": \"$ACF_PRO_LICENCE\","
+        - "\t\t\t\"password\": \"$ACF_PASSWORD\""
+        - "\t\t}"
+        - "\t}"
+        - '}'
+        - EOF
+        - composer validate
+        - composer install
+        - '# vendor/bin/phpunit'
+      setup_commands:
+        - echo "memory_limit=-1" >> /usr/local/etc/php/conf.d/buddy.ini
+        - apt-get update && apt-get install -y git zip
+        - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+        - ''
+        - '# php ext gd'
+        - apt-get install -y libfreetype6-dev
+        - apt-get install -y libjpeg62-turbo-dev
+        - apt-get install -y libpng-dev
+        - docker-php-ext-configure gd --with-freetype --with-jpeg
+        - docker-php-ext-install gd
+        - ''
+        - '# php ext pdo_mysql'
+        - docker-php-ext-configure pdo_mysql --with-pdo-mysql
+        - docker-php-ext-install pdo_mysql
+        - ''
+        - '# php ext zip'
+        - apt-get install -y zip
+        - apt-get install -y unzip
+        - apt-get install -y zlib1g-dev
+        - apt-get install -y libzip-dev
+        - docker-php-ext-install zip
+      shell: BASH
+    - action: Rsync to temp directory
+      type: RSYNC
+      local_path: /apps/cms/
+      remote_path: $PROJECT_ROOT/deploy-cache
+      login: $USER_NAME
+      host: $IP_ADDRESS
+      env_key: secure!d7Ar2dhjJX3cNBgDqRP/QA==.wZ91O9knHJbSnmIPOmYIvQ==
+      authentication_mode: ENV_KEY
+      archive: true
+      recursive: true
+      compress: true
+      deployment_excludes:
+        - .git
+    - action: Atomic deployment
+      type: SSH_COMMAND
+      commands:
+        - 'if [ -d "releases/$BUDDY_EXECUTION_REVISION" ] && [ "$BUDDY_EXECUTION_REFRESH" = "true" ];'
+        - then
+        - ' echo "Removing: releases/$BUDDY_EXECUTION_REVISION"'
+        - ' rm -rf releases/$BUDDY_EXECUTION_REVISION;'
+        - fi
+        - 'if [ ! -d "releases/$BUDDY_EXECUTION_REVISION" ];'
+        - then
+        - ' echo "Creating: releases/$BUDDY_EXECUTION_REVISION"'
+        - ' cp -dR deploy-cache releases/$BUDDY_EXECUTION_REVISION;'
+        - fi
+        - 'echo "Creating: persistent directories"'
+        - mkdir -p uploads
+        - 'echo "Symlinking: persistent files & directories"'
+        - ln -nfs $PROJECT_ROOT/.env $PROJECT_ROOT/releases/$BUDDY_EXECUTION_REVISION
+        - 'if [ ! -d "releases/$BUDDY_EXECUTION_REVISION/web/app/uploads" ]; then'
+        - '  echo "Symlinking: persistent files & directories"'
+        - '  ln -nfs $PROJECT_ROOT/uploads $PROJECT_ROOT/releases/$BUDDY_EXECUTION_REVISION/web/app'
+        - fi
+        - 'echo "Linking current to revision: $BUDDY_EXECUTION_REVISION"'
+        - rm -f current
+        - ln -s releases/$BUDDY_EXECUTION_REVISION current
+        - echo "Removing old releases"
+        - cd releases && ls -t | tail -n +11 | xargs rm -rf
+      targets:
+        - type: SSH
+          id: REMOTE_SSH_HOST
+          host: $IP_ADDRESS
+          path: $PROJECT_ROOT
+          auth:
+            method: ASSETS_KEY
+            username: $USER_NAME
+            asset: id_project
+      run_as_script: true
+    - action: Prep WP
+      type: SSH_COMMAND
+      commands:
+        - '# Restart FPM'
+        - "echo 'Restarting FPM...'; sudo -S service php8.3-fpm reload "
+        - '# Restart our long running queue listener process'
+        - echo "" | sudo -S supervisorctl restart all
+        - '# replace this with WP CLI commands'
+        - '# Backup the database just in case any migrations or Project Config changes have issues'
+        - '# php craft db/backup'
+        - '# # Run pending migrations, sync project config, and clear caches'
+        - '# php craft clear-caches/all'
+        - '# php craft migrate/all'
+        - '# php craft project-config/apply'
+      targets:
+        - type: SSH
+          id: REMOTE_SSH_HOST
+          host: $IP_ADDRESS
+          path: $PROJECT_ROOT/current
+          auth:
+            method: ASSETS_KEY
+            username: $USER_NAME
+            asset: id_project
+      run_as_script: true
