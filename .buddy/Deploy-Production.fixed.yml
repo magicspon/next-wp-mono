@@ -77,10 +77,7 @@
         - mkdir -p uploads
         - 'echo "Symlinking: persistent files & directories"'
         - ln -nfs $PROJECT_ROOT/.env $PROJECT_ROOT/releases/$BUDDY_EXECUTION_REVISION
-        - 'if [ ! -d "releases/$BUDDY_EXECUTION_REVISION/web/app/uploads" ]; then'
-        - '  echo "Symlinking: persistent files & directories"'
-        - '  ln -nfs $PROJECT_ROOT/uploads $PROJECT_ROOT/releases/$BUDDY_EXECUTION_REVISION/web/app'
-        - fi
+        - ln -nfs $PROJECT_ROOT/uploads $PROJECT_ROOT/releases/$BUDDY_EXECUTION_REVISION/web/app
         - 'echo "Linking current to revision: $BUDDY_EXECUTION_REVISION"'
         - rm -f current
         - ln -s releases/$BUDDY_EXECUTION_REVISION current
@@ -113,11 +110,11 @@
             username: $USER_NAME
             asset: id_project
       run_as_script: true
-    - action: WP CLI
-      type: WP_CLI
-      version: cli
-      execute_commands:
-        - wp plugin activate --all
-        - wp db migrate
-        - wp cache flush
-        - ''
+    # - action: WP CLI
+    #   type: WP_CLI
+    #   version: cli
+    #   execute_commands:
+    #     - wp plugin activate --all
+    #     - wp db migrate
+    #     - wp cache flush
+    #     - ''

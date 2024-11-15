@@ -19,12 +19,7 @@ const nextConfig = {
 		reactRemoveProperties: { properties: ['^data-test$'] },
 	},
 
-	transpilePackages: [
-		'@spon/hooks',
-		'@spon/tailwind-config',
-		'@spon/ui',
-		'@spon/utils',
-	],
+	transpilePackages: ['@spon/ui/preset'],
 
 	webpack: (config) => {
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
