@@ -1,24 +1,37 @@
 import type { CodegenConfig } from '@graphql-codegen/cli'
+import dotenv from 'dotenv'
 
-// import dotenv from 'dotenv'
+dotenv.config({ path: '.env.local' })
 
-// if (process.env.NODE_ENV !== 'production') {
-// 	dotenv.config({ path: '.env.local' })
-// }
-
-console.log({ schema: process.env.GRAPHQL_ENDPOINT })
+console.log({
+	Authorization: process.env.GRAPHQL_JWT_AUTH_SECRET_KEY!,
+	'API-KEY': process.env.GRAPHQL_API_AUTH_SECRET_KEY!,
+	urL: process.env.GRAPHQL_ENDPOINT,
+})
 
 const config: CodegenConfig = {
 	overwrite: true,
 	hooks: {
 		afterOneFileWrite: ['prettier --write'],
+		// afterOneFileWrite: [
+		// 	'gsed -i -e"s|graphql-request/dist/types.dom|graphql-request/src/types.dom|g"',
+		// ],
 	},
 
-	schema: process.env.GRAPHQL_ENDPOINT,
+	schema: [
+		{
+			[`${process.env.GRAPHQL_ENDPOINT}`]: {
+				headers: {
+					Authorization: process.env.GRAPHQL_JWT_AUTH_SECRET_KEY!,
+					'API-KEY': process.env.GRAPHQL_API_AUTH_SECRET_KEY!,
+				},
+			},
+		},
+	],
 
-	documents: './app/**/*.graphql',
+	documents: 'app/**/*.graphql',
 	generates: {
-		'./app/schema/generated.graphql.ts': {
+		'app/schema/generated.graphql.ts': {
 			plugins: [
 				'typescript',
 				'typescript-operations',

@@ -9,9 +9,7 @@ import { toggleVariants } from '../Toggle/Toggle'
 const ToggleGroupContext = React.createContext<
 	VariantProps<typeof toggleVariants>
 >({
-	size: 'default',
-	variant: 'default',
-	behaviour: 'active',
+	size: 'sm',
 })
 
 export const Root = React.forwardRef<
@@ -21,9 +19,8 @@ export const Root = React.forwardRef<
 >(function Root(
 	{
 		className = 'flex flex-wrap items-center gap-1',
-		variant,
 		size,
-		behaviour,
+
 		children,
 		...props
 	},
@@ -31,7 +28,7 @@ export const Root = React.forwardRef<
 ) {
 	return (
 		<ToggleGroupPrimitive.Root ref={ref} className={className} {...props}>
-			<ToggleGroupContext.Provider value={{ variant, size, behaviour }}>
+			<ToggleGroupContext.Provider value={{ size }}>
 				{children}
 			</ToggleGroupContext.Provider>
 		</ToggleGroupPrimitive.Root>
@@ -42,10 +39,7 @@ export const Item = React.forwardRef<
 	React.ElementRef<typeof ToggleGroupPrimitive.Item>,
 	React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Item> &
 		VariantProps<typeof toggleVariants>
->(function Item(
-	{ className, children, variant, behaviour, size, ...props },
-	ref,
-) {
+>(function Item({ className, children, size, ...props }, ref) {
 	const context = React.useContext(ToggleGroupContext)
 
 	return (
@@ -53,9 +47,7 @@ export const Item = React.forwardRef<
 			ref={ref}
 			className={clsx(
 				toggleVariants({
-					variant: context.variant ?? variant,
 					size: context.size ?? size,
-					behaviour: context.behaviour ?? behaviour,
 				}),
 				className,
 			)}

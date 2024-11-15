@@ -11,12 +11,6 @@ export const Toggle = React.forwardRef<
 	React.ElementRef<typeof TogglePrimitive.Root>,
 	React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root> &
 		VariantProps<typeof buttonVariants>
->(function Toggle({ className, variant, size, behaviour, ...props }, ref) {
-	return (
-		<TogglePrimitive.Root
-			ref={ref}
-			className={buttonVariants({ variant, size, className, behaviour })}
-			{...props}
-		/>
-	)
+>(function Toggle({ className, ...props }, ref) {
+	return <TogglePrimitive.Root ref={ref} className={className} {...props} />
 })
