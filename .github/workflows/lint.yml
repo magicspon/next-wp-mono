@@ -29,6 +29,11 @@ jobs:
       - name: Build requirements
         run: npm run build-panda
 
+      - name: Debug Schema Fetch
+        run: |
+          echo "Attempting to fetch schema from $GRAPHQL_ENDPOINT" 
+          curl -H "Authorization: Bearer $GRAPHQL_API_AUTH_SECRET_KEY" $GRAPHQL_ENDPOINT
+
       - name: Create schema
         run: |
           echo "Using endpoint: $GRAPHQL_ENDPOINT"
