@@ -6,7 +6,7 @@
 
 #### Wordpress (via docker/ddev)
 
-Go to [Bedrock with DDEV](https://roots.io/bedrock/docs/bedrock-with-ddev/) and create a new project.
+Go to [Bedrock with DDEV](https://roots.io/bedrock/docs/bedrock-with-ddev/) and create a new project
 
 1. Install Docker Desktop
 2. Install [DDEV](https://ddev.readthedocs.io/en/stable/)
