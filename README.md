@@ -57,6 +57,11 @@ cp apps/web/env.example apps/web/.env.local
 - Playwright
 - Vitest
 
+### Wordpress Deployment
+
+- Atomic deployments via Buddy works
+- Use composer for wp plugins
+
 ### Structure
 
 ```
