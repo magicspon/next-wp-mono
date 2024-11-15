@@ -14,7 +14,7 @@ Go to [Bedrock with DDEV](https://roots.io/bedrock/docs/bedrock-with-ddev/) and 
 
 #### Frontend
 
-Use `node` version 20 or more.
+Use `node` version 20 or more
 
 ```bash
 mpm install
