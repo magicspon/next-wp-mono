@@ -103,13 +103,6 @@
         - "echo 'Restarting FPM...'; sudo -S service php8.3-fpm reload "
         - '# Restart our long running queue listener process'
         - echo "" | sudo -S supervisorctl restart all
-        - '# replace this with WP CLI commands'
-        - '# Backup the database just in case any migrations or Project Config changes have issues'
-        - '# php craft db/backup'
-        - '# # Run pending migrations, sync project config, and clear caches'
-        - '# php craft clear-caches/all'
-        - '# php craft migrate/all'
-        - '# php craft project-config/apply'
       targets:
         - type: SSH
           id: REMOTE_SSH_HOST
@@ -124,7 +117,6 @@
       type: WP_CLI
       version: cli
       execute_commands:
-        - cd releases/$BUDDY_EXECUTION_REVISION
         - wp plugin activate --all
         - wp db migrate
         - wp cache flush
