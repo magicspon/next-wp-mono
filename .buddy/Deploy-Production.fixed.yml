@@ -124,7 +124,6 @@
       type: WP_CLI
       version: cli
       execute_commands:
-        - cd current
         - wp plugin activate --all
         - wp db migrate
         - wp cache flush
