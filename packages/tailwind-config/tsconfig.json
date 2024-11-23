@@ -1,8 +1,0 @@
-{
-	"extends": "@spon/typescript-config/base.json",
-	"compilerOptions": {
-		"outDir": "dist"
-	},
-	"include": ["**/*.js", "**/*.ts", "**/*.tsx"],
-	"exclude": ["node_modules", "dist"]
-}
