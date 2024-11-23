@@ -3,121 +3,6 @@
     "title": "Page",
     "fields": [
         {
-            "key": "field_6741df6c71730",
-            "label": "Teaser",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "graphql_field_name": "teaser",
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_6741df9271731",
-            "label": "Teaser",
-            "name": "teaser",
-            "aria-label": "",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "show_in_graphql": 1,
-            "graphql_description": "",
-            "graphql_field_name": "teaser",
-            "graphql_non_null": 0,
-            "sub_fields": [
-                {
-                    "key": "field_6741e13fd5896",
-                    "label": "Title",
-                    "name": "title",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "show_in_graphql": 1,
-                    "graphql_description": "",
-                    "graphql_field_name": "title",
-                    "graphql_non_null": 0
-                },
-                {
-                    "key": "field_6741e157d5897",
-                    "label": "Call to action",
-                    "name": "cta",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "Find out more",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "Find out more",
-                    "prepend": "",
-                    "append": "",
-                    "show_in_graphql": 1,
-                    "graphql_description": "",
-                    "graphql_field_name": "callToAction",
-                    "graphql_non_null": 0
-                },
-                {
-                    "key": "field_6741dfa471732",
-                    "label": "Props",
-                    "name": "props",
-                    "aria-label": "",
-                    "type": "clone",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "graphql_field_name": "props",
-                    "clone": [
-                        "field_672f6bb27314c",
-                        "field_672a118ba89b0"
-                    ],
-                    "display": "seamless",
-                    "layout": "block",
-                    "prefix_label": 0,
-                    "prefix_name": 0
-                }
-            ]
-        },
-        {
             "key": "field_6741e03453e0d",
             "label": "Hero",
             "name": "",
@@ -507,6 +392,121 @@
             "graphql_description": "",
             "graphql_field_name": "structure",
             "graphql_non_null": 0
+        },
+        {
+            "key": "field_6741df6c71730",
+            "label": "Teaser",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "graphql_field_name": "teaser",
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6741df9271731",
+            "label": "Teaser",
+            "name": "teaser",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "teaser",
+            "graphql_non_null": 0,
+            "sub_fields": [
+                {
+                    "key": "field_6741e13fd5896",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "show_in_graphql": 1,
+                    "graphql_description": "",
+                    "graphql_field_name": "title",
+                    "graphql_non_null": 0
+                },
+                {
+                    "key": "field_6741e157d5897",
+                    "label": "Call to action",
+                    "name": "cta",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Find out more",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "Find out more",
+                    "prepend": "",
+                    "append": "",
+                    "show_in_graphql": 1,
+                    "graphql_description": "",
+                    "graphql_field_name": "callToAction",
+                    "graphql_non_null": 0
+                },
+                {
+                    "key": "field_6741dfa471732",
+                    "label": "Props",
+                    "name": "props",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "graphql_field_name": "props",
+                    "clone": [
+                        "field_672f6bb27314c",
+                        "field_672a118ba89b0"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                }
+            ]
         }
     ],
     "location": [
@@ -540,5 +540,5 @@
     "graphql_field_name": "base",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1732371180
+    "modified": 1732374357
 }

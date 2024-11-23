@@ -28,18 +28,15 @@
         - echo "memory_limit=-1" >> /usr/local/etc/php/conf.d/buddy.ini
         - apt-get update && apt-get install -y git zip
         - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-        - ''
         - '# php ext gd'
         - apt-get install -y libfreetype6-dev
         - apt-get install -y libjpeg62-turbo-dev
         - apt-get install -y libpng-dev
         - docker-php-ext-configure gd --with-freetype --with-jpeg
         - docker-php-ext-install gd
-        - ''
         - '# php ext pdo_mysql'
         - docker-php-ext-configure pdo_mysql --with-pdo-mysql
         - docker-php-ext-install pdo_mysql
-        - ''
         - '# php ext zip'
         - apt-get install -y zip
         - apt-get install -y unzip
@@ -114,5 +111,20 @@
       type: WP_CLI
       version: cli
       execute_commands:
-        - cd apps/cms
-        - wp --info
+        - '# Clear all caches and flush rewrites'
+        - wp cache flush
+        - wp rewrite flush
+        - '# Update database if needed'
+        - wp core update-db
+        - '# Deactivate then reactivate all plugins'
+        - wp plugin activate --all
+        - '# Sync ACF fields from JSON'
+        - wp acf sync
+        - '# Clear all transients'
+        - wp transient delete --all
+        - '# Update permalink structure'
+        - wp rewrite structure '/%postname%/'
+        - wp rewrite flush
+        - '# Verify integrity'
+        - wp core verify-checksums
+        - wp plugin verify-checksums --all
