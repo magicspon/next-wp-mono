@@ -52,6 +52,7 @@ const { Page, generateMetadata } = createPage({
 				return {
 					__template: info.template,
 					page: page,
+					posts: data.posts,
 					seo,
 				}
 			}
@@ -171,7 +172,17 @@ const { Page, generateMetadata } = createPage({
 					const { hero, structure } = parse<PageFragment['base']>(
 						data.page?.base,
 					)
-					return <HomePage hero={hero} structure={parseContent(structure)} />
+
+					const posts = data.posts?.edges.map((n) =>
+						parse<TeaserPostFragment>(n.node),
+					)
+					return (
+						<HomePage
+							hero={hero}
+							structure={parseContent(structure)}
+							posts={posts}
+						/>
+					)
 				}
 
 				default: {

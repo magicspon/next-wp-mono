@@ -10,4 +10,13 @@ query HomePageQuery(
 			...Seo
 		}
 	}
+
+	posts(first: 3) {
+		edges {
+			node {
+				...TeaserPost
+			}
+			cursor
+		}
+	}
 }
