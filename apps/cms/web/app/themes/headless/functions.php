@@ -326,3 +326,106 @@ function add_custom_page_templates($templates) {
     return $templates;
 }
 add_filter('theme_page_templates', 'add_custom_page_templates');
+
+
+
+/**
+ * Fix WPGraphQL URI query for Posts page
+ */
+add_filter('wpgraphql_post_object_connection_query_args', function($query_args, $source, $args, $context, $info) {
+    // Check if we're querying pages
+    if (empty($args['where']['uri'])) {
+        return $query_args;
+    }
+
+    // Get the posts page ID
+    $posts_page_id = get_option('page_for_posts');
+    
+    // If there's no posts page set, return original args
+    if (!$posts_page_id) {
+        return $query_args;
+    }
+
+    // Get the posts page
+    $posts_page = get_post($posts_page_id);
+    
+    // If the requested URI matches the posts page URI
+    if ($posts_page && $args['where']['uri'] === str_replace(home_url(), '', get_permalink($posts_page))) {
+        // Modify query to find by ID instead
+        unset($query_args['name']);
+        unset($query_args['pagename']);
+        $query_args['p'] = $posts_page_id;
+        $query_args['post_type'] = 'page';
+    }
+
+    return $query_args;
+}, 10, 5);
+
+/**
+ * Fix URI in WPGraphQL response for Posts page
+ */
+add_filter('graphql_return_field_from_model', function($result, $source, $field_name) {
+    if ($field_name !== 'uri' || !isset($source->ID)) {
+        return $result;
+    }
+
+    // Check if this is the posts page
+    $posts_page_id = get_option('page_for_posts');
+    if ($source->ID === $posts_page_id) {
+        // Return the correct URI for the posts page
+        return str_replace(home_url(), '', get_permalink($posts_page_id));
+    }
+
+    return $result;
+}, 10, 3);
+
+
+/**
+ * Fix WPGraphQL URI query for Posts page
+ */
+add_filter('wpgraphql_post_object_connection_query_args', function($query_args, $source, $args, $context, $info) {
+    // Check if we're querying pages
+    if (empty($args['where']['uri'])) {
+        return $query_args;
+    }
+
+    // Get the posts page ID
+    $posts_page_id = get_option('page_for_posts');
+    
+    // If there's no posts page set, return original args
+    if (!$posts_page_id) {
+        return $query_args;
+    }
+
+    // Get the posts page
+    $posts_page = get_post($posts_page_id);
+    
+    // If the requested URI matches the posts page URI
+    if ($posts_page && $args['where']['uri'] === str_replace(home_url(), '', get_permalink($posts_page))) {
+        // Modify query to find by ID instead
+        unset($query_args['name']);
+        unset($query_args['pagename']);
+        $query_args['p'] = $posts_page_id;
+        $query_args['post_type'] = 'page';
+    }
+
+    return $query_args;
+}, 10, 5);
+
+/**
+ * Fix URI in WPGraphQL response for Posts page
+ */
+add_filter('graphql_return_field_from_model', function($result, $source, $field_name) {
+    if ($field_name !== 'uri' || !isset($source->ID)) {
+        return $result;
+    }
+
+    // Check if this is the posts page
+    $posts_page_id = get_option('page_for_posts');
+    if ($source->ID === $posts_page_id) {
+        // Return the correct URI for the posts page
+        return str_replace(home_url(), '', get_permalink($posts_page_id));
+    }
+
+    return $result;
+}, 10, 3);

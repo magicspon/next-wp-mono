@@ -1,6 +1,66 @@
+fragment BlogTeaserText on BlogTeaserBlocksTextLayout {
+	text
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+
+fragment BlogTeaserMarkdown on BlogTeaserBlocksMarkdownLayout {
+	markdown: textLines
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+
+fragment BlogTeaserBody on BlogTeaserBlocksBodyLayout {
+	body
+	style: bodyStyle {
+		textSizes {
+			...TextPanelBlockBodyTextSize
+		}
+
+		box {
+			...TextPanelBlocksBodyStyleBox
+		}
+	}
+}
+
+fragment BlogTeaserButtons on BlogTeaserBlocksButtonsLayout {
+	buttons {
+		...Buttons
+	}
+}
+
+fragment BlogTeaserInlineImage on BlogTeaserBlocksImageLayout {
+	image {
+		asset {
+			...MediaItem
+		}
+		style {
+			box {
+				...ImageBoxStyle
+			}
+		}
+	}
+}
+
+# fragment BlogeaserImage on BlogTeaserImage {
+# 	asset {
+# 		...MediaItem
+# 	}
+# 	style {
+# 		box {
+# 			...ImageBoxStyle
+# 		}
+# 	}
+# }
+
 fragment Post on Post {
-	content
 	title
+
+	blog {
+		__typename
+	}
 
 	seo {
 		...Seo
@@ -8,36 +68,81 @@ fragment Post on Post {
 }
 
 query PostQuery($id: ID!) {
-	post(id: $id, idType: SLUG) {
+	post(id: $id, idType: URI) {
+		__typename
 		...Post
 	}
+}
+
+fragment BlogTeaserImage on BlogTeaserImage {
+	asset {
+		...MediaItem
+	}
+	style {
+		box {
+			...ImageBoxStyle
+		}
+	}
+}
+
+fragment PostTeaserContent on BlogTeaser {
+	blocks {
+		__typename
+		...BlogTeaserText
+		...BlogTeaserMarkdown
+		...BlogTeaserBody
+		...BlogTeaserButtons
+		...BlogTeaserInlineImage
+	}
+	image {
+		...BlogTeaserImage
+	}
+	cta: callToAction
 }
 
 fragment TeaserPost on Post {
 	title
 	slug
 	id
+	slug
+	blog {
+		teaser {
+			...PostTeaserContent
+		}
+	}
 }
 
 fragment BlogPage on Page {
-	content
 	title
+	...Page
 
 	seo {
 		...Seo
 	}
 }
 
-query PostsQuery($first: Int = 10) {
+query PostsQuery($first: Int = 10, $id: ID! = 15) {
 	posts(first: $first) {
 		edges {
 			node {
 				...TeaserPost
 			}
+			cursor
 		}
 	}
 
-	page(id: "blog", idType: URI) {
+	page(id: $id, idType: DATABASE_ID) {
 		...BlogPage
+	}
+}
+
+query PostsQueryPagination($first: Int = 10, $after: String!) {
+	posts(first: $first, after: $after) {
+		edges {
+			node {
+				...TeaserPost
+			}
+			cursor
+		}
 	}
 }

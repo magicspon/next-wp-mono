@@ -1,11 +1,10 @@
-fragment HomePage on Page {
-	content
-	title
-}
-
-query HomePageQuery {
-	page: page(id: "__home__", idType: URI) {
-		...HomePage
+query HomePageQuery(
+	$id: ID!
+	$idType: PageIdType!
+	$asPreview: Boolean = false
+) {
+	page(id: $id, idType: $idType, asPreview: $asPreview) {
+		...Page
 
 		seo {
 			...Seo

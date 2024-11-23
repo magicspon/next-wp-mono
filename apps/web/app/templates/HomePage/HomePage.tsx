@@ -1,10 +1,24 @@
 import * as React from 'react'
-import type { HomePageFragment } from '~/schema/generated.graphql'
+import { Hero } from '~/components/hero'
+import { Structure } from '~/components/structure'
+import type { PageFragment } from '~/schema/generated.graphql'
+import type { StructureProps } from '~/utils/parseContent'
+import type { WithPT } from '~/utils/portable/htmlToPortableText'
 
-export function HomePage({ content, title }: HomePageFragment) {
+type BaseInputProps = Pick<PageFragment, 'base'>
+
+type HeroContent = WithPT<BaseInputProps['base']['hero']>
+
+type BaseProps = {
+	hero: HeroContent
+	structure: StructureProps
+}
+
+export function HomePage({ hero, structure }: BaseProps) {
 	return (
-		<div>
-			<pre>{JSON.stringify({ content, title }, null, 2)}</pre>
-		</div>
+		<>
+			<Hero content={hero} />
+			<Structure structure={structure} />
+		</>
 	)
 }

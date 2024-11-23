@@ -3,12 +3,10 @@ import Link from 'next/link'
 import * as React from 'react'
 import { Button } from '@spon/ui/primitives/Button'
 import { Text } from '@spon/ui/type/Text'
-import type {
-	TeaserFragment,
-	TeaserPageFragment,
-} from '~/schema/generated.graphql'
+import type { TeaserPostFragment } from '~/schema/generated.graphql'
 import { parseImageProps } from '~/utils/imageProps'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
+import * as uri from '~/utils/urls'
 import { BlockBody } from '../blocks/BlockBody'
 import { BlockButtons } from '../blocks/BlockButtons'
 import { BlockMarkdown } from '../blocks/BlockMarkdown'
@@ -16,28 +14,32 @@ import { BlockText } from '../blocks/BlockText'
 
 type TElementProps = React.ComponentProps<'div'>
 
-type TListPageItemProps = TElementProps &
-	Omit<TeaserPageFragment, 'base' | 'id'> & {
-		teaser: WithPT<TeaserFragment>
-	}
+type TBlogPostTeaserProps = TElementProps & {
+	post: WithPT<TeaserPostFragment>
+}
 
-export function ListPageItem({ title, teaser, uri }: TListPageItemProps) {
-	const image = teaser.image
+export function BlogPostTeaser({ post }: TBlogPostTeaserProps) {
+	const { title, slug, blog } = post
 
+	const { teaser } = blog
 	return (
-		<div data-testid="ListPageItem">
-			<div>{image && <Image {...parseImageProps(image.asset)} />}</div>
-			<div data-testid="RichText">
-				<Text>{teaser.title ?? title}</Text>
+		<div data-testid="BlogPostTeaser">
+			<div>
+				{teaser.image?.asset && (
+					<Image {...parseImageProps(teaser.image.asset)} />
+				)}
+			</div>
+			<div data-testid="Post">
+				<Text>{title}</Text>
 				{teaser.blocks?.map((block, index) => {
 					switch (block.__typename) {
-						case 'BaseTeaserBlocksBodyLayout':
+						case 'BlogTeaserBlocksBodyLayout':
 							return (
 								<BlockBody body={block.body} style={block.style} key={index} />
 							)
-						case 'BaseTeaserBlocksButtonsLayout':
+						case 'BlogTeaserBlocksButtonsLayout':
 							return <BlockButtons {...block} key={index} />
-						case 'BaseTeaserBlocksMarkdownLayout':
+						case 'BlogTeaserBlocksMarkdownLayout':
 							return (
 								<BlockMarkdown
 									markdown={block.markdown}
@@ -45,7 +47,7 @@ export function ListPageItem({ title, teaser, uri }: TListPageItemProps) {
 									key={index}
 								/>
 							)
-						case 'BaseTeaserBlocksTextLayout':
+						case 'BlogTeaserBlocksTextLayout':
 							return (
 								<BlockText text={block.text} style={block.style} key={index} />
 							)
@@ -55,7 +57,7 @@ export function ListPageItem({ title, teaser, uri }: TListPageItemProps) {
 					}
 				})}
 				<Button asChild>
-					<Link href={uri}>{teaser.cta ?? 'Read more'}</Link>
+					<Link href={uri.blog(slug)}>{teaser.cta ?? 'Read more'}</Link>
 				</Button>
 			</div>
 		</div>

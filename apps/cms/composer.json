@@ -52,7 +52,6 @@
 		"roots/wordpress": "6.6.2",
 		"roots/wp-config": "1.0.0",
 		"roots/wp-password-bcrypt": "1.1.0",
-		"wpackagist-theme/twentytwentyfour": "^1.0",
 		"wp-graphql/wp-graphql": "^1.29",
 		"wp-graphql/wp-graphql-jwt-authentication": "^0.7.0",
 		"wpackagist-plugin/classic-editor": "^1.6",

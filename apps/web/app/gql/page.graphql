@@ -19,6 +19,7 @@ fragment Base on Base {
 }
 
 fragment Page on Page {
+	__typename
 	content
 	title
 	status
@@ -32,7 +33,19 @@ fragment Page on Page {
 query PageQuery($id: ID!, $idType: PageIdType!, $asPreview: Boolean = false) {
 	page(id: $id, idType: $idType, asPreview: $asPreview) {
 		...Page
+		__typename
 
+		seo {
+			...Seo
+		}
+	}
+}
+
+fragment PostsPageFragment on Page {
+	...Page
+	__typename
+
+	... on Page {
 		seo {
 			...Seo
 		}
@@ -58,6 +71,7 @@ query ListingQuery(
 ) {
 	page(id: $id, idType: $idType, asPreview: $asPreview) {
 		...Page
+		__typename
 
 		seo {
 			...Seo
