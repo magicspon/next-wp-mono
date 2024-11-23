@@ -13,7 +13,7 @@ query PostQuery($id: ID!) {
 	}
 }
 
-fragment Teaser on Post {
+fragment TeaserPost on Post {
 	title
 	slug
 	id
@@ -32,7 +32,7 @@ query PostsQuery($first: Int = 10) {
 	posts(first: $first) {
 		edges {
 			node {
-				...Teaser
+				...TeaserPost
 			}
 		}
 	}

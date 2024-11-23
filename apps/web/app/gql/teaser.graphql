@@ -1,0 +1,72 @@
+fragment TeaserText on BaseTeaserBlocksTextLayout {
+	text
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+
+fragment TeaserMarkdown on BaseTeaserBlocksMarkdownLayout {
+	markdown: textLines
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+
+fragment TeaserBody on BaseTeaserBlocksBodyLayout {
+	body
+	style: bodyStyle {
+		textSizes {
+			...TextPanelBlockBodyTextSize
+		}
+
+		box {
+			...TextPanelBlocksBodyStyleBox
+		}
+	}
+}
+
+fragment TeaserButtons on BaseTeaserBlocksButtonsLayout {
+	buttons {
+		...Buttons
+	}
+}
+
+fragment TeaserInlineImage on BaseTeaserBlocksImageLayout {
+	image {
+		asset {
+			...MediaItem
+		}
+		style {
+			box {
+				...ImageBoxStyle
+			}
+		}
+	}
+}
+
+fragment TeaserImage on BaseTeaserImage {
+	asset {
+		...MediaItem
+	}
+	style {
+		box {
+			...ImageBoxStyle
+		}
+	}
+}
+
+fragment Teaser on BaseTeaser {
+	title
+	blocks {
+		__typename
+		...TeaserText
+		...TeaserMarkdown
+		...TeaserBody
+		...TeaserButtons
+		...TeaserInlineImage
+	}
+	image {
+		...TeaserImage
+	}
+	cta: callToAction
+}

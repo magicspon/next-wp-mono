@@ -312,3 +312,17 @@ function remove_alignment_buttons_acf($toolbars) {
 add_filter('acf/fields/wysiwyg/toolbars', 'remove_alignment_buttons_acf');
 
 
+
+/**
+ * Add custom page templates
+ */
+function add_custom_page_templates($templates) {
+    // Template 1: Full Width No Sidebar
+    $templates['listing'] = 'Listing';
+    
+    // Template 2: Landing Page
+    $templates['legal'] = 'Legal';
+    
+    return $templates;
+}
+add_filter('theme_page_templates', 'add_custom_page_templates');

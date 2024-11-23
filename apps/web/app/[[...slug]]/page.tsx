@@ -2,8 +2,14 @@ import { notFound } from 'next/navigation'
 import * as React from 'react'
 import { z } from 'zod'
 import { createClient } from '~/lib/gqlClient'
-import type { PageFragment, PageIdType } from '~/schema/generated.graphql'
+import type {
+	ContentNodeIdTypeEnum,
+	PageFragment,
+	PageIdType,
+	TeaserPageFragment,
+} from '~/schema/generated.graphql'
 import { LandingPage } from '~/templates/LandingPage'
+import { ListPage } from '~/templates/ListPage'
 import { createPage } from '~/utils/createPage'
 import { parseContent } from '~/utils/parseContent'
 import { parse } from '~/utils/portable/htmlToPortableText'
@@ -20,22 +26,54 @@ const { Page, generateMetadata } = createPage({
 	loader: async ({ params }) => {
 		const slug = createUri(params.slug)
 		const isPreview = slug.includes(PREVIEW_SLUG)
-		const data = await createClient(isPreview).PageQuery({
+		const client = createClient(isPreview)
+
+		const { contentNode } = await client.ContentInfo({
+			slug: isPreview ? slug.split(`${PREVIEW_SLUG}/`)[1]! : slug,
+			idType: (isPreview ? 'DATABASE_ID' : 'URI') as ContentNodeIdTypeEnum,
+		})
+
+		const queryVars = {
 			id: isPreview ? slug.split(`${PREVIEW_SLUG}/`)[1]! : slug,
 			idType: (isPreview ? 'DATABASE_ID' : 'URI') as PageIdType,
 			asPreview: isPreview,
-		})
+		} as const
 
-		if (!data.page) {
-			notFound()
-		}
+		switch (contentNode.template.templateName) {
+			case 'Listing': {
+				const data = await client.ListingQuery({
+					...queryVars,
+					parent: String(contentNode.databaseId),
+				})
+				if (!data.page) {
+					notFound()
+				}
 
-		const { seo, ...page } = data.page
+				const { seo, ...page } = data.page
+				return {
+					__template: 'listing' as const,
+					page: page,
+					pages: data.pages,
+					seo,
+					isPreview,
+				}
+			}
 
-		return {
-			page: page,
-			seo,
-			isPreview,
+			default: {
+				const data = await client.PageQuery(queryVars)
+
+				if (!data.page) {
+					notFound()
+				}
+
+				const { seo, ...page } = data.page
+				return {
+					__template: 'default' as const,
+					page: page,
+					seo,
+					isPreview,
+				}
+			}
 		}
 	},
 	// metadata: async ({ data }) => {
@@ -61,8 +99,25 @@ const { Page, generateMetadata } = createPage({
 	// },
 	component: async ({ data }) => {
 		const { hero, structure } = parse<PageFragment['base']>(data.page?.base)
+		switch (data.__template) {
+			case 'listing': {
+				const pages = data.pages.edges.map((n) =>
+					parse<TeaserPageFragment>(n.node),
+				)
 
-		return <LandingPage hero={hero} structure={parseContent(structure)} />
+				return (
+					<ListPage
+						hero={hero}
+						structure={parseContent(structure)}
+						pages={pages}
+					/>
+				)
+			}
+
+			default: {
+				return <LandingPage hero={hero} structure={parseContent(structure)} />
+			}
+		}
 	},
 })
 

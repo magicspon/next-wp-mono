@@ -38,3 +38,37 @@ query PageQuery($id: ID!, $idType: PageIdType!, $asPreview: Boolean = false) {
 		}
 	}
 }
+
+fragment TeaserPage on Page {
+	id
+	title
+	uri
+	base {
+		teaser {
+			...Teaser
+		}
+	}
+}
+
+query ListingQuery(
+	$id: ID!
+	$idType: PageIdType!
+	$asPreview: Boolean = false
+	$parent: ID!
+) {
+	page(id: $id, idType: $idType, asPreview: $asPreview) {
+		...Page
+
+		seo {
+			...Seo
+		}
+	}
+
+	pages(where: { parent: $parent }) {
+		edges {
+			node {
+				...TeaserPage
+			}
+		}
+	}
+}
