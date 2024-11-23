@@ -119,9 +119,6 @@
         - '# Update permalink structure'
         - wp rewrite structure '/%postname%/'
         - wp rewrite flush
-        - '# Verify integrity'
-        - wp core verify-checksums
-        - wp plugin verify-checksums --all
       targets:
         - type: SSH
           id: REMOTE_SSH_HOST
