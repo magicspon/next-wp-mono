@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { PostFeed } from '~/components/BlogFeed'
+import { PostFeed } from '~/components/blog/BlogFeed'
 import { Hero } from '~/components/hero'
 import { Structure } from '~/components/structure'
 import type {

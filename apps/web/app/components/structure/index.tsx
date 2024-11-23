@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Slice } from '~/components/Slice'
 import type { StructureProps } from '~/utils/parseContent'
+import { Slice } from './Slice'
 import { StructureMixedColumns } from './StructureMixedColumns'
 import { StructureText } from './StructureText'
 import { StructureTextColumns } from './StructureTextColumns'

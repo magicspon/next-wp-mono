@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Grid } from '@spon/ui/layout/Grid'
-import { BlogPostTeaser } from '~/components/BlogPostTeaser'
+import { BlogPostTeaser } from '~/components/blog/BlogPostTeaser'
 import { Hero } from '~/components/hero'
 import { Structure } from '~/components/structure'
 import type {

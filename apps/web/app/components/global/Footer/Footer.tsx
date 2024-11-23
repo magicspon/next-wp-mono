@@ -32,7 +32,6 @@ export function Footer({ menu }: TFooterProps) {
 						key={node.id}
 						className={css({
 							p: 2,
-							'&[data-state=closed]': { opacity: '0' },
 						})}
 						href={node.uri}
 					>

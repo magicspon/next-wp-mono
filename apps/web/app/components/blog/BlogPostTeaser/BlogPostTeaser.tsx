@@ -3,14 +3,14 @@ import Link from 'next/link'
 import * as React from 'react'
 import { Button } from '@spon/ui/primitives/Button'
 import { Text } from '@spon/ui/type/Text'
+import { BlockBody } from '~/components/blocks/BlockBody'
+import { BlockButtons } from '~/components/blocks/BlockButtons'
+import { BlockMarkdown } from '~/components/blocks/BlockMarkdown'
+import { BlockText } from '~/components/blocks/BlockText'
 import type { TeaserPostFragment } from '~/schema/generated.graphql'
 import { parseImageProps } from '~/utils/imageProps'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
 import * as uri from '~/utils/urls'
-import { BlockBody } from '../blocks/BlockBody'
-import { BlockButtons } from '../blocks/BlockButtons'
-import { BlockMarkdown } from '../blocks/BlockMarkdown'
-import { BlockText } from '../blocks/BlockText'
 
 type TElementProps = React.ComponentProps<'div'>
 
