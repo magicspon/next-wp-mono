@@ -2,7 +2,7 @@
 [![Units Tests](https://github.com/magicspon/sponanity/actions/workflows/test.yml/badge.svg)](https://github.com/magicspon/sponanity/actions/workflows/test.yml)
 [![Lint & Typecheck](https://github.com/magicspon/sponanity/actions/workflows/lint.yml/badge.svg)](https://github.com/magicspon/sponanity/actions/workflows/lint.yml)
 
-# W[Pon]press
+# W[Pon]press.
 
 #### Wordpress (via docker/ddev)
 
