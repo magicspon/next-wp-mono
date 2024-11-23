@@ -20,6 +20,12 @@ query GlobalSettings {
 	menu(id: "Main Menu", idType: NAME) {
 		...Menu
 	}
+	mobileMenu: menu(id: "Mobile", idType: NAME) {
+		...Menu
+	}
+	footerMenu: menu(id: "Footer", idType: NAME) {
+		...Menu
+	}
 
 	seo {
 		meta {
