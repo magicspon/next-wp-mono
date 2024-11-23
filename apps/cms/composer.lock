@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa5bf6c6d51cdaa52e81aec7c656a11c",
+    "content-hash": "d7c33f22cbacde9ec6c0fcd34e3c27f3",
     "packages": [
         {
             "name": "appsero/client",
@@ -1666,6 +1666,46 @@
                 }
             ],
             "time": "2023-07-05T14:23:37+00:00"
+        },
+        {
+            "name": "woody-wordpress/woody-acf-sync",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/woody-wordpress/woody-acf-sync.git",
+                "reference": "b3d21f254a50b5bbff80ecc1058e6d4c0d14bd6b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/woody-wordpress/woody-acf-sync/zipball/b3d21f254a50b5bbff80ecc1058e6d4c0d14bd6b",
+                "reference": "b3d21f254a50b5bbff80ecc1058e6d4c0d14bd6b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "type": "wordpress-plugin",
+            "autoload": {
+                "files": [
+                    "woody-acf-sync.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Léo POIROUX",
+                    "email": "leo@raccourci.fr"
+                }
+            ],
+            "description": "A WP CLI command to synchronize ACF fields",
+            "support": {
+                "issues": "https://github.com/woody-wordpress/woody-acf-sync/issues",
+                "source": "https://github.com/woody-wordpress/woody-acf-sync/tree/1.4.1"
+            },
+            "time": "2022-06-07T15:40:31+00:00"
         },
         {
             "name": "wp-graphql/wp-graphql",

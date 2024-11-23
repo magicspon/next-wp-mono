@@ -59,7 +59,8 @@
 		"wpackagist-plugin/wordpress-seo": "^23.7",
 		"ashhitch/wp-graphql-yoast-seo": "^4.22",
 		"wpengine/advanced-custom-fields-pro": "^6.3",
-		"wp-graphql/wpgraphql-acf": "^2.4"
+		"wp-graphql/wpgraphql-acf": "^2.4",
+		"woody-wordpress/woody-acf-sync": "^1.4"
 	},
 	"require-dev": {
 		"squizlabs/php_codesniffer": "^3.7.1",
