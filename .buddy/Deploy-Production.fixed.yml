@@ -27,7 +27,9 @@
       setup_commands:
         - echo "memory_limit=-1" >> /usr/local/etc/php/conf.d/buddy.ini
         - apt-get update && apt-get install -y git zip
-        - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+        - >-
+          curl -sS https://getcomposer.org/installer | php --
+          --install-dir=/usr/local/bin --filename=composer
         - '# php ext gd'
         - apt-get install -y libfreetype6-dev
         - apt-get install -y libjpeg62-turbo-dev
@@ -60,7 +62,9 @@
     - action: Atomic deployment
       type: SSH_COMMAND
       commands:
-        - 'if [ -d "releases/$BUDDY_EXECUTION_REVISION" ] && [ "$BUDDY_EXECUTION_REFRESH" = "true" ];'
+        - >-
+          if [ -d "releases/$BUDDY_EXECUTION_REVISION" ] && [
+          "$BUDDY_EXECUTION_REFRESH" = "true" ];
         - then
         - ' echo "Removing: releases/$BUDDY_EXECUTION_REVISION"'
         - ' rm -rf releases/$BUDDY_EXECUTION_REVISION;'
@@ -73,8 +77,12 @@
         - 'echo "Creating: persistent directories"'
         - mkdir -p uploads
         - 'echo "Symlinking: persistent files & directories"'
-        - ln -nfs $PROJECT_ROOT/.env $PROJECT_ROOT/releases/$BUDDY_EXECUTION_REVISION
-        - ln -nfs $PROJECT_ROOT/uploads $PROJECT_ROOT/releases/$BUDDY_EXECUTION_REVISION/web/app
+        - >-
+          ln -nfs $PROJECT_ROOT/.env
+          $PROJECT_ROOT/releases/$BUDDY_EXECUTION_REVISION
+        - >-
+          ln -nfs $PROJECT_ROOT/uploads
+          $PROJECT_ROOT/releases/$BUDDY_EXECUTION_REVISION/web/app
         - 'echo "Linking current to revision: $BUDDY_EXECUTION_REVISION"'
         - rm -f current
         - ln -s releases/$BUDDY_EXECUTION_REVISION current
@@ -97,20 +105,6 @@
         - "echo 'Restarting FPM...'; sudo -S service php8.3-fpm reload "
         - '# Restart our long running queue listener process'
         - echo "" | sudo -S supervisorctl restart all
-      targets:
-        - type: SSH
-          id: REMOTE_SSH_HOST
-          host: $IP_ADDRESS
-          path: $PROJECT_ROOT/current
-          auth:
-            method: ASSETS_KEY
-            username: $USER_NAME
-            asset: id_project
-      run_as_script: true
-    - action: wp --info
-      type: WP_CLI
-      version: cli
-      execute_commands:
         - '# Clear all caches and flush rewrites'
         - wp cache flush
         - wp rewrite flush
@@ -128,3 +122,13 @@
         - '# Verify integrity'
         - wp core verify-checksums
         - wp plugin verify-checksums --all
+      targets:
+        - type: SSH
+          id: REMOTE_SSH_HOST
+          host: $IP_ADDRESS
+          path: $PROJECT_ROOT/current
+          auth:
+            method: ASSETS_KEY
+            username: $USER_NAME
+            asset: id_project
+      run_as_script: true
