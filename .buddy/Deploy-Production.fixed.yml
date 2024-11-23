@@ -114,5 +114,5 @@
       type: WP_CLI
       version: cli
       execute_commands:
-        - cd current
+        - cd apps/cms
         - wp --info
