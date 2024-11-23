@@ -110,11 +110,9 @@
             username: $USER_NAME
             asset: id_project
       run_as_script: true
-    # - action: WP CLI
-    #   type: WP_CLI
-    #   version: cli
-    #   execute_commands:
-    #     - wp plugin activate --all
-    #     - wp db migrate
-    #     - wp cache flush
-    #     - ''
+    - action: wp --info
+      type: WP_CLI
+      version: cli
+      execute_commands:
+        - cd current
+        - wp --info
