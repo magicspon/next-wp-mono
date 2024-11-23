@@ -100,6 +100,20 @@
         - "echo 'Restarting FPM...'; sudo -S service php8.3-fpm reload "
         - '# Restart our long running queue listener process'
         - echo "" | sudo -S supervisorctl restart all
+        - '# Clear all caches and flush rewrites'
+        - wp cache flush
+        - wp rewrite flush
+        - '# Update database if needed'
+        - wp core update-db
+        - '# Deactivate then reactivate all plugins'
+        - wp plugin activate --all
+        - '# Sync ACF fields from JSON'
+        - wp acf sync
+        - '# Clear all transients'
+        - wp transient delete --all
+        - '# Update permalink structure'
+        - wp rewrite structure '/%postname%/'
+        - wp rewrite flush
       targets:
         - type: SSH
           id: REMOTE_SSH_HOST
@@ -110,11 +124,3 @@
             username: $USER_NAME
             asset: id_project
       run_as_script: true
-    - action: WP CLI
-      type: WP_CLI
-      version: cli
-      execute_commands:
-        - wp plugin activate --all
-        - wp db migrate
-        - wp cache flush
-        - ''
