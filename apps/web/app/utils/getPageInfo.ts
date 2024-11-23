@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation'
-import { WP_BLOG_PREFIX } from '~/config'
 import { createClient } from '~/lib/gqlClient'
 import type { ContentNodeIdTypeEnum } from '~/schema/generated.graphql'
 
@@ -15,12 +14,10 @@ export async function getPageInfo({
 	queryVar: string
 }) {
 	try {
-		const client = createClient(isPreview)
-
-		const { contentNode, nodeByUri } = await client.ContentInfo({
-			slug: queryVar.includes(WP_BLOG_PREFIX)
-				? queryVar.split('/').at(-1)!
-				: queryVar,
+		const { contentNode, nodeByUri } = await createClient(
+			isPreview,
+		).ContentInfo({
+			slug: queryVar,
 			uri: queryVar,
 			idType: (isPreview ? 'DATABASE_ID' : 'URI') as ContentNodeIdTypeEnum,
 		})

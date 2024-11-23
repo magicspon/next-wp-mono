@@ -18,11 +18,14 @@ export function Structure({ structure }: BaseProps) {
 						<React.Fragment key={`${block.__typename}-${k}`}>
 							{(() => {
 								switch (block.__typename) {
+									case 'BlogStructureTextLayout':
 									case 'BaseStructureTextLayout':
 										return <StructureText {...block} />
 									case 'BaseStructureTextColumnsLayout':
+									case 'BlogStructureTextColumnsLayout':
 										return <StructureTextColumns {...block} />
 									case 'BaseStructureMixedColumnsLayout':
+									case 'BlogStructureMixedColumnsLayout':
 										return <StructureMixedColumns {...block} />
 									default:
 										return null

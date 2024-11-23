@@ -44,22 +44,19 @@ fragment BlogTeaserInlineImage on BlogTeaserBlocksImageLayout {
 	}
 }
 
-# fragment BlogeaserImage on BlogTeaserImage {
-# 	asset {
-# 		...MediaItem
-# 	}
-# 	style {
-# 		box {
-# 			...ImageBoxStyle
-# 		}
-# 	}
-# }
-
 fragment Post on Post {
 	title
 
 	blog {
 		__typename
+		structure {
+			__typename
+
+			...BlogTextStructure
+			...BlogTextColumnsStructure
+			...BlogMixedColumnsStructure
+			...BlogSlice
+		}
 	}
 
 	seo {

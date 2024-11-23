@@ -1,13 +1,19 @@
 import * as React from 'react'
 import { BlockBody } from '~/components/blocks/BlockBody'
 import { BlockButtons } from '~/components/blocks/BlockButtons'
+import { BlockMarkdown } from '~/components/blocks/BlockMarkdown'
 import { BlockText } from '~/components/blocks/BlockText'
-import type { TextColumnsStructureFragment } from '~/schema/generated.graphql'
+import type {
+	BlogTextColumnsStructureFragment,
+	TextColumnsStructureFragment,
+} from '~/schema/generated.graphql'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
 
 export function StructureTextColumns({
 	columns,
-}: WithPT<TextColumnsStructureFragment>) {
+}:
+	| WithPT<TextColumnsStructureFragment>
+	| WithPT<BlogTextColumnsStructureFragment>) {
 	const textColumns = columns.map((c) => c.textPanel)
 
 	return (
@@ -34,6 +40,22 @@ export function StructureTextColumns({
 										key={index}
 									/>
 								)
+							case 'ComponentsTextPanelBlocksMarkdownLayout':
+								return (
+									<BlockMarkdown
+										markdown={block.markdown}
+										style={block.style}
+										key={index}
+									/>
+								)
+							// case 'ComponentsTextPanelBlocksImageLayout':
+							// 	return (
+							// 		<BlockImage
+							// 			// {...block.image}
+							// 			style={block.style}
+							// 			key={index}
+							// 		/>
+							// 	)
 							default:
 								return null
 						}

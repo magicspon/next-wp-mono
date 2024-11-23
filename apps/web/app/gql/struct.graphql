@@ -43,17 +43,6 @@ fragment TextStructure on BaseStructureTextLayout {
 	}
 }
 
-fragment StructTextPanel on ContentColumnsTextPanel {
-	blocks {
-		__typename
-
-		...BlockText
-		...BlockBody
-		...BlockButtons
-		...BlockMarkdown
-	}
-}
-
 fragment TextColumnsStructure on BaseStructureTextColumnsLayout {
 	columns {
 		textPanel {
@@ -103,5 +92,16 @@ fragment Slice on BaseStructureSliceLayout {
 	scaling
 	theme {
 		...SliceColor
+	}
+}
+
+fragment StructTextPanel on ContentColumnsTextPanel {
+	blocks {
+		__typename
+
+		...BlockText
+		...BlockBody
+		...BlockButtons
+		...BlockMarkdown
 	}
 }

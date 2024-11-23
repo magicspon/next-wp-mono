@@ -31,6 +31,16 @@ fragment SliceColor on BaseStructureTheme {
 	colours
 }
 
+fragment BlogSliceBox on BlogStructureBox {
+	spacing
+	attribute
+}
+
+fragment BlogSliceColor on BlogStructureTheme {
+	attribute
+	colours
+}
+
 fragment TextPanelBlockBodyTextSize on ContentBlocksBodyStyleTextSizes {
 	style
 	fontSize
@@ -52,6 +62,21 @@ fragment FontSizeStructureText on BaseStructureTextBlocksTextSizes {
 }
 
 fragment ThemeStructureText on BaseStructureTextBlocksTheme {
+	attribute
+	colours
+}
+
+fragment BlogBoxStructureText on BlogStructureTextBlocksBox {
+	attribute
+	spacing
+}
+
+fragment BlogFontSizeStructureText on BlogStructureTextBlocksTextSizes {
+	fontSize
+	style
+}
+
+fragment BlogThemeStructureText on BlogStructureTextBlocksTheme {
 	attribute
 	colours
 }

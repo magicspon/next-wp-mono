@@ -1,4 +1,8 @@
 import type {
+	BlogMixedColumnsStructureFragment,
+	BlogSliceFragment,
+	BlogTextColumnsStructureFragment,
+	BlogTextStructureFragment,
 	MixedColumnsStructureFragment,
 	SliceFragment,
 	TextColumnsStructureFragment,
@@ -6,11 +10,19 @@ import type {
 } from '~/schema/generated.graphql'
 import type { WithPT } from './portable/htmlToPortableText'
 
-type RowType =
+type PageRow =
 	| WithPT<TextStructureFragment>
 	| WithPT<TextColumnsStructureFragment>
 	| WithPT<MixedColumnsStructureFragment>
 	| SliceFragment
+
+type PostRow =
+	| WithPT<BlogTextStructureFragment>
+	| WithPT<BlogTextColumnsStructureFragment>
+	| WithPT<BlogMixedColumnsStructureFragment>
+	| BlogSliceFragment
+
+type RowType = PageRow | PostRow
 
 export type StructureProps = {
 	slice: SliceFragment | null

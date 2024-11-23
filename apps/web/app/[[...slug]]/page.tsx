@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { z } from 'zod'
-import { Debug } from '~/components/Debug'
 import { POSTS_PER_PAGE, WP_BLOG_POST_PAGE_ID } from '~/config'
 import { createClient } from '~/lib/gqlClient'
 import type {
 	PageFragment,
 	PageIdType,
+	PostFragment,
 	TeaserPageFragment,
 	TeaserPostFragment,
 } from '~/schema/generated.graphql'
@@ -13,6 +13,7 @@ import { BlogList } from '~/templates/BlogList'
 import { HomePage } from '~/templates/HomePage'
 import { LandingPage } from '~/templates/LandingPage'
 import { ListPage } from '~/templates/ListPage'
+import { Post } from '~/templates/Post'
 import { createPage } from '~/utils/createPage'
 import {
 	HOME_TEMPLATE,
@@ -124,7 +125,9 @@ const { Page, generateMetadata } = createPage({
 	// },
 	component: async ({ data }) => {
 		if (data.page.__typename === 'Post') {
-			return <Debug render data={data} />
+			const { structure } = parse<PostFragment['blog']>(data.page?.blog)
+
+			return <Post structure={parseContent(structure)} />
 		}
 
 		if (data.page.__typename === 'Page') {

@@ -1,6 +1,17 @@
 import * as React from 'react'
-import type { PostFragment } from '~/schema/generated.graphql'
+import { Debug } from '~/components/Debug'
+import { Structure } from '~/components/structure'
+import type { StructureProps } from '~/utils/parseContent'
 
-export function Post({ content, title }: PostFragment) {
-	return <pre>{JSON.stringify({ content, title }, null, 2)}</pre>
+type BaseProps = {
+	structure: StructureProps
+}
+
+export function Post({ structure }: BaseProps) {
+	return (
+		<>
+			<Debug structure={structure} render />
+			<Structure structure={structure} />
+		</>
+	)
 }
