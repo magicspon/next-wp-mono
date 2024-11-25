@@ -11,6 +11,12 @@ export default definePreset({
 		},
 	},
 	theme: {
+		tokens: {
+			fonts: {
+				body: { value: 'var(--font-body)' },
+				heading: { value: ['var(--font-heading)'] },
+			},
+		},
 		breakpoints: {
 			sm: px2(640, 'em'),
 			md: px2(768, 'em'),

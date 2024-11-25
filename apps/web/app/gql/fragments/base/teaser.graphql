@@ -1,20 +1,20 @@
 fragment BaseTeaserBlocksTextLayout on BaseTeaserBlocksTextLayout {
 	text
-	style: textStyles {
+	textStyles {
 		...BlocksTextStyles
 	}
 }
 
 fragment BaseTeaserBlocksMarkdownLayout on BaseTeaserBlocksMarkdownLayout {
 	markdown: textLines
-	style: textStyles {
+	textStyles {
 		...BlocksTextStyles
 	}
 }
 
 fragment BaseTeaserBlocksBodyLayout on BaseTeaserBlocksBodyLayout {
 	body
-	style: textStyles {
+	textStyles {
 		...BlocksTextStyles
 	}
 }

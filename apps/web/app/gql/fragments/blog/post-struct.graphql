@@ -8,6 +8,12 @@ fragment BlogStructureTextBlocksSection on BlogStructureTextBlocksSection {
 	box {
 		...StylesSectionBox
 	}
+	theme {
+		...StylesSectionTheme
+	}
+	width {
+		...StylesSectionWidth
+	}
 }
 
 fragment BlogStructureSection on BlogStructureSection {
@@ -20,23 +26,29 @@ fragment BlogStructureSection on BlogStructureSection {
 	box {
 		...StylesSectionBox
 	}
+	theme {
+		...StylesSectionTheme
+	}
+	width {
+		...StylesSectionWidth
+	}
 }
 
 fragment BlogStructureTextBlocksBlocksTextLayout on BlogStructureTextBlocksBlocksTextLayout {
 	text
-	style: textStyles {
+	textStyles {
 		...BlocksTextStyles
 	}
 }
 fragment BlogStructureTextBlocksBlocksMarkdownLayout on BlogStructureTextBlocksBlocksMarkdownLayout {
 	markdown: textLines
-	style: textStyles {
+	textStyles {
 		...BlocksTextStyles
 	}
 }
 fragment BlogStructureTextBlocksBlocksBodyLayout on BlogStructureTextBlocksBlocksBodyLayout {
 	body
-	style: textStyles {
+	textStyles {
 		...BlocksTextStyles
 	}
 }

@@ -1,20 +1,20 @@
 fragment BlogTeaserBlocksTextLayout on BlogTeaserBlocksTextLayout {
 	text
-	style: textStyles {
+	textStyles {
 		...BlocksTextStyles
 	}
 }
 
 fragment BlogTeaserBlocksMarkdownLayout on BlogTeaserBlocksMarkdownLayout {
 	markdown: textLines
-	style: textStyles {
+	textStyles {
 		...BlocksTextStyles
 	}
 }
 
 fragment BlogTeaserBlocksBodyLayout on BlogTeaserBlocksBodyLayout {
 	body
-	style: textStyles {
+	textStyles {
 		...BlocksTextStyles
 	}
 }

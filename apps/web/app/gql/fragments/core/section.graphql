@@ -12,3 +12,13 @@ fragment StylesSectionBox on StylesSectionBox {
 	attribute
 	spacing
 }
+
+fragment StylesSectionTheme on StylesSectionTheme {
+	colours
+	attribute
+}
+
+fragment StylesSectionWidth on StylesSectionWidth {
+	attribute
+	value
+}

@@ -7,6 +7,7 @@ import type {
 	BlogStructureTextLayoutFragment,
 } from '~/schema/generated.graphql'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
+import { section } from '~/utils/style/section'
 
 export function StructureText({
 	textBlocks,
@@ -16,7 +17,7 @@ export function StructureText({
 	const { blocks } = textBlocks
 
 	return (
-		<div data-testid="StructureText">
+		<div style={section(textBlocks?.section)} data-testid="StructureText">
 			{blocks?.map((block, index) => {
 				switch (block.__typename) {
 					case 'BlogStructureTextBlocksBlocksBodyLayout':
@@ -26,7 +27,7 @@ export function StructureText({
 						)
 					case 'BlogStructureTextBlocksBlocksButtonsLayout':
 					case 'BaseStructureTextBlocksBlocksButtonsLayout':
-						return <BlockButtons {...block} key={index} />
+						return <BlockButtons buttons={block.buttons} key={index} />
 					case 'BlogStructureTextBlocksBlocksTextLayout':
 					case 'BaseStructureTextBlocksBlocksTextLayout':
 						return (

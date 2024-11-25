@@ -8,6 +8,12 @@ fragment BaseStructureTextBlocksSection on BaseStructureTextBlocksSection {
 	box {
 		...StylesSectionBox
 	}
+	theme {
+		...StylesSectionTheme
+	}
+	width {
+		...StylesSectionWidth
+	}
 }
 
 fragment BaseStructureSection on BaseStructureSection {
@@ -20,23 +26,29 @@ fragment BaseStructureSection on BaseStructureSection {
 	box {
 		...StylesSectionBox
 	}
+	theme {
+		...StylesSectionTheme
+	}
+	width {
+		...StylesSectionWidth
+	}
 }
 
 fragment BaseStructureTextBlocksBlocksTextLayout on BaseStructureTextBlocksBlocksTextLayout {
 	text
-	style: textStyles {
+	textStyles {
 		...BlocksTextStyles
 	}
 }
 fragment BaseStructureTextBlocksBlocksMarkdownLayout on BaseStructureTextBlocksBlocksMarkdownLayout {
 	markdown: textLines
-	style: textStyles {
+	textStyles {
 		...BlocksTextStyles
 	}
 }
 fragment BaseStructureTextBlocksBlocksBodyLayout on BaseStructureTextBlocksBlocksBodyLayout {
 	body
-	style: textStyles {
+	textStyles {
 		...BlocksTextStyles
 	}
 }

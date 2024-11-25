@@ -8,6 +8,12 @@ fragment ComponentsTextPanelStyleSection on ComponentsTextPanelStyleSection {
 	box {
 		...StylesSectionBox
 	}
+	theme {
+		...StylesSectionTheme
+	}
+	width {
+		...StylesSectionWidth
+	}
 }
 
 fragment ComponentsTextPanelStyle on ComponentsTextPanelStyle {
@@ -18,21 +24,21 @@ fragment ComponentsTextPanelStyle on ComponentsTextPanelStyle {
 
 fragment ComponentsTextPanelBlocksTextLayout on ComponentsTextPanelBlocksTextLayout {
 	text
-	style: textStyles {
+	textStyles {
 		...BlocksTextStyles
 	}
 }
 
 fragment ComponentsTextPanelBlocksMarkdownLayout on ComponentsTextPanelBlocksMarkdownLayout {
 	markdown: textLines
-	style: textStyles {
+	textStyles {
 		...BlocksTextStyles
 	}
 }
 
 fragment ComponentsTextPanelBlocksBodyLayout on ComponentsTextPanelBlocksBodyLayout {
 	body
-	style: textStyles {
+	textStyles {
 		...BlocksTextStyles
 	}
 }

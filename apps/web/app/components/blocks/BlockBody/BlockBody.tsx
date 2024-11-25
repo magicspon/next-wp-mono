@@ -7,16 +7,15 @@ import { typography } from '~/utils/style/typography'
 
 type TBlockBodyProps = WithPT<ComponentsTextPanelBlocksBodyLayoutFragment>
 
-export function BlockBody({ body, style }: TBlockBodyProps) {
+export function BlockBody({ body, textStyles }: TBlockBodyProps) {
+	const { vars } = typography(textStyles?.typography)
+
 	return (
 		<Stack
 			data-testid="BlockBody"
-			style={typography(style?.typography)}
+			style={vars}
 			className={css({
 				alignItems: 'var(--align-items, start)',
-				gap: 'var(--gap, token(spacing.4))',
-				px: 'var(--padding-x, token(spacing.4))',
-				py: 'var(--padding-y, token(spacing.4))',
 			})}
 		>
 			<Portable body={body} />

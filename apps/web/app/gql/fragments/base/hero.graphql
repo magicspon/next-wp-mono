@@ -1,3 +1,27 @@
+fragment BaseHeroStyleSection on BaseHeroStyleSection {
+	align {
+		...StylesSectionAlign
+	}
+	justify {
+		...StylesSectionJustify
+	}
+	box {
+		...StylesSectionBox
+	}
+	theme {
+		...StylesSectionTheme
+	}
+	width {
+		...StylesSectionWidth
+	}
+}
+
+fragment BaseHeroStyle on BaseHeroStyle {
+	section {
+		...BaseHeroStyleSection
+	}
+}
+
 fragment BaseTextPanel on BaseHeroTextPanel {
 	style {
 		...ComponentsTextPanelStyle
@@ -20,6 +44,9 @@ fragment BaseHeroImage on BaseHeroImage {
 fragment BaseHeroTextLayout on BaseHeroTextLayout {
 	textPanel {
 		...BaseTextPanel
+	}
+	style {
+		...BaseHeroStyle
 	}
 }
 

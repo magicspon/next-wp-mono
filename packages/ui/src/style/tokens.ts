@@ -44,10 +44,6 @@ const spacing = {
 
 export const tokens = defineTokens({
 	colors,
-	fonts: {
-		body: { value: 'var(--font-body)' },
-		heading: { value: ['var(--font-heading)'] },
-	},
 
 	spacing,
 

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import * as React from 'react'
+import { TextPanelBox } from '~/components/TextPanelBox'
 import { BlockBody } from '~/components/blocks/BlockBody'
 import { BlockButtons } from '~/components/blocks/BlockButtons'
 import { BlockText } from '~/components/blocks/BlockText'
@@ -11,6 +12,7 @@ import type {
 } from '~/schema/generated.graphql'
 import { parseImageProps } from '~/utils/imageProps'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
+import { group } from '~/utils/style/group'
 
 function ImageColumn({
 	image,
@@ -25,7 +27,7 @@ function TextColumn({
 	console.log('[TextColumn/style]', style)
 
 	return (
-		<>
+		<TextPanelBox theme={style.section}>
 			{blocks?.map((block, index) => {
 				switch (block.__typename) {
 					case 'ComponentsTextPanelBlocksBodyLayout':
@@ -42,7 +44,7 @@ function TextColumn({
 						return null
 				}
 			})}
-		</>
+		</TextPanelBox>
 	)
 }
 
@@ -58,7 +60,7 @@ export function StructureMixedColumns({
 	if (!content) return null
 
 	return (
-		<div data-testid="StructureMixedColumns">
+		<div style={group(style.group)} data-testid="StructureMixedColumns">
 			{content.map((column, i) => (
 				<React.Fragment key={i}>
 					{(() => {

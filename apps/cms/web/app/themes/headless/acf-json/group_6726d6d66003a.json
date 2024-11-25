@@ -43,6 +43,7 @@
                         "id": ""
                     },
                     "choices": {
+                        "font-size": "font-size",
                         "h1": "h1",
                         "h2": "h2",
                         "h3": "h3",
@@ -737,6 +738,114 @@
             ]
         },
         {
+            "key": "field_6744ccc67d747",
+            "label": "Width",
+            "name": "width",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "width",
+            "graphql_non_null": 0,
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6744ccd97d748",
+                    "label": "Attribute",
+                    "name": "attribute",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "max-width": "max-width",
+                        "md-max-width": "md-max-width",
+                        "lg-max-width": "lg-max-width"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "show_in_graphql": 1,
+                    "graphql_description": "",
+                    "graphql_field_name": "attribute",
+                    "graphql_non_null": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_6744ccc67d747"
+                },
+                {
+                    "key": "field_6744ccf57d749",
+                    "label": "Value",
+                    "name": "value",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "graphql_field_name": "value",
+                    "choices": {
+                        "xs": "xs",
+                        "sm": "sm",
+                        "md": "md",
+                        "lg": "lg",
+                        "xl": "xl",
+                        "2xl": "2xl",
+                        "3xl": "3xl",
+                        "4xl": "4xl",
+                        "5xl": "5xl",
+                        "6xl": "6xl",
+                        "7xl": "7xl",
+                        "8xl": "8xl",
+                        "prose": "prose",
+                        "full": "full",
+                        "min": "min",
+                        "max": "max",
+                        "fit": "fit"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 1,
+                    "ui": 0,
+                    "show_in_graphql": 1,
+                    "graphql_description": "",
+                    "graphql_non_null": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_6744ccc67d747"
+                }
+            ]
+        },
+        {
             "key": "field_6743487e2b8fe",
             "label": "Typography",
             "name": "typography",
@@ -774,7 +883,8 @@
                     "clone": [
                         "field_6726d6d6ae0d7",
                         "field_672a569e0eb88",
-                        "field_674319eaa2919"
+                        "field_674319eaa2919",
+                        "field_672bdf28ee2b4"
                     ],
                     "display": "seamless",
                     "layout": "block",
@@ -822,7 +932,8 @@
                         "field_672a569e0eb88",
                         "field_672a5bba55eaa",
                         "field_67431aa550855",
-                        "field_67431b80cc276"
+                        "field_67431b80cc276",
+                        "field_6744ccc67d747"
                     ],
                     "display": "seamless",
                     "layout": "block",
@@ -870,7 +981,8 @@
                         "field_67431aa550855",
                         "field_67431b80cc276",
                         "field_672a5bba55eaa",
-                        "field_67434a9e06608"
+                        "field_67434a9e06608",
+                        "field_6744c839392d5"
                     ],
                     "display": "seamless",
                     "layout": "block",
@@ -949,5 +1061,5 @@
     "graphql_field_name": "styles",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1732463787
+    "modified": 1732565748
 }

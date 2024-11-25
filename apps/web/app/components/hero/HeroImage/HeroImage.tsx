@@ -27,7 +27,7 @@ export function HeroImage({ textPanel, image }: THeroImageProps) {
 								return (
 									<BlockBody
 										body={block.body}
-										style={block.style}
+										textStyles={block.textStyles}
 										key={index}
 									/>
 								)
@@ -37,7 +37,7 @@ export function HeroImage({ textPanel, image }: THeroImageProps) {
 								return (
 									<BlockMarkdown
 										markdown={block.markdown}
-										style={block.style}
+										textStyles={block.textStyles}
 										key={index}
 									/>
 								)
@@ -45,7 +45,7 @@ export function HeroImage({ textPanel, image }: THeroImageProps) {
 								return (
 									<BlockText
 										text={block.text}
-										style={block.style}
+										textStyles={block.textStyles}
 										key={index}
 									/>
 								)

@@ -575,6 +575,52 @@
             "graphql_non_null": 0,
             "ajax": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_6744c72128ecf",
+            "label": "Width",
+            "name": "width",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "xs": "xs",
+                "sm": "sm",
+                "md": "md",
+                "lg": "lg",
+                "xl": "xl",
+                "2xl": "2xl",
+                "3xl": "3xl",
+                "4xl": "4xl",
+                "5xl": "5xl",
+                "6xl": "6xl",
+                "7xl": "7xl",
+                "8xl": "8xl",
+                "prose": "prose",
+                "full": "full",
+                "min": "min",
+                "max": "max",
+                "fit": "fit"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "width",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
         }
     ],
     "location": [
@@ -599,5 +645,5 @@
     "graphql_field_name": "tokens",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1732463227
+    "modified": 1732562060
 }

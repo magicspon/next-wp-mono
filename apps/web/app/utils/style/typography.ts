@@ -1,11 +1,20 @@
-import type { FontSizeToken } from '@spon/styled-system/tokens'
+import type { FontSizeToken, FontToken } from '@spon/styled-system/tokens'
 import { token } from '@spon/styled-system/tokens'
+import { getFirstOrNull } from '@spon/utils/getFirstOrNull'
 import type { TypographyFragment } from '~/schema/generated.graphql'
+import { createColors, createStyleFromGraphql } from './createStyleFromGql'
 
-export function typography(input: TypographyFragment) {
-	if (!input) return
+export function typography(input: TypographyFragment): {
+	vars: React.CSSProperties
+	fontFamily: FontToken
+} {
+	if (!input)
+		return {
+			vars: {},
+			fontFamily: 'body',
+		}
 
-	const { textSizes } = input
+	const { textSizes, theme, textAlign, fontFamily } = input
 
 	const fontSizes = textSizes?.reduce<Record<string, string>>((acc, s) => {
 		const {
@@ -13,14 +22,21 @@ export function typography(input: TypographyFragment) {
 			fontSize: [fontSize],
 		} = s
 
-		acc[`--font-size-${style}`] = token(
-			`fontSizes.${fontSize as FontSizeToken}`,
-		)
+		acc[`--${style}`] = token(`fontSizes.${fontSize as FontSizeToken}`)
 
 		return acc
 	}, {})
 
-	return {
+	const vars = {
 		...fontSizes,
+		...createColors(theme),
+		...createStyleFromGraphql(textAlign),
+	}
+
+	const font = getFirstOrNull(fontFamily)
+
+	return {
+		vars,
+		fontFamily: (font ?? 'body') as FontToken,
 	}
 }

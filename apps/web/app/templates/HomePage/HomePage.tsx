@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Grid } from '@spon/ui/layout/Grid'
-import { BlogPostTeaser } from '~/components/blog/BlogPostTeaser'
+// import { Grid } from '@spon/ui/layout/Grid'
+// import { BlogPostTeaser } from '~/components/blog/BlogPostTeaser'
 import { Hero } from '~/components/hero'
 import { Structure } from '~/components/structure'
 import type {
@@ -20,19 +20,20 @@ type BaseProps = {
 	posts?: WithPT<BlogTeaserPageFragment>[]
 }
 
-export function HomePage({ hero, structure, posts }: BaseProps) {
+export function HomePage({ hero, structure }: BaseProps) {
 	return (
 		<>
 			<Hero content={hero} />
+
 			<Structure structure={structure} />
 
-			{posts && (
+			{/* {posts && (
 				<Grid columns="blog">
 					{posts.map((post) => (
 						<BlogPostTeaser key={post.id} post={post} />
 					))}
 				</Grid>
-			)}
+			)} */}
 		</>
 	)
 }

@@ -9,6 +9,8 @@ import type {
 	ContentColumnsBlocksTextPanelFragment,
 } from '~/schema/generated.graphql'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
+import { group } from '~/utils/style/group'
+import { section } from '~/utils/style/section'
 
 function Column({
 	column,
@@ -20,7 +22,7 @@ function Column({
 	console.log({ '[Column/style]': style })
 
 	return (
-		<>
+		<div style={section(style.section)}>
 			{blocks?.map((block, index) => {
 				switch (block.__typename) {
 					case 'ComponentsTextPanelBlocksBodyLayout':
@@ -45,7 +47,7 @@ function Column({
 						return null
 				}
 			})}
-		</>
+		</div>
 	)
 }
 
@@ -63,7 +65,7 @@ export function StructureTextColumns({
 	console.log({ '[StructureTextColumns/style]': style })
 
 	return (
-		<div data-testid="StructureTextColumns">
+		<div style={group(style.group)} data-testid="StructureTextColumns">
 			{textColumns.map((column, i) => (
 				<Column key={i} column={column} />
 			))}
