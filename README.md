@@ -84,6 +84,27 @@ turbo
   └─ generators - code scaffold
 ```
 
+### Frontend structure
+
+```
+app
+  └─ [[...slug]] - catch all entry point
+  └─ api - api routes
+  └─ components - Share components
+		└─ blocks - block components (text, markdown, image, buttons, rich text)
+		└─ blog - blog specific components
+		└─ global - global componenets (header/footer etc)
+		└─ hero - hero components
+		└─ structure - structure components
+  └─ env - environment definitions
+  └─ fonts
+  └─ gql- graphql queries/fragments
+  └─ hooks
+  └─ lib - api clients
+  └─ templates - page templates (home page, list page, landing page, blog list and blog post)
+  └─ utils
+```
+
 ### Code scaffold
 
 `npm run new:component` scaffold a new react component with tests and stories
