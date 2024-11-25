@@ -139,6 +139,7 @@
                                     },
                                     "graphql_field_name": "props",
                                     "clone": [
+                                        "field_6744e0c93fe3e",
                                         "field_674348b52b900"
                                     ],
                                     "display": "seamless",
@@ -620,5 +621,5 @@
     "graphql_field_name": "base",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1732561208
+    "modified": 1732567473
 }
