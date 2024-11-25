@@ -5,9 +5,11 @@ import type { ComponentsTextPanelBlocksBodyLayoutFragment } from '~/schema/gener
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
 import { typography } from '~/utils/style/typography'
 
-type TBlockBodyProps = WithPT<ComponentsTextPanelBlocksBodyLayoutFragment>
+type TBlockBodyProps = WithPT<ComponentsTextPanelBlocksBodyLayoutFragment> & {
+	components?: React.ComponentProps<typeof Portable>['components']
+}
 
-export function BlockBody({ body, textStyles }: TBlockBodyProps) {
+export function BlockBody({ body, textStyles, components }: TBlockBodyProps) {
 	const { vars } = typography(textStyles?.typography)
 
 	return (
@@ -18,7 +20,7 @@ export function BlockBody({ body, textStyles }: TBlockBodyProps) {
 				alignItems: 'var(--align-items, start)',
 			})}
 		>
-			<Portable body={body} />
+			<Portable body={body} components={components} />
 		</Stack>
 	)
 }

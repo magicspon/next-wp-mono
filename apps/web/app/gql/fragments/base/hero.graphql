@@ -17,6 +17,7 @@ fragment BaseHeroStyleSection on BaseHeroStyleSection {
 }
 
 fragment BaseHeroStyle on BaseHeroStyle {
+	heroTextVariant
 	section {
 		...BaseHeroStyleSection
 	}
