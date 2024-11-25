@@ -3,14 +3,16 @@ import { BlockBody } from '~/components/blocks/BlockBody'
 import { BlockButtons } from '~/components/blocks/BlockButtons'
 import { BlockText } from '~/components/blocks/BlockText'
 import type {
-	BlogTextStructureFragment,
-	TextStructureFragment,
+	BaseStructureTextLayoutFragment,
+	BlogStructureTextLayoutFragment,
 } from '~/schema/generated.graphql'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
 
 export function StructureText({
 	textBlocks,
-}: WithPT<TextStructureFragment> | WithPT<BlogTextStructureFragment>) {
+}:
+	| WithPT<BaseStructureTextLayoutFragment>
+	| WithPT<BlogStructureTextLayoutFragment>) {
 	const { blocks } = textBlocks
 
 	return (

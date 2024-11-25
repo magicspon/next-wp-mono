@@ -1,0 +1,19 @@
+fragment StylesGroupAlign on StylesGroupAlign {
+	attribute
+	value
+}
+
+fragment StylesGroupJustify on StylesGroupJustify {
+	attribute
+	value
+}
+
+fragment StylesGroupBox on StylesGroupBox {
+	attribute
+	spacing
+}
+
+fragment StylesGroupFlexDirection on StylesGroupFlexDirection {
+	attribute
+	value
+}

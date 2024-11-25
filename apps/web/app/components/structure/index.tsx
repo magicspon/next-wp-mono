@@ -13,7 +13,7 @@ export function Structure({ structure }: BaseProps) {
 	return (
 		<>
 			{structure.map((group) => (
-				<Slice slice={group.slice} key={group.id}>
+				<Slice slice={group.slice?.section} key={group.id}>
 					{group.rows.map((block, k) => (
 						<React.Fragment key={`${block.__typename}-${k}`}>
 							{(() => {

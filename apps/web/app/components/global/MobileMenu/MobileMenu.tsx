@@ -12,7 +12,7 @@ export type TMainMenuProps = {
 
 export function MobileMenu({ menu }: TMainMenuProps) {
 	return (
-		<div>
+		<div className={css({ display: 'none' })}>
 			{menu.map((node) => (
 				<Link
 					key={node.id}

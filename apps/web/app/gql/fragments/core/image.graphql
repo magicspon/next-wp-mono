@@ -13,3 +13,16 @@ fragment MediaItem on MediaItemConnectionEdge {
 		...Image
 	}
 }
+
+fragment BlockImage on ComponentsTextPanelBlocksImageLayout {
+	image {
+		asset {
+			...MediaItem
+		}
+		# style {
+		# 	box {
+		# 		...ImageBoxStyle
+		# 	}
+		# }
+	}
+}

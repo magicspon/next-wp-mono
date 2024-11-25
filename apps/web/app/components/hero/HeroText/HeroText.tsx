@@ -1,18 +1,20 @@
 import * as React from 'react'
+import { TextPanelBox } from '~/components/TextPanelBox'
+// import { Debug } from '~/components/Debug'
 import { BlockBody } from '~/components/blocks/BlockBody'
 import { BlockButtons } from '~/components/blocks/BlockButtons'
 import { BlockMarkdown } from '~/components/blocks/BlockMarkdown'
 import { BlockText } from '~/components/blocks/BlockText'
-import type { BaseHeroTextFragment } from '~/schema/generated.graphql'
+import type { BaseHeroTextLayoutFragment } from '~/schema/generated.graphql'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
 
-type THeroTextProps = WithPT<BaseHeroTextFragment>
+type THeroTextProps = WithPT<BaseHeroTextLayoutFragment>
 
 export function HeroText({ textPanel }: THeroTextProps) {
-	const { blocks } = textPanel
+	const { blocks, style } = textPanel
 
 	return (
-		<div data-testid="HeroText">
+		<TextPanelBox theme={style?.section}>
 			{blocks?.map((block, index) => {
 				switch (block.__typename) {
 					case 'ComponentsTextPanelBlocksBodyLayout':
@@ -38,6 +40,6 @@ export function HeroText({ textPanel }: THeroTextProps) {
 						return null
 				}
 			})}
-		</div>
+		</TextPanelBox>
 	)
 }

@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import type { BlockButtonsFragment } from '~/schema/generated.graphql'
+import type { ComponentsTextPanelBlocksButtonsLayoutFragment } from '~/schema/generated.graphql'
 
-export function BlockButtons({
-	buttons,
-}: Omit<BlockButtonsFragment, '__typename'>) {
+type TButtons = ComponentsTextPanelBlocksButtonsLayoutFragment
+
+export function BlockButtons({ buttons }: TButtons) {
 	return (
 		<div data-testid="BlockButtons">
 			{buttons.map(({ button }, k) => (

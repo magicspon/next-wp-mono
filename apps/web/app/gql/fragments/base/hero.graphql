@@ -1,0 +1,33 @@
+fragment BaseTextPanel on BaseHeroTextPanel {
+	style {
+		...ComponentsTextPanelStyle
+	}
+	blocks {
+		__typename
+		...ComponentsTextPanelBlocks_Layout
+	}
+}
+
+fragment BaseHeroImage on BaseHeroImage {
+	asset {
+		...MediaItem
+	}
+	style {
+		__typename
+	}
+}
+
+fragment BaseHeroTextLayout on BaseHeroTextLayout {
+	textPanel {
+		...BaseTextPanel
+	}
+}
+
+fragment BaseHeroTextImageLayout on BaseHeroTextImageLayout {
+	textPanel {
+		...BaseTextPanel
+	}
+	image {
+		...BaseHeroImage
+	}
+}

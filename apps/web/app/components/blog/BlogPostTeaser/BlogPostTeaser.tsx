@@ -7,7 +7,7 @@ import { BlockBody } from '~/components/blocks/BlockBody'
 import { BlockButtons } from '~/components/blocks/BlockButtons'
 import { BlockMarkdown } from '~/components/blocks/BlockMarkdown'
 import { BlockText } from '~/components/blocks/BlockText'
-import type { TeaserPostFragment } from '~/schema/generated.graphql'
+import type { BlogTeaserPageFragment } from '~/schema/generated.graphql'
 import { parseImageProps } from '~/utils/imageProps'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
 import * as uri from '~/utils/urls'
@@ -15,7 +15,7 @@ import * as uri from '~/utils/urls'
 type TElementProps = React.ComponentProps<'div'>
 
 type TBlogPostTeaserProps = TElementProps & {
-	post: WithPT<TeaserPostFragment>
+	post: WithPT<BlogTeaserPageFragment>
 }
 
 export function BlogPostTeaser({ post }: TBlogPostTeaserProps) {
@@ -38,7 +38,7 @@ export function BlogPostTeaser({ post }: TBlogPostTeaserProps) {
 								<BlockBody body={block.body} style={block.style} key={index} />
 							)
 						case 'BlogTeaserBlocksButtonsLayout':
-							return <BlockButtons {...block} key={index} />
+							return <BlockButtons buttons={block.buttons} key={index} />
 						case 'BlogTeaserBlocksMarkdownLayout':
 							return (
 								<BlockMarkdown

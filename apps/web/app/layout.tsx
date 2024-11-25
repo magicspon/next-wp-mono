@@ -78,13 +78,13 @@ export default async function RootLayout({
 		>
 			<body>
 				<Provider>
-					<Header menu={mainMenu} mobileMenu={mobileMenu} />
-					<header />
-					<main className={flex({ flexDirection: 'column', flex: 1 })}>
-						{children}
-					</main>
-					<footer />
-					<Footer menu={footerMenu} />
+					<div className={flex({ direction: 'column', minH: 'screen' })}>
+						<Header menu={mainMenu} mobileMenu={mobileMenu} />
+						<main className={flex({ flexDirection: 'column', flex: 1 })}>
+							{children}
+						</main>
+						<Footer menu={footerMenu} />
+					</div>
 				</Provider>
 			</body>
 		</html>

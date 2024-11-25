@@ -1,0 +1,125 @@
+fragment BlogStructureTextBlocksSection on BlogStructureTextBlocksSection {
+	align {
+		...StylesSectionAlign
+	}
+	justify {
+		...StylesSectionJustify
+	}
+	box {
+		...StylesSectionBox
+	}
+}
+
+fragment BlogStructureSection on BlogStructureSection {
+	align {
+		...StylesSectionAlign
+	}
+	justify {
+		...StylesSectionJustify
+	}
+	box {
+		...StylesSectionBox
+	}
+}
+
+fragment BlogStructureTextBlocksBlocksTextLayout on BlogStructureTextBlocksBlocksTextLayout {
+	text
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+fragment BlogStructureTextBlocksBlocksMarkdownLayout on BlogStructureTextBlocksBlocksMarkdownLayout {
+	markdown: textLines
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+fragment BlogStructureTextBlocksBlocksBodyLayout on BlogStructureTextBlocksBlocksBodyLayout {
+	body
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+fragment BlogStructureTextBlocksBlocksButtonsLayout on BlogStructureTextBlocksBlocksButtonsLayout {
+	buttons {
+		...Buttons
+	}
+}
+fragment BlogStructureTextBlocksBlocksImageLayout on BlogStructureTextBlocksBlocksImageLayout {
+	image {
+		asset {
+			...MediaItem
+		}
+		style {
+			__typename
+		}
+	}
+}
+
+fragment BlogStructureTextLayout on BlogStructureTextLayout {
+	textBlocks {
+		blocks {
+			__typename
+			...BlogStructureTextBlocksBlocksTextLayout
+			...BlogStructureTextBlocksBlocksMarkdownLayout
+			...BlogStructureTextBlocksBlocksBodyLayout
+			...BlogStructureTextBlocksBlocksButtonsLayout
+			...BlogStructureTextBlocksBlocksImageLayout
+		}
+		section {
+			...BlogStructureTextBlocksSection
+		}
+	}
+}
+
+fragment BlogStructureColumns on BlogStructureColumns {
+	style {
+		group {
+			...ContentColumnsStyleGroup
+		}
+	}
+	blocks {
+		textPanel {
+			...ContentColumnsBlocksTextPanel
+		}
+	}
+}
+
+fragment BlogStructureTextColumnsLayout on BlogStructureTextColumnsLayout {
+	columns {
+		...BlogStructureColumns
+	}
+}
+
+fragment BlogStructureMixedColumns on BlogStructureMixedColumns {
+	style {
+		group {
+			...ContentMixedColumnsStyleGroup
+		}
+	}
+	content {
+		__typename
+		...ContentMixedColumnsContentImageColumnLayout
+		...ContentMixedColumnsContentTextColumnLayout
+	}
+}
+
+fragment BlogStructureMixedColumnsLayout on BlogStructureMixedColumnsLayout {
+	columns: mixedColumns {
+		...BlogStructureMixedColumns
+	}
+}
+
+fragment BlogStructureSliceLayout on BlogStructureSliceLayout {
+	section {
+		...BlogStructureSection
+	}
+}
+
+fragment BlogStructure_Layout on BlogStructure_Layout {
+	__typename
+	...BlogStructureTextLayout
+	...BlogStructureTextColumnsLayout
+	...BlogStructureMixedColumnsLayout
+	...BlogStructureSliceLayout
+}

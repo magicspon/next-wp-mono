@@ -4,8 +4,8 @@ import { BlogPostTeaser } from '~/components/blog/BlogPostTeaser'
 import { Hero } from '~/components/hero'
 import { Structure } from '~/components/structure'
 import type {
+	BlogTeaserPageFragment,
 	PageFragment,
-	TeaserPostFragment,
 } from '~/schema/generated.graphql'
 import type { StructureProps } from '~/utils/parseContent'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
@@ -17,7 +17,7 @@ type HeroContent = WithPT<BaseInputProps['base']['hero']>
 type BaseProps = {
 	hero: HeroContent
 	structure: StructureProps
-	posts?: WithPT<TeaserPostFragment>[]
+	posts?: WithPT<BlogTeaserPageFragment>[]
 }
 
 export function HomePage({ hero, structure, posts }: BaseProps) {

@@ -1,0 +1,78 @@
+fragment BlogTeaserBlocksTextLayout on BlogTeaserBlocksTextLayout {
+	text
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+
+fragment BlogTeaserBlocksMarkdownLayout on BlogTeaserBlocksMarkdownLayout {
+	markdown: textLines
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+
+fragment BlogTeaserBlocksBodyLayout on BlogTeaserBlocksBodyLayout {
+	body
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+
+fragment BlogTeaserBlocksButtonsLayout on BlogTeaserBlocksButtonsLayout {
+	buttons {
+		...Buttons
+	}
+}
+
+fragment BlogTeaserBlocksImageLayout on BlogTeaserBlocksImageLayout {
+	image {
+		asset {
+			...MediaItem
+		}
+		style {
+			__typename
+		}
+	}
+}
+
+fragment BlogTeaserBlocks_Layout on BlogTeaserBlocks_Layout {
+	...BlogTeaserBlocksTextLayout
+	...BlogTeaserBlocksMarkdownLayout
+	...BlogTeaserBlocksBodyLayout
+	...BlogTeaserBlocksButtonsLayout
+	...BlogTeaserBlocksImageLayout
+}
+
+fragment BlogTeaserImage on BlogTeaserImage {
+	asset {
+		...MediaItem
+	}
+	style {
+		__typename
+	}
+}
+
+fragment BlogTeaser on BlogTeaser {
+	cta: callToAction
+	title
+	blocks {
+		__typename
+		...BlogTeaserBlocks_Layout
+	}
+	image {
+		...BlogTeaserImage
+	}
+}
+
+fragment BlogTeaserPage on Post {
+	id
+	title
+	uri
+	slug
+	blog {
+		teaser {
+			...BlogTeaser
+		}
+	}
+}

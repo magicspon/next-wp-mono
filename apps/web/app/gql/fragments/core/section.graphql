@@ -1,0 +1,14 @@
+fragment StylesSectionAlign on StylesSectionAlign {
+	attribute
+	value
+}
+
+fragment StylesSectionJustify on StylesSectionJustify {
+	attribute
+	value
+}
+
+fragment StylesSectionBox on StylesSectionBox {
+	attribute
+	spacing
+}

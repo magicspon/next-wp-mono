@@ -1,0 +1,25 @@
+fragment BaseHero on BaseHero_Layout {
+	...BaseHeroTextLayout
+	...BaseHeroTextImageLayout
+}
+
+fragment Base on Base {
+	hero {
+		__typename
+		...BaseHero
+	}
+	structure {
+		__typename
+		...BaseStructure_Layout
+	}
+}
+
+fragment Page on Page {
+	__typename
+	title
+	status
+	uri
+	base {
+		...Base
+	}
+}

@@ -1,0 +1,23 @@
+mutation LoginUser($username: String!, $password: String!) {
+	login(
+		input: {
+			clientMutationId: "uniqueId"
+			username: $username
+			password: $password
+		}
+	) {
+		authToken
+		user {
+			id
+			name
+		}
+	}
+}
+
+query GetContentNode($id: ID!) {
+	contentNode(id: $id, idType: DATABASE_ID) {
+		uri
+		status
+		databaseId
+	}
+}

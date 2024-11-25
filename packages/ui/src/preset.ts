@@ -48,4 +48,9 @@ export default definePreset({
 			},
 		},
 	},
+	conditions: {
+		extend: {
+			highlight: '& > strong',
+		},
+	},
 })

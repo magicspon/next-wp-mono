@@ -1,0 +1,63 @@
+fragment ComponentsTextPanelStyleSection on ComponentsTextPanelStyleSection {
+	align {
+		...StylesSectionAlign
+	}
+	justify {
+		...StylesSectionJustify
+	}
+	box {
+		...StylesSectionBox
+	}
+}
+
+fragment ComponentsTextPanelStyle on ComponentsTextPanelStyle {
+	section {
+		...ComponentsTextPanelStyleSection
+	}
+}
+
+fragment ComponentsTextPanelBlocksTextLayout on ComponentsTextPanelBlocksTextLayout {
+	text
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+
+fragment ComponentsTextPanelBlocksMarkdownLayout on ComponentsTextPanelBlocksMarkdownLayout {
+	markdown: textLines
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+
+fragment ComponentsTextPanelBlocksBodyLayout on ComponentsTextPanelBlocksBodyLayout {
+	body
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+
+fragment ComponentsTextPanelBlocksButtonsLayout on ComponentsTextPanelBlocksButtonsLayout {
+	buttons {
+		...Buttons
+	}
+}
+
+fragment ComponentsTextPanelBlocksImageLayout on ComponentsTextPanelBlocksImageLayout {
+	image {
+		asset {
+			...MediaItem
+		}
+		style {
+			__typename
+		}
+	}
+}
+
+fragment ComponentsTextPanelBlocks_Layout on ComponentsTextPanelBlocks_Layout {
+	...ComponentsTextPanelBlocksTextLayout
+	...ComponentsTextPanelBlocksMarkdownLayout
+	...ComponentsTextPanelBlocksBodyLayout
+	...ComponentsTextPanelBlocksButtonsLayout
+	...ComponentsTextPanelBlocksImageLayout
+}

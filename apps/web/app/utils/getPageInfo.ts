@@ -2,9 +2,12 @@ import { notFound } from 'next/navigation'
 import { createClient } from '~/lib/gqlClient'
 import type { ContentNodeIdTypeEnum } from '~/schema/generated.graphql'
 
+// hardcoded templates
 export const HOME_TEMPLATE = '__HOME__'
 export const POSTS_TEMPLATE = '__POSTS__'
 export const POST_TEMPLATE = '__POST__'
+// template names from wp
+export const LISTING_TEMPLATE = 'Listing'
 
 export async function getPageInfo({
 	isPreview,
@@ -48,3 +51,6 @@ export async function getPageInfo({
 		notFound()
 	}
 }
+
+export const createUri = (nextSlug?: string | string[]) =>
+	`/${nextSlug && Array.isArray(nextSlug) ? nextSlug.join('/') : (nextSlug ?? '')}`

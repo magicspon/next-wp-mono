@@ -1,19 +1,17 @@
 import { css } from '@spon/styled-system/css'
-import type { FontSizeToken, SpacingToken } from '@spon/styled-system/tokens'
-import { token } from '@spon/styled-system/tokens'
 import { Stack } from '@spon/ui/layout/Stack'
 import { Portable } from '~/components/Portable'
-import type {
-	BlockBodyFragment,
-	TextPanelStyleBodyFragment, // TextPanelStyleFragment,
-} from '~/schema/generated.graphql'
+import type { ComponentsTextPanelBlocksBodyLayoutFragment } from '~/schema/generated.graphql'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
+import { typography } from '~/utils/style/typography'
 
-export function BlockBody({ body, style }: WithPT<BlockBodyFragment>) {
+type TBlockBodyProps = WithPT<ComponentsTextPanelBlocksBodyLayoutFragment>
+
+export function BlockBody({ body, style }: TBlockBodyProps) {
 	return (
 		<Stack
 			data-testid="BlockBody"
-			style={parseBodyProps(style)}
+			style={typography(style?.typography)}
 			className={css({
 				alignItems: 'var(--align-items, start)',
 				gap: 'var(--gap, token(spacing.4))',
@@ -24,35 +22,4 @@ export function BlockBody({ body, style }: WithPT<BlockBodyFragment>) {
 			<Portable body={body} />
 		</Stack>
 	)
-}
-
-function parseBodyProps({ textSizes, box }: TextPanelStyleBodyFragment) {
-	const fontSizes = textSizes?.reduce<Record<string, string>>((acc, s) => {
-		const {
-			style: [style],
-			fontSize: [fontSize],
-		} = s
-
-		acc[`--font-size-${style}`] = token(
-			`fontSizes.${fontSize as FontSizeToken}`,
-		)
-
-		return acc
-	}, {})
-
-	const spacing = box?.reduce<Record<string, string>>((acc, s) => {
-		const {
-			attribute: [attribute],
-			spacing: [spacing],
-		} = s
-
-		acc[`--${attribute}`] = token(`spacing.${spacing as SpacingToken}`)
-
-		return acc
-	}, {})
-
-	return {
-		...fontSizes,
-		...spacing,
-	}
 }

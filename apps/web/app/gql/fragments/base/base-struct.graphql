@@ -1,0 +1,144 @@
+fragment BaseStructureTextBlocksSection on BaseStructureTextBlocksSection {
+	align {
+		...StylesSectionAlign
+	}
+	justify {
+		...StylesSectionJustify
+	}
+	box {
+		...StylesSectionBox
+	}
+}
+
+fragment BaseStructureSection on BaseStructureSection {
+	align {
+		...StylesSectionAlign
+	}
+	justify {
+		...StylesSectionJustify
+	}
+	box {
+		...StylesSectionBox
+	}
+}
+
+fragment BaseStructureTextBlocksBlocksTextLayout on BaseStructureTextBlocksBlocksTextLayout {
+	text
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+fragment BaseStructureTextBlocksBlocksMarkdownLayout on BaseStructureTextBlocksBlocksMarkdownLayout {
+	markdown: textLines
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+fragment BaseStructureTextBlocksBlocksBodyLayout on BaseStructureTextBlocksBlocksBodyLayout {
+	body
+	style: textStyles {
+		...BlocksTextStyles
+	}
+}
+fragment BaseStructureTextBlocksBlocksButtonsLayout on BaseStructureTextBlocksBlocksButtonsLayout {
+	buttons {
+		...Buttons
+	}
+}
+fragment BaseStructureTextBlocksBlocksImageLayout on BaseStructureTextBlocksBlocksImageLayout {
+	image {
+		asset {
+			...MediaItem
+		}
+		style {
+			__typename
+		}
+	}
+}
+
+fragment BaseStructureTextLayout on BaseStructureTextLayout {
+	textBlocks {
+		blocks {
+			__typename
+			...BaseStructureTextBlocksBlocksTextLayout
+			...BaseStructureTextBlocksBlocksMarkdownLayout
+			...BaseStructureTextBlocksBlocksBodyLayout
+			...BaseStructureTextBlocksBlocksButtonsLayout
+			...BaseStructureTextBlocksBlocksImageLayout
+		}
+		section {
+			...BaseStructureTextBlocksSection
+		}
+	}
+}
+
+fragment BaseStructureColumns on BaseStructureColumns {
+	style {
+		group {
+			...ContentColumnsStyleGroup
+		}
+	}
+	blocks {
+		textPanel {
+			...ContentColumnsBlocksTextPanel
+		}
+	}
+}
+
+fragment BaseStructureTextColumnsLayout on BaseStructureTextColumnsLayout {
+	columns {
+		...BaseStructureColumns
+	}
+}
+
+fragment ContentMixedColumnsStyleGroup on ContentMixedColumnsStyleGroup {
+	align {
+		...StylesGroupAlign
+	}
+	justify {
+		...StylesGroupJustify
+	}
+	box {
+		...StylesGroupBox
+	}
+	justify {
+		...StylesGroupJustify
+	}
+	flexDirection {
+		...StylesGroupFlexDirection
+	}
+}
+
+fragment BaseStructureMixedColumns on BaseStructureMixedColumns {
+	style {
+		group {
+			...ContentMixedColumnsStyleGroup
+		}
+	}
+	content {
+		__typename
+		...ContentMixedColumnsContentImageColumnLayout
+		...ContentMixedColumnsContentTextColumnLayout
+	}
+}
+
+fragment BaseStructureMixedColumnsLayout on BaseStructureMixedColumnsLayout {
+	columns: mixedColumns {
+		__typename
+		...BaseStructureMixedColumns
+	}
+}
+
+fragment BaseStructureSliceLayout on BaseStructureSliceLayout {
+	section {
+		...BaseStructureSection
+	}
+}
+
+fragment BaseStructure_Layout on BaseStructure_Layout {
+	__typename
+	...BaseStructureTextLayout
+	...BaseStructureTextColumnsLayout
+	...BaseStructureMixedColumnsLayout
+	...BaseStructureSliceLayout
+}

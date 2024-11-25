@@ -14,7 +14,7 @@ query HomePageQuery(
 	posts(first: 3) {
 		edges {
 			node {
-				...TeaserPost
+				...BlogTeaserPage
 			}
 			cursor
 		}

@@ -4,26 +4,25 @@ import { BlockBody } from '~/components/blocks/BlockBody'
 import { BlockButtons } from '~/components/blocks/BlockButtons'
 import { BlockText } from '~/components/blocks/BlockText'
 import type {
-	BlogImageMixedColumnFragment,
-	BlogMixedColumnsStructureFragment,
-	BlogTextMixedColumnFragment,
-	ImageMixedColumnFragment,
-	MixedColumnsStructureFragment,
-	TextMixedColumnFragment,
+	BaseStructureMixedColumnsLayoutFragment,
+	BlogStructureMixedColumnsLayoutFragment,
+	ContentMixedColumnsContentImageColumnLayoutFragment,
+	ContentMixedColumnsContentTextColumnLayoutFragment,
 } from '~/schema/generated.graphql'
 import { parseImageProps } from '~/utils/imageProps'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
 
 function ImageColumn({
 	image,
-}: ImageMixedColumnFragment | BlogImageMixedColumnFragment) {
+}: ContentMixedColumnsContentImageColumnLayoutFragment) {
 	return <Image {...parseImageProps(image.asset)} />
 }
 
 function TextColumn({
 	textPanel,
-}: WithPT<TextMixedColumnFragment> | WithPT<BlogTextMixedColumnFragment>) {
-	const { blocks } = textPanel
+}: WithPT<ContentMixedColumnsContentTextColumnLayoutFragment>) {
+	const { blocks, style } = textPanel
+	console.log('[TextColumn/style]', style)
 
 	return (
 		<>
@@ -50,19 +49,23 @@ function TextColumn({
 export function StructureMixedColumns({
 	columns,
 }:
-	| WithPT<MixedColumnsStructureFragment>
-	| WithPT<BlogMixedColumnsStructureFragment>) {
+	| WithPT<BlogStructureMixedColumnsLayoutFragment>
+	| WithPT<BaseStructureMixedColumnsLayoutFragment>) {
+	const { style, content } = columns
+
+	console.log('[StructureMixedColumns/style]', style)
+
+	if (!content) return null
+
 	return (
 		<div data-testid="StructureMixedColumns">
-			{columns.map((column, i) => (
+			{content.map((column, i) => (
 				<React.Fragment key={i}>
 					{(() => {
 						switch (column?.__typename) {
-							case 'BaseStructureMixedColumnsImageColumnLayout':
-							case 'BlogStructureMixedColumnsImageColumnLayout':
+							case 'ContentMixedColumnsContentImageColumnLayout':
 								return <ImageColumn {...column} />
-							case 'BaseStructureMixedColumnsTextColumnLayout':
-							case 'BlogStructureMixedColumnsTextColumnLayout':
+							case 'ContentMixedColumnsContentTextColumnLayout':
 								return <TextColumn {...column} />
 							default:
 								return null

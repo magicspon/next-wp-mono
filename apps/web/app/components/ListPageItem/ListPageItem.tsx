@@ -4,7 +4,7 @@ import * as React from 'react'
 import { Button } from '@spon/ui/primitives/Button'
 import { Text } from '@spon/ui/type/Text'
 import type {
-	TeaserFragment,
+	BaseTeaserFragment,
 	TeaserPageFragment,
 } from '~/schema/generated.graphql'
 import { parseImageProps } from '~/utils/imageProps'
@@ -18,7 +18,7 @@ type TElementProps = React.ComponentProps<'div'>
 
 type TListPageItemProps = TElementProps &
 	Omit<TeaserPageFragment, 'base' | 'id'> & {
-		teaser: WithPT<TeaserFragment>
+		teaser: WithPT<BaseTeaserFragment>
 	}
 
 export function ListPageItem({ title, teaser, uri }: TListPageItemProps) {
@@ -36,7 +36,7 @@ export function ListPageItem({ title, teaser, uri }: TListPageItemProps) {
 								<BlockBody body={block.body} style={block.style} key={index} />
 							)
 						case 'BaseTeaserBlocksButtonsLayout':
-							return <BlockButtons {...block} key={index} />
+							return <BlockButtons buttons={block.buttons} key={index} />
 						case 'BaseTeaserBlocksMarkdownLayout':
 							return (
 								<BlockMarkdown

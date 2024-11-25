@@ -1,9 +1,9 @@
 {
-    "key": "group_6741f7afbb3eb",
+    "key": "group_674493d40fdfa",
     "title": "Blog",
     "fields": [
         {
-            "key": "field_6741f7afbdec3",
+            "key": "field_674493d412c00",
             "label": "Main",
             "name": "",
             "aria-label": "",
@@ -22,7 +22,7 @@
             "selected": 0
         },
         {
-            "key": "field_6741f7afbdf12",
+            "key": "field_674493d412c4d",
             "label": "Structure",
             "name": "structure",
             "aria-label": "",
@@ -43,7 +43,7 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_6741f7afc2aa0",
+                            "key": "field_674493d416daa",
                             "label": "Text blocks",
                             "name": "text_blocks",
                             "aria-label": "",
@@ -63,7 +63,7 @@
                             "graphql_non_null": 0,
                             "sub_fields": [
                                 {
-                                    "key": "field_6741f7afc3342",
+                                    "key": "field_674493d4175f5",
                                     "label": "Content",
                                     "name": "",
                                     "aria-label": "",
@@ -81,7 +81,7 @@
                                     "selected": 0
                                 },
                                 {
-                                    "key": "field_6741f7afc3390",
+                                    "key": "field_674493d417647",
                                     "label": "Blocks",
                                     "name": "blocks",
                                     "aria-label": "",
@@ -104,7 +104,7 @@
                                     "prefix_name": 0
                                 },
                                 {
-                                    "key": "field_6741f7afc33de",
+                                    "key": "field_674493d417699",
                                     "label": "Options",
                                     "name": "",
                                     "aria-label": "",
@@ -122,7 +122,7 @@
                                     "selected": 0
                                 },
                                 {
-                                    "key": "field_6741f7afc3433",
+                                    "key": "field_674493d4176e4",
                                     "label": "Style",
                                     "name": "style",
                                     "aria-label": "",
@@ -135,10 +135,9 @@
                                         "class": "",
                                         "id": ""
                                     },
+                                    "graphql_field_name": "style",
                                     "clone": [
-                                        "field_6726d6d6ae0d7",
-                                        "field_672a5bba55eaa",
-                                        "field_672a569e0eb88"
+                                        "field_674348b52b900"
                                     ],
                                     "display": "seamless",
                                     "layout": "block",
@@ -158,7 +157,7 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_6741f7afc2aed",
+                            "key": "field_674493d416df8",
                             "label": "Columns",
                             "name": "columns",
                             "aria-label": "",
@@ -191,7 +190,7 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_6741f7afc2b3a",
+                            "key": "field_674493d416e43",
                             "label": "Mixed columns",
                             "name": "mixed_columns",
                             "aria-label": "",
@@ -224,7 +223,7 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_6741f7afc2b87",
+                            "key": "field_674493d416e8d",
                             "label": "Style",
                             "name": "style",
                             "aria-label": "",
@@ -239,9 +238,7 @@
                             },
                             "graphql_field_name": "style",
                             "clone": [
-                                "field_672a5bba55eaa",
-                                "field_672a569e0eb88",
-                                "field_672be5800c2ce"
+                                "field_674348b52b900"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -262,7 +259,7 @@
             "graphql_non_null": 0
         },
         {
-            "key": "field_6741f7afbdf63",
+            "key": "field_674493d412c95",
             "label": "Teaser",
             "name": "",
             "aria-label": "",
@@ -281,7 +278,7 @@
             "selected": 0
         },
         {
-            "key": "field_6741f7afbdfae",
+            "key": "field_674493d412cdc",
             "label": "Teaser",
             "name": "teaser",
             "aria-label": "",
@@ -301,7 +298,32 @@
             "graphql_non_null": 0,
             "sub_fields": [
                 {
-                    "key": "field_6741f7afc8245",
+                    "key": "field_674493d41c2b2",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "show_in_graphql": 1,
+                    "graphql_description": "",
+                    "graphql_field_name": "title",
+                    "graphql_non_null": 0
+                },
+                {
+                    "key": "field_674493d41c303",
                     "label": "Call to action",
                     "name": "cta",
                     "aria-label": "",
@@ -326,7 +348,7 @@
                     "graphql_non_null": 0
                 },
                 {
-                    "key": "field_6741f7afc827b",
+                    "key": "field_674493d41c32f",
                     "label": "Props",
                     "name": "props",
                     "aria-label": "",
@@ -383,5 +405,5 @@
     "graphql_field_name": "blog",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1732376634
+    "modified": 1732547728
 }

@@ -1,0 +1,32 @@
+query PostQuery($id: ID!) {
+	post(id: $id, idType: URI) {
+		__typename
+		...Post
+	}
+}
+
+query PostsQuery($first: Int = 10, $id: ID! = 15) {
+	posts(first: $first) {
+		edges {
+			node {
+				...BlogTeaserPage
+			}
+			cursor
+		}
+	}
+
+	page(id: $id, idType: DATABASE_ID) {
+		...BlogPage
+	}
+}
+
+query PostsQueryPagination($first: Int = 10, $after: String!) {
+	posts(first: $first, after: $after) {
+		edges {
+			node {
+				...BlogTeaserPage
+			}
+			cursor
+		}
+	}
+}
