@@ -1,7 +1,5 @@
 import * as React from 'react'
-import { BlockBody } from '~/components/blocks/BlockBody'
-import { BlockButtons } from '~/components/blocks/BlockButtons'
-import { BlockText } from '~/components/blocks/BlockText'
+import { Block } from '~/components/blocks/Block'
 import type {
 	BaseStructureTextLayoutFragment,
 	BlogStructureTextLayoutFragment,
@@ -18,25 +16,7 @@ export function StructureText({
 
 	return (
 		<div style={section(textBlocks?.section)} data-testid="StructureText">
-			{blocks?.map((block, index) => {
-				switch (block.__typename) {
-					case 'BlogStructureTextBlocksBlocksBodyLayout':
-					case 'BaseStructureTextBlocksBlocksBodyLayout':
-						return (
-							<BlockBody body={block.body} style={block.style} key={index} />
-						)
-					case 'BlogStructureTextBlocksBlocksButtonsLayout':
-					case 'BaseStructureTextBlocksBlocksButtonsLayout':
-						return <BlockButtons buttons={block.buttons} key={index} />
-					case 'BlogStructureTextBlocksBlocksTextLayout':
-					case 'BaseStructureTextBlocksBlocksTextLayout':
-						return (
-							<BlockText text={block.text} style={block.style} key={index} />
-						)
-					default:
-						return null
-				}
-			})}
+			<Block blocks={blocks} />
 		</div>
 	)
 }

@@ -68,15 +68,19 @@ fragment BlogStructureTextBlocksBlocksImageLayout on BlogStructureTextBlocksBloc
 	}
 }
 
+fragment BlogStructureTextBlocksBlocks_Layout on BlogStructureTextBlocksBlocks_Layout {
+	__typename
+	...BlogStructureTextBlocksBlocksTextLayout
+	...BlogStructureTextBlocksBlocksMarkdownLayout
+	...BlogStructureTextBlocksBlocksBodyLayout
+	...BlogStructureTextBlocksBlocksButtonsLayout
+	...BlogStructureTextBlocksBlocksImageLayout
+}
+
 fragment BlogStructureTextLayout on BlogStructureTextLayout {
 	textBlocks {
 		blocks {
-			__typename
-			...BlogStructureTextBlocksBlocksTextLayout
-			...BlogStructureTextBlocksBlocksMarkdownLayout
-			...BlogStructureTextBlocksBlocksBodyLayout
-			...BlogStructureTextBlocksBlocksButtonsLayout
-			...BlogStructureTextBlocksBlocksImageLayout
+			...BlogStructureTextBlocksBlocks_Layout
 		}
 		section {
 			...BlogStructureTextBlocksSection

@@ -135,7 +135,7 @@ const defaultBlocks: Record<
 	),
 }
 
-type PortableProps = {
+export type PortableProps = {
 	body: PortableValue
 	components?: {
 		block?: Record<PortableTextBlockStyle, PortableTextBlockComponent>

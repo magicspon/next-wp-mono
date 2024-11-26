@@ -68,15 +68,19 @@ fragment BaseStructureTextBlocksBlocksImageLayout on BaseStructureTextBlocksBloc
 	}
 }
 
+fragment BaseStructureTextBlocksBlocks_Layout on BaseStructureTextBlocksBlocks_Layout {
+	__typename
+	...BaseStructureTextBlocksBlocksTextLayout
+	...BaseStructureTextBlocksBlocksMarkdownLayout
+	...BaseStructureTextBlocksBlocksBodyLayout
+	...BaseStructureTextBlocksBlocksButtonsLayout
+	...BaseStructureTextBlocksBlocksImageLayout
+}
+
 fragment BaseStructureTextLayout on BaseStructureTextLayout {
 	textBlocks {
 		blocks {
-			__typename
-			...BaseStructureTextBlocksBlocksTextLayout
-			...BaseStructureTextBlocksBlocksMarkdownLayout
-			...BaseStructureTextBlocksBlocksBodyLayout
-			...BaseStructureTextBlocksBlocksButtonsLayout
-			...BaseStructureTextBlocksBlocksImageLayout
+			...BaseStructureTextBlocksBlocks_Layout
 		}
 		section {
 			...BaseStructureTextBlocksSection

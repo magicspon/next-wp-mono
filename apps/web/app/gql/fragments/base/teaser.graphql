@@ -37,6 +37,8 @@ fragment BaseTeaserBlocksImageLayout on BaseTeaserBlocksImageLayout {
 }
 
 fragment BaseTeaserBlocks_Layout on BaseTeaserBlocks_Layout {
+	__typename
+
 	...BaseTeaserBlocksTextLayout
 	...BaseTeaserBlocksMarkdownLayout
 	...BaseTeaserBlocksBodyLayout
@@ -57,7 +59,6 @@ fragment BaseTeaser on BaseTeaser {
 	cta: callToAction
 	title
 	blocks {
-		__typename
 		...BaseTeaserBlocks_Layout
 	}
 	image {

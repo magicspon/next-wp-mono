@@ -1,8 +1,5 @@
 import * as React from 'react'
-import { BlockBody } from '~/components/blocks/BlockBody'
-import { BlockButtons } from '~/components/blocks/BlockButtons'
-import { BlockMarkdown } from '~/components/blocks/BlockMarkdown'
-import { BlockText } from '~/components/blocks/BlockText'
+import { Block } from '~/components/blocks/Block'
 import type {
 	BaseStructureTextColumnsLayoutFragment,
 	BlogStructureTextColumnsLayoutFragment,
@@ -23,30 +20,7 @@ function Column({
 
 	return (
 		<div style={section(style.section)}>
-			{blocks?.map((block, index) => {
-				switch (block.__typename) {
-					case 'ComponentsTextPanelBlocksBodyLayout':
-						return (
-							<BlockBody body={block.body} style={block.style} key={index} />
-						)
-					case 'ComponentsTextPanelBlocksButtonsLayout':
-						return <BlockButtons {...block} key={index} />
-					case 'ComponentsTextPanelBlocksTextLayout':
-						return (
-							<BlockText text={block.text} style={block.style} key={index} />
-						)
-					case 'ComponentsTextPanelBlocksMarkdownLayout':
-						return (
-							<BlockMarkdown
-								markdown={block.markdown}
-								style={block.style}
-								key={index}
-							/>
-						)
-					default:
-						return null
-				}
-			})}
+			<Block blocks={blocks} />
 		</div>
 	)
 }

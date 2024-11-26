@@ -4,10 +4,7 @@ import { css, sva } from '@spon/styled-system/css'
 import { Text } from '@spon/ui/type/Text'
 // import { Stack } from '@spon/ui/layout/Stack'
 import { getFirstOrNull } from '@spon/utils/getFirstOrNull'
-import { BlockBody } from '~/components/blocks/BlockBody'
-import { BlockButtons } from '~/components/blocks/BlockButtons'
-import { BlockMarkdown } from '~/components/blocks/BlockMarkdown'
-import { BlockText } from '~/components/blocks/BlockText'
+import { Block } from '~/components/blocks/Block'
 import type { BaseHeroTextLayoutFragment } from '~/schema/generated.graphql'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
 import { section } from '~/utils/style/section'
@@ -77,61 +74,30 @@ export function HeroText({ textPanel, style }: THeroTextProps) {
 				style={section(textPanel?.style?.section)}
 				className={classes.content}
 			>
-				{blocks?.map((block, index) => {
-					switch (block.__typename) {
-						case 'ComponentsTextPanelBlocksBodyLayout':
-							return (
-								<BlockBody
-									body={block.body}
-									textStyles={block.textStyles}
-									key={index}
-									components={{
-										block: {
-											h1: ({ children }) => (
-												<Text
-													asChild
-													size={9}
-													family="heading"
-													style={{
-														'--font-size': 'var(--font-size-h1)',
-													}}
-													className={css({
-														fontSize:
-															'calc(var(--font-size, token(fontSizes.8))*var(--scaling))',
-													})}
-												>
-													<h1>{children}</h1>
-												</Text>
-											),
-										},
+				<Block
+					blocks={blocks}
+					classes={classes}
+					portable={{
+						block: {
+							h1: ({ children }) => (
+								<Text
+									asChild
+									size={9}
+									family="heading"
+									style={{
+										'--font-size': 'var(--font-size-h1)',
 									}}
-								/>
-							)
-						case 'ComponentsTextPanelBlocksButtonsLayout':
-							return <BlockButtons buttons={block.buttons} key={index} />
-						case 'ComponentsTextPanelBlocksMarkdownLayout':
-							return (
-								<BlockMarkdown
-									markdown={block.markdown}
-									textStyles={block.textStyles}
-									key={index}
-									className={classes.markdown}
-								/>
-							)
-						case 'ComponentsTextPanelBlocksTextLayout':
-							return (
-								<BlockText
-									text={block.text}
-									textStyles={block.textStyles}
-									key={index}
-									className={classes.text}
-								/>
-							)
-
-						default:
-							return null
-					}
-				})}
+									className={css({
+										fontSize:
+											'calc(var(--font-size, token(fontSizes.8))*var(--scaling))',
+									})}
+								>
+									<h1>{children}</h1>
+								</Text>
+							),
+						},
+					}}
+				/>
 			</div>
 		</div>
 	)
