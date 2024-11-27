@@ -1,16 +1,24 @@
 import * as React from 'react'
-import { Text } from '@spon/ui/type/Text'
+import { css, cx } from '@spon/styled-system/css'
+import type { Text } from '@spon/ui/type/Text'
 import type { ComponentsTextPanelBlocksTextLayoutFragment } from '~/schema/generated.graphql'
-import { typography } from '~/utils/style/typography'
+import { findFontSize, typography } from '~/utils/style/typography'
 
 type TBlockBodyProps = React.ComponentProps<typeof Text> &
 	ComponentsTextPanelBlocksTextLayoutFragment
 
-export function BlockText({ text, textStyles, ...props }: TBlockBodyProps) {
-	const { vars, fontFamily } = typography(textStyles?.typography)
+export function BlockText({ text, textStyles, className }: TBlockBodyProps) {
+	const { vars } = typography(textStyles?.typography)
+	const Comp = 'p'
 	return (
-		<Text size={4} family={fontFamily} style={vars} {...props}>
+		<Comp
+			style={vars}
+			className={cx(
+				css({ textStyle: findFontSize('font-size', textStyles) }),
+				className,
+			)}
+		>
 			{text}
-		</Text>
+		</Comp>
 	)
 }

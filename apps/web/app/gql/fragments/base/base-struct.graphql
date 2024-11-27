@@ -51,6 +51,10 @@ fragment BaseStructureTextBlocksBlocksBodyLayout on BaseStructureTextBlocksBlock
 	textStyles {
 		...BlocksTextStyles
 	}
+
+	layout {
+		...ContentBlocksLayout
+	}
 }
 fragment BaseStructureTextBlocksBlocksButtonsLayout on BaseStructureTextBlocksBlocksButtonsLayout {
 	buttons {

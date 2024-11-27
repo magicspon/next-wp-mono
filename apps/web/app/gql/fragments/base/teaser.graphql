@@ -17,6 +17,10 @@ fragment BaseTeaserBlocksBodyLayout on BaseTeaserBlocksBodyLayout {
 	textStyles {
 		...BlocksTextStyles
 	}
+
+	layout {
+		...ContentBlocksLayout
+	}
 }
 
 fragment BaseTeaserBlocksButtonsLayout on BaseTeaserBlocksButtonsLayout {

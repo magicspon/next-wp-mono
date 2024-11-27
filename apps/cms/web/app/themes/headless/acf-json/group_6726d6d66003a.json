@@ -883,8 +883,7 @@
                     "clone": [
                         "field_6726d6d6ae0d7",
                         "field_672a569e0eb88",
-                        "field_674319eaa2919",
-                        "field_672bdf28ee2b4"
+                        "field_674319eaa2919"
                     ],
                     "display": "seamless",
                     "layout": "block",
@@ -1061,5 +1060,5 @@
     "graphql_field_name": "styles",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1732567673
+    "modified": 1732729494
 }

@@ -51,6 +51,10 @@ fragment BlogStructureTextBlocksBlocksBodyLayout on BlogStructureTextBlocksBlock
 	textStyles {
 		...BlocksTextStyles
 	}
+
+	layout {
+		...ContentBlocksLayout
+	}
 }
 fragment BlogStructureTextBlocksBlocksButtonsLayout on BlogStructureTextBlocksBlocksButtonsLayout {
 	buttons {

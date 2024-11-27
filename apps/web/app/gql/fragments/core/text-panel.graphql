@@ -36,10 +36,32 @@ fragment ComponentsTextPanelBlocksMarkdownLayout on ComponentsTextPanelBlocksMar
 	}
 }
 
+fragment ContentBlocksLayoutBox on ContentBlocksLayoutBox {
+	attribute
+	spacing
+}
+
+fragment ContentBlocksLayoutAlign on ContentBlocksLayoutAlign {
+	attribute
+	value
+}
+
+fragment ContentBlocksLayout on ContentBlocksLayout {
+	box {
+		...ContentBlocksLayoutBox
+	}
+	align {
+		...ContentBlocksLayoutAlign
+	}
+}
+
 fragment ComponentsTextPanelBlocksBodyLayout on ComponentsTextPanelBlocksBodyLayout {
 	body
 	textStyles {
 		...BlocksTextStyles
+	}
+	layout {
+		...ContentBlocksLayout
 	}
 }
 

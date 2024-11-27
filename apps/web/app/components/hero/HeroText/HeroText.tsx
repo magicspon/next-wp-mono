@@ -1,32 +1,40 @@
 import * as React from 'react'
 import type { RecipeVariantProps } from '@spon/styled-system/css'
-import { css, sva } from '@spon/styled-system/css'
-import { Text } from '@spon/ui/type/Text'
-// import { Stack } from '@spon/ui/layout/Stack'
+import { sva } from '@spon/styled-system/css'
 import { getFirstOrNull } from '@spon/utils/getFirstOrNull'
 import { Block } from '~/components/blocks/Block'
 import type { BaseHeroTextLayoutFragment } from '~/schema/generated.graphql'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
 import { section } from '~/utils/style/section'
-import { findFontSize } from '~/utils/style/typography'
 
 const hero = sva({
 	slots: ['root', 'content', 'text', 'markdown'],
 	base: {
 		root: {
-			justifyContent: 'var(--hero-justify-content, start)',
+			display: 'flex',
+			flexDir: 'column',
+			justifyContent: 'var(--justify-content, start)',
 			bg: 'var(--background, token(colors.teal.800))',
 			color: 'var(--foreground, token(colors.white))',
 			py: {
-				base: 'var(--hero-padding-y, token(spacing.8))',
-				md: 'var(--hero-md-padding-y, token(spacing.16))',
+				base: 'var(--padding-y, token(spacing.8))',
+				md: 'var(--md-padding-y, token(spacing.16))',
 			},
 			px: {
-				base: 'var(--hero-padding-x, token(spacing.8))',
-				md: 'var(--hero-md-padding-x, token(spacing.16))',
+				base: 'var(--padding-x, token(spacing.8))',
+				md: 'var(--md-padding-x, token(spacing.16))',
 			},
 		},
-		content: { maxW: 'var(--hero-max-width, token(sizes.lg))', w: 'full' },
+		content: {
+			maxW: 'var(--max-width, token(sizes.lg))',
+			w: 'full',
+			display: 'flex',
+			flexDir: 'column',
+			gap: {
+				base: 'var(--gap, token(spacing.6))',
+				md: 'var(--md-gap, token(spacing.8))',
+			},
+		},
 		text: {
 			color: 'var(--foreground, token(colors.white))',
 		},
@@ -41,13 +49,13 @@ const hero = sva({
 		variant: {
 			banner: {
 				root: {
-					alignItems: 'var(--hero-align-items, center)',
+					alignItems: 'var(--align-items, center)',
 				},
 				content: {},
 			},
 			legal: {
 				root: {
-					alignItems: 'var(--hero-align-items, start)',
+					alignItems: 'var(--align-items, start)',
 				},
 				content: { width: '10', height: '10' },
 			},
@@ -70,33 +78,16 @@ export function HeroText({ textPanel, style }: THeroTextProps) {
 	const classes = hero({ variant: variant as Variant })
 
 	return (
-		<div style={section(style?.section, 'hero')} className={classes.root}>
+		<div
+			data-testid="HeroText"
+			style={section(style?.section)}
+			className={classes.root}
+		>
 			<div
 				style={section(textPanel?.style?.section)}
 				className={classes.content}
 			>
-				<Block
-					blocks={blocks}
-					classes={classes}
-					portable={(style) => ({
-						block: {
-							h1: ({ children }) => {
-								return (
-									<>
-										<Text
-											asChild
-											className={css({
-												textStyle: findFontSize('h1', style) ?? 'display/2',
-											})}
-										>
-											<h1>{children}</h1>
-										</Text>
-									</>
-								)
-							},
-						},
-					})}
-				/>
+				<Block blocks={blocks} classes={classes} />
 			</div>
 		</div>
 	)

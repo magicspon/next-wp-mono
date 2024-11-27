@@ -4,9 +4,50 @@ import { bodyFontVars, headingFontVars } from './style/textStyles'
 import { tokens } from './style/tokens'
 import { px2 } from './utils/units'
 
+function createBreakpointVariables() {
+	return ['', 'md-', 'lg-'].reduce<
+		Record<string, { syntax: string; inherits: boolean; initialValue: string }>
+	>((acc, curr) => {
+		acc[`--${curr}padding-y`] = {
+			syntax: '<length>',
+			inherits: false,
+			initialValue: 'initial',
+		}
+
+		acc[`--${curr}padding-x`] = {
+			syntax: '<length>',
+			inherits: false,
+			initialValue: 'initial',
+		}
+
+		acc[`--${curr}gap`] = {
+			syntax: '<length>',
+			inherits: false,
+			initialValue: 'initial',
+		}
+
+		return acc
+	}, {})
+}
+
+function createBreakpointReset() {
+	return ['', 'md-', 'lg-'].reduce<Record<string, string>>((acc, curr) => {
+		acc[`--${curr}padding-y`] = 'initial'
+		acc[`--${curr}padding-x`] = 'initial'
+		acc[`--${curr}gap`] = 'initial'
+
+		return acc
+	}, {})
+}
+
 export default definePreset({
 	name: '@spon/ui',
 	globalCss: {
+		'*': {
+			'--align-items': 'initial',
+			'--justify-items': 'initial',
+			...createBreakpointReset(),
+		},
 		'.theme': {
 			'--scaling': 1,
 		},
@@ -14,6 +55,19 @@ export default definePreset({
 	globalVars: {
 		...bodyFontVars,
 		...headingFontVars,
+		...createBreakpointVariables(),
+
+		'--align-items': {
+			syntax: '<string>',
+			inherits: false,
+			initialValue: 'initial',
+		},
+
+		'--justify-items': {
+			syntax: '<string>',
+			inherits: false,
+			initialValue: 'initial',
+		},
 	},
 	theme: {
 		tokens: {

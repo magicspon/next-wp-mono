@@ -366,6 +366,52 @@
                                     "prefix_name": 0
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_67475bdf005a9",
+                            "label": "Layout",
+                            "name": "layout",
+                            "aria-label": "",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "graphql_field_name": "layout",
+                            "layout": "block",
+                            "show_in_graphql": 1,
+                            "graphql_description": "",
+                            "graphql_non_null": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_67475c04005aa",
+                                    "label": "Box",
+                                    "name": "box",
+                                    "aria-label": "",
+                                    "type": "clone",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "graphql_field_name": "box",
+                                    "clone": [
+                                        "field_672a5bba55eaa",
+                                        "field_67431aa550855"
+                                    ],
+                                    "display": "seamless",
+                                    "layout": "block",
+                                    "prefix_label": 0,
+                                    "prefix_name": 0
+                                }
+                            ]
                         }
                     ],
                     "min": "",
@@ -1158,5 +1204,5 @@
     "graphql_field_name": "content",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1732464576
+    "modified": 1732729894
 }

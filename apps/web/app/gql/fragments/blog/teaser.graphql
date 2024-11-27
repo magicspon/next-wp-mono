@@ -17,6 +17,10 @@ fragment BlogTeaserBlocksBodyLayout on BlogTeaserBlocksBodyLayout {
 	textStyles {
 		...BlocksTextStyles
 	}
+
+	layout {
+		...ContentBlocksLayout
+	}
 }
 
 fragment BlogTeaserBlocksButtonsLayout on BlogTeaserBlocksButtonsLayout {

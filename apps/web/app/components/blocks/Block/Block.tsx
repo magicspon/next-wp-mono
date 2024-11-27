@@ -67,30 +67,9 @@ export function Block({
 							<Body
 								key={index}
 								body={block.body}
+								layout={block.layout}
 								textStyles={block.textStyles}
 								components={portableComponents}
-								// components={{
-								// block: {
-								// 	h1: ({ children }) => {
-								// 		const textStyle =
-								// 			block.textStyles.typography.textSizes.find(
-								// 				(s) => s.style[0] === 'h1',
-								// 			)?.fontSize
-								// 		return (
-								// 			<>
-								// 				<Text
-								// 					asChild
-								// 					className={css({
-								// 						textStyle: textStyle ?? 'display/2',
-								// 					})}
-								// 				>
-								// 					<h1>{children}</h1>
-								// 				</Text>
-								// 			</>
-								// 		)
-								// 	},
-								// },
-								// }}
 								className={classes.body}
 							/>
 						)

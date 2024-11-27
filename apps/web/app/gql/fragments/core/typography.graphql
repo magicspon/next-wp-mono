@@ -23,7 +23,6 @@ fragment Typography on ContentBlocksTextStylesTypography {
 	theme {
 		...TypographyTheme
 	}
-	fontFamily
 }
 
 fragment BlocksTextStyles on ContentBlocksTextStyles {

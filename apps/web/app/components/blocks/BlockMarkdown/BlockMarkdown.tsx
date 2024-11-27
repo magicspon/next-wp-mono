@@ -1,7 +1,8 @@
 import * as React from 'react'
-import { Text } from '@spon/ui/type/Text'
+import { css, cx } from '@spon/styled-system/css'
+import type { Text } from '@spon/ui/type/Text'
 import type { ComponentsTextPanelBlocksMarkdownLayoutFragment } from '~/schema/generated.graphql'
-import { typography } from '~/utils/style/typography'
+import { findFontSize, typography } from '~/utils/style/typography'
 
 type TBlockBodyProps = React.ComponentProps<typeof Text> &
 	ComponentsTextPanelBlocksMarkdownLayoutFragment
@@ -9,16 +10,20 @@ type TBlockBodyProps = React.ComponentProps<typeof Text> &
 export function BlockMarkdown({
 	markdown,
 	textStyles,
-	...props
+	className,
 }: TBlockBodyProps) {
-	const { vars, fontFamily } = typography(textStyles?.typography)
+	const { vars } = typography(textStyles?.typography)
+
+	const Comp = 'p'
 
 	return (
-		<Text
+		<Comp
 			data-testid="BlockMarkdown"
 			style={vars}
-			family={fontFamily}
-			{...props}
+			className={cx(
+				css({ textStyle: findFontSize('font-size', textStyles) }),
+				className,
+			)}
 			dangerouslySetInnerHTML={{ __html: markdown }}
 		/>
 	)
