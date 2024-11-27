@@ -6,7 +6,7 @@ import { Text } from '@spon/ui/type/Text'
 import { Block } from '~/components/blocks/Block'
 import type { BlogTeaserPageFragment } from '~/schema/generated.graphql'
 import { parseImageProps } from '~/utils/imageProps'
-import type { WithPT } from '~/utils/portable/htmlToPortableText'
+import type { WithPT } from '~/utils/ts-helpers'
 import * as uri from '~/utils/urls'
 
 type TElementProps = React.ComponentProps<'div'>

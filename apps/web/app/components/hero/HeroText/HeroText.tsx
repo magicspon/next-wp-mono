@@ -4,8 +4,9 @@ import { sva } from '@spon/styled-system/css'
 import { getFirstOrNull } from '@spon/utils/getFirstOrNull'
 import { Block } from '~/components/blocks/Block'
 import type { BaseHeroTextLayoutFragment } from '~/schema/generated.graphql'
-import type { WithPT } from '~/utils/portable/htmlToPortableText'
+import { createStyleFromGraphql } from '~/utils/style/createStyleFromGql'
 import { section } from '~/utils/style/section'
+import type { WithPT } from '~/utils/ts-helpers'
 
 const hero = sva({
 	slots: ['root', 'content', 'text', 'markdown'],
@@ -28,6 +29,7 @@ const hero = sva({
 		content: {
 			maxW: 'var(--max-width, token(sizes.lg))',
 			w: 'full',
+			textAlign: 'var(--text-align, left)',
 			display: 'flex',
 			flexDir: 'column',
 			gap: {
@@ -84,7 +86,10 @@ export function HeroText({ textPanel, style }: THeroTextProps) {
 			className={classes.root}
 		>
 			<div
-				style={section(textPanel?.style?.section)}
+				style={{
+					...section(textPanel?.style?.section),
+					...createStyleFromGraphql(textPanel.style.textAlign),
+				}}
 				className={classes.content}
 			>
 				<Block blocks={blocks} classes={classes} />

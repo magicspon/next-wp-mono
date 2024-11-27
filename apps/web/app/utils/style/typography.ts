@@ -3,7 +3,11 @@ import type {
 	TypographyFragment,
 } from '~/schema/generated.graphql'
 import type { RemoveTypename } from '../ts-helpers'
-import { createColors, createStyleFromGraphql } from './createStyleFromGql'
+import {
+	createColors,
+	createScale,
+	createStyleFromGraphql,
+} from './createStyleFromGql'
 
 export function typography(input: TypographyFragment): {
 	vars: React.CSSProperties
@@ -13,10 +17,11 @@ export function typography(input: TypographyFragment): {
 			vars: {},
 		}
 
-	const { theme, textAlign } = input
+	const { theme, textAlign, scale } = input
 
 	const vars = {
 		...createColors(theme),
+		...createScale(scale),
 		...createStyleFromGraphql(textAlign),
 	}
 

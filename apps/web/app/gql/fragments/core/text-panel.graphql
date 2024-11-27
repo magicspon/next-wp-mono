@@ -16,13 +16,30 @@ fragment ComponentsTextPanelStyleSection on ComponentsTextPanelStyleSection {
 	}
 }
 
+fragment ComponentsTextPanelStyleTextAlign on ComponentsTextPanelStyleTextAlign {
+	attribute
+	value
+}
+
+fragment ComponentsTextPanelStyleScale on ComponentsTextPanelStyleScale {
+	attribute
+	scaling
+}
+
 fragment ComponentsTextPanelStyle on ComponentsTextPanelStyle {
 	section {
 		...ComponentsTextPanelStyleSection
 	}
+	textAlign {
+		...ComponentsTextPanelStyleTextAlign
+	}
+	scale {
+		...ComponentsTextPanelStyleScale
+	}
 }
 
 fragment ComponentsTextPanelBlocksTextLayout on ComponentsTextPanelBlocksTextLayout {
+	tag
 	text
 	textStyles {
 		...BlocksTextStyles
@@ -30,6 +47,7 @@ fragment ComponentsTextPanelBlocksTextLayout on ComponentsTextPanelBlocksTextLay
 }
 
 fragment ComponentsTextPanelBlocksMarkdownLayout on ComponentsTextPanelBlocksMarkdownLayout {
+	tag
 	markdown: textLines
 	textStyles {
 		...BlocksTextStyles

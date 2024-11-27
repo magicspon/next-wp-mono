@@ -3,6 +3,7 @@ fragment BaseTeaserBlocksTextLayout on BaseTeaserBlocksTextLayout {
 	textStyles {
 		...BlocksTextStyles
 	}
+	tag
 }
 
 fragment BaseTeaserBlocksMarkdownLayout on BaseTeaserBlocksMarkdownLayout {
@@ -10,6 +11,7 @@ fragment BaseTeaserBlocksMarkdownLayout on BaseTeaserBlocksMarkdownLayout {
 	textStyles {
 		...BlocksTextStyles
 	}
+	tag
 }
 
 fragment BaseTeaserBlocksBodyLayout on BaseTeaserBlocksBodyLayout {

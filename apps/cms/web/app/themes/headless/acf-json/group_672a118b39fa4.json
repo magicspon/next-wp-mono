@@ -130,6 +130,29 @@
                                     "prefix_name": 0
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_6747a4208592e",
+                            "label": "Tag",
+                            "name": "tag",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "graphql_field_name": "tag",
+                            "clone": [
+                                "field_6747a3c163277"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
@@ -248,6 +271,29 @@
                                     "prefix_name": 0
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_6747a4370acd4",
+                            "label": "Tag",
+                            "name": "tag",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "graphql_field_name": "tag",
+                            "clone": [
+                                "field_6747a3c163277"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
@@ -1204,5 +1250,5 @@
     "graphql_field_name": "content",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1732729894
+    "modified": 1732748359
 }

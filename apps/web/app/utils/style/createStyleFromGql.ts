@@ -1,5 +1,6 @@
 import type {
 	ColorToken,
+	ScalingToken,
 	SizeToken,
 	SpacingToken,
 } from '@spon/styled-system/tokens'
@@ -69,6 +70,31 @@ export function createColors(theme: StyleColorsProps, prefix?: string) {
 		acc[`--${namespace(attribute, prefix)}`] = token(
 			`colors.${colours as ColorToken}`,
 		)
+
+		return acc
+	}, {})
+}
+
+type StyleScaleProps = {
+	scaling: string[]
+	attribute: string[]
+}[]
+export function createScale(theme: StyleScaleProps, prefix?: string) {
+	return theme?.reduce<Record<string, string>>((acc, s) => {
+		const {
+			attribute: [attribute],
+			scaling: [scaling],
+		} = s
+
+		if (!attribute || !scaling) return acc
+
+		console.log({ v: token(`scaling.${scaling as ScalingToken}`) })
+
+		acc[`--${namespace(attribute, prefix)}`] = token(
+			`scaling.${scaling as ScalingToken}`,
+		)
+
+		console.log({ acc })
 
 		return acc
 	}, {})

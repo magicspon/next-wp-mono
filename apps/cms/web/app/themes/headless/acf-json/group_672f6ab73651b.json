@@ -119,7 +119,9 @@
                             },
                             "graphql_field_name": "props",
                             "clone": [
-                                "field_674348b52b900"
+                                "field_674348b52b900",
+                                "field_674319eaa2919",
+                                "field_67479f713e5e9"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -287,5 +289,5 @@
     "graphql_field_name": "components",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1732462992
+    "modified": 1732747231
 }

@@ -5,9 +5,9 @@ import type {
 	BlogStructureTextColumnsLayoutFragment,
 	ContentColumnsBlocksTextPanelFragment,
 } from '~/schema/generated.graphql'
-import type { WithPT } from '~/utils/portable/htmlToPortableText'
 import { group } from '~/utils/style/group'
 import { section } from '~/utils/style/section'
+import type { WithPT } from '~/utils/ts-helpers'
 
 function Column({
 	column,

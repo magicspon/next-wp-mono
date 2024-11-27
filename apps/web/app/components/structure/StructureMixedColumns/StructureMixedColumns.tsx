@@ -9,8 +9,8 @@ import type {
 	ContentMixedColumnsContentTextColumnLayoutFragment,
 } from '~/schema/generated.graphql'
 import { parseImageProps } from '~/utils/imageProps'
-import type { WithPT } from '~/utils/portable/htmlToPortableText'
 import { group } from '~/utils/style/group'
+import type { WithPT } from '~/utils/ts-helpers'
 
 function ImageColumn({
 	image,

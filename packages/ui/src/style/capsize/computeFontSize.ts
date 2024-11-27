@@ -5,6 +5,7 @@ export const round = (value: number) => parseFloat(value.toFixed(4))
 const getVars = (namespace: string) => (style: string) =>
 	`var(--${namespace}-${style})`
 
+// this doesn't appear to be working
 export function computeFontSize(options: CapsizeOptions, namespace: string) {
 	const { fontSize, lineHeight } = normaliseOptions(options)
 

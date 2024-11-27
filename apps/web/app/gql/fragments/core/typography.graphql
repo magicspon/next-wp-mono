@@ -13,6 +13,11 @@ fragment TypographyTheme on StylesTypographyTheme {
 	attribute
 }
 
+fragment TypographyScale on StylesTypographyScale {
+	scaling
+	attribute
+}
+
 fragment Typography on ContentBlocksTextStylesTypography {
 	textAlign {
 		...TypographyTextAlign
@@ -22,6 +27,9 @@ fragment Typography on ContentBlocksTextStylesTypography {
 	}
 	theme {
 		...TypographyTheme
+	}
+	scale {
+		...TypographyScale
 	}
 }
 

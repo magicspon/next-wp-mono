@@ -8,7 +8,7 @@ import type {
 	BlogStructureTextColumnsLayoutFragment,
 	BlogStructureTextLayoutFragment,
 } from '~/schema/generated.graphql'
-import type { WithPT } from './portable/htmlToPortableText'
+import type { WithPT } from '~/utils/ts-helpers'
 
 type TBlock =
 	| BlogStructureTextLayoutFragment

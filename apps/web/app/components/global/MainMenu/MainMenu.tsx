@@ -23,17 +23,17 @@ export function MainMenu({ menu }: TMainMenuProps) {
 			>
 				{menu.map((node) => (
 					<Item asChild key={node.id}>
-						<Link
-							className={css({
-								p: 2,
-								'&[data-state=closed]': { opacity: '0' },
-							})}
-							href={node.uri}
-						>
-							<Text size={5} family="heading" asChild>
-								<span>{node.label}</span>
-							</Text>
-						</Link>
+						<Text size={7} variant="body" asChild>
+							<Link
+								className={css({
+									p: 2,
+									'&[data-state=closed]': { opacity: '0' },
+								})}
+								href={node.uri}
+							>
+								{node.label}
+							</Link>
+						</Text>
 					</Item>
 				))}
 			</nav>

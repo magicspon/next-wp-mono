@@ -39,12 +39,14 @@ fragment BaseStructureTextBlocksBlocksTextLayout on BaseStructureTextBlocksBlock
 	textStyles {
 		...BlocksTextStyles
 	}
+	tag
 }
 fragment BaseStructureTextBlocksBlocksMarkdownLayout on BaseStructureTextBlocksBlocksMarkdownLayout {
 	markdown: textLines
 	textStyles {
 		...BlocksTextStyles
 	}
+	tag
 }
 fragment BaseStructureTextBlocksBlocksBodyLayout on BaseStructureTextBlocksBlocksBodyLayout {
 	body

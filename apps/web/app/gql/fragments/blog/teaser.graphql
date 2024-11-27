@@ -3,6 +3,7 @@ fragment BlogTeaserBlocksTextLayout on BlogTeaserBlocksTextLayout {
 	textStyles {
 		...BlocksTextStyles
 	}
+	tag
 }
 
 fragment BlogTeaserBlocksMarkdownLayout on BlogTeaserBlocksMarkdownLayout {
@@ -10,6 +11,7 @@ fragment BlogTeaserBlocksMarkdownLayout on BlogTeaserBlocksMarkdownLayout {
 	textStyles {
 		...BlocksTextStyles
 	}
+	tag
 }
 
 fragment BlogTeaserBlocksBodyLayout on BlogTeaserBlocksBodyLayout {

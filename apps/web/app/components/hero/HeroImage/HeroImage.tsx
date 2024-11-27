@@ -3,8 +3,8 @@ import * as React from 'react'
 import { Block } from '~/components/blocks/Block'
 import type { BaseHeroTextImageLayoutFragment } from '~/schema/generated.graphql'
 import { parseImageProps } from '~/utils/imageProps'
-import type { WithPT } from '~/utils/portable/htmlToPortableText'
 import { section } from '~/utils/style/section'
+import type { WithPT } from '~/utils/ts-helpers'
 
 type THeroImageProps = WithPT<BaseHeroTextImageLayoutFragment>
 

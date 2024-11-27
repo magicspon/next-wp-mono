@@ -8,7 +8,7 @@ import type {
 	TeaserPageFragment,
 } from '~/schema/generated.graphql'
 import { parseImageProps } from '~/utils/imageProps'
-import type { WithPT } from '~/utils/portable/htmlToPortableText'
+import type { WithPT } from '~/utils/ts-helpers'
 import { Block } from '../blocks/Block'
 
 type TElementProps = React.ComponentProps<'div'>

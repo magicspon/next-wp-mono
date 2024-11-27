@@ -39,12 +39,14 @@ fragment BlogStructureTextBlocksBlocksTextLayout on BlogStructureTextBlocksBlock
 	textStyles {
 		...BlocksTextStyles
 	}
+	tag
 }
 fragment BlogStructureTextBlocksBlocksMarkdownLayout on BlogStructureTextBlocksBlocksMarkdownLayout {
 	markdown: textLines
 	textStyles {
 		...BlocksTextStyles
 	}
+	tag
 }
 fragment BlogStructureTextBlocksBlocksBodyLayout on BlogStructureTextBlocksBlocksBodyLayout {
 	body

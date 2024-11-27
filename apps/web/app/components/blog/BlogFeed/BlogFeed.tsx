@@ -7,13 +7,13 @@ import { Stack } from '@spon/ui/layout/Stack'
 import { Button } from '@spon/ui/primitives/Button'
 import { BlogPostTeaser } from '~/components/blog/BlogPostTeaser'
 import { useInfinitePosts } from '~/hooks/useInfinitePosts'
-import type { TeaserPostFragment } from '~/schema/generated.graphql'
-import type { WithPT } from '~/utils/portable/htmlToPortableText'
+import type { BlogTeaserPageFragment } from '~/schema/generated.graphql'
+import type { WithPT } from '~/utils/ts-helpers'
 
 type TElementProps = React.ComponentProps<'div'>
 
 type TPostFeedProps = TElementProps & {
-	posts: WithPT<TeaserPostFragment>[]
+	posts: WithPT<BlogTeaserPageFragment>[]
 	cursor?: string
 }
 

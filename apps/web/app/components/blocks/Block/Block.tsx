@@ -12,8 +12,11 @@ import type {
 	BlogTeaserBlocks_LayoutFragment,
 	ComponentsTextPanelBlocks_LayoutFragment,
 } from '~/schema/generated.graphql'
-import type { WithPT } from '~/utils/portable/htmlToPortableText'
-import type { RemoveTypename, TComponentAsProp } from '~/utils/ts-helpers'
+import type {
+	RemoveTypename,
+	TComponentAsProp,
+	WithPT,
+} from '~/utils/ts-helpers'
 import { BlockImage } from '../BlockImage'
 
 type TBlockData =
@@ -99,6 +102,7 @@ export function Block({
 						return (
 							<Markdown
 								key={index}
+								tag={block.tag}
 								markdown={block.markdown}
 								textStyles={block.textStyles}
 								className={classes.markdown}
@@ -115,6 +119,7 @@ export function Block({
 						return (
 							<Text
 								key={index}
+								tag={block.tag}
 								text={block.text}
 								textStyles={block.textStyles}
 								className={classes.text}

@@ -94,6 +94,7 @@ export const tokens = defineTokens({
 		1.25: { value: 1.25 },
 		1.5: { value: 1.5 },
 		2: { value: 2 },
+		2.5: { value: 2.5 },
 		3: { value: 3 },
 	},
 })

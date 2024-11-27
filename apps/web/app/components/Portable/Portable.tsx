@@ -9,8 +9,8 @@ import * as React from 'react'
 import { css } from '@spon/styled-system/css'
 import { Stack } from '@spon/ui/layout/Stack'
 import type { BlocksTextStylesFragment } from '~/schema/generated.graphql'
-import type { PortableValue } from '~/utils/portable/htmlToPortableText'
 import { findFontSize, getTextStyles } from '~/utils/style/typography'
+import type { PortableValue } from '~/utils/ts-helpers'
 import type { RemoveTypename } from '~/utils/ts-helpers'
 
 const defaultBlocks = (
@@ -19,28 +19,82 @@ const defaultBlocks = (
 	const el = getTextStyles(style) ?? {}
 	return {
 		h1: ({ children }) => (
-			<h1 className={css({ textStyle: el.h1 ?? 'display/2' })}>{children}</h1>
+			<h1
+				className={css({
+					textStyle: el.h1 ?? 'display/2',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
+				{children}
+			</h1>
 		),
 		h2: ({ children }) => (
-			<h2 className={css({ textStyle: el.h2 ?? 'display/3' })}>{children}</h2>
+			<h2
+				className={css({
+					textStyle: el.h2 ?? 'display/3',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
+				{children}
+			</h2>
 		),
 		h3: ({ children }) => (
-			<h3 className={css({ textStyle: el.h3 ?? 'display/4' })}>{children}</h3>
+			<h3
+				className={css({
+					textStyle: el.h3 ?? 'display/4',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
+				{children}
+			</h3>
 		),
 		h4: ({ children }) => (
-			<h4 className={css({ textStyle: el.h4 ?? 'display/5' })}>{children}</h4>
+			<h4
+				className={css({
+					textStyle: el.h4 ?? 'display/5',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
+				{children}
+			</h4>
 		),
 		h5: ({ children }) => (
-			<h5 className={css({ textStyle: el.h5 ?? 'display/6' })}>{children}</h5>
+			<h5
+				className={css({
+					textStyle: el.h5 ?? 'display/6',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
+				{children}
+			</h5>
 		),
 		h6: ({ children }) => (
-			<h6 className={css({ textStyle: el.h6 ?? 'display/7' })}>{children}</h6>
+			<h6
+				className={css({
+					textStyle: el.h6 ?? 'display/7',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
+				{children}
+			</h6>
 		),
 		normal: ({ children }) => (
-			<p className={css({ textStyle: el.normal ?? 'body/3' })}>{children}</p>
+			<p
+				className={css({
+					textStyle: el.normal ?? 'body/3',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
+				{children}
+			</p>
 		),
 		blockquote: ({ children }) => (
-			<blockquote className={css({ textStyle: el.blockquote ?? 'body/2' })}>
+			<blockquote
+				className={css({
+					textStyle: el.blockquote ?? 'body/2',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
 				{children}
 			</blockquote>
 		),

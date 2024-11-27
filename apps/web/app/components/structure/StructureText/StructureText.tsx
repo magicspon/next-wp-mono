@@ -4,8 +4,8 @@ import type {
 	BaseStructureTextLayoutFragment,
 	BlogStructureTextLayoutFragment,
 } from '~/schema/generated.graphql'
-import type { WithPT } from '~/utils/portable/htmlToPortableText'
 import { section } from '~/utils/style/section'
+import type { WithPT } from '~/utils/ts-helpers'
 
 export function StructureText({
 	textBlocks,
