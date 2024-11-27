@@ -1,5 +1,6 @@
 import { definePreset } from '@pandacss/dev'
 import { textStyles } from './style/textStyles'
+import { bodyFontVars, headingFontVars } from './style/textStyles'
 import { tokens } from './style/tokens'
 import { px2 } from './utils/units'
 
@@ -9,6 +10,10 @@ export default definePreset({
 		'.theme': {
 			'--scaling': 1,
 		},
+	},
+	globalVars: {
+		...bodyFontVars,
+		...headingFontVars,
 	},
 	theme: {
 		tokens: {

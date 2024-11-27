@@ -8,15 +8,13 @@ import type {
 	BaseStructureTextBlocksBlocks_LayoutFragment,
 	BaseTeaserBlocks_LayoutFragment,
 	BlogStructureTextBlocksBlocks_LayoutFragment,
+	BlogTeaserBlocksBodyLayoutFragment,
 	BlogTeaserBlocks_LayoutFragment,
 	ComponentsTextPanelBlocks_LayoutFragment,
 } from '~/schema/generated.graphql'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
+import type { RemoveTypename, TComponentAsProp } from '~/utils/ts-helpers'
 import { BlockImage } from '../BlockImage'
-
-type Comp<T extends React.ComponentType<any>> = React.ComponentType<
-	React.ComponentProps<T>
->
 
 type TBlockData =
 	| BaseStructureTextBlocksBlocks_LayoutFragment
@@ -33,14 +31,16 @@ type TBlockProps = {
 		body?: string
 		buttons?: string
 	}
-	portable?: PortableProps['components']
+	portable?: (
+		style: RemoveTypename<BlogTeaserBlocksBodyLayoutFragment['textStyles']>,
+	) => PortableProps['components']
 	blocks: WithPT<TBlockData[]>
 	components?: {
-		text?: Comp<typeof BlockText>
-		markdown?: Comp<typeof BlockMarkdown>
-		buttons?: Comp<typeof BlockButtons>
-		body?: Comp<typeof BlockBody>
-		image?: Comp<typeof BlockImage>
+		text?: TComponentAsProp<typeof BlockText>
+		markdown?: TComponentAsProp<typeof BlockMarkdown>
+		buttons?: TComponentAsProp<typeof BlockButtons>
+		body?: TComponentAsProp<typeof BlockBody>
+		image?: TComponentAsProp<typeof BlockImage>
 	}
 }
 
@@ -60,12 +60,37 @@ export function Block({
 					case 'BaseStructureTextBlocksBlocksBodyLayout':
 					case 'ComponentsTextPanelBlocksBodyLayout': {
 						const Body = components?.body ?? BlockBody
+						const portableComponents = portable
+							? portable(block.textStyles)
+							: undefined
 						return (
 							<Body
 								key={index}
 								body={block.body}
 								textStyles={block.textStyles}
-								components={portable}
+								components={portableComponents}
+								// components={{
+								// block: {
+								// 	h1: ({ children }) => {
+								// 		const textStyle =
+								// 			block.textStyles.typography.textSizes.find(
+								// 				(s) => s.style[0] === 'h1',
+								// 			)?.fontSize
+								// 		return (
+								// 			<>
+								// 				<Text
+								// 					asChild
+								// 					className={css({
+								// 						textStyle: textStyle ?? 'display/2',
+								// 					})}
+								// 				>
+								// 					<h1>{children}</h1>
+								// 				</Text>
+								// 			</>
+								// 		)
+								// 	},
+								// },
+								// }}
 								className={classes.body}
 							/>
 						)

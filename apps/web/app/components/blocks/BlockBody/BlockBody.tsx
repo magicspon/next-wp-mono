@@ -19,17 +19,19 @@ export function BlockBody({
 	const { vars } = typography(textStyles?.typography)
 
 	return (
-		<Stack
-			data-testid="BlockBody"
-			style={vars}
-			className={cx(
-				className,
-				css({
-					alignItems: 'var(--align-items, start)',
-				}),
-			)}
-		>
-			<Portable body={body} components={components} />
-		</Stack>
+		<>
+			<Stack
+				data-testid="BlockBody"
+				style={vars}
+				className={cx(
+					className,
+					css({
+						alignItems: 'var(--align-items, start)',
+					}),
+				)}
+			>
+				<Portable body={body} components={components} style={textStyles} />
+			</Stack>
+		</>
 	)
 }

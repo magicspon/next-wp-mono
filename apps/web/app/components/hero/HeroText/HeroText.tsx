@@ -8,6 +8,7 @@ import { Block } from '~/components/blocks/Block'
 import type { BaseHeroTextLayoutFragment } from '~/schema/generated.graphql'
 import type { WithPT } from '~/utils/portable/htmlToPortableText'
 import { section } from '~/utils/style/section'
+import { findFontSize } from '~/utils/style/typography'
 
 const hero = sva({
 	slots: ['root', 'content', 'text', 'markdown'],
@@ -77,26 +78,24 @@ export function HeroText({ textPanel, style }: THeroTextProps) {
 				<Block
 					blocks={blocks}
 					classes={classes}
-					portable={{
+					portable={(style) => ({
 						block: {
-							h1: ({ children }) => (
-								<Text
-									asChild
-									size={9}
-									family="heading"
-									style={{
-										'--font-size': 'var(--font-size-h1)',
-									}}
-									className={css({
-										fontSize:
-											'calc(var(--font-size, token(fontSizes.8))*var(--scaling))',
-									})}
-								>
-									<h1>{children}</h1>
-								</Text>
-							),
+							h1: ({ children }) => {
+								return (
+									<>
+										<Text
+											asChild
+											className={css({
+												textStyle: findFontSize('h1', style) ?? 'display/2',
+											})}
+										>
+											<h1>{children}</h1>
+										</Text>
+									</>
+								)
+							},
 						},
-					}}
+					})}
 				/>
 			</div>
 		</div>

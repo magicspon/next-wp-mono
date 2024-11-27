@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { css } from '@spon/styled-system/css'
 // import { Grid } from '@spon/ui/layout/Grid'
 // import { BlogPostTeaser } from '~/components/blog/BlogPostTeaser'
 import { Hero } from '~/components/hero'
@@ -20,10 +21,16 @@ type BaseProps = {
 	posts?: WithPT<BlogTeaserPageFragment>[]
 }
 
+const durp = 'display'
+
 export function HomePage({ hero, structure }: BaseProps) {
 	return (
 		<>
 			<Hero content={hero} />
+
+			<p className={css({ textStyle: `${durp}/5`, scaling: { md: '1.5' } })}>
+				Hello
+			</p>
 
 			<Structure structure={structure} />
 

@@ -17,15 +17,30 @@
                 "id": ""
             },
             "choices": {
-                "1": "1",
-                "2": "2",
-                "3": "3",
-                "4": "4",
-                "5": "5",
-                "6": "6",
-                "7": "7",
-                "8": "8",
-                "9": "9"
+                "display\/1": "display\/1",
+                "display\/2": "display\/2",
+                "display\/3": "display\/3",
+                "display\/4": "display\/4",
+                "display\/5": "display\/5",
+                "display\/6": "display\/6",
+                "display\/7": "display\/7",
+                "display\/8": "display\/8",
+                "heading\/1": "heading\/1",
+                "heading\/2": "heading\/2",
+                "heading\/3": "heading\/3",
+                "heading\/4": "heading\/4",
+                "heading\/5": "heading\/5",
+                "heading\/6": "heading\/6",
+                "heading\/7": "heading\/7",
+                "heading\/8": "heading\/8",
+                "body\/1": "body\/1",
+                "body\/2": "body\/2",
+                "body\/3": "body\/3",
+                "body\/4": "body\/4",
+                "body\/5": "body\/5",
+                "body\/6": "body\/6",
+                "body\/7": "body\/7",
+                "body\/8": "body\/8"
             },
             "default_value": false,
             "return_format": "value",
@@ -645,5 +660,5 @@
     "graphql_field_name": "tokens",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1732562060
+    "modified": 1732723978
 }

@@ -1,5 +1,10 @@
+import type { FontMetrics } from '@capsizecss/core'
 import { createStyleObject } from '@capsizecss/core'
 import type { TextStyles } from '@pandacss/types'
+import { token } from '@spon/styled-system/tokens'
+import { computeFontVariables } from './capsize/computeFontVariables'
+
+export const round = (value: number) => parseFloat(value.toFixed(4))
 
 type TFontSizeKey = keyof typeof fontSizes
 
@@ -8,6 +13,8 @@ type TTextStyle = {
 		'--font-size': string
 		fontSize: string
 		lineHeight: number
+		fontFamily: string
+		letterSpacing: string
 		_before: {
 			content: string
 			marginBottom: string
@@ -43,47 +50,145 @@ const headingFontMetrics = {
 	xWidthAvg: 302,
 }
 
-const createBody = (fontSize: number, leading: number) => {
-	return createStyleObject({
-		fontSize,
-		leading,
-		fontMetrics: bodyFontMetrics,
-	})
+export const bodyFontVars = computeFontVariables(bodyFontMetrics, 'body')
+export const headingFontVars = computeFontVariables(
+	headingFontMetrics,
+	'heading',
+)
+
+type TFontSchema = {
+	fontMetrics: Omit<FontMetrics, 'familyName' | 'postscriptName' | 'fullName'>
+	lineHeights: Record<number, number>
+	letterSpacing: Record<number, number>
+	fontFamily: string
 }
 
-const createHeading = (fontSize: number, leading: number) => {
-	return createStyleObject({
+const fontBuilder = ({
+	fontMetrics,
+	lineHeights,
+	fontFamily,
+	letterSpacing,
+}: TFontSchema) => {
+	const multi = (v: number, key: keyof typeof lineHeights) =>
+		v * lineHeights[key]!
+
+	return ({
 		fontSize,
 		leading,
-		fontMetrics: headingFontMetrics,
-	})
+		tracking,
+	}: {
+		fontSize: number
+		leading: number
+		tracking: number
+	}) => {
+		const track = letterSpacing[tracking]!
+		const t = ((fontSize / 100) * track) / 16
+
+		return {
+			...createStyleObject({
+				fontSize,
+				leading: multi(fontSize, leading),
+				fontMetrics,
+			}),
+			letterSpacing: `${t}em`,
+			fontFamily: fontFamily,
+		}
+	}
 }
 
-const bodyFontSize = {
-	'body/1': createBody(12, 16),
-	'body/2': createBody(14, 20),
-	'body/3': createBody(16, 24),
-	'body/4': createBody(18, 26),
-	'body/5': createBody(20, 28),
-	'body/6': createBody(24, 30),
-	'body/7': createBody(28, 36),
-	'body/8': createBody(36, 40),
-	'body/9': createBody(60, 60),
+const displayBuilder = fontBuilder({
+	fontMetrics: headingFontMetrics,
+	lineHeights: {
+		1: 0.9,
+		2: 1,
+		3: 1.1,
+		4: 1.15,
+		5: 1.2,
+	},
+	letterSpacing: {
+		1: -4,
+		2: -3,
+		3: -2,
+		4: -1,
+		5: 0,
+	},
+	fontFamily: token('fonts.heading'),
+})
+const displayFontSize = {
+	'display/1': displayBuilder({ fontSize: 60, leading: 2, tracking: 4 }),
+	'display/2': displayBuilder({ fontSize: 56, leading: 3, tracking: 4 }),
+	'display/3': displayBuilder({ fontSize: 48, leading: 3, tracking: 4 }),
+	'display/4': displayBuilder({ fontSize: 44, leading: 4, tracking: 4 }),
+	'display/5': displayBuilder({ fontSize: 40, leading: 4, tracking: 4 }),
+	'display/6': displayBuilder({ fontSize: 36, leading: 4, tracking: 4 }),
+	'display/7': displayBuilder({ fontSize: 32, leading: 4, tracking: 4 }),
+	'display/8': displayBuilder({ fontSize: 28, leading: 4, tracking: 4 }),
 } as const
 
+const headingBuilder = fontBuilder({
+	fontMetrics: headingFontMetrics,
+	lineHeights: {
+		1: 1.1,
+		2: 1.2,
+		3: 1.3,
+		4: 1.4,
+		5: 1.5,
+	},
+	letterSpacing: {
+		1: -3,
+		2: -2,
+		3: -1,
+		4: 0,
+		5: 1,
+	},
+	fontFamily: token('fonts.body'),
+})
 const headingFontSize = {
-	'heading/1': createHeading(12, 16),
-	'heading/2': createHeading(14, 20),
-	'heading/3': createHeading(16, 24),
-	'heading/4': createHeading(18, 26),
-	'heading/5': createHeading(20, 28),
-	'heading/6': createHeading(24, 30),
-	'heading/7': createHeading(28, 36),
-	'heading/8': createHeading(36, 40),
-	'heading/9': createHeading(60, 60),
+	'heading/1': headingBuilder({ fontSize: 28, leading: 2, tracking: 3 }),
+	'heading/2': headingBuilder({ fontSize: 26, leading: 2, tracking: 3 }),
+	'heading/3': headingBuilder({ fontSize: 24, leading: 3, tracking: 3 }),
+	'heading/4': headingBuilder({ fontSize: 22, leading: 3, tracking: 3 }),
+	'heading/5': headingBuilder({ fontSize: 20, leading: 3, tracking: 3 }),
+	'heading/6': headingBuilder({ fontSize: 18, leading: 3, tracking: 3 }),
+	'heading/7': headingBuilder({ fontSize: 16, leading: 4, tracking: 3 }),
+	'heading/8': headingBuilder({ fontSize: 14, leading: 4, tracking: 3 }),
 } as const
 
-const fontSizes = { ...bodyFontSize, ...headingFontSize }
+const bodyBuilder = fontBuilder({
+	fontMetrics: bodyFontMetrics,
+	lineHeights: {
+		1: 1.2,
+		2: 1.3,
+		3: 1.4,
+		4: 1.5,
+		5: 1.6,
+	},
+	letterSpacing: {
+		1: -2,
+		2: -1,
+		3: 0,
+		4: 1,
+		5: 2,
+	},
+	fontFamily: token('fonts.body'),
+})
+const bodyFontSize = {
+	'body/1': bodyBuilder({ fontSize: 28, leading: 2, tracking: 3 }),
+	'body/2': bodyBuilder({ fontSize: 26, leading: 2, tracking: 3 }),
+	'body/3': bodyBuilder({ fontSize: 24, leading: 3, tracking: 3 }),
+	'body/4': bodyBuilder({ fontSize: 22, leading: 3, tracking: 3 }),
+	'body/5': bodyBuilder({ fontSize: 20, leading: 3, tracking: 3 }),
+	'body/6': bodyBuilder({ fontSize: 18, leading: 3, tracking: 3 }),
+	'body/7': bodyBuilder({ fontSize: 16, leading: 4, tracking: 3 }),
+	'body/8': bodyBuilder({ fontSize: 14, leading: 4, tracking: 3 }),
+} as const
+
+const fontSizes = {
+	...displayFontSize,
+	...headingFontSize,
+	...bodyFontSize,
+	// ...headingFontSize,
+}
 
 export const textStyles: TextStyles = Object.entries(
 	fontSizes,
@@ -95,7 +200,9 @@ export const textStyles: TextStyles = Object.entries(
 			value: {
 				'--font-size': asRem,
 				fontSize: `calc(var(--font-size) * var(--scaling))`,
+				fontFamily: value.fontFamily,
 				lineHeight: parseFloat(value.lineHeight) / fs,
+				letterSpacing: value.letterSpacing,
 				_before: {
 					content: "''",
 					marginBottom: value['::before'].marginBottom,
