@@ -16,11 +16,7 @@ export function Footer({ menu }: TFooterProps) {
 	return (
 		<Stack gap={4} asChild alignItems="start">
 			<footer className={css({ width: '100%', py: 4, px: 6 })}>
-				<Text
-					size={5}
-					family="heading"
-					className={css({ textTransform: 'uppercase' })}
-				>
+				<Text size={5} className={css({ textTransform: 'uppercase' })}>
 					<Link href="/">Logo</Link>
 				</Text>
 				<Inline asChild>
@@ -33,7 +29,7 @@ export function Footer({ menu }: TFooterProps) {
 					>
 						{menu.map((node) => (
 							<Link key={node.id} href={node.uri}>
-								<Text size={5} family="heading" asChild>
+								<Text size={5} asChild>
 									<span>{node.label}</span>
 								</Text>
 							</Link>

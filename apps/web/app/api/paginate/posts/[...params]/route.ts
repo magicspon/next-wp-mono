@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { POSTS_PER_PAGE } from '~/config'
 import { createClient } from '~/lib/gqlClient'
-import type { TeaserPostFragment } from '~/schema/generated.graphql'
+import type { BlogTeaserPageFragment } from '~/schema/generated.graphql'
 import { parse } from '~/utils/portable/htmlToPortableText'
 
 export async function GET(
@@ -17,7 +17,9 @@ export async function GET(
 			first,
 		})
 
-		const posts = data.posts.edges.map((n) => parse<TeaserPostFragment>(n.node))
+		const posts = data.posts.edges.map((n) =>
+			parse<BlogTeaserPageFragment>(n.node),
+		)
 
 		return NextResponse.json({
 			pages: posts,

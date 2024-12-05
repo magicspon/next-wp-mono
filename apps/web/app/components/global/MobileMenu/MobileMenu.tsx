@@ -21,7 +21,7 @@ export function MobileMenu({ menu }: TMainMenuProps) {
 					})}
 					href={node.uri}
 				>
-					<Text size={5} family="heading" asChild>
+					<Text size={5} asChild>
 						<span>{node.label}</span>
 					</Text>
 				</Link>
