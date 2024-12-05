@@ -31,5 +31,8 @@
 			"types": "./types/index.d.ts"
 		},
 		"./styles.css": "./styles.css"
+	},
+	"scripts": {
+		"init": "panda init"
 	}
 }
