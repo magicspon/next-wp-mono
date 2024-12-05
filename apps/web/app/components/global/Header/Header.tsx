@@ -18,11 +18,7 @@ export function Header({ menu, mobileMenu }: THeaderProps) {
 	return (
 		<Inline asChild>
 			<header className={css({ width: '100%', py: 4, px: 6, gap: 12 })}>
-				<Text
-					size={5}
-					family="heading"
-					className={css({ textTransform: 'uppercase' })}
-				>
+				<Text size={5} className={css({ textTransform: 'uppercase' })}>
 					<Link href="/">Logo</Link>
 				</Text>
 				{menu && <MainMenu menu={menu} />}

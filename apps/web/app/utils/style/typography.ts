@@ -34,7 +34,7 @@ export function findFontSize(
 	target: string,
 	style?: RemoveTypename<BlocksTextStylesFragment>,
 ) {
-	if (!style) return undefined
+	if (!style?.typography?.textSizes) return undefined
 
 	return style.typography.textSizes.find(({ style }) => style[0] === target)
 		?.fontSize
@@ -43,7 +43,7 @@ export function findFontSize(
 export function getTextStyles(
 	style?: RemoveTypename<BlocksTextStylesFragment>,
 ) {
-	if (!style) return undefined
+	if (!style?.typography?.textSizes) return undefined
 
 	return style.typography.textSizes.reduce<Record<string, string>>(
 		(acc, curr) => {

@@ -11,6 +11,7 @@ export type TMainMenuProps = {
 }
 
 export function MobileMenu({ menu }: TMainMenuProps) {
+	if (!menu) return null
 	return (
 		<div className={css({ display: 'none' })}>
 			{menu.map((node) => (
@@ -21,7 +22,7 @@ export function MobileMenu({ menu }: TMainMenuProps) {
 					})}
 					href={node.uri}
 				>
-					<Text size={5} family="heading" asChild>
+					<Text size={5} asChild>
 						<span>{node.label}</span>
 					</Text>
 				</Link>

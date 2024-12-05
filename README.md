@@ -2,7 +2,7 @@
 [![Units Tests](https://github.com/magicspon/sponanity/actions/workflows/test.yml/badge.svg)](https://github.com/magicspon/sponanity/actions/workflows/test.yml)
 [![Lint & Typecheck](https://github.com/magicspon/sponanity/actions/workflows/lint.yml/badge.svg)](https://github.com/magicspon/sponanity/actions/workflows/lint.yml)
 
-# W[Pon]press.
+# W[Pon]press
 
 #### Wordpress (via docker/ddev)
 
@@ -14,7 +14,7 @@ Go to [Bedrock with DDEV](https://roots.io/bedrock/docs/bedrock-with-ddev/) and 
 
 #### Frontend
 
-Use `node` version 20 or more.
+Use `node` version 20 or more
 
 ```bash
 mpm install
