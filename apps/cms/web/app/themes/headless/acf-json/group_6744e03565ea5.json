@@ -1,0 +1,187 @@
+{
+    "key": "group_6744e03565ea5",
+    "title": "Variants",
+    "fields": [
+        {
+            "key": "field_6744e0353fe3b",
+            "label": "Text Variant",
+            "name": "text_variant",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "highlight": "highlight",
+                "cta": "cta",
+                "muted": "muted"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "textVariant",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_6744e06a3fe3c",
+            "label": "Mixed columns variant",
+            "name": "mixed_columns_variant",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "split": "split",
+                "float": "float",
+                "pop": "pop"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "mixedColumnsVariant",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_6744e0b23fe3d",
+            "label": "Columns variant",
+            "name": "columns_variant",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "split": "split",
+                "float": "float",
+                "pop": "pop"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "columnsVariant",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_6744e0c93fe3e",
+            "label": "Hero Text Variant",
+            "name": "hero_text_variant",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "banner": "banner",
+                "legal": "legal"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "heroTextVariant",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_6744e0e23fe3f",
+            "label": "Hero Image Variant",
+            "name": "hero_image_variant",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "split": "split",
+                "bg": "bg"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "show_in_graphql": 1,
+            "graphql_description": "",
+            "graphql_field_name": "heroImageVariant",
+            "graphql_non_null": 0,
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": ""
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "show_in_graphql": 1,
+    "graphql_field_name": "variants",
+    "map_graphql_types_from_location_rules": 0,
+    "graphql_types": "",
+    "modified": 1732726025
+}

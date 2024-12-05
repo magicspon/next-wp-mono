@@ -1,0 +1,26 @@
+query ContentInfo($slug: ID!, $uri: String!, $idType: ContentNodeIdTypeEnum!) {
+	contentNode(id: $slug, idType: $idType) {
+		__typename
+		uri
+		id
+		isPostsPage
+		isFrontPage
+		databaseId
+		template {
+			templateName
+		}
+	}
+	nodeByUri(uri: $uri) {
+		uri
+		id
+		isPostsPage
+		isFrontPage
+		... on ContentNode {
+			__typename
+			databaseId
+			template {
+				templateName
+			}
+		}
+	}
+}

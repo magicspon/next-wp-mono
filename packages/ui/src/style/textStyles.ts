@@ -1,27 +1,8 @@
-import { createStyleObject } from '@capsizecss/core'
 import type { TextStyles } from '@pandacss/types'
-
-type TFontSizeKey = keyof typeof fontSizes
-
-type TTextStyle = {
-	value: {
-		'--font-size': string
-		fontSize: string
-		lineHeight: number
-		_before: {
-			content: string
-			marginBottom: string
-			display: string
-		}
-		_after: {
-			content: string
-			marginTop: string
-			display: string
-		}
-	}
-}
-
-type TTextStyles = Record<TFontSizeKey, TTextStyle>
+import { token } from '@spon/styled-system/tokens'
+import { computeFontVariables } from './capsize/computeFontVariables'
+import type { TTextStyle} from './capsize/index';
+import { fontBuilder } from './capsize/index'
 
 const bodyFontMetrics = {
 	capHeight: 715,
@@ -43,47 +24,68 @@ const headingFontMetrics = {
 	xWidthAvg: 302,
 }
 
-const createBody = (fontSize: number, leading: number) => {
-	return createStyleObject({
-		fontSize,
-		leading,
-		fontMetrics: bodyFontMetrics,
-	})
+export const bodyFontVars = computeFontVariables(bodyFontMetrics, 'body')
+export const headingFontVars = computeFontVariables(
+	headingFontMetrics,
+	'heading',
+)
+
+const displayFontSize = fontBuilder({
+	fontMetrics: headingFontMetrics,
+	lineHeights: { 1: 0.9, 2: 1, 3: 1.1, 4: 1.15, 5: 1.2 },
+	letterSpacing: { 1: -4, 2: -3, 3: -2, 4: -1, 5: 0 },
+	fontFamily: token('fonts.heading'),
+})({
+	'display/1': { fontSize: 60, leading: 2, tracking: 4 },
+	'display/2': { fontSize: 56, leading: 3, tracking: 4 },
+	'display/3': { fontSize: 48, leading: 3, tracking: 4 },
+	'display/4': { fontSize: 44, leading: 4, tracking: 4 },
+	'display/5': { fontSize: 40, leading: 4, tracking: 4 },
+	'display/6': { fontSize: 36, leading: 4, tracking: 4 },
+	'display/7': { fontSize: 32, leading: 4, tracking: 4 },
+	'display/8': { fontSize: 28, leading: 4, tracking: 4 },
+})
+
+const headingFontSize = fontBuilder({
+	fontMetrics: headingFontMetrics,
+	lineHeights: { 1: 1.1, 2: 1.2, 3: 1.3, 4: 1.4, 5: 1.5 },
+	letterSpacing: { 1: -3, 2: -2, 3: -1, 4: 0, 5: 1 },
+	fontFamily: token('fonts.body'),
+})({
+	'heading/1': { fontSize: 28, leading: 2, tracking: 3 },
+	'heading/2': { fontSize: 26, leading: 2, tracking: 3 },
+	'heading/3': { fontSize: 24, leading: 3, tracking: 3 },
+	'heading/4': { fontSize: 22, leading: 3, tracking: 3 },
+	'heading/5': { fontSize: 20, leading: 3, tracking: 3 },
+	'heading/6': { fontSize: 18, leading: 3, tracking: 3 },
+	'heading/7': { fontSize: 16, leading: 4, tracking: 3 },
+	'heading/8': { fontSize: 14, leading: 4, tracking: 3 },
+})
+
+const bodyFontSize = fontBuilder({
+	fontMetrics: bodyFontMetrics,
+	lineHeights: { 1: 1.2, 2: 1.3, 3: 1.4, 4: 1.5, 5: 1.6 },
+	letterSpacing: { 1: -2, 2: -1, 3: 0, 4: 1, 5: 2 },
+	fontFamily: token('fonts.body'),
+})({
+	'body/1': { fontSize: 28, leading: 2, tracking: 3 },
+	'body/2': { fontSize: 26, leading: 2, tracking: 3 },
+	'body/3': { fontSize: 24, leading: 3, tracking: 3 },
+	'body/4': { fontSize: 22, leading: 3, tracking: 3 },
+	'body/5': { fontSize: 20, leading: 3, tracking: 3 },
+	'body/6': { fontSize: 18, leading: 3, tracking: 3 },
+	'body/7': { fontSize: 16, leading: 4, tracking: 3 },
+	'body/8': { fontSize: 14, leading: 4, tracking: 3 },
+})
+
+const fontSizes = {
+	...displayFontSize,
+	...headingFontSize,
+	...bodyFontSize,
 }
 
-const createHeading = (fontSize: number, leading: number) => {
-	return createStyleObject({
-		fontSize,
-		leading,
-		fontMetrics: headingFontMetrics,
-	})
-}
-
-const bodyFontSize = {
-	'body/1': createBody(12, 16),
-	'body/2': createBody(14, 20),
-	'body/3': createBody(16, 24),
-	'body/4': createBody(18, 26),
-	'body/5': createBody(20, 28),
-	'body/6': createBody(24, 30),
-	'body/7': createBody(28, 36),
-	'body/8': createBody(36, 40),
-	'body/9': createBody(60, 60),
-} as const
-
-const headingFontSize = {
-	'heading/1': createHeading(12, 16),
-	'heading/2': createHeading(14, 20),
-	'heading/3': createHeading(16, 24),
-	'heading/4': createHeading(18, 26),
-	'heading/5': createHeading(20, 28),
-	'heading/6': createHeading(24, 30),
-	'heading/7': createHeading(28, 36),
-	'heading/8': createHeading(36, 40),
-	'heading/9': createHeading(60, 60),
-} as const
-
-const fontSizes = { ...bodyFontSize, ...headingFontSize }
+type TFontSizeKey = keyof typeof fontSizes
+type TTextStyles = Record<TFontSizeKey, TTextStyle>
 
 export const textStyles: TextStyles = Object.entries(
 	fontSizes,
@@ -95,17 +97,11 @@ export const textStyles: TextStyles = Object.entries(
 			value: {
 				'--font-size': asRem,
 				fontSize: `calc(var(--font-size) * var(--scaling))`,
+				fontFamily: value.fontFamily,
 				lineHeight: parseFloat(value.lineHeight) / fs,
-				_before: {
-					content: "''",
-					marginBottom: value['::before'].marginBottom,
-					display: 'table',
-				},
-				_after: {
-					content: "''",
-					marginTop: value['::after'].marginTop,
-					display: 'table',
-				},
+				letterSpacing: value.letterSpacing,
+				_before: value['::before'],
+				_after: value['::after'],
 			},
 		}
 		return acc

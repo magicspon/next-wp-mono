@@ -1,155 +1,123 @@
-import type { PortableTextBlockComponent } from '@portabletext/react'
+import type {
+	PortableTextBlockComponent,
+	PortableTextMarkComponent,
+} from '@portabletext/react'
 import { PortableText } from '@portabletext/react'
 import type { PortableTextBlockStyle } from '@portabletext/types'
 import Link from 'next/link'
 import * as React from 'react'
 import { css } from '@spon/styled-system/css'
 import { Stack } from '@spon/ui/layout/Stack'
-import { Text } from '@spon/ui/type/Text'
-import type { PortableValue } from '~/utils/portable/htmlToPortableText'
+import type { BlocksTextStylesFragment } from '~/schema/generated.graphql'
+import { findFontSize, getTextStyles } from '~/utils/style/typography'
+import type { PortableValue } from '~/utils/ts-helpers'
+import type { RemoveTypename } from '~/utils/ts-helpers'
 
-const defaultBlocks: Record<
-	PortableTextBlockStyle,
-	PortableTextBlockComponent | undefined
-> = {
-	h1: ({ children }) => (
-		<Text
-			asChild
-			size={9}
-			family="heading"
-			style={{
-				'--font-size': 'var(--font-size-h1)',
-			}}
-			className={css({
-				fontSize: 'calc(var(--font-size, token(fontSizes.8))*var(--scaling))',
-			})}
-		>
-			<h1>{children}</h1>
-		</Text>
-	),
-	h2: ({ children }) => (
-		<Text
-			asChild
-			size={7}
-			family="heading"
-			style={{
-				'--font-size': 'var(--font-size-h2)',
-			}}
-			className={css({
-				fontSize: 'calc(var(--font-size, token(fontSizes.6))*var(--scaling))',
-			})}
-		>
-			<h2>{children}</h2>
-		</Text>
-	),
-	h3: ({ children }) => (
-		<Text
-			asChild
-			size={5}
-			family="heading"
-			style={{
-				'--font-size': 'var(--font-size-h3)',
-			}}
-			className={css({
-				fontSize: 'calc(var(--font-size, token(fontSizes.5))*var(--scaling))',
-			})}
-		>
-			<h3>{children}</h3>
-		</Text>
-	),
-	h4: ({ children }) => (
-		<Text
-			asChild
-			size={4}
-			family="heading"
-			style={{
-				'--font-size': 'var(--font-size-h4)',
-			}}
-			className={css({
-				fontSize: 'calc(var(--font-size, token(fontSizes.4))*var(--scaling))',
-			})}
-		>
-			<h4>{children}</h4>
-		</Text>
-	),
-	h5: ({ children }) => (
-		<Text
-			asChild
-			size={4}
-			family="heading"
-			style={{
-				'--font-size': 'var(--font-size-h5)',
-			}}
-			className={css({
-				fontSize: 'calc(var(--font-size, token(fontSizes.3))*var(--scaling))',
-			})}
-		>
-			<h5>{children}</h5>
-		</Text>
-	),
-	h6: ({ children }) => (
-		<Text
-			asChild
-			size={3}
-			family="heading"
-			style={{
-				'--font-size': 'var(--font-size-h6)',
-			}}
-			className={css({
-				fontSize: 'calc(var(--font-size, token(fontSizes.2))*var(--scaling))',
-			})}
-		>
-			<h6>{children}</h6>
-		</Text>
-	),
-	normal: ({ children }) => (
-		<Text
-			size={3}
-			family="body"
-			style={{
-				'--font-size': 'var(--font-size-normal)',
-			}}
-			className={css({
-				fontSize: 'calc(var(--font-size, token(fontSizes.4))*var(--scaling))',
-			})}
-		>
-			{children}
-		</Text>
-	),
-
-	blockquote: ({ children }) => (
-		<Text
-			asChild
-			size={3}
-			family="body"
-			style={{
-				'--font-size': 'var(--font-size-normal)',
-			}}
-			className={css({
-				fontSize: 'calc(var(--font-size, token(fontSizes.4))*var(--scaling))',
-				fontStyle: 'italic',
-			})}
-		>
-			<blockquote>{children}</blockquote>
-		</Text>
-	),
-}
-
-type PortableProps = {
-	body: PortableValue
-	components?: {
-		block?: Record<PortableTextBlockStyle, PortableTextBlockComponent>
+const defaultBlocks = (
+	style?: RemoveTypename<BlocksTextStylesFragment>,
+): Record<PortableTextBlockStyle, PortableTextBlockComponent | undefined> => {
+	const el = getTextStyles(style) ?? {}
+	return {
+		h1: ({ children }) => (
+			<h1
+				className={css({
+					textStyle: el.h1 ?? 'display/2',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
+				{children}
+			</h1>
+		),
+		h2: ({ children }) => (
+			<h2
+				className={css({
+					textStyle: el.h2 ?? 'display/3',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
+				{children}
+			</h2>
+		),
+		h3: ({ children }) => (
+			<h3
+				className={css({
+					textStyle: el.h3 ?? 'display/4',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
+				{children}
+			</h3>
+		),
+		h4: ({ children }) => (
+			<h4
+				className={css({
+					textStyle: el.h4 ?? 'display/5',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
+				{children}
+			</h4>
+		),
+		h5: ({ children }) => (
+			<h5
+				className={css({
+					textStyle: el.h5 ?? 'display/6',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
+				{children}
+			</h5>
+		),
+		h6: ({ children }) => (
+			<h6
+				className={css({
+					textStyle: el.h6 ?? 'display/7',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
+				{children}
+			</h6>
+		),
+		normal: ({ children }) => (
+			<p
+				className={css({
+					textStyle: el.normal ?? 'body/3',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
+				{children}
+			</p>
+		),
+		blockquote: ({ children }) => (
+			<blockquote
+				className={css({
+					textStyle: el.blockquote ?? 'body/2',
+					scaling: { md: '1.25', lg: '1.75' },
+				})}
+			>
+				{children}
+			</blockquote>
+		),
 	}
 }
 
-export function Portable({ body, components = {} }: PortableProps) {
-	const { block } = components
+export type PortableProps = {
+	body: PortableValue
+	components?: {
+		block?: Record<PortableTextBlockStyle, PortableTextBlockComponent>
+		marks?: Record<string, PortableTextMarkComponent>
+	}
+	style?: RemoveTypename<BlocksTextStylesFragment>
+}
+
+export function Portable({ body, components = {}, style }: PortableProps) {
+	const { block, marks } = components
 	return (
 		<PortableText
 			value={body}
 			components={{
 				block: {
-					...defaultBlocks,
+					...defaultBlocks(style),
 					...block,
 				},
 				marks: {
@@ -166,6 +134,7 @@ export function Portable({ body, components = {} }: PortableProps) {
 							</Link>
 						)
 					},
+					...marks,
 				},
 				list: {
 					bullet: ({ children }) => (
@@ -180,20 +149,13 @@ export function Portable({ body, components = {} }: PortableProps) {
 					),
 				},
 				listItem: ({ children }) => (
-					<Text
-						size={3}
-						family="body"
-						style={{
-							'--font-size': 'var(--font-size-normal)',
-						}}
+					<li
 						className={css({
-							fontSize:
-								'calc(var(--font-size, token(fontSizes.4))*var(--scaling))',
+							textStyle: findFontSize('normal', style),
 						})}
-						asChild
 					>
-						<li>{children}</li>
-					</Text>
+						{children}
+					</li>
 				),
 			}}
 		/>

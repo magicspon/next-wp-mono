@@ -1,43 +1,22 @@
 import Image from 'next/image'
 import * as React from 'react'
-import { BlockBody } from '~/components/blocks/BlockBody'
-import { BlockButtons } from '~/components/blocks/BlockButtons'
-import { BlockMarkdown } from '~/components/blocks/BlockMarkdown'
-import { BlockText } from '~/components/blocks/BlockText'
-import type { BaseHeroImageTextFragment } from '~/schema/generated.graphql'
+import { Block } from '~/components/blocks/Block'
+import type { BaseHeroTextImageLayoutFragment } from '~/schema/generated.graphql'
 import { parseImageProps } from '~/utils/imageProps'
-import type { WithPT } from '~/utils/portable/htmlToPortableText'
+import { section } from '~/utils/style/section'
+import type { WithPT } from '~/utils/ts-helpers'
 
-type THeroImageProps = WithPT<BaseHeroImageTextFragment>
+type THeroImageProps = WithPT<BaseHeroTextImageLayoutFragment>
 
 export function HeroImage({ textPanel, image }: THeroImageProps) {
+	const { blocks, style } = textPanel
+	const hasBlocks = !!blocks?.length
+
 	return (
-		<div data-testid="HeroImage">
+		<div style={section(style?.section, 'hero')} data-testid="HeroImage">
 			<Image {...parseImageProps(image.asset)} />
-			{textPanel.blocks?.map((block, index) => {
-				switch (block.__typename) {
-					case 'ComponentsTextPanelBlocksBodyLayout':
-						return (
-							<BlockBody body={block.body} style={block.style} key={index} />
-						)
-					case 'ComponentsTextPanelBlocksButtonsLayout':
-						return <BlockButtons {...block} key={index} />
-					case 'ComponentsTextPanelBlocksMarkdownLayout':
-						return (
-							<BlockMarkdown
-								markdown={block.markdown}
-								style={block.style}
-								key={index}
-							/>
-						)
-					case 'ComponentsTextPanelBlocksTextLayout':
-						return (
-							<BlockText text={block.text} style={block.style} key={index} />
-						)
-					default:
-						return null
-				}
-			})}
+
+			{hasBlocks && <Block blocks={blocks} />}
 		</div>
 	)
 }

@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation'
 import { cx } from '@spon/styled-system/css'
 import { flex } from '@spon/styled-system/patterns'
 import { createClient } from '~/lib/gqlClient'
+import { Footer } from './components/global/Footer'
+import { Header } from './components/global/Header'
 import { Provider } from './provider'
 import './style.css'
 
@@ -56,7 +58,9 @@ async function loader() {
 
 	return {
 		seo: resp.seo,
-		// mainMenu: resp.menu.menuItems.nodes,
+		mainMenu: resp.menu?.menuItems?.nodes,
+		footerMenu: resp.footerMenu?.menuItems?.nodes,
+		mobileMenu: resp.mobileMenu?.menuItems?.nodes,
 	}
 }
 
@@ -65,7 +69,7 @@ export default async function RootLayout({
 }: {
 	children: React.ReactNode
 }) {
-	// const { mainMenu } = await loader()
+	const { mainMenu, footerMenu, mobileMenu } = await loader()
 
 	return (
 		<html
@@ -74,13 +78,13 @@ export default async function RootLayout({
 		>
 			<body>
 				<Provider>
-					{/* <Header menu={mainMenu} /> */}
-					<header />
-					<main className={flex({ flexDirection: 'column', flex: 1 })}>
-						{children}
-					</main>
-					<footer />
-					{/* <Footer menu={page.footerMenu} /> */}
+					<div className={flex({ direction: 'column', minH: 'screen' })}>
+						<Header menu={mainMenu} mobileMenu={mobileMenu} />
+						<main className={flex({ flexDirection: 'column', flex: 1 })}>
+							{children}
+						</main>
+						<Footer menu={footerMenu} />
+					</div>
 				</Provider>
 			</body>
 		</html>

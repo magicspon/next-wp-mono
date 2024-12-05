@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { getFirstOrNull } from '@spon/utils/getFirstOrNull'
 import type { BaseHeroFragment } from '~/schema/generated.graphql'
-import type { WithPT } from '~/utils/portable/htmlToPortableText'
+import type { WithPT } from '~/utils/ts-helpers'
 import { HeroImage } from './HeroImage'
 import { HeroText } from './HeroText'
 

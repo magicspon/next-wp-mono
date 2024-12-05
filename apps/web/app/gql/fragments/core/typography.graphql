@@ -1,0 +1,40 @@
+fragment TypographyTextAlign on StylesTypographyTextAlign {
+	attribute
+	value
+}
+
+fragment TypographyTextSize on StylesTypographyTextSizes {
+	fontSize
+	style
+}
+
+fragment TypographyTheme on StylesTypographyTheme {
+	colours
+	attribute
+}
+
+fragment TypographyScale on StylesTypographyScale {
+	scaling
+	attribute
+}
+
+fragment Typography on ContentBlocksTextStylesTypography {
+	textAlign {
+		...TypographyTextAlign
+	}
+	textSizes {
+		...TypographyTextSize
+	}
+	theme {
+		...TypographyTheme
+	}
+	scale {
+		...TypographyScale
+	}
+}
+
+fragment BlocksTextStyles on ContentBlocksTextStyles {
+	typography {
+		...Typography
+	}
+}

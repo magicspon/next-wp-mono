@@ -3,11 +3,11 @@ import { z } from 'zod'
 import { POSTS_PER_PAGE, WP_BLOG_POST_PAGE_ID } from '~/config'
 import { createClient } from '~/lib/gqlClient'
 import type {
+	BlogTeaserPageFragment,
 	PageFragment,
 	PageIdType,
 	PostFragment,
 	TeaserPageFragment,
-	TeaserPostFragment,
 } from '~/schema/generated.graphql'
 import { BlogList } from '~/templates/BlogList'
 import { HomePage } from '~/templates/HomePage'
@@ -17,15 +17,14 @@ import { Post } from '~/templates/Post'
 import { createPage } from '~/utils/createPage'
 import {
 	HOME_TEMPLATE,
+	LISTING_TEMPLATE,
 	POSTS_TEMPLATE,
 	POST_TEMPLATE,
+	createUri,
 	getPageInfo,
 } from '~/utils/getPageInfo'
 import { parseContent } from '~/utils/parseContent'
 import { parse } from '~/utils/portable/htmlToPortableText'
-
-export const createUri = (nextSlug?: string | string[]) =>
-	`/${nextSlug && Array.isArray(nextSlug) ? nextSlug.join('/') : (nextSlug ?? '')}`
 
 const PREVIEW_SLUG = 'preview'
 
@@ -52,6 +51,7 @@ const { Page, generateMetadata } = createPage({
 				return {
 					__template: info.template,
 					page: page,
+					posts: data.posts,
 					seo,
 				}
 			}
@@ -77,14 +77,14 @@ const { Page, generateMetadata } = createPage({
 				}
 			}
 
-			case 'Listing': {
+			case LISTING_TEMPLATE: {
 				const data = await client.ListingQuery({
 					...queryVars,
 					parent: String(info.id),
 				})
 				const { seo, ...page } = data.page
 				return {
-					__template: 'listing' as const,
+					__template: LISTING_TEMPLATE,
 					page: page,
 					pages: data.pages,
 					seo,
@@ -132,7 +132,7 @@ const { Page, generateMetadata } = createPage({
 
 		if (data.page.__typename === 'Page') {
 			switch (data.__template) {
-				case 'listing': {
+				case LISTING_TEMPLATE: {
 					const { hero, structure } = parse<PageFragment['base']>(
 						data.page?.base,
 					)
@@ -152,7 +152,7 @@ const { Page, generateMetadata } = createPage({
 						data.page?.base,
 					)
 					const posts = data.posts?.edges.map((n) =>
-						parse<TeaserPostFragment>(n.node),
+						parse<BlogTeaserPageFragment>(n.node),
 					)
 					const cursor = data.posts?.edges.at(-1)?.cursor
 					return (
@@ -171,7 +171,17 @@ const { Page, generateMetadata } = createPage({
 					const { hero, structure } = parse<PageFragment['base']>(
 						data.page?.base,
 					)
-					return <HomePage hero={hero} structure={parseContent(structure)} />
+
+					const posts = data.posts?.edges.map((n) =>
+						parse<BlogTeaserPageFragment>(n.node),
+					)
+					return (
+						<HomePage
+							hero={hero}
+							structure={parseContent(structure)}
+							posts={posts}
+						/>
+					)
 				}
 
 				default: {

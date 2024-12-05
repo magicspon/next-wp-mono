@@ -7,7 +7,7 @@ import type {
 	TeaserPageFragment,
 } from '~/schema/generated.graphql'
 import type { StructureProps } from '~/utils/parseContent'
-import type { WithPT } from '~/utils/portable/htmlToPortableText'
+import type { WithPT } from '~/utils/ts-helpers'
 
 type BaseInputProps = Pick<PageFragment, 'base'>
 

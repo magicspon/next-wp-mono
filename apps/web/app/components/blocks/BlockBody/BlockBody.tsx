@@ -1,58 +1,45 @@
-import { css } from '@spon/styled-system/css'
-import type { FontSizeToken, SpacingToken } from '@spon/styled-system/tokens'
-import { token } from '@spon/styled-system/tokens'
-import { Stack } from '@spon/ui/layout/Stack'
+import { css, cx } from '@spon/styled-system/css'
 import { Portable } from '~/components/Portable'
-import type {
-	BlockBodyFragment,
-	TextPanelStyleBodyFragment, // TextPanelStyleFragment,
-} from '~/schema/generated.graphql'
-import type { WithPT } from '~/utils/portable/htmlToPortableText'
+import type { ComponentsTextPanelBlocksBodyLayoutFragment } from '~/schema/generated.graphql'
+import { layout as layoutStyle } from '~/utils/style/layout'
+import { typography } from '~/utils/style/typography'
+import type { WithPT } from '~/utils/ts-helpers'
 
-export function BlockBody({ body, style }: WithPT<BlockBodyFragment>) {
-	return (
-		<Stack
-			data-testid="BlockBody"
-			style={parseBodyProps(style)}
-			className={css({
-				alignItems: 'var(--align-items, start)',
-				gap: 'var(--gap, token(spacing.4))',
-				px: 'var(--padding-x, token(spacing.4))',
-				py: 'var(--padding-y, token(spacing.4))',
-			})}
-		>
-			<Portable body={body} />
-		</Stack>
-	)
+type TBlockBodyProps = WithPT<ComponentsTextPanelBlocksBodyLayoutFragment> & {
+	components?: React.ComponentProps<typeof Portable>['components']
+	className?: string
 }
 
-function parseBodyProps({ textSizes, box }: TextPanelStyleBodyFragment) {
-	const fontSizes = textSizes?.reduce<Record<string, string>>((acc, s) => {
-		const {
-			style: [style],
-			fontSize: [fontSize],
-		} = s
+export function BlockBody({
+	body,
+	textStyles,
+	components,
+	className,
+	layout,
+}: TBlockBodyProps) {
+	const { vars } = typography(textStyles?.typography)
+	const style = layoutStyle(layout)
 
-		acc[`--font-size-${style}`] = token(
-			`fontSizes.${fontSize as FontSizeToken}`,
-		)
-
-		return acc
-	}, {})
-
-	const spacing = box?.reduce<Record<string, string>>((acc, s) => {
-		const {
-			attribute: [attribute],
-			spacing: [spacing],
-		} = s
-
-		acc[`--${attribute}`] = token(`spacing.${spacing as SpacingToken}`)
-
-		return acc
-	}, {})
-
-	return {
-		...fontSizes,
-		...spacing,
-	}
+	return (
+		<div
+			data-testid="BlockBody"
+			style={{ ...vars, ...style }}
+			className={cx(
+				className,
+				css({
+					display: 'flex',
+					flexDir: 'column',
+					alignItems: 'var(--align-items, stretch)',
+					gap: 'var(--gap, token(spacing.4))',
+					textAlign: 'var(--text-align, left)',
+					scaling: {
+						md: 'var(--md-scaling, token(scaling.1))',
+						lg: 'var(--lg-scaling, token(scaling.1))',
+					},
+				}),
+			)}
+		>
+			<Portable body={body} components={components} style={textStyles} />
+		</div>
+	)
 }

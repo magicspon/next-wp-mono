@@ -1,0 +1,20 @@
+fragment Post on Post {
+	title
+	blog {
+		structure {
+			__typename
+			...BlogStructure_Layout
+		}
+	}
+
+	seo {
+		...Seo
+	}
+}
+
+fragment BlogPage on Page {
+	...Page
+	seo {
+		...Seo
+	}
+}

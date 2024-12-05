@@ -1,0 +1,84 @@
+fragment BaseTeaserBlocksTextLayout on BaseTeaserBlocksTextLayout {
+	text
+	textStyles {
+		...BlocksTextStyles
+	}
+	tag
+}
+
+fragment BaseTeaserBlocksMarkdownLayout on BaseTeaserBlocksMarkdownLayout {
+	markdown: textLines
+	textStyles {
+		...BlocksTextStyles
+	}
+	tag
+}
+
+fragment BaseTeaserBlocksBodyLayout on BaseTeaserBlocksBodyLayout {
+	body
+	textStyles {
+		...BlocksTextStyles
+	}
+
+	layout {
+		...ContentBlocksLayout
+	}
+}
+
+fragment BaseTeaserBlocksButtonsLayout on BaseTeaserBlocksButtonsLayout {
+	buttons {
+		...Buttons
+	}
+}
+
+fragment BaseTeaserBlocksImageLayout on BaseTeaserBlocksImageLayout {
+	image {
+		asset {
+			...MediaItem
+		}
+		style {
+			__typename
+		}
+	}
+}
+
+fragment BaseTeaserBlocks_Layout on BaseTeaserBlocks_Layout {
+	__typename
+
+	...BaseTeaserBlocksTextLayout
+	...BaseTeaserBlocksMarkdownLayout
+	...BaseTeaserBlocksBodyLayout
+	...BaseTeaserBlocksButtonsLayout
+	...BaseTeaserBlocksImageLayout
+}
+
+fragment BaseTeaserImage on BaseTeaserImage {
+	asset {
+		...MediaItem
+	}
+	style {
+		__typename
+	}
+}
+
+fragment BaseTeaser on BaseTeaser {
+	cta: callToAction
+	title
+	blocks {
+		...BaseTeaserBlocks_Layout
+	}
+	image {
+		...BaseTeaserImage
+	}
+}
+
+fragment TeaserPage on Page {
+	id
+	title
+	uri
+	base {
+		teaser {
+			...BaseTeaser
+		}
+	}
+}

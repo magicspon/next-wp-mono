@@ -1,6 +1,8 @@
 import { defineConfig } from '@pandacss/dev'
 import preset from '@spon/ui/preset'
 
+// console.dir(preset, { depth: Infinity })
+
 export default defineConfig({
 	presets: ['@pandacss/dev/presets', preset],
 	include: ['../../packages/ui/src/**/*.{ts,tsx}', './app/**/*.{ts,tsx}'],
