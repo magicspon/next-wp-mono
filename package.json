@@ -28,7 +28,7 @@
 		"changeset": "npx changeset-conventional-commits",
 		"panda": "turbo panda",
 		"codegen": "turbo codegen",
-		"prepare": "husky; cd packages/styled-system; npm run init; cd ../../; npm run panda; npm run codegen"
+		"prepare": "husky; cd packages/styled-system; npm run init; cd ../../; npm run build-panda; npm run codegen"
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.27.8",

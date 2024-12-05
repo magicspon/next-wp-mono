@@ -33,6 +33,6 @@
 		"./styles.css": "./styles.css"
 	},
 	"scripts": {
-		"init": "panda init"
+		"init": "panda init --outdir ./"
 	}
 }
