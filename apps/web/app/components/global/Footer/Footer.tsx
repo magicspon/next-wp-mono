@@ -19,23 +19,25 @@ export function Footer({ menu }: TFooterProps) {
 				<Text size={5} className={css({ textTransform: 'uppercase' })}>
 					<Link href="/">Logo</Link>
 				</Text>
-				<Inline asChild>
-					<nav
-						className={css({
-							gap: {
-								md: 6,
-							},
-						})}
-					>
-						{menu.map((node) => (
-							<Link key={node.id} href={node.uri}>
-								<Text size={5} asChild>
-									<span>{node.label}</span>
-								</Text>
-							</Link>
-						))}
-					</nav>
-				</Inline>
+				{menu && (
+					<Inline asChild>
+						<nav
+							className={css({
+								gap: {
+									md: 6,
+								},
+							})}
+						>
+							{menu.map((node) => (
+								<Link key={node.id} href={node.uri}>
+									<Text size={5} asChild>
+										<span>{node.label}</span>
+									</Text>
+								</Link>
+							))}
+						</nav>
+					</Inline>
+				)}
 			</footer>
 		</Stack>
 	)

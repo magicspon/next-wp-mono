@@ -11,6 +11,7 @@ export type TMainMenuProps = {
 }
 
 export function MobileMenu({ menu }: TMainMenuProps) {
+	if (!menu) return null
 	return (
 		<div className={css({ display: 'none' })}>
 			{menu.map((node) => (

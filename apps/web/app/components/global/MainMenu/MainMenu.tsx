@@ -12,6 +12,8 @@ export type TMainMenuProps = {
 }
 
 export function MainMenu({ menu }: TMainMenuProps) {
+	if (!menu) return null
+
 	return (
 		<Overflow asChild>
 			<nav
