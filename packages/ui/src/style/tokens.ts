@@ -1,5 +1,6 @@
 import { defineTokens } from '@pandacss/dev'
 import { px2 } from 'src/utils/units'
+import { colors } from './colors'
 
 const calc = (v: string) => `calc(${v} * var(--scaling))`
 
@@ -42,59 +43,7 @@ const spacing = {
 }
 
 export const tokens = defineTokens({
-	colors: {
-		foreground: { value: '#050505' },
-		background: { value: '#F7F6F6' },
-
-		black: {
-			value: '{colors.black.600}',
-			600: { value: '#050505' },
-			500: { value: '#0F0F0F' },
-			400: { value: '#1B1B1B' },
-			300: { value: '#232323' },
-			200: { value: '#333' },
-			100: { value: '#444' },
-		},
-
-		white: {
-			value: '{colors.white.100}',
-			600: { value: '#E7E7E8' },
-			500: { value: '#E7E7E8' },
-			400: { value: '#F6F2F3' },
-			300: { value: '#FCF8F9' },
-			200: { value: '#F7F6F6' },
-			100: { value: '#fff' },
-		},
-
-		primary: {
-			value: '#f1f1f1',
-			foreground: {
-				value: '#1a1a1a',
-			},
-		},
-		secondary: {
-			value: '#f1f1f1',
-			foreground: {
-				value: '#1a1a1a',
-			},
-		},
-		accent: {
-			value: '#44aaee',
-			foreground: {
-				value: '#1a1a1a',
-			},
-		},
-		hint: {
-			value: '#f1f1f1',
-			foreground: {
-				value: '#1a1a1a',
-			},
-		},
-	},
-	fonts: {
-		body: { value: 'var(--font-body)' },
-		heading: { value: ['var(--font-heading)'] },
-	},
+	colors,
 
 	spacing,
 
@@ -145,6 +94,7 @@ export const tokens = defineTokens({
 		1.25: { value: 1.25 },
 		1.5: { value: 1.5 },
 		2: { value: 2 },
+		2.5: { value: 2.5 },
 		3: { value: 3 },
 	},
 })

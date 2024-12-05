@@ -1,5 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { fetcher } from '@spon/utils/fetcher'
+import { POSTS_PER_PAGE } from '~/config'
 
 export type TInfinitePostsArgs<T> = {
 	posts: T[]
@@ -18,12 +19,8 @@ export function useInfinitePosts<T>({
 		{ pages: { pages: T[] }[] }
 	>({
 		queryKey: [queryKey],
-		queryFn: async ({ pageParam }) => {
-			const searchParams = new URLSearchParams({
-				cursor: String(pageParam),
-			})
-			return fetcher(`/api/paginate/posts?${searchParams.toString()}`)
-		},
+		queryFn: async ({ pageParam }) =>
+			fetcher(`/api/paginate/posts/${pageParam}/${POSTS_PER_PAGE}`),
 		initialPageParam: 0,
 		getPreviousPageParam: (firstPage) => firstPage.previousId ?? undefined,
 		getNextPageParam: (lastPage) => lastPage.nextId ?? undefined,

@@ -1,0 +1,22 @@
+query HomePageQuery(
+	$id: ID!
+	$idType: PageIdType!
+	$asPreview: Boolean = false
+) {
+	page(id: $id, idType: $idType, asPreview: $asPreview) {
+		...Page
+
+		seo {
+			...Seo
+		}
+	}
+
+	posts(first: 3) {
+		edges {
+			node {
+				...BlogTeaserPage
+			}
+			cursor
+		}
+	}
+}

@@ -1,0 +1,109 @@
+fragment ComponentsTextPanelStyleSection on ComponentsTextPanelStyleSection {
+	align {
+		...StylesSectionAlign
+	}
+	justify {
+		...StylesSectionJustify
+	}
+	box {
+		...StylesSectionBox
+	}
+	theme {
+		...StylesSectionTheme
+	}
+	width {
+		...StylesSectionWidth
+	}
+}
+
+fragment ComponentsTextPanelStyleTextAlign on ComponentsTextPanelStyleTextAlign {
+	attribute
+	value
+}
+
+fragment ComponentsTextPanelStyleScale on ComponentsTextPanelStyleScale {
+	attribute
+	scaling
+}
+
+fragment ComponentsTextPanelStyle on ComponentsTextPanelStyle {
+	section {
+		...ComponentsTextPanelStyleSection
+	}
+	textAlign {
+		...ComponentsTextPanelStyleTextAlign
+	}
+	scale {
+		...ComponentsTextPanelStyleScale
+	}
+}
+
+fragment ComponentsTextPanelBlocksTextLayout on ComponentsTextPanelBlocksTextLayout {
+	tag
+	text
+	textStyles {
+		...BlocksTextStyles
+	}
+}
+
+fragment ComponentsTextPanelBlocksMarkdownLayout on ComponentsTextPanelBlocksMarkdownLayout {
+	tag
+	markdown: textLines
+	textStyles {
+		...BlocksTextStyles
+	}
+}
+
+fragment ContentBlocksLayoutBox on ContentBlocksLayoutBox {
+	attribute
+	spacing
+}
+
+fragment ContentBlocksLayoutAlign on ContentBlocksLayoutAlign {
+	attribute
+	value
+}
+
+fragment ContentBlocksLayout on ContentBlocksLayout {
+	box {
+		...ContentBlocksLayoutBox
+	}
+	align {
+		...ContentBlocksLayoutAlign
+	}
+}
+
+fragment ComponentsTextPanelBlocksBodyLayout on ComponentsTextPanelBlocksBodyLayout {
+	body
+	textStyles {
+		...BlocksTextStyles
+	}
+	layout {
+		...ContentBlocksLayout
+	}
+}
+
+fragment ComponentsTextPanelBlocksButtonsLayout on ComponentsTextPanelBlocksButtonsLayout {
+	buttons {
+		...Buttons
+	}
+}
+
+fragment ComponentsTextPanelBlocksImageLayout on ComponentsTextPanelBlocksImageLayout {
+	image {
+		asset {
+			...MediaItem
+		}
+		style {
+			__typename
+		}
+	}
+}
+
+fragment ComponentsTextPanelBlocks_Layout on ComponentsTextPanelBlocks_Layout {
+	...ComponentsTextPanelBlocksTextLayout
+	...ComponentsTextPanelBlocksMarkdownLayout
+	...ComponentsTextPanelBlocksBodyLayout
+	...ComponentsTextPanelBlocksButtonsLayout
+	...ComponentsTextPanelBlocksImageLayout
+}

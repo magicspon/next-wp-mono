@@ -14,7 +14,7 @@ Go to [Bedrock with DDEV](https://roots.io/bedrock/docs/bedrock-with-ddev/) and 
 
 #### Frontend
 
-Use `node` version 20 or more.
+Use `node` version 20 or more
 
 ```bash
 mpm install
@@ -82,6 +82,27 @@ packages
  └─ utils - Shared utils
 turbo
   └─ generators - code scaffold
+```
+
+### Frontend structure
+
+```
+app
+  └─ [[...slug]] - catch all entry point
+  └─ api - api routes
+  └─ components - Share components
+		└─ blocks - block components (text, markdown, image, buttons, rich text)
+		└─ blog - blog specific components
+		└─ global - global componenets (header/footer etc)
+		└─ hero - hero components
+		└─ structure - structure components
+  └─ env - environment definitions
+  └─ fonts
+  └─ gql- graphql queries/fragments
+  └─ hooks
+  └─ lib - api clients
+  └─ templates - page templates (home page, list page, landing page, blog list and blog post)
+  └─ utils
 ```
 
 ### Code scaffold

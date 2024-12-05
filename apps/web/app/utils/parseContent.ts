@@ -1,28 +1,32 @@
 import type {
-	BlogMixedColumnsStructureFragment,
-	BlogSliceFragment,
-	BlogTextColumnsStructureFragment,
-	BlogTextStructureFragment,
-	MixedColumnsStructureFragment,
-	SliceFragment,
-	TextColumnsStructureFragment,
-	TextStructureFragment,
+	BaseStructureMixedColumnsLayoutFragment,
+	BaseStructureSliceLayoutFragment,
+	BaseStructureTextColumnsLayoutFragment,
+	BaseStructureTextLayoutFragment,
+	BlogStructureMixedColumnsLayoutFragment,
+	BlogStructureSliceLayoutFragment,
+	BlogStructureTextColumnsLayoutFragment,
+	BlogStructureTextLayoutFragment,
 } from '~/schema/generated.graphql'
-import type { WithPT } from './portable/htmlToPortableText'
+import type { WithPT } from '~/utils/ts-helpers'
+
+type TBlock =
+	| BlogStructureTextLayoutFragment
+	| BlogStructureTextColumnsLayoutFragment
+	| BlogStructureMixedColumnsLayoutFragment
+	| BaseStructureTextLayoutFragment
+	| BaseStructureTextColumnsLayoutFragment
+	| BaseStructureMixedColumnsLayoutFragment
 
 type PageRow =
-	| WithPT<TextStructureFragment>
-	| WithPT<TextColumnsStructureFragment>
-	| WithPT<MixedColumnsStructureFragment>
-	| SliceFragment
+	| WithPT<TBlock>
+	| BlogStructureSliceLayoutFragment
+	| BaseStructureSliceLayoutFragment
 
-type PostRow =
-	| WithPT<BlogTextStructureFragment>
-	| WithPT<BlogTextColumnsStructureFragment>
-	| WithPT<BlogMixedColumnsStructureFragment>
-	| BlogSliceFragment
-
-type RowType = PageRow | PostRow
+type RowType = PageRow
+type SliceFragment =
+	| BlogStructureSliceLayoutFragment
+	| BaseStructureSliceLayoutFragment
 
 export type StructureProps = {
 	slice: SliceFragment | null

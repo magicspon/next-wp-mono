@@ -1,0 +1,61 @@
+fragment BaseHeroStyleSection on BaseHeroStyleSection {
+	align {
+		...StylesSectionAlign
+	}
+	justify {
+		...StylesSectionJustify
+	}
+	box {
+		...StylesSectionBox
+	}
+	theme {
+		...StylesSectionTheme
+	}
+	width {
+		...StylesSectionWidth
+	}
+}
+
+fragment BaseHeroStyle on BaseHeroStyle {
+	heroTextVariant
+	section {
+		...BaseHeroStyleSection
+	}
+}
+
+fragment BaseTextPanel on BaseHeroTextPanel {
+	style {
+		...ComponentsTextPanelStyle
+	}
+	blocks {
+		__typename
+		...ComponentsTextPanelBlocks_Layout
+	}
+}
+
+fragment BaseHeroImage on BaseHeroImage {
+	asset {
+		...MediaItem
+	}
+	style {
+		__typename
+	}
+}
+
+fragment BaseHeroTextLayout on BaseHeroTextLayout {
+	textPanel {
+		...BaseTextPanel
+	}
+	style {
+		...BaseHeroStyle
+	}
+}
+
+fragment BaseHeroTextImageLayout on BaseHeroTextImageLayout {
+	textPanel {
+		...BaseTextPanel
+	}
+	image {
+		...BaseHeroImage
+	}
+}

@@ -1,0 +1,33 @@
+query PageQuery($id: ID!, $idType: PageIdType!, $asPreview: Boolean = false) {
+	page(id: $id, idType: $idType, asPreview: $asPreview) {
+		__typename
+		...Page
+		seo {
+			...Seo
+		}
+	}
+}
+
+query ListingQuery(
+	$id: ID!
+	$idType: PageIdType!
+	$asPreview: Boolean = false
+	$parent: ID!
+) {
+	page(id: $id, idType: $idType, asPreview: $asPreview) {
+		...Page
+		__typename
+
+		seo {
+			...Seo
+		}
+	}
+
+	pages(where: { parent: $parent }) {
+		edges {
+			node {
+				...TeaserPage
+			}
+		}
+	}
+}

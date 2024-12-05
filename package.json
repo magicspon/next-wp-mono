@@ -19,7 +19,6 @@
 		"new:page": "turbo gen page",
 		"sync:tokens": "turbo gen tokens",
 		"new:context": "turbo gen context",
-		"prepare": "husky;",
 		"test": "vitest",
 		"test:ui": "vitest --ui",
 		"test:run": "vitest run --passWithNoTests",
@@ -28,7 +27,8 @@
 		"e2e:run": "turbo e2e:run",
 		"changeset": "npx changeset-conventional-commits",
 		"panda": "turbo panda",
-		"codegen": "turbo codegen"
+		"codegen": "turbo codegen",
+		"prepare": "husky; npm run codegen; cd packages/styled-system; npm run init; cd ../ui; npm run build-panda"
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.27.8",

@@ -1,0 +1,52 @@
+fragment MenuItem on MenuItem {
+	label
+	uri
+	id
+}
+
+fragment Menu on Menu {
+	id
+	menuItems {
+		nodes {
+			...MenuItem
+		}
+	}
+}
+
+query GlobalSettings {
+	allSettings {
+		title: generalSettingsTitle
+	}
+	menu(id: "Main Menu", idType: NAME) {
+		...Menu
+	}
+	mobileMenu: menu(id: "Mobile", idType: NAME) {
+		...Menu
+	}
+	footerMenu: menu(id: "Footer", idType: NAME) {
+		...Menu
+	}
+
+	seo {
+		meta {
+			homepage {
+				description
+			}
+		}
+		schema {
+			siteName
+		}
+		openGraph {
+			frontPage {
+				title
+				description
+				image {
+					sourceUrl(size: LARGE)
+				}
+			}
+			defaultImage {
+				sourceUrl(size: LARGE)
+			}
+		}
+	}
+}

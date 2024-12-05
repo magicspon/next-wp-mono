@@ -15,6 +15,16 @@ function register_new_menu()
       'primary-menu' => __('Primary menu')
     )
   );
+  register_nav_menus(
+    array(
+      'mobile-menu' => __('Mobile menu')
+    )
+  );
+  register_nav_menus(
+    array(
+      'footer-menu' => __('Footer menu')
+    )
+  );
 }
 
 /**

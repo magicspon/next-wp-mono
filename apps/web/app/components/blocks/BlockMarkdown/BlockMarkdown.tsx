@@ -1,53 +1,32 @@
 import * as React from 'react'
-import { css } from '@spon/styled-system/css'
-import type { SpacingToken } from '@spon/styled-system/tokens'
-import { type ScalingToken, token } from '@spon/styled-system/tokens'
-import type { TStyleProps } from '@spon/ui/type/Text'
-import { Text } from '@spon/ui/type/Text'
-import type {
-	BlockMarkdownFragment,
-	BlocksTextStylesFragment,
-} from '~/schema/generated.graphql'
+import { css, cx } from '@spon/styled-system/css'
+import type { Text } from '@spon/ui/type/Text'
+import { getFirstOrNull } from '@spon/utils/getFirstOrNull'
+import type { ComponentsTextPanelBlocksMarkdownLayoutFragment } from '~/schema/generated.graphql'
+import { findFontSize, typography } from '~/utils/style/typography'
 
-type VariantMap = NonNullable<TStyleProps>
+type TBlockBodyProps = React.ComponentProps<typeof Text> &
+	ComponentsTextPanelBlocksMarkdownLayoutFragment
 
-export function BlockMarkdown({ markdown, style }: BlockMarkdownFragment) {
-	const {
-		size = 4,
-		family = 'body',
-		scaling,
-		spaceBelow,
-	} = parseTextProps(style)
+export function BlockMarkdown({
+	markdown,
+	textStyles,
+	className,
+	tag,
+}: TBlockBodyProps) {
+	const { vars } = typography(textStyles?.typography)
+
+	const Comp = (getFirstOrNull(tag) as React.ElementType) ?? 'p'
 
 	return (
-		<Text
+		<Comp
 			data-testid="BlockMarkdown"
-			style={{
-				'--mb': safeToken(spaceBelow),
-			}}
-			className={css({
-				mb: 'calc(var(--mb)*var(--scaling))',
-			})}
-			size={size}
-			family={family}
-			scaling={scaling}
+			style={vars}
+			className={cx(
+				css({ textStyle: findFontSize('font-size', textStyles) }),
+				className,
+			)}
 			dangerouslySetInnerHTML={{ __html: markdown }}
 		/>
 	)
 }
-
-function parseTextProps(input: Omit<BlocksTextStylesFragment, '__typename'>) {
-	const styles = Object.fromEntries(
-		Object.entries(input).map(([k, v]) => [k, v?.[0]]),
-	) as {
-		size: VariantMap['size'] | undefined
-		family: VariantMap['family'] | undefined
-		scaling: ScalingToken | undefined
-		spaceBelow: SpacingToken | undefined
-	}
-
-	return styles
-}
-
-const safeToken = (value?: SpacingToken) =>
-	value ? token(`spacing.${value}`) : ''

@@ -1,0 +1,58 @@
+fragment ContentColumnsStyleGroup on ContentColumnsStyleGroup {
+	align {
+		...StylesGroupAlign
+	}
+	justify {
+		...StylesGroupJustify
+	}
+	box {
+		...StylesGroupBox
+	}
+	justify {
+		...StylesGroupJustify
+	}
+	flexDirection {
+		...StylesGroupFlexDirection
+	}
+}
+
+fragment ContentMixedColumnsContentImageColumnLayout on ContentMixedColumnsContentImageColumnLayout {
+	image {
+		asset {
+			...MediaItem
+		}
+		style {
+			__typename
+		}
+	}
+}
+
+fragment ContentMixedColumnsContentTextColumnLayout on ContentMixedColumnsContentTextColumnLayout {
+	textPanel {
+		blocks {
+			__typename
+			...ComponentsTextPanelBlocksTextLayout
+			...ComponentsTextPanelBlocksMarkdownLayout
+			...ComponentsTextPanelBlocksBodyLayout
+			...ComponentsTextPanelBlocksButtonsLayout
+			...ComponentsTextPanelBlocksImageLayout
+		}
+		style {
+			...ComponentsTextPanelStyle
+		}
+	}
+}
+
+fragment ContentColumnsBlocksTextPanel on ContentColumnsBlocksTextPanel {
+	blocks {
+		__typename
+		...ComponentsTextPanelBlocksTextLayout
+		...ComponentsTextPanelBlocksMarkdownLayout
+		...ComponentsTextPanelBlocksBodyLayout
+		...ComponentsTextPanelBlocksButtonsLayout
+		...ComponentsTextPanelBlocksImageLayout
+	}
+	style {
+		...ComponentsTextPanelStyle
+	}
+}

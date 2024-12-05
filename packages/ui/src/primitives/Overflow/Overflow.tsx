@@ -3,6 +3,8 @@
 import { Slot } from '@radix-ui/react-slot'
 import * as React from 'react'
 import { useIsClient, useWindowSize } from 'usehooks-ts'
+import { cx } from '@spon/styled-system/css'
+import { flex } from '@spon/styled-system/patterns'
 
 type TOverflowContext = {
 	value: number
@@ -18,7 +20,7 @@ type TOverflowProps = React.ComponentProps<'nav'> & {
 	asChild?: boolean
 }
 
-export function Overflow({ asChild, ...props }: TOverflowProps) {
+export function Overflow({ asChild, className, ...props }: TOverflowProps) {
 	const Comp = asChild ? Slot : 'nav'
 	const isClient = useIsClient()
 	const { width } = useWindowSize({ debounceDelay: 100 })
@@ -40,7 +42,20 @@ export function Overflow({ asChild, ...props }: TOverflowProps) {
 
 	return (
 		<OverflowContext.Provider value={{ value: value }}>
-			<Comp data-testid="Overflow" ref={ref} {...props} />
+			<Comp
+				data-testid="Overflow"
+				ref={ref}
+				{...props}
+				className={cx(
+					flex({
+						whiteSpace: 'nowrap',
+						gap: 4,
+						overflow: 'hidden',
+						pos: 'relative',
+					}),
+					className,
+				)}
+			/>
 		</OverflowContext.Provider>
 	)
 }

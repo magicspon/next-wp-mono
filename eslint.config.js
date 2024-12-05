@@ -10,6 +10,6 @@ export default [
 	...tseslint.configs.recommended,
 	pluginReact.configs.flat.recommended,
 	{
-		ignores: ['./apps/cms'],
+		ignores: ['./apps/cms/**'],
 	},
 ]
