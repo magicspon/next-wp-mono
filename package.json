@@ -26,9 +26,10 @@
 		"e2e:ui": "turbo e2e:ui",
 		"e2e:run": "turbo e2e:run",
 		"changeset": "npx changeset-conventional-commits",
+		"panda:init": "cd packages/styled-system; npm run init;",
 		"panda": "turbo panda",
 		"codegen": "turbo codegen",
-		"prepare": "husky; npm run codegen; cd packages/styled-system; npm run init; cd ../ui; npm run build-panda"
+		"prepare": "husky; npm run panda:init"
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.27.10",
