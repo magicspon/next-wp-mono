@@ -123,7 +123,7 @@ const { Page, generateMetadata } = createPage({
 	// 		},
 	// 	}
 	// },
-	component: async ({ data }) => {
+	component: ({ data }) => {
 		if (data.page.__typename === 'Post') {
 			const { structure } = parse<PostFragment['blog']>(data.page?.blog)
 

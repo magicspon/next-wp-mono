@@ -22,7 +22,7 @@ const itemVariants = cva(null, {
 })
 
 export const Item = React.forwardRef<
-	React.ElementRef<typeof AccordionPrimitive.Item>,
+	React.ComponentRef<typeof AccordionPrimitive.Item>,
 	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> &
 		VariantProps<typeof itemVariants>
 >(function Item({ className, variant, ...props }, ref) {
@@ -65,7 +65,7 @@ const triggerVariants = cva('flex items-center transition-all ', {
 })
 
 export const Trigger = React.forwardRef<
-	React.ElementRef<typeof AccordionPrimitive.Trigger>,
+	React.ComponentRef<typeof AccordionPrimitive.Trigger>,
 	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> &
 		VariantProps<typeof triggerVariants>
 >(function Trigger({ className, children, variant, ...props }, ref) {
@@ -110,7 +110,7 @@ const contentInnerVariants = cva('pt-0', {
 })
 
 export const Content = React.forwardRef<
-	React.ElementRef<typeof AccordionPrimitive.Content>,
+	React.ComponentRef<typeof AccordionPrimitive.Content>,
 	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content> &
 		VariantProps<typeof contentVariants>
 >(function Content({ className, children, variant, ...props }, ref) {

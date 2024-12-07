@@ -16,7 +16,7 @@ const listVariants = cva(null, {
 })
 
 export const List = React.forwardRef<
-	React.ElementRef<typeof TabsPrimitive.List>,
+	React.ComponentRef<typeof TabsPrimitive.List>,
 	React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> &
 		VariantProps<typeof listVariants>
 >(function List({ className, variant, ...props }, ref) {
@@ -41,7 +41,7 @@ const triggerVariants = cva(null, {
 })
 
 export const Trigger = React.forwardRef<
-	React.ElementRef<typeof TabsPrimitive.Trigger>,
+	React.ComponentRef<typeof TabsPrimitive.Trigger>,
 	React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> &
 		VariantProps<typeof triggerVariants>
 >(function Trigger({ className, variant, ...props }, ref) {
@@ -66,7 +66,7 @@ const contentVariants = cva(null, {
 })
 
 export const Content = React.forwardRef<
-	React.ElementRef<typeof TabsPrimitive.Content>,
+	React.ComponentRef<typeof TabsPrimitive.Content>,
 	React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content> &
 		VariantProps<typeof contentVariants>
 >(function Content({ className, variant, ...props }, ref) {

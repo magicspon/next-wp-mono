@@ -13,7 +13,7 @@ export function Portal({ ...props }: RadixAlert.AlertDialogPortalProps) {
 }
 
 export const Overlay = React.forwardRef<
-	React.ElementRef<typeof RadixAlert.Overlay>,
+	React.ComponentRef<typeof RadixAlert.Overlay>,
 	React.ComponentPropsWithoutRef<typeof RadixAlert.Overlay>
 >(function Overlay({ className, ...props }, ref) {
 	return (
@@ -29,7 +29,7 @@ export const Overlay = React.forwardRef<
 })
 
 export const Content = React.forwardRef<
-	React.ElementRef<typeof RadixAlert.Content>,
+	React.ComponentRef<typeof RadixAlert.Content>,
 	React.ComponentPropsWithoutRef<typeof RadixAlert.Content>
 >(function Content({ className, ...props }, ref) {
 	return (
@@ -72,7 +72,7 @@ export function Footer({ className, ...props }: React.ComponentProps<'div'>) {
 }
 
 export const Title = React.forwardRef<
-	React.ElementRef<typeof RadixAlert.Title>,
+	React.ComponentRef<typeof RadixAlert.Title>,
 	React.ComponentPropsWithoutRef<typeof RadixAlert.Title>
 >(function Title({ className, ...props }, ref) {
 	return (
@@ -85,7 +85,7 @@ export const Title = React.forwardRef<
 })
 
 export const Description = React.forwardRef<
-	React.ElementRef<typeof RadixAlert.Description>,
+	React.ComponentRef<typeof RadixAlert.Description>,
 	React.ComponentPropsWithoutRef<typeof RadixAlert.Description>
 >(function Description({ className, ...props }, ref) {
 	return (
@@ -98,7 +98,7 @@ export const Description = React.forwardRef<
 })
 
 export const Action = React.forwardRef<
-	React.ElementRef<typeof RadixAlert.Action>,
+	React.ComponentRef<typeof RadixAlert.Action>,
 	React.ComponentPropsWithoutRef<typeof RadixAlert.Action> &
 		VariantProps<typeof buttonVariants>
 >(function Action({ className, ...props }, ref) {
@@ -106,7 +106,7 @@ export const Action = React.forwardRef<
 })
 
 export const Cancel = React.forwardRef<
-	React.ElementRef<typeof RadixAlert.Cancel>,
+	React.ComponentRef<typeof RadixAlert.Cancel>,
 	React.ComponentPropsWithoutRef<typeof RadixAlert.Cancel> &
 		VariantProps<typeof buttonVariants>
 >(function Cancel({ className, ...props }, ref) {

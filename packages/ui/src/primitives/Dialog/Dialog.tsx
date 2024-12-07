@@ -10,14 +10,14 @@ export function Portal({ ...props }: RadixDialog.DialogPortalProps) {
 }
 
 export const Overlay = React.forwardRef<
-	React.ElementRef<typeof RadixDialog.Overlay>,
+	React.ComponentRef<typeof RadixDialog.Overlay>,
 	React.ComponentPropsWithoutRef<typeof RadixDialog.Overlay>
 >(function Overlay({ className, ...props }, ref) {
 	return <RadixDialog.Overlay ref={ref} className={className} {...props} />
 })
 
 export const Content = React.forwardRef<
-	React.ElementRef<typeof RadixDialog.Content>,
+	React.ComponentRef<typeof RadixDialog.Content>,
 	React.ComponentPropsWithoutRef<typeof RadixDialog.Content>
 >(function Content({ children, ...props }, ref) {
 	return (
@@ -35,14 +35,14 @@ export const Content = React.forwardRef<
 })
 
 export const Title = React.forwardRef<
-	React.ElementRef<typeof RadixDialog.Title>,
+	React.ComponentRef<typeof RadixDialog.Title>,
 	React.ComponentPropsWithoutRef<typeof RadixDialog.Title>
 >(function Title({ className, ...props }, ref) {
 	return <RadixDialog.Title ref={ref} className={className} {...props} />
 })
 
 export const Description = React.forwardRef<
-	React.ElementRef<typeof RadixDialog.Description>,
+	React.ComponentRef<typeof RadixDialog.Description>,
 	React.ComponentPropsWithoutRef<typeof RadixDialog.Description>
 >(function Description({ className, ...props }, ref) {
 	return <RadixDialog.Description ref={ref} className={className} {...props} />

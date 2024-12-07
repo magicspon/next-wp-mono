@@ -15,7 +15,7 @@ export const Close = SheetPrimitive.Close
 export const Portal = SheetPrimitive.Portal
 
 export const Overlay = React.forwardRef<
-	React.ElementRef<typeof SheetPrimitive.Overlay>,
+	React.ComponentRef<typeof SheetPrimitive.Overlay>,
 	React.ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>
 >(function Overlay({ className, ...props }, ref) {
 	return (
@@ -54,7 +54,7 @@ interface ContentProps
 		VariantProps<typeof sheetVariants> {}
 
 export const Content = React.forwardRef<
-	React.ElementRef<typeof SheetPrimitive.Content>,
+	React.ComponentRef<typeof SheetPrimitive.Content>,
 	ContentProps
 >(function Content({ side = 'right', className, children, ...props }, ref) {
 	return (
@@ -100,7 +100,7 @@ export function Footer({ className, ...props }: React.ComponentProps<'div'>) {
 }
 
 export const Title = React.forwardRef<
-	React.ElementRef<typeof SheetPrimitive.Title>,
+	React.ComponentRef<typeof SheetPrimitive.Title>,
 	React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
 >(function Title({ className, ...props }, ref) {
 	return (
@@ -113,7 +113,7 @@ export const Title = React.forwardRef<
 })
 
 export const Description = React.forwardRef<
-	React.ElementRef<typeof SheetPrimitive.Description>,
+	React.ComponentRef<typeof SheetPrimitive.Description>,
 	React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
 >(function Description({ className, ...props }, ref) {
 	return (

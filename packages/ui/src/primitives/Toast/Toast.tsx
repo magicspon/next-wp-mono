@@ -9,7 +9,7 @@ import * as React from 'react'
 export const Provider = ToastPrimitives.Provider
 
 export const Viewport = React.forwardRef<
-	React.ElementRef<typeof ToastPrimitives.Viewport>,
+	React.ComponentRef<typeof ToastPrimitives.Viewport>,
 	React.ComponentPropsWithoutRef<typeof ToastPrimitives.Viewport>
 >(function Viewport({ className, ...props }, ref) {
 	return (
@@ -42,7 +42,7 @@ const toastVariants = cva(
 )
 
 export const Root = React.forwardRef<
-	React.ElementRef<typeof ToastPrimitives.Root>,
+	React.ComponentRef<typeof ToastPrimitives.Root>,
 	React.ComponentPropsWithoutRef<typeof ToastPrimitives.Root> &
 		VariantProps<typeof toastVariants>
 >(function Root({ className, variant, ...props }, ref) {
@@ -57,7 +57,7 @@ export const Root = React.forwardRef<
 })
 
 export const Action = React.forwardRef<
-	React.ElementRef<typeof ToastPrimitives.Action>,
+	React.ComponentRef<typeof ToastPrimitives.Action>,
 	React.ComponentPropsWithoutRef<typeof ToastPrimitives.Action>
 >(function Action({ className, ...props }, ref) {
 	return (
@@ -73,7 +73,7 @@ export const Action = React.forwardRef<
 })
 
 export const Close = React.forwardRef<
-	React.ElementRef<typeof ToastPrimitives.Close>,
+	React.ComponentRef<typeof ToastPrimitives.Close>,
 	React.ComponentPropsWithoutRef<typeof ToastPrimitives.Close>
 >(function Close({ className, ...props }, ref) {
 	return (
@@ -92,7 +92,7 @@ export const Close = React.forwardRef<
 })
 
 export const Title = React.forwardRef<
-	React.ElementRef<typeof ToastPrimitives.Title>,
+	React.ComponentRef<typeof ToastPrimitives.Title>,
 	React.ComponentPropsWithoutRef<typeof ToastPrimitives.Title>
 >(function Title({ className, ...props }, ref) {
 	return (
@@ -105,7 +105,7 @@ export const Title = React.forwardRef<
 })
 
 export const Description = React.forwardRef<
-	React.ElementRef<typeof ToastPrimitives.Description>,
+	React.ComponentRef<typeof ToastPrimitives.Description>,
 	React.ComponentPropsWithoutRef<typeof ToastPrimitives.Description>
 >(function Description({ className, ...props }, ref) {
 	return (

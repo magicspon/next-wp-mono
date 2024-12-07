@@ -8,7 +8,7 @@ import { buttonVariants } from '../Button'
 export const toggleVariants = buttonVariants
 
 export const Toggle = React.forwardRef<
-	React.ElementRef<typeof TogglePrimitive.Root>,
+	React.ComponentRef<typeof TogglePrimitive.Root>,
 	React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root> &
 		VariantProps<typeof buttonVariants>
 >(function Toggle({ className, ...props }, ref) {

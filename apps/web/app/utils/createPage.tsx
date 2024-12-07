@@ -4,9 +4,7 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import type { AnyZodObject, z } from 'zod'
 
 type InferParams<Params> = Params extends readonly string[]
-	? {
-			[K in Params[number]]: string
-		}
+	? Record<Params[number], string>
 	: Params extends AnyZodObject
 		? z.infer<Params>
 		: unknown
@@ -51,10 +49,12 @@ export interface CreatePageProps<
 	}>
 }
 
-function parseParams<Schema extends readonly string[] | AnyZodObject>(
-	params: Record<string, string>,
+async function parseParams<Schema extends readonly string[] | AnyZodObject>(
+	_params: Promise<Record<string, string>>,
 	schema?: Schema,
 ) {
+	const params = await _params
+
 	if (schema && 'parse' in schema) {
 		return schema.parse(params) as InferParams<Schema>
 	}
@@ -83,8 +83,8 @@ export const createPage = <
 	// We don't really care about the types here since it's internal
 
 	async function Page(props: any) {
-		const params = parseParams(props.params, paramsSchema)
-		const searchParams = parseParams(props.searchParams, searchParamsSchema)
+		const params = await parseParams(props.params, paramsSchema)
+		const searchParams = await parseParams(props.searchParams, searchParamsSchema)
 
 		let pageProps: any = {
 			params,

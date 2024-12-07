@@ -35,7 +35,7 @@ type T{{ pascalCase func }}Props = TElementProps & {
 {{/if}}
 
 {{#if forwardRef}}
-type TElementRef = React.ElementRef<'div'>
+type TElementRef = React.ComponentRef<'div'>
 export const {{ pascalCase func }} = React.forwardRef<TElementRef, T{{ pascalCase func }}Props>(function {{ pascalCase func }}({{#if variants }}{className, variant, ...props}{{else}}props{{/if}}, ref) {
 	return <div{{#if variants }} className={variants({ className, variant })}{{/if}} data-testid="{{ pascalCase func }}" ref={ref} {...props} />
 })

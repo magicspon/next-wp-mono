@@ -1,13 +1,21 @@
 import bundleAnalyzerPlugin from '@next/bundle-analyzer'
-import createJiti from 'jiti'
+import { createJiti } from 'jiti'
 import { fileURLToPath } from 'node:url'
 
 // this tool allows us to import and execute typescript from within a regular node file
 const jiti = createJiti(fileURLToPath(import.meta.url))
 
 // validate the client and server secrets
-jiti('./app/env/server')
-jiti('./app/env/client')
+async function validate() {
+	await jiti.import('./app/env/server')
+	await jiti.import('./app/env/client') 
+}
+
+try {
+	await validate()
+} catch(err) {
+	console.error(err)
+}
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

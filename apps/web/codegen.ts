@@ -41,9 +41,9 @@ const config: CodegenConfig = {
 				maybeValue: 'T',
 				avoidOptionals: {
 					field: true,
-					inputValue: true,
-					object: true,
-					defaultValue: true,
+					inputValue: false,
+					object: false,
+					defaultValue: false,
 				},
 			},
 		},

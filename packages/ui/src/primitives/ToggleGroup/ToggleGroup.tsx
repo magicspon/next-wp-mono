@@ -13,7 +13,7 @@ const ToggleGroupContext = React.createContext<
 })
 
 export const Root = React.forwardRef<
-	React.ElementRef<typeof ToggleGroupPrimitive.Root>,
+	React.ComponentRef<typeof ToggleGroupPrimitive.Root>,
 	React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root> &
 		VariantProps<typeof toggleVariants>
 >(function Root(
@@ -36,7 +36,7 @@ export const Root = React.forwardRef<
 })
 
 export const Item = React.forwardRef<
-	React.ElementRef<typeof ToggleGroupPrimitive.Item>,
+	React.ComponentRef<typeof ToggleGroupPrimitive.Item>,
 	React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Item> &
 		VariantProps<typeof toggleVariants>
 >(function Item({ className, children, size, ...props }, ref) {
