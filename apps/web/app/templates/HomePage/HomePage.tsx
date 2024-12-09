@@ -21,16 +21,10 @@ type BaseProps = {
 	posts?: WithPT<BlogTeaserPageFragment>[]
 }
 
-const durp = 'display'
-
 export function HomePage({ hero, structure }: BaseProps) {
 	return (
 		<>
 			<Hero content={hero} />
-
-			<p className={css({ textStyle: `${durp}/5`, scaling: { md: '1.5' } })}>
-				Hello
-			</p>
 
 			<Structure structure={structure} />
 

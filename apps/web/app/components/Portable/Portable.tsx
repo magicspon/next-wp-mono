@@ -22,7 +22,10 @@ const defaultBlocks = (
 			<h1
 				className={css({
 					textStyle: el.h1 ?? 'display/2',
-					scaling: { md: '1.25', lg: '1.75' },
+					scaling: {
+						md: 'var(--md-scaling, 1.25)',
+						lg: 'var(--lg-scaling, 1.75)',
+					},
 				})}
 			>
 				{children}
@@ -32,7 +35,10 @@ const defaultBlocks = (
 			<h2
 				className={css({
 					textStyle: el.h2 ?? 'display/3',
-					scaling: { md: '1.25', lg: '1.75' },
+					scaling: {
+						md: 'var(--md-scaling, 1.25)',
+						lg: 'var(--lg-scaling, 1.75)',
+					},
 				})}
 			>
 				{children}
@@ -42,7 +48,10 @@ const defaultBlocks = (
 			<h3
 				className={css({
 					textStyle: el.h3 ?? 'display/4',
-					scaling: { md: '1.25', lg: '1.75' },
+					scaling: {
+						md: 'var(--md-scaling, 1.25)',
+						lg: 'var(--lg-scaling, 1.75)',
+					},
 				})}
 			>
 				{children}
@@ -52,7 +61,10 @@ const defaultBlocks = (
 			<h4
 				className={css({
 					textStyle: el.h4 ?? 'display/5',
-					scaling: { md: '1.25', lg: '1.75' },
+					scaling: {
+						md: 'var(--md-scaling, 1.25)',
+						lg: 'var(--lg-scaling, 1.75)',
+					},
 				})}
 			>
 				{children}
@@ -62,7 +74,10 @@ const defaultBlocks = (
 			<h5
 				className={css({
 					textStyle: el.h5 ?? 'display/6',
-					scaling: { md: '1.25', lg: '1.75' },
+					scaling: {
+						md: 'var(--md-scaling, 1.25)',
+						lg: 'var(--lg-scaling, 1.75)',
+					},
 				})}
 			>
 				{children}
@@ -72,7 +87,10 @@ const defaultBlocks = (
 			<h6
 				className={css({
 					textStyle: el.h6 ?? 'display/7',
-					scaling: { md: '1.25', lg: '1.75' },
+					scaling: {
+						md: 'var(--md-scaling, 1.25)',
+						lg: 'var(--lg-scaling, 1.75)',
+					},
 				})}
 			>
 				{children}
@@ -82,7 +100,10 @@ const defaultBlocks = (
 			<p
 				className={css({
 					textStyle: el.normal ?? 'body/3',
-					scaling: { md: '1.25', lg: '1.75' },
+					scaling: {
+						md: 'var(--md-scaling, 1.25)',
+						lg: 'var(--lg-scaling, 1.75)',
+					},
 				})}
 			>
 				{children}
@@ -92,7 +113,10 @@ const defaultBlocks = (
 			<blockquote
 				className={css({
 					textStyle: el.blockquote ?? 'body/2',
-					scaling: { md: '1.25', lg: '1.75' },
+					scaling: {
+						md: 'var(--md-scaling, 1.25)',
+						lg: 'var(--lg-scaling, 1.75)',
+					},
 				})}
 			>
 				{children}

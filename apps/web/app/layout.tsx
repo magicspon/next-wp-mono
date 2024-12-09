@@ -9,7 +9,7 @@ import { Header } from './components/global/Header'
 import { Provider } from './provider'
 import './style.css'
 
-const heading = localFont({
+export const heading = localFont({
 	src: [
 		{
 			path: './fonts/Knockout-HTF29-JuniorLiteweight.woff2',
@@ -30,7 +30,7 @@ const heading = localFont({
 	variable: '--font-heading',
 })
 
-const body = localFont({
+export const body = localFont({
 	src: [
 		{
 			path: './fonts/Gotham-Book.woff2',
@@ -74,7 +74,7 @@ export default async function RootLayout({
 	return (
 		<html
 			lang="en"
-			className={cx(heading.variable, body.variable, 'antialiased theme')}
+			className={cx(heading.variable, body.variable, 'theme antialiased')}
 		>
 			<body>
 				<Provider>

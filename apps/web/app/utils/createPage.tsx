@@ -84,7 +84,10 @@ export const createPage = <
 
 	async function Page(props: any) {
 		const params = await parseParams(props.params, paramsSchema)
-		const searchParams = await parseParams(props.searchParams, searchParamsSchema)
+		const searchParams = await parseParams(
+			props.searchParams,
+			searchParamsSchema,
+		)
 
 		let pageProps: any = {
 			params,

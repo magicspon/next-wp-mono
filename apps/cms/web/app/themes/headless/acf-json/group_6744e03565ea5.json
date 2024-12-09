@@ -114,7 +114,7 @@
             },
             "choices": {
                 "banner": "banner",
-                "legal": "legal"
+                "stack": "stack"
             },
             "default_value": false,
             "return_format": "value",
@@ -183,5 +183,5 @@
     "graphql_field_name": "variants",
     "map_graphql_types_from_location_rules": 0,
     "graphql_types": "",
-    "modified": 1732726025
+    "modified": 1733589294
 }

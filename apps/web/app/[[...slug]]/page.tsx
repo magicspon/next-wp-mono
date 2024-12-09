@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation'
 import * as React from 'react'
 import { z } from 'zod'
 import { POSTS_PER_PAGE, WP_BLOG_POST_PAGE_ID } from '~/config'
@@ -47,6 +48,9 @@ const { Page, generateMetadata } = createPage({
 		switch (info.template) {
 			case HOME_TEMPLATE: {
 				const data = await client.HomePageQuery(queryVars)
+				if (!data?.page) {
+					notFound()
+				}
 				const { seo, ...page } = data.page
 				return {
 					__template: info.template,
@@ -57,8 +61,10 @@ const { Page, generateMetadata } = createPage({
 			}
 
 			case POST_TEMPLATE: {
-				console.log({ POST_TEMPLATE: queryVars })
 				const data = await client.PostQuery(queryVars)
+				if (!data?.post) {
+					notFound()
+				}
 				return {
 					__template: POST_TEMPLATE,
 					page: data.post,
@@ -70,6 +76,10 @@ const { Page, generateMetadata } = createPage({
 					first: POSTS_PER_PAGE,
 					id: WP_BLOG_POST_PAGE_ID,
 				})
+
+				if (!data?.posts || !data?.page) {
+					notFound()
+				}
 				return {
 					__template: info.template,
 					posts: data.posts,
@@ -82,6 +92,9 @@ const { Page, generateMetadata } = createPage({
 					...queryVars,
 					parent: String(info.id),
 				})
+				if (!data.page) {
+					notFound()
+				}
 				const { seo, ...page } = data.page
 				return {
 					__template: LISTING_TEMPLATE,
@@ -93,6 +106,10 @@ const { Page, generateMetadata } = createPage({
 
 			default: {
 				const data = await client.PageQuery(queryVars)
+
+				if (!data.page) {
+					notFound()
+				}
 				const { seo, ...page } = data.page
 				return {
 					__template: 'default' as const,

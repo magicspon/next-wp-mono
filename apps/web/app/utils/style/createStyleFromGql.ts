@@ -6,7 +6,7 @@ import type {
 } from '@spon/styled-system/tokens'
 import { token } from '@spon/styled-system/tokens'
 
-type StyleProps = {
+export type StyleProps = {
 	value: string[]
 	attribute: string[]
 }[]

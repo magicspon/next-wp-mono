@@ -1,7 +1,7 @@
 import type { TextStyles } from '@pandacss/types'
 import { token } from '@spon/styled-system/tokens'
 import { computeFontVariables } from './capsize/computeFontVariables'
-import type { TTextStyle} from './capsize/index';
+import type { TTextStyle } from './capsize/index'
 import { fontBuilder } from './capsize/index'
 
 const bodyFontMetrics = {

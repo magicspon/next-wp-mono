@@ -6,7 +6,7 @@ import type * as React from 'react'
 import { getQueryClient } from '~/utils/getQueryClient'
 
 const loadFeatures = () =>
-	import('@spon/ui/motion/features').then((res) => res.domAnimation)
+	import('~/utils/motionFeatures').then((res) => res.domAnimation)
 
 export function Provider({ children }: { children: React.ReactNode }) {
 	const queryClient = getQueryClient()

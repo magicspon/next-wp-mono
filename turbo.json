@@ -35,7 +35,8 @@
 			"cache": false
 		},
 		"build-panda": {},
-		"tokens": {}
+		"tokens": {},
+		"storybook": {}
 	},
 	"globalEnv": [
 		"ANALYZE",

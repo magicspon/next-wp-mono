@@ -17,7 +17,7 @@
 		"next-env.d.ts",
 		".next/types/**/*.ts",
 		"playwright.config.ts",
-		"graffle.config.ts",
+		".storybook/**/*",
 		"**/style.d.ts",
 		"**/*.ts",
 		"**/*.tsx",

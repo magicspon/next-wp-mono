@@ -20,7 +20,7 @@ const button = cva({
 		_disabled: { pointerEvents: 'none', opacity: '0.5' },
 	},
 	variants: {
-		visual: {
+		variant: {
 			default: { shadow: 'shadow' },
 			destructive: { shadow: 'sm' },
 			outline: { borderWidth: '1px', shadow: 'sm' },
@@ -45,11 +45,14 @@ export type ButtonProps = React.ComponentProps<'button'> &
 	ButtonVariant & { asChild?: boolean }
 
 export const Button = React.forwardRef<React.ElementRef<'button'>, ButtonProps>(
-	function Button({ className, visual, size, asChild = false, ...props }, ref) {
+	function Button(
+		{ className, variant, size, asChild = false, ...props },
+		ref,
+	) {
 		const Comp = asChild ? Slot : 'button'
 		return (
 			<Comp
-				className={cx(button({ visual, size }), className)}
+				className={cx(button({ variant, size }), className)}
 				ref={ref}
 				{...props}
 			/>

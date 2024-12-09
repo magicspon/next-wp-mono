@@ -7,71 +7,12 @@ import type { BaseHeroTextLayoutFragment } from '~/schema/generated.graphql'
 import { createStyleFromGraphql } from '~/utils/style/createStyleFromGql'
 import { section } from '~/utils/style/section'
 import type { WithPT } from '~/utils/ts-helpers'
-
-const hero = sva({
-	slots: ['root', 'content', 'text', 'markdown'],
-	base: {
-		root: {
-			display: 'flex',
-			flexDir: 'column',
-			justifyContent: 'var(--justify-content, start)',
-			bg: 'var(--background, token(colors.teal.800))',
-			color: 'var(--foreground, token(colors.white))',
-			py: {
-				base: 'var(--padding-y, token(spacing.8))',
-				md: 'var(--md-padding-y, token(spacing.16))',
-			},
-			px: {
-				base: 'var(--padding-x, token(spacing.8))',
-				md: 'var(--md-padding-x, token(spacing.16))',
-			},
-		},
-		content: {
-			maxW: 'var(--max-width, token(sizes.lg))',
-			w: 'full',
-			textAlign: 'var(--text-align, left)',
-			display: 'flex',
-			flexDir: 'column',
-			gap: {
-				base: 'var(--gap, token(spacing.6))',
-				md: 'var(--md-gap, token(spacing.8))',
-			},
-		},
-		text: {
-			color: 'var(--foreground, token(colors.white))',
-		},
-		markdown: {
-			_highlight: {
-				color: 'var(--accent, token(colors.accent))',
-			},
-			whiteSpace: 'pre-line',
-		},
-	},
-	variants: {
-		variant: {
-			banner: {
-				root: {
-					alignItems: 'var(--align-items, center)',
-				},
-				content: {},
-			},
-			legal: {
-				root: {
-					alignItems: 'var(--align-items, start)',
-				},
-				content: { width: '10', height: '10' },
-			},
-		},
-	},
-	defaultVariants: {
-		variant: 'banner',
-	},
-})
+import { textPanelStyle } from '~/utils/style/textPanel'
 
 export type HeroVariants = RecipeVariantProps<typeof hero>
 type Variant = NonNullable<HeroVariants>['variant']
 
-type THeroTextProps = WithPT<BaseHeroTextLayoutFragment>
+export type THeroTextProps = WithPT<BaseHeroTextLayoutFragment>
 
 export function HeroText({ textPanel, style }: THeroTextProps) {
 	const { blocks } = textPanel
@@ -79,10 +20,11 @@ export function HeroText({ textPanel, style }: THeroTextProps) {
 	const variant = getFirstOrNull(heroTextVariant) ?? 'banner'
 	const classes = hero({ variant: variant as Variant })
 
+	console.log(JSON.stringify({ textPanel, style }))
 	return (
 		<div
 			data-testid="HeroText"
-			style={section(style?.section)}
+			style={textPanelStyle(textPanel.style)}
 			className={classes.root}
 		>
 			<div
@@ -97,3 +39,94 @@ export function HeroText({ textPanel, style }: THeroTextProps) {
 		</div>
 	)
 }
+
+export const hero = sva({
+	slots: ['root', 'content', 'text', 'markdown'],
+	base: {
+		root: {
+			display: 'flex',
+			flexDir: 'column',
+			justifyContent: 'var(--justify-content, center)',
+			bg: 'var(--background, token(colors.blue.800))',
+			color: 'var(--foreground, token(colors.white))',
+			px: {
+				base: 'var(--padding-x, token(spacing.8))',
+				md: 'var(--md-padding-x, token(spacing.16))',
+			},
+		},
+		content: {
+			w: 'full',
+			position: 'relative',
+			display: 'flex',
+			flexDir: 'column',
+			gap: {
+				base: 'var(--gap, token(spacing.6))',
+				md: 'var(--md-gap, token(spacing.12))',
+				lg: 'var(--lg-gap, token(spacing.12))',
+			},
+		},
+		text: {
+			color: 'var(--foreground, token(colors.white))',
+			textStyle: 'display/1',
+		},
+		markdown: {
+			_highlighted: {
+				color: 'var(--accent, token(colors.accent))',
+			},
+			whiteSpace: 'pre-line',
+		},
+	},
+	variants: {
+		variant: {
+			banner: {
+				root: {
+					alignItems: 'var(--align-items, center)',
+					py: {
+						base: 'var(--padding-y, token(spacing.8))',
+						md: 'var(--md-padding-y, token(spacing.16))',
+					},
+				},
+				content: {
+					maxW: {
+						base: 'var(--max-width, token(sizes.lg))',
+						md: 'var(--md-max-width, token(sizes.lg))',
+						lg: 'var(--lg-max-width, token(sizes.lg))',
+					},
+					textAlign: 'var(--text-align, center)',
+					py: {
+						base: 'var(--padding-y, token(spacing.24))',
+						md: 'var(--md-padding-y, token(spacing.32))',
+						lg: 'var(--lg-padding-y, token(spacing.56))',
+					},
+				},
+			},
+			stack: {
+				root: {
+					alignItems: 'var(--align-items, start)',
+				},
+
+				content: {
+					maxW: {
+						base: 'var(--max-width, token(sizes.lg))',
+						md: 'var(--md-max-width, token(sizes.lg))',
+						lg: 'var(--lg-max-width, token(sizes.lg))',
+					},
+					textAlign: 'var(--text-align, left)',
+					pt: {
+						base: 'var(--padding-t, token(spacing.24))',
+						md: 'var(--md-padding-t, token(spacing.24))',
+						lg: 'var(--lg-padding-t, token(spacing.48))',
+					},
+					pb: {
+						base: 'var(--padding-b, token(spacing.8))',
+						md: 'var(--md-padding-b, token(spacing.8))',
+						lg: 'var(--lg-padding-b, token(spacing.8))',
+					},
+				},
+			},
+		},
+	},
+	defaultVariants: {
+		variant: 'banner',
+	},
+})

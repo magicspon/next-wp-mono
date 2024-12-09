@@ -20,7 +20,13 @@ export function BlockText({
 		<Comp
 			style={vars}
 			className={cx(
-				css({ textStyle: findFontSize('font-size', textStyles) }),
+				css({
+					textStyle: findFontSize('font-size', textStyles),
+					scaling: {
+						md: 'var(--md-scaling, 1)',
+						lg: 'var(--lg-scaling, 2)',
+					},
+				}),
 				className,
 			)}
 		>

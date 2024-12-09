@@ -32,6 +32,8 @@ export function htmlToPortableText({ raw }: THtmlToPortableText) {
 
 	const schemaType = schema.type as ArraySchemaType
 
+	console.log(JSON.stringify({ a: raw }))
+
 	const content = htmlToBlocks(raw, schemaType, {
 		parseHtml: (html) => new JSDOM(html).window.document,
 	})

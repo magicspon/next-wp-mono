@@ -26,12 +26,12 @@
 		"lint": "eslint . --max-warnings 0 --fix",
 		"typecheck": "tsc --noEmit",
 		"clean": "rm -rf *.tsbuildinfo node_modules",
-		"storybook": "storybook dev -p 6006",
+		"_storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
 		"build-panda": "tsup && panda codegen",
 		"panda": "panda codegen",
 		"build-fast": "tsup --no-dts",
-		"dev": "npm run build-fast --watch; npm run storybook"
+		"dev": "npm run build-fast --watch;"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^3.2.2",

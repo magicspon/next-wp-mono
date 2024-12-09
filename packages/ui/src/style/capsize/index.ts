@@ -1,4 +1,4 @@
-import type { FontMetrics} from '@capsizecss/core';
+import type { FontMetrics } from '@capsizecss/core'
 import { createStyleObject } from '@capsizecss/core'
 
 export const round = (value: number) => parseFloat(value.toFixed(4))
